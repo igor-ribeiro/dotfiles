@@ -1,6 +1,10 @@
 #!/bin/sh
 
 # --
+# BASH
+ln -sf $(pwd)/.bashrc $HOME/
+
+# --
 # VIM
 mkdir -p $HOME/.vim
 
