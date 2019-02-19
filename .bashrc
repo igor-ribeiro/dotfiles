@@ -14,6 +14,11 @@ export PATH
 
 export LANG="en_US.utf8"
 
+export TERM=xterm-256color
+
+export PATH=~/.npm-global/bin:$PATH
+
+
 # ---
 # ALIASES
 # ---
@@ -31,6 +36,7 @@ alias gcloud-staging="gcloud config set project staging-203611"
 # Directories
 alias bb="cd ~/Code/BeautyBrands"
 alias ir="cd ~/Code/Ribeiro"
+alias dotfiles="cd ~/dotfiles"
 
 # VPN
 alias bb-vpn="sudo openvpn --config ~/.vpn/igorr.ovpn --askpass ~/.vpn/auth.txt"
@@ -67,11 +73,13 @@ alias gco="git checkout"
 alias gc="git commit"
 alias gd="git diff"
 
-# Dotfiles
-alias dotfiles="cd ~/dotfiles"
+# Bash
 alias ebash="vim ~/.bashrc"
 alias sbash="source ~/.bashrc"
+
+# Vim
 alias evim="vim ~/.vimrc"
+alias vim="vimx"
 
 # --
 # FUNCTIONS
