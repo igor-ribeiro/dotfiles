@@ -11,11 +11,12 @@ ln -sf $(pwd)/.bashrc $HOME/
 mkdir -p $HOME/.vim
 
 # Dependencies
-npm i -g import-js import-sort-cli import-sort-parser-babylon import-sort-parser-typescript
+npm i -g import-js import-sort-cli import-sort-parser-babylon import-sort-parser-typescript import-sort-style-module
 
 # Link files
 ln -sf $(pwd)/vim/autoload $HOME/.vim/
 ln -sf $(pwd)/.vimrc $HOME/
+ln -sf $(pwd)/.importsortrc $HOME/
 
 # Install vimx to enable system clipboard support
 sudo dnf install vim-X11 -y
