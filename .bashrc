@@ -18,6 +18,8 @@ export TERM=xterm-256color
 
 export PATH=~/.npm-global/bin:$PATH
 
+export PS1="\e[2m\\w\e[0m \e[44m\$(git branch 2>/dev/null | grep '^*' | colrm 1 2 | sed -e 's/^/ /' | sed -e 's/$/ /')\e[0m\n\$ "
+
 
 # ---
 # ALIASES
@@ -81,15 +83,38 @@ alias sbash="source ~/.bashrc"
 alias evim="vim ~/.vimrc"
 alias vim="vimx"
 
+# Tmux
+alias etmux="vim ~/.tmux.conf"
+
 # --
 # FUNCTIONS
 # --
 
+## TMUX
 # Kill all tmux sessions starting by name
 function tmux-kill-session () {
   eval $(tmux ls | grep -Po "^$1(-(\d)+)*" | sed -e 's/^/tmux kill-session -t /' | sed -e 's/$/ \&\& /g' | xargs | sed -e 's/\&\&$//')
 }
 
+# Start a session by script attaching or creating a new one
+function tmux-start () {
+  operation=${2:-''}
+
+  if [ $operation == 'clear' ]; then
+    echo "Killing all $1"
+    tmux-kill-session $1
+  fi
+
+  if tmux has -t $1; then
+    echo "Attaching to $1"
+    tmux a -t $1
+  else
+    echo "Creating session $1"
+    ~/dotfiles/tmux/sessions/$1.sh
+  fi
+}
+
+## DOCKER
 # Enter a docker container by name
 function container () {
   docker exec -it $(docker ps -aqf "name=$1") su docker

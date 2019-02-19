@@ -150,6 +150,9 @@ autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
 " Netrw tree view
 let g:netrw_liststyle=3
 
+" Netrw ignore files
+let g:netrw_list_hide= '.*\.swp$,.git/'
+
 " ---
 " Colors and Fonts
 " ---
