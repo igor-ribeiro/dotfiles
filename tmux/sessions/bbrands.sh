@@ -2,14 +2,9 @@
 
 source ~/.bashrc
 
-session_name='BBrands'
+session_name='bbrands'
 
-if [ $1 == 'clear' ]
-then
-  tmux-kill-session $session_name
-fi
-
-tmux new-session -t $session_name \; \
+tmux new -s $session_name \; \
   rename-window 'Optimus' \; \
   send-keys 'bb && cd optimus && vim .' C-m \; \
   split-window -h \; \
@@ -36,5 +31,8 @@ tmux new-session -t $session_name \; \
   send-keys 'clear && container stark' C-m \; \
   split-window -v \; \
   send-keys 'bb && cd stark && clear' C-m \; \
+  new-window \; \
+  rename-window 'VPN' \; \
+  send-keys 'bb-vpn' C-m \; \
   select-window -t 1 \; \
   select-pane -t 1
