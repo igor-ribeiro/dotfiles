@@ -1,10 +1,10 @@
 {
   ".js, .jsx, .es6, .es": {
     "parser": "babylon",
-    "style": "module"
+    "style": "module",
   },
   ".ts, .tsx": {
     "parser": "typescript",
-    "style": "renke"
+    "style": "module"
   }
 }

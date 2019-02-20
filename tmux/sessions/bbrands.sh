@@ -33,6 +33,4 @@ tmux new -s $session_name \; \
   send-keys 'bb && cd stark && clear' C-m \; \
   new-window \; \
   rename-window 'VPN' \; \
-  send-keys 'bb-vpn' C-m \; \
-  select-window -t 1 \; \
-  select-pane -t 1
+  send-keys 'bb-vpn' C-m

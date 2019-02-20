@@ -18,8 +18,6 @@ export TERM=xterm-256color
 
 export PATH=~/.npm-global/bin:$PATH
 
-export PS1="\e[2m\\w\e[0m \e[44m\$(git branch 2>/dev/null | grep '^*' | colrm 1 2 | sed -e 's/^/ /' | sed -e 's/$/ /')\e[0m\n\$ "
-
 
 # ---
 # ALIASES
@@ -58,7 +56,7 @@ alias redis-local-keys-del="redis-cli -h redis.service.consul KEYS $1 | xargs re
 alias redis-prod-keys="redis-cli -h redis.aws.bbrands.com.br KEYS $1"
 
 # Consul
-alias consul="bb && cd consul && dcd && ./start.sh && cd -"
+alias consul="cd ~/Code/BeautyBrands/consul && dcd && ./start.sh && cd -"
 
 # System
 alias dnf-update="sudo dnf clean packages && sudo dnf update --skip-broken -y"
@@ -69,7 +67,7 @@ alias postman="/home/iribeiro/Downloads/Postman-linux-x64-6.0.10/Postman/Postman
 # Git
 alias gst="git status"
 alias ga="git add"
-alias ggp="git push"
+# alias ggp="git push"
 alias ggl="git pull"
 alias gco="git checkout"
 alias gc="git commit"
@@ -100,7 +98,7 @@ function tmux-kill-session () {
 function tmux-start () {
   operation=${2:-''}
 
-  if [ $operation == 'clear' ]; then
+  if [ $operation == '-f' ]; then
     echo "Killing all $1"
     tmux-kill-session $1
   fi
@@ -119,3 +117,62 @@ function tmux-start () {
 function container () {
   docker exec -it $(docker ps -aqf "name=$1") su docker
 }
+
+## GIT
+# Check if folder has .git
+function has-git () {
+  if [[ $(find . -maxdepth 1 -name '.git') ]]; then
+    true
+  else
+    false
+  fi
+}
+
+# Get git branch
+function current-git-branch () {
+  if ! has-git; then
+    return
+  fi
+
+  git branch 2>/dev/null | grep '^*' | colrm 1 2
+}
+
+# git push origin CURRENT_BRANCH
+function ggp () {
+  git push origin $(current-git-branch)
+}
+
+## BASH
+function bash-status-git-branch () {
+  if ! has-git; then
+    return
+  fi
+
+  echo -e "\e[44m $(current-git-branch) \e[0m"
+}
+
+# Add visual if there are staged files
+function bash-status-git-stage () {
+  if ! has-git; then
+    return
+  fi
+
+  staged_files="$(gst -s | wc -l)"
+
+  if [[ $staged_files == "0" ]]; then
+    echo -e "\e[32m●\e[0m"
+  else
+    echo -e "\e[91m($staged_files)\e[0m"
+  fi
+}
+
+function get-bash-status () {
+  current_dir="\e[2m\\w\e[0m"
+  git_branch="\$(bash-status-git-branch)"
+  git_status="\$(bash-status-git-stage)"
+
+  echo "$current_dir $git_branch $git_status \n$ "
+}
+
+# Show the current folder, git branch and git stage info
+export PS1=$(get-bash-status)

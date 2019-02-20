@@ -17,6 +17,7 @@ npm i -g import-js import-sort-cli import-sort-parser-babylon import-sort-parser
 ln -sf $(pwd)/vim/autoload $HOME/.vim/
 ln -sf $(pwd)/.vimrc $HOME/
 ln -sf $(pwd)/.importsortrc $HOME/
+ln -sf $(pwd)/.importjs.js $HOME/
 
 # Install vimx to enable system clipboard support
 sudo dnf install vim-X11 -y

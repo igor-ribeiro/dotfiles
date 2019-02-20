@@ -19,6 +19,8 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 Plug 'Galooshi/vim-import-js'
 Plug 'ruanyl/vim-sort-imports'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -48,11 +50,13 @@ command W w !sudo tee % > /dev/null
 " Close all buffer and open the last one
 command Bonly %bd|e#
 
+" Run Optimus build
+command OB AsyncStop! | AsyncRun docker exec optimus_web yarn hot-reload
+
 " Set the path for search files to to current path
 set path=.,**
 
-" Search in project folder
-nnoremap <leader>f :find *
+nnoremap <leader>f :e `find . -type f -name *`<left><left>
 vnoremap <leader>f y:e `find . -type f -name <C-R>"*`
 " Open file with horizontal split
 nnoremap <leader>s :sfind *
@@ -76,13 +80,6 @@ nnoremap <leader>gsb :sbuffer <C-z><S-Tab>
 nnoremap <PageUp>   :bprevious<CR>
 nnoremap <PageDown> :bnext<CR>
 
-" Set the files and folders to ignore when searching
-set wildignore=*.swp,*.bak
-set wildignore+=*/.git/**/*,*/node_modules/**/*,*/dist/**/*,*/data/**/*
-
-" Search ignoring case
-set wildignorecase
-
 " Select colorscheme
 nnoremap <leader>c :colorscheme 
 
@@ -90,7 +87,10 @@ nnoremap <leader>c :colorscheme
 nnoremap <leader>e :e ~/.vimrc<CR>
 
 " Enable auto sort import on write
-let g:import_sort_auto=1
+" let g:import_sort_auto=1
+
+" Open window for the asynrun command
+let g:asyncrun_open=10
 
 " ---
 " VIM user interface
@@ -102,13 +102,16 @@ set so=10
 " Turn on the Wild menu
 set wildmenu
 
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
+set nowrap
+
+" Search ignoring case
+set wildignorecase
+
+" Ignore files
+set wildignore+=*.swp,*.bak
+set wildignore+=*/.git/**/*,**/node_modules/**/*,*/dist/**/*,*/data/**/*
+set wildignore+=*.o,*~,*.pyc
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 "Always show current position
 set ruler
@@ -152,6 +155,7 @@ let g:netrw_liststyle=3
 
 " Netrw ignore files
 let g:netrw_list_hide= '.*\.swp$,.git/'
+
 
 " ---
 " Colors and Fonts
@@ -225,12 +229,23 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " ---
 
 " Allow JSX in .js files
-let g:jsx_ext_required=0
+let g:jsx_ext_required = 0
 
-let g:ale_fix_on_save=1
-let g:ale_fixers = ['prettier', 'tslint', 'eslint']
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': [
+\       'eslint',
+\       'importjs',
+\       'prettier',
+\   ],
+\   'typescript': [
+\       'eslint',
+\       'tslint',
+\       'prettier',
+\   ],
+\}
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
+let g:ale_sign_warning = '»'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 
 
@@ -241,8 +256,25 @@ let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 " Always show the status line
 set laststatus=2
 
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi statusline guifg=Gray30 guibg=Gray80
+
+" Highligth the line on insert mode
+au InsertEnter * set cursorline
+au InsertLeave * set nocursorline
+
+" Default color
+hi statusline guifg=Gray30 guibg=Gray80
+
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ Line:\ %l\ \ Column:\ %c
+
+" Add task to status line
+let g:asyncrun_status=""
+augroup QuickfixStatus
+  au! BufWinEnter quickfix setlocal
+    set	statusline+=\ \|\ task:\ %{g:asyncrun_status}
+augroup END
 
 
 " ---
@@ -281,6 +313,9 @@ if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
+" Switch buffers
+nnoremap <leader>b :b#<CR>
+
 " ---
 " Helper functions
 " ---
@@ -314,3 +349,9 @@ function! <SID>BufcloseCloseIt()
     endif
 endfunction
 
+" Set the bgcolor to blue and text to white on insert mode
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi statusline guifg=SteelBlue4 guibg=Gray80
+  endif
+endfunction
