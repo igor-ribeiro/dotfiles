@@ -21,6 +21,9 @@ Plug 'Galooshi/vim-import-js'
 Plug 'ruanyl/vim-sort-imports'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript'
+Plug 'dikiaap/minimalist'
 
 call plug#end()
 
@@ -156,6 +159,9 @@ let g:netrw_liststyle=3
 " Netrw ignore files
 let g:netrw_list_hide= '.*\.swp$,.git/'
 
+" Highlight column at 80
+set colorcolumn=80
+
 
 " ---
 " Colors and Fonts
@@ -167,7 +173,7 @@ syntax enable
 " Theme
 set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme one
 
 " Enable 256 colors palette in Gnome Terminal;
 if $COLORTERM == 'gnome-terminal'
@@ -239,7 +245,6 @@ let g:ale_fixers = {
 \       'prettier',
 \   ],
 \   'typescript': [
-\       'eslint',
 \       'tslint',
 \       'prettier',
 \   ],
@@ -267,14 +272,14 @@ au InsertLeave * set nocursorline
 hi statusline guifg=Gray30 guibg=Gray80
 
 " Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ Line:\ %l\ \ Column:\ %c
+set statusline=\ %{HasPaste()}%t%m%r%h\ %w\ Line:\ %l\ \ Column:\ %c
 
 " Add task to status line
-let g:asyncrun_status=""
-augroup QuickfixStatus
-  au! BufWinEnter quickfix setlocal
-    set	statusline+=\ \|\ task:\ %{g:asyncrun_status}
-augroup END
+" let g:asyncrun_status=""
+" augroup QuickfixStatus
+"   au! BufWinEnter quickfix setlocal
+"     set	statusline+=\ \|\ task:\ %{g:asyncrun_status}
+" augroup END
 
 
 " ---

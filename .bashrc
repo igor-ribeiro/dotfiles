@@ -53,6 +53,7 @@ alias clear-swap="sudo swapoff -a && sudo swapon -a"
 # Redis
 alias redis-local-keys="redis-cli -h redis.service.consul KEYS $1"
 alias redis-local-keys-del="redis-cli -h redis.service.consul KEYS $1 | xargs redis-cli -h redis.service.consul DEL"
+alias redis-staging-keys="redis-cli -h redis.staging.bbrands.com.br KEYS $1"
 alias redis-prod-keys="redis-cli -h redis.aws.bbrands.com.br KEYS $1"
 
 # Consul
@@ -67,11 +68,11 @@ alias postman="/home/iribeiro/Downloads/Postman-linux-x64-6.0.10/Postman/Postman
 # Git
 alias gst="git status"
 alias ga="git add"
-# alias ggp="git push"
-alias ggl="git pull"
 alias gco="git checkout"
 alias gc="git commit"
 alias gd="git diff"
+alias gm="git merge"
+alias gl="git log"
 
 # Bash
 alias ebash="vim ~/.bashrc"
@@ -142,6 +143,11 @@ function ggp () {
   git push origin $(current-git-branch)
 }
 
+# git pull origin CURRENT_BRANCH
+function ggl () {
+  git pull origin $(current-git-branch)
+}
+
 ## BASH
 function bash-status-git-branch () {
   if ! has-git; then
@@ -176,3 +182,26 @@ function get-bash-status () {
 
 # Show the current folder, git branch and git stage info
 export PS1=$(get-bash-status)
+
+## UTILS
+# Parse JSON
+function get-json () {
+  python -c "import sys, json; print json.load(sys.stdin)$2" < $1
+}
+
+# Find text in files on current folder
+function find-in-files () {
+  dir='./'
+
+  if [[ $2 ]]; then
+    dir=$2
+  fi
+
+  grep --exclude-dir={.git,node_modules,dist} -rnw $2 -e "$1"
+}
+
+# Copy command to clipboard
+function copy () {
+  echo $1
+  xclip -sel clipboard $1
+}
