@@ -51,6 +51,7 @@ alias datagrip="cd ~/Code/Ribeiro/docker-datagrip && dcu -d && cd -"
 alias clear-swap="sudo swapoff -a && sudo swapon -a"
 
 # Redis
+alias redis-local="redis-cli -h redis.service.consul $@"
 alias redis-local-keys="redis-cli -h redis.service.consul KEYS $1"
 alias redis-local-keys-del="redis-cli -h redis.service.consul KEYS $1 | xargs redis-cli -h redis.service.consul DEL"
 alias redis-staging-keys="redis-cli -h redis.staging.bbrands.com.br KEYS $1"
@@ -202,6 +203,39 @@ function find-in-files () {
 
 # Copy command to clipboard
 function copy () {
-  echo $1
   xclip -sel clipboard $1
+}
+
+# Copy redis keys from one host to another
+function redis-copy-key () {
+  key=$1
+  from=$2
+  to=$3
+
+  redis-cli -h $to SET $key $(redis-cli -h $from GET $key)
+}
+
+function redis-copy-key-staging-local () {
+  redis-copy-key $1 redis.staging.bbrands.com.br redis.service.consul
+}
+
+
+# Display all the IPs from `ifconfig`, asks for one and copy to clipboard
+function copy-ip () {
+  ips=$(ifconfig | grep -P '^\w' -1 | grep -P 'inet [\d\.]+' -o | grep -P '[\d\.]+' -o)
+  array=($(echo "$ips" | tr ',' '\n'))
+  i=0
+
+  for ip in $ips; do
+    echo "($i) $ip"
+    ((++i))
+  done
+
+  read -p "Enter your choice and press [ENTER]: " choice
+
+  ip=${array[choice]}
+  echo -n $ip | copy
+
+  clear
+  echo "IP $ip copied to clipboard!"
 }

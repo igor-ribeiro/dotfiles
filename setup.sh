@@ -26,3 +26,10 @@ sudo dnf install vim-X11 -y
 # TMUX
 # --
 ln -sf $(pwd)/.tmux.conf $HOME/
+
+# --
+# GIT
+# --
+# Sets the pager to behave like `man`
+git config --global core.pager 'less -+X'
+
