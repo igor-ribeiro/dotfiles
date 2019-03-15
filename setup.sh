@@ -22,6 +22,14 @@ ln -sf $(pwd)/.importjs.js $HOME/
 # Install vimx to enable system clipboard support
 sudo dnf install vim-X11 -y
 
+# Install plugins
+vim -c 'PlugInstall | qa'
+
+# Install YouCompleteMe
+cd ~/.vim/plugs/YouCompleteMe
+./install.py --clang-completer --ts-completer
+
+
 # --
 # TMUX
 # --

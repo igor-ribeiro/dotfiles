@@ -55,7 +55,7 @@ alias redis-local="redis-cli -h redis.service.consul $@"
 alias redis-local-keys="redis-cli -h redis.service.consul KEYS $1"
 alias redis-local-keys-del="redis-cli -h redis.service.consul KEYS $1 | xargs redis-cli -h redis.service.consul DEL"
 alias redis-staging-keys="redis-cli -h redis.staging.bbrands.com.br KEYS $1"
-alias redis-prod-keys="redis-cli -h redis.aws.bbrands.com.br KEYS $1"
+alias redis-prod-keys="redis-cli -h redis.bbrands.com.br KEYS $1"
 
 # Consul
 alias consul="cd ~/Code/BeautyBrands/consul && dcd && ./start.sh && cd -"
@@ -203,7 +203,7 @@ function find-in-files () {
 
 # Copy command to clipboard
 function copy () {
-  xclip -sel clipboard $1
+  xclip -sel clipboard $@
 }
 
 # Copy redis keys from one host to another
@@ -215,10 +215,10 @@ function redis-copy-key () {
   redis-cli -h $to SET $key $(redis-cli -h $from GET $key)
 }
 
+# Copy redis keys from staging to local
 function redis-copy-key-staging-local () {
   redis-copy-key $1 redis.staging.bbrands.com.br redis.service.consul
 }
-
 
 # Display all the IPs from `ifconfig`, asks for one and copy to clipboard
 function copy-ip () {
@@ -238,4 +238,10 @@ function copy-ip () {
 
   clear
   echo "IP $ip copied to clipboard!"
+}
+
+# Create directory recursively and enter the directory
+function mkd () {
+  mkdir -p $1
+  cd $1
 }

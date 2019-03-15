@@ -9,24 +9,31 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
-Plug 'jiangmiao/auto-pairs'
-Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
-Plug 'Quramy/tsuquyomi'
 Plug 'vim-syntastic/syntastic'
-Plug 'rakr/vim-one'
-Plug 'ayu-theme/ayu-vim'
-Plug 'morhetz/gruvbox'
 Plug 'Galooshi/vim-import-js'
+Plug 'jiangmiao/auto-pairs'
 Plug 'ruanyl/vim-sort-imports'
+Plug 'prabirshrestha/async.vim'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-flagship'
+" Sessions
+Plug 'tpope/vim-obsession'
+Plug 'dhruvasagar/vim-prosession'
+" Typescript
+Plug 'Quramy/tsuquyomi'
+" Themes
+Plug 'rakr/vim-one'
+" Syntax
 Plug 'pangloss/vim-javascript'
-Plug 'dikiaap/minimalist'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/yajs.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mxw/vim-jsx'
 
 call plug#end()
-
 
 " ---
 " General
@@ -59,14 +66,15 @@ command OB AsyncStop! | AsyncRun docker exec optimus_web yarn hot-reload
 " Set the path for search files to to current path
 set path=.,**
 
-nnoremap <leader>f :e `find . -type f -name *`<left><left>
-vnoremap <leader>f y:e `find . -type f -name <C-R>"*`
+nnoremap <leader>f :e `find . -type f -wholename **`<left><left>
+nnoremap <leader>t :tabe `find . -type f -wholename **`<left><left>
+vnoremap <leader>f y:e `find . -type f -iname <C-R>"*`
 " Open file with horizontal split
 nnoremap <leader>s :sfind *
 " Open file with vertical split
 nnoremap <leader>v :vert sfind *
 " Open file in a tab
-nnoremap <leader>t :tabfind *
+" nnoremap <leader>t :tabfind *
 
 " Search in current folder
 nnoremap <leader>F :find <C-R>=expand('%:h').'/*'<CR>
@@ -87,13 +95,21 @@ nnoremap <PageDown> :bnext<CR>
 nnoremap <leader>c :colorscheme 
 
 " Edit ~/.vimrc
-nnoremap <leader>e :e ~/.vimrc<CR>
+nnoremap <leader>e :tabe ~/.vimrc<CR>
 
 " Enable auto sort import on write
 " let g:import_sort_auto=1
 
 " Open window for the asynrun command
 let g:asyncrun_open=10
+
+" TSU
+" Rename symbol
+nnoremap <F2> :TsuRenameSymbol<CR>
+
+" Default dir to save sessions
+let g:prosession_dir = "~/.vim/sessions/"
+let g:prosession_default_session = 1
 
 " ---
 " VIM user interface
@@ -144,14 +160,20 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
+" Completition menu
+set completeopt=longest,menuone
+
+
 " Show methods signature pop up
-let g:tsuquyomi_completion_detail = 0
+let g:tsuquyomi_completion_detail = 1 
+let g:tsuquyomi_completion_preview = 1
 let g:tsuquyomi_disable_quickfix = 1
+let g:tsuquyomi_javascript_support = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 " Typescript hint
-set ballooneval
-autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
+" set ballooneval
+" autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
 
 " Netrw tree view
 let g:netrw_liststyle=3
@@ -161,6 +183,24 @@ let g:netrw_list_hide= '.*\.swp$,.git/'
 
 " Highlight column at 80
 set colorcolumn=80
+
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Opens completition menu when pressing '.'
+inoremap <expr> . OpenCompletitionMenu()
+func OpenCompletitionMenu()
+  " Ignore if the line already ends with '.'
+  echo getline('.')[col('.') - 1]
+  if (getline('.')[col('.') - 2] =~ '\.$')
+    return "\<Esc>a."
+  endif
+
+  if (&filetype ==# "typescript" || &filetype ==# "javascript")
+    return pumvisible() ? "\<CR>.\<C-X>\<C-O>" : ".\<C-X>\<C-O>"
+  endif
+
+  return "."
+endfunc
 
 
 " ---
@@ -176,9 +216,7 @@ set background=dark
 colorscheme one
 
 " Enable 256 colors palette in Gnome Terminal;
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
+set t_Co=256
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -241,7 +279,6 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'javascript': [
 \       'eslint',
-\       'importjs',
 \       'prettier',
 \   ],
 \   'typescript': [
@@ -260,6 +297,7 @@ let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 
 " Always show the status line
 set laststatus=2
+set showtabline=2
 
 au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi statusline guifg=Gray30 guibg=Gray80
@@ -272,15 +310,15 @@ au InsertLeave * set nocursorline
 hi statusline guifg=Gray30 guibg=Gray80
 
 " Format the status line
-set statusline=\ %{HasPaste()}%t%m%r%h\ %w\ Line:\ %l\ \ Column:\ %c
+set statusline=\ 
+set statusline+=%t%m%r%h%w\ \ 
+set statusline+=Line:\ %l\ 
+set statusline+=Column:\ %c\ 
+" Display [$] if the session is being recorded
+set statusline+=%=%{ObsessionStatus()}\ 
 
-" Add task to status line
-" let g:asyncrun_status=""
-" augroup QuickfixStatus
-"   au! BufWinEnter quickfix setlocal
-"     set	statusline+=\ \|\ task:\ %{g:asyncrun_status}
-" augroup END
-
+" Tabs
+let g:tablabel = "%N%{flagship#tabmodified()}: %f"
 
 " ---
 " Editing mappings
@@ -357,6 +395,6 @@ endfunction
 " Set the bgcolor to blue and text to white on insert mode
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
-    hi statusline guifg=SteelBlue4 guibg=Gray80
+    hi statusline guibg=SteelBlue4 guifg=Gray80
   endif
 endfunction
