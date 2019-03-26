@@ -158,10 +158,12 @@ function get-git-tracked-count () {
 }
 
 function get-git-behind-commits () {
+  git fetch -q &>/dev/null &
   echo $(gst -b | grep -P 'is behind' | grep -oP '(\d)+ commit' | grep -oP '\d+')
 }
 
 function get-git-ahead-commits () {
+  git fetch -q &>/dev/null &
   echo $(gst -b | grep -P 'is ahead' | grep -oP '(\d)+ commit' | grep -oP '\d+')
 }
 
