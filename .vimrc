@@ -20,8 +20,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-flagship'
 " Sessions
-Plug 'tpope/vim-obsession'
-Plug 'dhruvasagar/vim-prosession'
+" Plug 'tpope/vim-obsession'
+" Plug 'dhruvasagar/vim-prosession'
 " Typescript
 Plug 'Quramy/tsuquyomi'
 " Themes
@@ -97,6 +97,8 @@ nnoremap <leader>c :colorscheme
 " Edit ~/.vimrc
 nnoremap <leader>e :tabe ~/.vimrc<CR>
 
+nnoremap <buffer> <C-D> mf<CR>
+
 " Enable auto sort import on write
 " let g:import_sort_auto=1
 
@@ -106,17 +108,26 @@ let g:asyncrun_open=10
 " TSU
 " Rename symbol
 nnoremap <F2> :TsuRenameSymbol<CR>
+" See references
+nnoremap <F12> :TsuReferences<CR>
+" Import
+nnoremap <NUL> :TsuImport<CR>
+let g:tsuquyomi_definition_split=1
 
 " Default dir to save sessions
-let g:prosession_dir = "~/.vim/sessions/"
-let g:prosession_default_session = 1
+let g:prosession_dir="~/.vim/sessions/"
+let g:prosession_default_session=0
+
+" ALE
+" Go to next error
+nnoremap <F8> :ALENext<CR>
 
 " ---
 " VIM user interface
 " ---
 
 " Set 10 lines to the cursor - when moving vertically using j/k
-set so=10
+set so=5
 
 " Turn on the Wild menu
 set wildmenu
@@ -176,10 +187,11 @@ let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' ch
 " autocmd FileType typescript setlocal balloonexpr=tsuquyomi#balloonexpr()
 
 " Netrw tree view
-let g:netrw_liststyle=3
+let g:netrw_liststyle = 3
 
 " Netrw ignore files
-let g:netrw_list_hide= '.*\.swp$,.git/'
+let g:netrw_list_hide = '.*\.swp$,.git/'
+let g:netrw_keepdir = 0
 
 " Highlight column at 80
 set colorcolumn=80
@@ -187,7 +199,7 @@ set colorcolumn=80
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Opens completition menu when pressing '.'
-inoremap <expr> . OpenCompletitionMenu()
+" inoremap <expr> . OpenCompletitionMenu()
 func OpenCompletitionMenu()
   " Ignore if the line already ends with '.'
   echo getline('.')[col('.') - 1]
@@ -315,10 +327,10 @@ set statusline+=%t%m%r%h%w\ \
 set statusline+=Line:\ %l\ 
 set statusline+=Column:\ %c\ 
 " Display [$] if the session is being recorded
-set statusline+=%=%{ObsessionStatus()}\ 
+" set statusline+=%=%{ObsessionStatus()}\ 
 
 " Tabs
-let g:tablabel = "%N%{flagship#tabmodified()}: %f"
+let g:tablabel="%N%{flagship#tabmodified()}: %f"
 
 " ---
 " Editing mappings

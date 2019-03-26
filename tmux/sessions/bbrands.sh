@@ -13,6 +13,10 @@ tmux new -s $session_name \; \
   send-keys 'clear && container optimus' C-m \; \
   split-window -v \; \
   send-keys 'bb && cd optimus && clear' C-m \; \
+  select-pane -t 1 \; \
+  split-window -v \; \
+  send-keys 'yarn hot-reload:container' \; \
+  resize-pane -D 10 \; \
   new-window \; \
   rename-window 'Lucius' \; \
   send-keys 'bb && cd lucius && vim .' C-m \; \
@@ -32,5 +36,12 @@ tmux new -s $session_name \; \
   split-window -v \; \
   send-keys 'bb && cd stark && clear' C-m \; \
   new-window \; \
-  rename-window 'VPN' \; \
-  send-keys 'bb-vpn' C-m
+  rename-window 'Terminal' \; \
+  send-keys 'bb-vpn' \; \
+  split-window -v \; \
+  send-keys 'consul' C-m \; \
+  select-pane -t 1 \; \
+  split-window -h \; \
+  send-keys 'htop' C-m \; \
+  resize-pane -U 10 \; \
+  select-pane -t 3
