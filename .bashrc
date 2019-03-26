@@ -69,7 +69,7 @@ alias postman="/home/iribeiro/Downloads/Postman-linux-x64-6.0.10/Postman/Postman
 # Git
 alias gst="git status"
 alias ga="git add"
-alias gco="git checkout"
+alias gco="git checkout && git fetch -q &>/dev/null &"
 alias gc="git commit"
 alias gd="git diff"
 alias gm="git merge"
@@ -158,12 +158,10 @@ function get-git-tracked-count () {
 }
 
 function get-git-behind-commits () {
-  git fetch -q &>/dev/null &
   echo $(gst -b | grep -P 'is behind' | grep -oP '(\d)+ commit' | grep -oP '\d+')
 }
 
 function get-git-ahead-commits () {
-  git fetch -q &>/dev/null &
   echo $(gst -b | grep -P 'is ahead' | grep -oP '(\d)+ commit' | grep -oP '\d+')
 }
 
