@@ -158,7 +158,11 @@ function get-git-tracked-count () {
 }
 
 function get-git-behind-commits () {
-  echo $(gst -b | grep -P 'is behind' | grep -oP '(\d)+ commits' | grep -oP '\d+')
+  echo $(gst -b | grep -P 'is behind' | grep -oP '(\d)+ commit' | grep -oP '\d+')
+}
+
+function get-git-ahead-commits () {
+  echo $(gst -b | grep -P 'is ahead' | grep -oP '(\d)+ commit' | grep -oP '\d+')
 }
 
 ## BASH
@@ -170,6 +174,7 @@ function bash-status-git-branch () {
   tracked_files=$(get-git-tracked-count)
   untracked_files=$(get-git-untracked-count)
   behind_commits=$(get-git-behind-commits)
+  ahead_commits=$(get-git-ahead-commits)
 
   echo -n "on "
 
@@ -178,6 +183,8 @@ function bash-status-git-branch () {
   elif [[ $tracked_files != "0" ]]; then
     echo -ne "\e[38;5;184m"
   elif [[ $behind_commits ]]; then
+    echo -ne "\e[94m"
+  elif [[ $ahead_commits ]]; then
     echo -ne "\e[94m"
   else
     echo -ne "\e[92m"
@@ -195,6 +202,7 @@ function bash-status-git-stage () {
   tracked_files=$(get-git-tracked-count)
   untracked_files=$(get-git-untracked-count)
   behind_commits=$(get-git-behind-commits)
+  ahead_commits=$(get-git-ahead-commits)
 
   if [[ $untracked_files != "0" ]]; then
     echo -ne "\e[38;5;203m ↓$untracked_files\e[0m"
@@ -206,6 +214,10 @@ function bash-status-git-stage () {
 
   if [[ $behind_commits ]]; then
     echo -ne "\e[94m ←$behind_commits\e[0m"
+  fi
+
+  if [[ $ahead_commits ]]; then
+    echo -ne "\e[94m →$ahead_commits\e[0m"
   fi
 }
 
