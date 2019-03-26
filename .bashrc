@@ -69,7 +69,6 @@ alias postman="/home/iribeiro/Downloads/Postman-linux-x64-6.0.10/Postman/Postman
 # Git
 alias gst="git status"
 alias ga="git add"
-alias gco="git checkout && git fetch -q &>/dev/null &"
 alias gc="git commit"
 alias gd="git diff"
 alias gm="git merge"
@@ -121,7 +120,12 @@ function container () {
 }
 
 ## GIT
+function gco () {
+  git checkout $@
+  (git fetch -q &>/dev/null &)
+}
 # Check if folder has .git
+
 function has-git () {
   if [[ $(find . -maxdepth 1 -name '.git') ]]; then
     true
