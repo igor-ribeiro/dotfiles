@@ -180,7 +180,7 @@ function bash-status-git-branch () {
   behind_commits=$(get-git-behind-commits)
   ahead_commits=$(get-git-ahead-commits)
 
-  echo -n "on "
+  echo -n " on "
 
   if [[ $untracked_files != "0" ]]; then
     echo -ne "\e[38;5;203m"
@@ -203,8 +203,8 @@ function bash-status-git-stage () {
     return
   fi
 
-  tracked_files=$(get-git-tracked-count)
   untracked_files=$(get-git-untracked-count)
+  tracked_files=$(get-git-tracked-count)
   behind_commits=$(get-git-behind-commits)
   ahead_commits=$(get-git-ahead-commits)
 
@@ -226,11 +226,11 @@ function bash-status-git-stage () {
 }
 
 function get-bash-status () {
-  current_dir="\e[2m\\W\e[0m"
-  git_branch="\$(bash-status-git-branch)"
-  git_status="\$(bash-status-git-stage)"
+  current_dir="\[\e[2m\]\\W\[\e[0m\]"
+  git_branch="\[\$(bash-status-git-branch)\]"
+  git_status="\[\$(bash-status-git-stage)\]"
 
-  echo "$current_dir $git_branch$git_status \e[2m» \e[0m"
+  echo -e "$current_dir$git_branch$git_status \[\e[2m\]» \[\e[0m\]"
 }
 
 # Show the current folder, git branch and git stage info
