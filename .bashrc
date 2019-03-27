@@ -209,19 +209,19 @@ function bash-status-git-stage () {
   ahead_commits=$(get-git-ahead-commits)
 
   if [[ $untracked_files != "0" ]]; then
-    echo -ne "\e[38;5;203m ↓$untracked_files\e[0m"
+    echo -ne "\e[38;5;203m ←$untracked_files\e[0m"
   fi
 
   if [[ $tracked_files != "0" ]]; then
-    echo -ne "\e[38;5;184m ↑$tracked_files\e[0m"
+    echo -ne "\e[38;5;184m →$tracked_files\e[0m"
   fi
 
   if [[ $behind_commits ]]; then
-    echo -ne "\e[94m ←$behind_commits\e[0m"
+    echo -ne "\e[94m ↓$behind_commits\e[0m"
   fi
 
   if [[ $ahead_commits ]]; then
-    echo -ne "\e[94m →$ahead_commits\e[0m"
+    echo -ne "\e[94m ↑$ahead_commits\e[0m"
   fi
 }
 
