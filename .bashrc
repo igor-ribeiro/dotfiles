@@ -226,11 +226,11 @@ function bash-status-git-stage () {
 }
 
 function get-bash-status () {
-  current_dir="\e[2m\\w\e[0m"
+  current_dir="\e[2m\\W\e[0m"
   git_branch="\$(bash-status-git-branch)"
   git_status="\$(bash-status-git-stage)"
 
-  echo "$current_dir $git_branch$git_status \n$ "
+  echo "$current_dir $git_branch$git_status \e[2m» \e[0m"
 }
 
 # Show the current folder, git branch and git stage info
