@@ -230,7 +230,8 @@ function get-bash-status () {
   git_branch="\[\$(bash-status-git-branch)\]"
   git_status="\[\$(bash-status-git-stage)\]"
 
-  echo -e "$current_dir$git_branch$git_status \[\e[2m\]» \[\e[0m\]"
+  echo -e "$current_dir$git_branch$git_status"
+  echo -e "\[\e[2m\]⟫ \[\e[0m\]"
 }
 
 # Show the current folder, git branch and git stage info
@@ -250,7 +251,7 @@ function find-in-files () {
     dir=$2
   fi
 
-  grep --exclude-dir={.git,node_modules,dist} -rnw $2 -e "$1"
+  grep --exclude-dir={.git,node_modules,dist} -rnw $2 -P "$1"
 }
 
 # Copy command to clipboard
