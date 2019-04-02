@@ -26,6 +26,7 @@ Plug 'tpope/vim-flagship'
 Plug 'Quramy/tsuquyomi'
 " Themes
 Plug 'rakr/vim-one'
+Plug 'rafi/awesome-vim-colorschemes'
 " Syntax
 Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
@@ -66,7 +67,8 @@ command OB AsyncStop! | AsyncRun docker exec optimus_web yarn hot-reload
 " Set the path for search files to to current path
 set path=.,**
 
-nnoremap <leader>f :e `find . -type f -wholename **`<left><left>
+" nnoremap <leader>f :e `find . -type f -wholename **`<left><left>
+nnoremap <leader>f :call FindFiles()<CR>
 nnoremap <leader>t :tabe `find . -type f -wholename **`<left><left>
 vnoremap <leader>f y:e `find . -type f -iname <C-R>"*`
 " Open file with horizontal split
@@ -121,6 +123,9 @@ let g:prosession_default_session=0
 " ALE
 " Go to next error
 nnoremap <F8> :ALENext<CR>
+
+" Open files from quickfix on new tab
+set switchbuf+=usetab,newtab
 
 " ---
 " VIM user interface
@@ -225,7 +230,7 @@ syntax enable
 " Theme
 set termguicolors
 set background=dark
-colorscheme one
+colorscheme hybrid_reverse
 
 " Enable 256 colors palette in Gnome Terminal;
 set t_Co=256
@@ -330,7 +335,17 @@ set statusline+=Column:\ %c\
 " set statusline+=%=%{ObsessionStatus()}\ 
 
 " Tabs
-let g:tablabel="%N%{flagship#tabmodified()}: %f"
+function! GetFilename(name)
+  let filename=fnamemodify(a:name, ':t')
+  " Remove "%)" at the end of the filename
+  let filename = fnamemodify(filename, ':s?%(??')
+  let filename = fnamemodify(filename, ':s?%)??')
+
+  return filename
+endfunction
+
+let g:tablabel="%N%{flagship#tabmodified()}:\ %{GetFilename('%f')}"
+set noautochdir
 
 " ---
 " Editing mappings
@@ -408,5 +423,32 @@ endfunction
 function! InsertStatuslineColor(mode)
   if a:mode == 'i'
     hi statusline guibg=SteelBlue4 guifg=Gray80
+  endif
+endfunction
+
+" Find files and put on quickfix window
+function! FindFiles()
+  call inputsave()
+  " Prompt for the filename to search
+  let filename = input("Filename: ", "", "file")
+  call inputrestore()
+
+  let dirs = [".git", "node_modules", "dist"] 
+  " Generate the command to ignore the directories above
+  let ignore_dirs = "-not -path '*/" . join(dirs, "/*' -not -path '*/") . "/*'"
+  let command = "find . -type f -iwholename *" . filename . "* " . ' -printf "%p:1:1:%f\n" ' . ignore_dirs
+
+  " Call the find command and put the result on quickfix
+  :cgete system(command)
+
+  let files_count = len(getqflist())
+
+  if files_count == 0
+    echo ""
+    echo "No files found for '" . filename . "'"
+  elseif files_count == 1
+    :cfirst
+  else
+    :copen
   endif
 endfunction
