@@ -18,6 +18,9 @@ export TERM=xterm-256color
 
 export PATH=~/.npm-global/bin:$PATH
 
+# Enable Vim mode
+# set -o vi
+
 
 # ---
 # ALIASES

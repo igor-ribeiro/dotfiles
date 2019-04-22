@@ -68,8 +68,9 @@ command OB AsyncStop! | AsyncRun docker exec optimus_web yarn hot-reload
 set path=.,**
 
 " nnoremap <leader>f :e `find . -type f -wholename **`<left><left>
-nnoremap <leader>f :call FindFiles()<CR>
-nnoremap <leader>t :tabe `find . -type f -wholename **`<left><left>
+nnoremap <leader>f :call FindFiles('e')<CR>
+nnoremap <leader>t :call FindFiles('t')<CR>
+" nnoremap <leader>t :tabe `find . -type f -wholename **`<left><left>
 vnoremap <leader>f y:e `find . -type f -iname <C-R>"*`
 " Open file with horizontal split
 nnoremap <leader>s :sfind *
@@ -114,7 +115,7 @@ nnoremap <F2> :TsuRenameSymbol<CR>
 nnoremap <F12> :TsuReferences<CR>
 " Import
 nnoremap <NUL> :TsuImport<CR>
-let g:tsuquyomi_definition_split=1
+let g:tsuquyomi_definition_split=3
 
 " Default dir to save sessions
 let g:prosession_dir="~/.vim/sessions/"
@@ -126,6 +127,12 @@ nnoremap <F8> :ALENext<CR>
 
 " Open files from quickfix on new tab
 set switchbuf+=usetab,newtab
+
+" CURSOR
+" Set IBeam cursor on insert mode, undeline in replace and block in normal
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
 
 " ---
 " VIM user interface
@@ -196,7 +203,7 @@ let g:netrw_liststyle = 3
 
 " Netrw ignore files
 let g:netrw_list_hide = '.*\.swp$,.git/'
-let g:netrw_keepdir = 0
+let g:netrw_keepdir = 1
 
 " Highlight column at 80
 set colorcolumn=80
@@ -302,10 +309,13 @@ let g:ale_fixers = {
 \       'tslint',
 \       'prettier',
 \   ],
+\   'scss': [
+\       'prettier',
+\   ],
 \}
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '»'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_lint_on_enter = 1 " Less distracting when opening a new file
 
 
 " ---
@@ -433,10 +443,14 @@ function! FindFiles()
   let filename = input("Filename: ", "", "file")
   call inputrestore()
 
+  if empty(filename)
+    return
+  endif
+
   let dirs = [".git", "node_modules", "dist"] 
   " Generate the command to ignore the directories above
   let ignore_dirs = "-not -path '*/" . join(dirs, "/*' -not -path '*/") . "/*'"
-  let command = "find . -type f -iwholename *" . filename . "* " . ' -printf "%p:1:1:%f\n" ' . ignore_dirs
+  let command = "find . -type f -iregex '.*" . filename . ".*' " . ignore_dirs . ' -printf "%p:1:1:%f\n" '
 
   " Call the find command and put the result on quickfix
   :cgete system(command)
