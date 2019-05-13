@@ -32,7 +32,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/yajs.vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mxw/vim-jsx'
+" Plug 'mxw/vim-jsx'
+Plug 'neoclide/vim-jsx-improve'
 
 call plug#end()
 
@@ -68,8 +69,8 @@ command OB AsyncStop! | AsyncRun docker exec optimus_web yarn hot-reload
 set path=.,**
 
 " nnoremap <leader>f :e `find . -type f -wholename **`<left><left>
-nnoremap <leader>f :call FindFiles('e')<CR>
-nnoremap <leader>t :call FindFiles('t')<CR>
+nnoremap <leader>f :call FindFiles()<CR>
+nnoremap <leader>t :tabe \| call FindFiles()<CR>
 " nnoremap <leader>t :tabe `find . -type f -wholename **`<left><left>
 vnoremap <leader>f y:e `find . -type f -iname <C-R>"*`
 " Open file with horizontal split
@@ -237,7 +238,9 @@ syntax enable
 " Theme
 set termguicolors
 set background=dark
-colorscheme hybrid_reverse
+" colorscheme hybrid_reverse
+colorscheme two-firewatch
+let g:two_firewatch_italics=1
 
 " Enable 256 colors palette in Gnome Terminal;
 set t_Co=256
