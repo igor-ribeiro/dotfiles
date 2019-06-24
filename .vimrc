@@ -29,11 +29,11 @@ Plug 'rakr/vim-one'
 Plug 'rafi/awesome-vim-colorschemes'
 " Syntax
 Plug 'pangloss/vim-javascript'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/yajs.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 " Plug 'mxw/vim-jsx'
-Plug 'neoclide/vim-jsx-improve'
+" Plug 'chemzqm/vim-jsx-improve'
 
 call plug#end()
 
@@ -45,6 +45,7 @@ call plug#end()
 set history=500
 
 " Enable filetype plugins
+filetype on
 filetype plugin on
 filetype indent on
 
@@ -69,8 +70,8 @@ command OB AsyncStop! | AsyncRun docker exec optimus_web yarn hot-reload
 set path=.,**
 
 " nnoremap <leader>f :e `find . -type f -wholename **`<left><left>
-nnoremap <leader>f :call FindFiles()<CR>
-nnoremap <leader>t :tabe \| call FindFiles()<CR>
+nnoremap <leader>f :call FindFiles('(buffer)')<CR>
+nnoremap <leader>t :tabe \| call FindFiles('(tab)')<CR>
 " nnoremap <leader>t :tabe `find . -type f -wholename **`<left><left>
 vnoremap <leader>f y:e `find . -type f -iname <C-R>"*`
 " Open file with horizontal split
@@ -239,7 +240,7 @@ syntax enable
 set termguicolors
 set background=dark
 " colorscheme hybrid_reverse
-colorscheme two-firewatch
+colorscheme jellybeans
 let g:two_firewatch_italics=1
 
 " Enable 256 colors palette in Gnome Terminal;
@@ -265,6 +266,7 @@ set noswapfile
 " ---
 " Text, tab and indent related
 " ---
+set autoindent
 
 " Use spaces instead of tabs
 set expandtab
@@ -313,6 +315,9 @@ let g:ale_fixers = {
 \       'prettier',
 \   ],
 \   'scss': [
+\       'prettier',
+\   ],
+\   'json': [
 \       'prettier',
 \   ],
 \}
@@ -440,10 +445,10 @@ function! InsertStatuslineColor(mode)
 endfunction
 
 " Find files and put on quickfix window
-function! FindFiles()
+function! FindFiles(prefix)
   call inputsave()
   " Prompt for the filename to search
-  let filename = input("Filename: ", "", "file")
+  let filename = input(a:prefix . " Filename: ", "", "file")
   call inputrestore()
 
   if empty(filename)

@@ -57,6 +57,7 @@ alias clear-swap="sudo swapoff -a && sudo swapon -a"
 alias redis-local="redis-cli -h redis.service.consul $@"
 alias redis-local-keys="redis-cli -h redis.service.consul KEYS $1"
 alias redis-local-keys-del="redis-cli -h redis.service.consul KEYS $1 | xargs redis-cli -h redis.service.consul DEL"
+alias redis-staging="redis-cli -h redis.staging.bbrands.com.br $@"
 alias redis-staging-keys="redis-cli -h redis.staging.bbrands.com.br KEYS $1"
 alias redis-prod-keys="redis-cli -h redis.bbrands.com.br KEYS $1"
 
