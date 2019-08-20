@@ -104,6 +104,9 @@ nnoremap <leader>e :tabe ~/.vimrc<CR>
 
 nnoremap <buffer> <C-D> mf<CR>
 
+" Search selection
+vnoremap // y/<C-R>"<CR>
+
 " Enable auto sort import on write
 " let g:import_sort_auto=1
 
@@ -307,7 +310,6 @@ let g:jsx_ext_required = 0
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   'javascript': [
-\       'eslint',
 \       'prettier',
 \   ],
 \   'typescript': [
@@ -472,5 +474,93 @@ function! FindFiles(prefix)
     :cfirst
   else
     :copen
+  endif
+endfunction
+
+function! CreateFile()
+  let path = expand('%:h') . '/'
+
+  try 
+    call inputsave()
+    let new_filename = input('Create file: ', path, 'file')
+    call inputrestore()
+
+    if (new_filename == '')
+      return
+    endif
+
+    echo ''
+
+    let folders = fnamemodify(new_filename, ':h')
+    :silent call system('mkdir -p ' . folders)
+    :silent call system('touch ' . new_filename)
+
+    execute 'tabe' new_filename 
+  finally
+    echo ''
+  endtry
+endfunction
+
+function! RenameFile()
+  let filename = expand('%:t')
+  let full_path = expand('%:p:h')
+  let path = expand('%:h') . '/'
+
+  try 
+    call inputsave()
+    let new_filename = input('Rename: ', filename)
+    call inputrestore()
+
+    if (new_filename == '')
+      return
+    endif
+
+    echo '\r\r'
+    let command = path . '{' . filename . ',' . new_filename . '}'
+    echo system('mv ' . command)
+    echo 'File renamed to ' . new_filename . '.\r\nFile reloaded'
+
+    execute 'edit' path . new_filename 
+  finally
+    echo ''
+  endtry
+endfunction
+
+function! DuplicateFile()
+  let filename = expand('%')
+
+  call inputsave()
+  let new_filename = input('New filename: ', filename)
+  call inputrestore()
+  
+  try
+    let folders = fnamemodify(new_filename, ':h')
+    :call system('stat a.js')
+  catch
+    :call system('mkdir -p ' . folders)
+    :call system('touch ' . new_filename)
+  endtry
+
+  :call system('cat ' . filename . ' > ' . new_filename)
+  execute 'tabe' new_filename
+endfunction
+
+function! DeleteFile()
+  let filename = expand('%')
+
+  call inputsave()
+  let option = input('Do you really want to delete this file? [y]es [n]o: ')
+  call inputrestore()
+
+  if (option == 'y')
+    try
+      :call system('rm -rf ' . filename)
+      :bd
+      echo ''
+      echo 'File deleted: ' . filename
+    catch
+      echo ''
+      echo 'Could not delete file'
+    endtry
   endif
 endfunction

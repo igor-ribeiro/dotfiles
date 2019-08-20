@@ -18,6 +18,8 @@ export TERM=xterm-256color
 
 export PATH=~/.npm-global/bin:$PATH
 
+export LESS="-SXF"
+
 # Enable Vim mode
 # set -o vi
 
@@ -37,9 +39,17 @@ alias gcloud-production="gcloud config set project brands-production"
 alias gcloud-staging="gcloud config set project staging-203611"
 
 # Directories
-alias bb="cd ~/Code/BeautyBrands"
-alias ir="cd ~/Code/Ribeiro"
-alias dotfiles="cd ~/dotfiles"
+function bb () {
+  cd ~/Code/BeautyBrands
+}
+
+function ir () {
+  cd ~/Code/Ribeiro
+}
+
+function dotfiles () {
+  cd ~/dotfiles
+}
 
 # VPN
 alias bb-vpn="sudo openvpn --config ~/.vpn/igorr.ovpn --askpass ~/.vpn/auth.txt"
@@ -101,19 +111,37 @@ function tmux-kill-session () {
 
 # Start a session by script attaching or creating a new one
 function tmux-start () {
-  operation=${2:-''}
+  ALL_FLAGS=("-f")
+  i=0
+  session_name=""
+  flags=()
+  projects=()
 
-  if [ $operation == '-f' ]; then
-    echo "Killing all $1"
-    tmux-kill-session $1
+  for arg in $@; do
+    first_char=$(printf '%s' $arg | cut -c1)
+
+    if [[ " ${ALL_FLAGS[@]} " =~ " ${arg} " ]]; then
+      flags+=($arg)
+    elif [ -z "$session_name" ]; then
+      session_name=$arg
+    else
+      projects+=($arg)
+    fi
+    
+    ((++i))
+  done
+
+  if [[ " ${flags[@]} " =~ " -f " ]]; then
+    echo "Killing all $session_name"
+    tmux-kill-session $session_name
   fi
 
-  if tmux has -t $1; then
-    echo "Attaching to $1"
-    tmux a -t $1
+  if tmux has -t $session_name; then
+    echo "Attaching to $session_name"
+    tmux a -t $session_name
   else
-    echo "Creating session $1"
-    ~/dotfiles/tmux/sessions/$1.sh
+    echo "Creating session $session_name"
+    ~/dotfiles/tmux/sessions/$session_name.sh "${projects[*]}"
   fi
 }
 
@@ -259,8 +287,13 @@ function find-in-files () {
 }
 
 # Copy command to clipboard
-function copy () {
-  xclip -sel clipboard $@
+function xcopy () {
+  xclip -sel c $@
+}
+
+# Paste from clipboard
+function xpaste () {
+  xclip -sel c -o
 }
 
 # Copy redis keys from one host to another
@@ -291,7 +324,7 @@ function copy-ip () {
   read -p "Enter your choice and press [ENTER]: " choice
 
   ip=${array[choice]}
-  echo -n $ip | copy
+  echo -n $ip | xcopy
 
   clear
   echo "IP $ip copied to clipboard!"
@@ -301,4 +334,31 @@ function copy-ip () {
 function mkd () {
   mkdir -p $1
   cd $1
+}
+
+function bb-open () {
+  bb
+  cd $1
+
+  name=$(echo $1 | awk '
+  BEGIN { ORS="" }; 
+
+  {
+    split($0, array, "");
+
+    for (i in array) {
+      if (i == 1) {
+        print toupper(array[i]);
+      } else {
+        print array[i];
+      }
+    }
+  }' | xargs )
+
+  tmux split-window -h
+  tmux split-window
+  tmux send-keys -t 1 vim Enter
+  tmux send-keys -t 2 dcu Enter
+  tmux rename-window $name
+  tmux select-pane -t 1
 }
