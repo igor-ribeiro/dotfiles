@@ -69,6 +69,7 @@ alias redis-local-keys="redis-cli -h redis.service.consul KEYS $1"
 alias redis-local-keys-del="redis-cli -h redis.service.consul KEYS $1 | xargs redis-cli -h redis.service.consul DEL"
 alias redis-staging="redis-cli -h redis.staging.bbrands.com.br $@"
 alias redis-staging-keys="redis-cli -h redis.staging.bbrands.com.br KEYS $1"
+alias redis-staging-keys-del="redis-cli -h redis.staging.bbrands.com.br KEYS $1 | xargs redis-cli -h redis.staging.bbrands.com.br DEL"
 alias redis-prod-keys="redis-cli -h redis.bbrands.com.br KEYS $1"
 
 # Consul
@@ -85,6 +86,7 @@ alias gst="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
+alias gds="git diff --staged"
 alias gm="git merge"
 alias gl="git log"
 
@@ -270,6 +272,11 @@ function get-bash-status () {
 export PS1=$(get-bash-status)
 
 ## UTILS
+# Python HTTP Server
+function server() {
+  python -m SimpleHTTPServer 8080
+}
+
 # Parse JSON
 function get-json () {
   python -c "import sys, json; print json.load(sys.stdin)$2" < $1

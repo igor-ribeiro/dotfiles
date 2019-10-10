@@ -457,7 +457,7 @@ function! FindFiles(prefix)
     return
   endif
 
-  let dirs = [".git", "node_modules", "dist"] 
+  let dirs = [".git", "node_modules", "dist", "coverage"] 
   " Generate the command to ignore the directories above
   let ignore_dirs = "-not -path '*/" . join(dirs, "/*' -not -path '*/") . "/*'"
   let command = "find . -type f -iregex '.*" . filename . ".*' " . ignore_dirs . ' -printf "%p:1:1:%f\n" '
