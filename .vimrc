@@ -340,8 +340,9 @@ au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertLeave * hi statusline guifg=Gray30 guibg=Gray80
 
 " Highligth the line on insert mode
-au InsertEnter * set cursorline
-au InsertLeave * set nocursorline
+" au InsertEnter * set cursorline
+" au InsertLeave * set nocursorline
+set cursorline
 
 " Default color
 hi statusline guifg=Gray30 guibg=Gray80
