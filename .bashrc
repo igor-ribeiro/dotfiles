@@ -40,7 +40,7 @@ alias gcloud-staging="gcloud config set project staging-203611"
 
 # Directories
 function bb () {
-  cd ~/Code/BeautyBrands
+  cd ~/Code/Beyoung
 }
 
 function ir () {
@@ -73,7 +73,7 @@ alias redis-staging-keys-del="redis-cli -h redis.staging.bbrands.com.br KEYS $1 
 alias redis-prod-keys="redis-cli -h redis.bbrands.com.br KEYS $1"
 
 # Consul
-alias consul="cd ~/Code/BeautyBrands/consul && dcd && ./start.sh && cd -"
+alias consul="cd ~/Code/Beyoung/consul && dcd && ./start.sh && cd -"
 
 # System
 alias dnf-update="sudo dnf clean packages && sudo dnf update --skip-broken -y"
@@ -369,3 +369,13 @@ function bb-open () {
   tmux rename-window $name
   tmux select-pane -t 1
 }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/iribeiro/Downloads/google-cloud-sdk-278.0.0-linux-x86_64/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeiro/Downloads/google-cloud-sdk-278.0.0-linux-x86_64/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/iribeiro/Downloads/google-cloud-sdk-278.0.0-linux-x86_64/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/Downloads/google-cloud-sdk-278.0.0-linux-x86_64/google-cloud-sdk/completion.bash.inc'; fi

@@ -1,9 +1,21 @@
 #!/bin/sh
 
 # --
+# UTILS
+# --
+sudo dnf install -y htop xclip vim
+
+# --
+# FONTS
+# --
+ln -s $(pwd)/fonts/iosevka/* $HOME/.fonts
+sudo fc-cache
+
+# --
 # BASH
 # --
 ln -sf $(pwd)/.bashrc $HOME/
+ln -sf $(pwd)/.bash_history $HOME/
 
 # --
 # VIM
@@ -24,11 +36,6 @@ sudo dnf install vim-X11 -y
 
 # Install plugins
 vim -c 'PlugInstall | qa'
-
-# Install YouCompleteMe
-cd ~/.vim/plugs/YouCompleteMe
-./install.py --clang-completer --ts-completer
-
 
 # --
 # TMUX
