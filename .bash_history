@@ -281,3 +281,395 @@ sudo systemctl restart sshd
 sudo systemctl restart ssh
 sudo service ssh restart
 yarn
+ls -la
+ln -sf $(pwd)/fonts/iosevka/ttf/**/* $HOME/.fonts
+ls -la ~/.fonts 
+rm -rf ~/.fonts 
+ls --help
+mkdir ~/.fonts
+ln -sf $(pwd)/fonts/iosevka/ttf/ $HOME/.fonts/
+ls -la ~/.fonts/
+ls -la ~/.fonts/ttf 
+rm -rf ~/.fonts/
+ln -s ~/dotfiles/fonts/iosevka/* ~/.fonts
+mkdir ~/.fonts
+ln -s ~/dotfiles/fonts/iosevka/* ~/.fonts
+ls -la ~/.fonts/
+ls -la
+sudo fc-cache
+ln -sf $(pwd)/.bashhistory $HOME/
+ls -la
+cp ~/.bashhistory 
+cp ~/.bashhistory ./
+cat ~/.bashhistory 
+ls -la ~/
+ls -la ~/ | grep bash
+rm -rf ~/.bashhistory 
+ls -la ~/ | grep bash
+cp ~/.bash_history ./
+ls -l
+ls -la
+ln -sf $(pwd)/.bash_history $HOME/
+ls -l
+la -la
+ls -la
+ls -la ~/
+gst
+ga .
+gc -m 'update'
+ggp
+exit
+bb
+ebash
+dotfiles
+mkdir fonts
+cd fonts/
+cd ..
+vim setup.sh 
+exit
+dotfiles
+gst
+exit
+sudo dnf install -y gsutil
+gsutil
+exit
+bb
+cd lucius/
+yarn
+sudo yarn
+sudo systemctl reload sshd
+yarn
+ssh -T igorribeiro@bitbucket.com
+ssh -T igorribeiro@bitbucket.org
+eval "$(ssh-agent -s)"
+ssh-add -l -E md5
+ssh-add -l
+eval "$(ssh-agent -s)"
+ssh-add -l
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+sudo systemctl restart ssh
+yarn
+ls -la ~/.ssh/
+vim ~/.ssh/config 
+sudo systemctl restart sshd
+yarn
+vim ~/.ssh/config 
+sudo systemctl restart sshd
+yarn
+cd ..
+cd optimus/
+yarn
+vim ~/.ssh/config 
+sudo systemctl restart sshd
+yarn
+vim ~/.ssh/config 
+sudo systemctl restart sshd
+vim ~/.ssh/config 
+sudo systemctl restart sshd
+yarn
+tmux
+tmux-start bbrands optimus
+bb
+cd optimus/
+gd
+git config --global color.ui auto 
+gd
+git -c color.ui=always status
+git -c color.ui=always diff
+gd
+ebash
+dotfiles
+gst
+gd
+vim
+git config --global core.pager 'less -+X'
+git config --global core.pager 'less -+XR'
+gd
+git config --global core.pager 'less -+X -R'
+gd
+git config --global core.pager 'less -R -+X'
+gd
+exit
+cd beyoung.com.br_notestab_final__mobile_organic_
+ls -la
+for * do: echo $1
+for * do echo $1 endfor; q
+for * echo $1 endfor; q
+for * in ./ do echo $1 done
+for * in ./ do echo $1 done;
+for * in ./; do echo $1 done
+for * in * do echo $1 done
+for * in *
+ebash
+for * in *; do echo $1 done;
+for * in *; do echo $1; done
+for f in *; do echo f; done
+for f in *; do echo f done
+for f in *; do echo f; donw
+for f in *; do echo f; done;
+for f in *; do echo $f; done;
+for f in *.js; do echo $f; done;
+for f in *(\w\d)+.js; do echo $f; done;
+for f in /*(\w\d)+.js/; do echo $f; done;
+for f in *(\w\d)+.js; do echo $f; done;
+find -name "web.(\w\d)+.js"
+find -name "web..js"
+find -name "web.js
+for f in "web.js"; do echo $f; done;
+for f in "web.(\w\d)+.js"; do echo $f; done;
+for f in web.(\w\d)+.js; do echo $f; done;
+for f in web.\(\w\d\)+.js; do echo $f; done;
+for f in web.\(\\w\\d\)+.js; do echo $f; done;
+for f in /.js/; do echo $f; done;
+for f in /\.js/; do echo $f; done;
+for f in /\\.js/; do echo $f; done;
+for f in $f; do echo $f; done;
+for f in *.js; do echo $f; done;
+for f in web.*.js; do echo $f; done;
+for f in web.*.js; do rm $f; done;
+for f in web.*.js; do echo $f; done;
+for f in vendor.*.js; do echo $f; done;
+for f in web.node.js; do echo $f; done;
+for f in web.(node|test).js; do echo $f; done;
+for f in /web.(node|test).js/; do echo $f; done;
+for f in web.*.js; do echo $f; done;
+for f in node.*.js; do echo $f; done;
+for f in vendor.*.js; do echo $f; done;
+for f in vendor.*.js;  if [[$f =~ "node"]]; then echo $f; fi; done;
+for f in vendor.*.js; if [[$f =~ "node"]]; then echo $f; fi; done;
+for f in vendor.*.js; if [[ $f =~ "node" ]]; then echo $f; fi; done;
+for f in vendor.*.js; if [[ "$f" =~ "node" ]]; then echo $f; fi; done;
+for f in vendor.*.js; if [[ "$f" =~ "node" ]]; then echo $f fi; done;
+for f in vendor.*.js; if [ "$f" =~ "node" ]; then echo; $f fi; done;
+if [[ "vendor.node.js" =~ "node ]]
+if [[ "vendor.node.js" =~ "node ]]; then echo 'ok'; fi
+if [[ "vendor.node.js" =~ "node ]]; then echo 'ok'; fi;
+if [[ "vendor.node.js" =~ "node ]] then echo 'ok'; fi;
+if [[ "vendor.node.js" =~ "node ]] then echo 'ok' fi;
+do if [[ "vendor.node.js" =~ "node ]] then echo 'ok' fi; done;
+do; if [[ "vendor.node.js" =~ "node ]] then echo 'ok' fi; done;
+if [ "vendor.node.js" =~ "node ] then echo 'ok' fi;
+if [ "vendor.node.js" =~ "node ]; then echo 'ok' fi;
+if [ "vendor.node.js" =~ "node ]; then echo "ok"; fi;
+if [ 1 = 1 ]; then echo "ok"; fi;
+if [ "vendor.node.js" =~ "node" ]; then echo "ok"; fi;
+if [[ "vendor.node.js" == "node" ]]; then echo "ok"; fi;
+if [[ "vendor.node.js" == *"node"* ]]; then echo "ok"; fi;
+for f in vendor.*.js; if [[ "vendor.node.js" == *"node"* ]]; then echo "ok"; fi; done;
+for f in vendor.*.js; do if [[ "vendor.node.js" == *"node"* ]]; then echo "ok"; fi; done;
+for f in vendor.*.js; do if [[ "$f" == *"node"* ]]; then echo $f; fi; done;
+for f in vendor.*.js; do if [[ "$f" == *"node"* ]]; then continue; else echo $f fi; done;
+for f in vendor.*.js; do if [[ "$f" == *"node"* ]]; then continue; else echo $f; fi; done;
+for f in vendor.*.js; do if [[ "$f" == *"node"* ]]; then continue; else rm $f; fi; done;
+ls -la
+for f in web.*.js; do echo $f; done;
+for f in web.*.(js|g\); do echo $f; done;
+for f in web.*.(js|gz); do echo $f; done;
+for f in "web.*.(js|gz)"; do echo $f; done;
+for f in /"web.*.(js|gz)"/; do echo $f; done;
+for f in web.*.js.gz; do echo $f; done;
+for f in web.*.js.gz; do rm $f; done;
+ls -l
+for f in vendor.*.js.gz; do echo $f; done;
+for f in vendor.*.js.gz; do rm $f; done;
+ls -l
+vim index.html 
+for f in vendor.*.js.gz; do rm $f; done;
+sbash
+clear-bucket
+cd ..
+ls -l
+cd beyoung.com.br_notestab_final_blackfriday_mobile_organic_ 
+ls -l
+clear-bucket
+ls -l
+clear-buclet
+sbash
+clear-bucket
+sbash
+clear-bucket
+ls -l
+cd ..
+cd beyoung.com.br_notestab_final_atendimento_mobile_organic_
+ls -l
+clear-bucket
+ls -l
+cd ../beyoung.com.br_notestab_final_finalizar_mobile_organic_
+ls -l
+cd ../beyoung.com.br_notestab_final_login_mobile_organic_
+ls -l
+find --name "web.js"
+find -name "web.js"
+if [[ find -name "web.js" ]]; then echo "OK'; fi;
+if [[ $(find -name "web.js") ]]; then echo "OK'; fi;
+if [[ $(find -name "web.js") == "" ]]; then echo "OK'; fi;
+if [ $(find -name "web.js") == "" ]; then echo "OK'; fi;
+if [[ $(find -name "web.js") == "" ]]; then echo "OK'; fi;
+find -name "web.js"
+echo $(find -name "web.js")
+echo $(find -name "web.js") == ""
+echo $(find -name "web.js" == "")
+find -name "web.js" == ""
+expr find -name "web.js" == ""
+expr $(find -name "web.js") == ""
+expr "$(find -name "web.js")" == ""
+expr "$(find -name "index.html")" == ""
+if [[ "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; done;
+if [[ "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
+if [ "$(find -name "index.html")" == "" ]; then echo "HAS"; else echo "DONT"; fi;
+if [[ "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
+if [[ $(expr "$(find -name "index.html")" == "") == 1 ]]; then echo "HAS"; else echo "DONT"; fi;
+if [[ $(expr "$(find -name "index.html")" == "") = 1 ]]; then echo "HAS"; else echo "DONT"; fi;
+if [[ $(expr "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
+if [[ $(expr "$(find -name "index.html")" = "" ]]; then echo "HAS"; else echo "DONT"; fi;
+if [[ expr "$(find -name "index.html")" = "" ]]; then echo "HAS"; else echo "DONT"; fi;
+if [[ expr "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
+if [[ "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
+echo $("$(find -name "index.html")" == "")
+echo "$(find -name "index.html")" == ""
+echo $("$(find -name "index.html")" == "")
+echo $(expr "$(find -name "index.html")" == "")
+if [[ $(expr "$(find -name "index.html")" == "")  == 0]]; then echo "DONT"; fi
+if [[ $(expr "$(find -name "index.html")" == "")  == 0 ]]; then echo "DONT"; fi
+if [[ $(expr "$(find -name "index.html")" == "")  == 0 ]]; then echo "DONT"; else echo "HAS" fi
+if [[ $(expr "$(find -name "index.html")" == "")  == 0 ]]; then echo "DONT"; else echo "HAS"; fi
+find -name "index.html"
+if [[ $(expr "$(find -name "index.html")" == "")  == 1 ]]; then echo "DONT"; else echo "HAS"; fi
+sbash
+ls -l
+clear-bucket
+find -name "web.js"
+xpr "$(find -name "web.js")" == "")
+expr "$(find -name "web.js")" == "")
+expr find -name "web.js")" == ""
+expr find -name "web.js")"
+expr $(find -name "web.js") == 0
+expr $(find -name "web.js")
+expr "$(find -name "web.js")" == ""
+find --name "web.js"
+find -name "web.js"
+ls -la | grep web.js
+expr "$(find -name "web.js")" == ""
+sbash
+clear-bucket
+tmux
+tmux-start bbrands optimus
+vim index.js
+exit index.js 
+rm index.js 
+exit
+node index.js 24
+node index.js Gabriela 25
+node index.js Gabriela 24
+node index.js Gabriela 15
+node index.js
+exit
+tmux
+tmux-start bbrands optimus
+cd beyoung.com.br_notestab_final__mobile_organic_
+clear-bucket
+ebash
+ls -l
+cd ../beyoung.com.br_notestab_final_produto_mobile_organic_
+ls -l
+clear-bucket
+ebash
+sbash
+clear-bucket
+ls -l
+cd ../beyoung.com.br_notestab_final_perguntas-frequentes_mobile_organic_
+clear-bucket 
+cd ../beyoung.com.br_notestab_final_politica-de-privacidade_mobile_organic_
+clear-bucket 
+cd ../beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_
+clear-bucket
+cd ../beyoung.com.br_notestab_final_somos500k_mobile_organic_
+clear-bucket 
+cd ../beyoung.com.br_notestab_final_sucesso_mobile_organic_
+clear-bucket
+cd ../beyoung.com.br_notestab_final_televendas_mobile_organic_
+clear-bucket 
+cd ../beyoung.com.br_notestab_final_termos-e-condicoes_mobile_organic_
+clear-bucket 
+cd ../beyoung.com.br_notestab_final_upsell_mobile_organic_
+clear-bucket 
+ls -l
+cd ../
+ls 
+exit
+gsutil -m cp -R ./beyoung.com.br_notestab_final__mobile_organic_ gs://bbrands-optimus-build/bu
+ls 
+cd ..
+ls -l
+cd nps/
+ls 
+cd nps.beyoung.com.br_notestab_final__desktop_organic_ && clear-bucket
+cd nps.beyoung.com.br_notestab_final__mobile_organic_ && clear-bucket
+cd nps.beyoung.com.br_notestab_final__mobile_organic_ && clear-bucket && cd ..
+cd ..
+ls 
+cd nps.beyoung.com.br_notestab_final__mobile_organic_ && clear-bucket && cd ..
+tree
+ls
+cd nps.beyoung.com.br_notestab_final_pesquisa_desktop_organic_ && clear-bucket && cd ..
+gsutil -m cp -R ./ gs://bbrands-optimus-build/build
+exit
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
+exit
+cd ..
+cd nps/
+ls -l
+ls
+gsutil -m cp -R ./nps.beyoung.com.br_notestab_final_pesquisa_{desktop,mobile}_organic_ gs://bbrands-optimus-build/build
+gsutil -m cp -R ./nps.beyoung.com.br_notestab_final_pesquisa_desktop_organic_ gs://bbrands-optimus-build/build
+exit
+ls
+cd beyoung.com.br_notestab_final_login_mobile_organic_
+ls -l
+exit
+cd ../beyoung/
+ls -l
+mv ../done/* ./
+ls -l
+gsutil -m cp -R ./nps.beyoung.com.br_notestab_final_login_desktop_organic_ gs://bbrands-optimus-build/build
+gsutil -m cp -R ./nps.beyoung.com.br_notestab_final_login_mobile_organic_ gs://bbrands-optimus-build/build
+ls
+gsutil -m cp -R ./beyoung.com.br_notestab_final_login_mobile_organic_ gs://bbrands-optimus-build/build
+exit
+tmux
+tmux-start bbrands
+bb
+cd jaiminho/
+vim
+exit
+postman
+exit
+container lucius
+exit
+ntr
+exit
+bb
+ls
+cd lucius/
+ls -l
+container lucius
+cd ..
+cd stark/
+ls -l
+cd ../lucius/
+dcu
+exit
+bb-open stark
+vim
+exit
+tmux
+tmux-start bbrands optimus
+touch ~/.vim/sessions/optimus.vim
+cat ~/.vim/sessions/optimus.vim
+info ~/.vim/sessions/optimus.vim
+stat ~/.vim/sessions/optimus.vim
+stat ~/.vim/sessions/stark.vim
+try stat ~/.vim/session/stark.vim
+stat ~/.vim/sessions/stark.vim || echo 'NO'
+exit

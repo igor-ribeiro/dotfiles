@@ -20,7 +20,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-flagship'
 " Sessions
-" Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-obsession'
 " Plug 'dhruvasagar/vim-prosession'
 " Typescript
 Plug 'Quramy/tsuquyomi'
@@ -156,7 +156,7 @@ set wildignorecase
 
 " Ignore files
 set wildignore+=*.swp,*.bak
-set wildignore+=*/.git/**/*,**/node_modules/**/*,*/dist/**/*,*/data/**/*
+set wildignore+=*/.git/**/*,**/node_modules/**/*,*/dist/**/*,*/data/**/*,*/build/**/*
 set wildignore+=*.o,*~,*.pyc
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 

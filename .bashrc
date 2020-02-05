@@ -370,6 +370,33 @@ function bb-open () {
   tmux select-pane -t 1
 }
 
+function clear-bucket () {
+  if [[ $(expr "$(find -name "web.js")" == "") == 1 ]];
+    then
+      echo "Can't clear bucket. No web.js found."
+      return;
+  fi
+
+  echo "Clearing...";
+
+  for f in web.*.js; do rm $f; done;
+  for f in vendor.*.js; do
+    if [[ "$f" == *"node"* ]]; then continue;
+    else rm $f;
+    fi;
+  done;
+  for f in web.*.js.gz; do rm $f; done;
+  for f in vendor.*.js.gz; do rm $f; done
+
+  echo "Cleared";
+}
+
+function svim () {
+  session_name="$1"
+
+  vim -S $HOME/.vim/sessions/$1.vim
+}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
