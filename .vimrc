@@ -32,6 +32,7 @@ Plug 'pangloss/vim-javascript'
 " Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/yajs.vim'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'peitalin/vim-jsx-typescript'
 " Plug 'mxw/vim-jsx'
 " Plug 'chemzqm/vim-jsx-improve'
 
@@ -135,9 +136,11 @@ set switchbuf+=usetab,newtab
 
 " CURSOR
 " Set IBeam cursor on insert mode, undeline in replace and block in normal
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
+" let &t_SI = "\<Esc>[6 q"
+" let &t_SR = "\<Esc>[4 q"
+" let &t_EI = "\<Esc>[2 q"
+autocmd InsertEnter,InsertLeave * set cul!
+
 
 " ---
 " VIM user interface
@@ -313,6 +316,10 @@ let g:ale_fixers = {
 \       'prettier',
 \   ],
 \   'typescript': [
+\       'tslint',
+\       'prettier',
+\   ],
+\   'tsx': [
 \       'tslint',
 \       'prettier',
 \   ],

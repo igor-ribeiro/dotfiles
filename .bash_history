@@ -1,126 +1,3 @@
-:qa
-exit
-cd ~/.ssh
-ls -la
-chmod 700 id_rsa.pub
-ls -la
-chmod 666 id_rsa.pub
-ls -la
-chmod 555 id_rsa.pub
-ls -la
-chmod 444 id_rsa.pub
-ls -la
-chmod 644 id_rsa.pub
-ls -la
-ssh -T git@github.com
-cat id_rsa.pub 
-ls -l
-cat ~/.ssh/id_rsa.pub | xclip -sel clip
-vim id_rsa.pub 
-gvim id_rsa.pub 
-vi id_rsa.pub 
-xdg-open id_rsa.pub
-ssh -T git@bitbucket.org
-ssh -T git@github.com
-exit
-l -l
-ls -l
-mkdir Code
-cd Code/
-mkdir Ribeiro
-mkdir Beyoung
-cd ..
-ls -l Desktop/
-tmux
-cd Code/Ribeiro/
-git clone git@github.com:igor-ribeiro/dotfiles.git
-cd ~
-ls -l
-la -la
-ls -la
-cd .ssh/
-ls -l
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-ls -la
-chmod 600 id_rsa
-ls -la
-ssh-add ~/.ssh/id_rsa
-ssh -T git@bitbucket.org
-ssh -T git@github.com
-cd ~
-cd Code/Ribeiro/
-git clone git@github.com:igor-ribeiro/dotfiles.git
-ssh -T git@github.com
-git
-git config
-git config --get emaul
-git config --get email
-git config --get user.email
- ssh-add ~/.ssh/id_rsa
-git config --get user.email
-git config --set user.email="igor.ribeiro.plus@gmail.com"
-git config --set user.email "igor.ribeiro.plus@gmail.com"
-git config --set
-git config --global --set
-git config --global user.name "Igor Ribeiro"
-git config --global user.email "igor.ribeiro.plus@gmail.com"
-git clone git@github.com:igor-ribeiro/dotfiles.git
-cd dotfiles/
-ls -l
-vim setup.sh 
-vi setup.sh 
-./setup.sh 
-sudo dnf install node
-npm
-node
-./setup.sh 
-sudo dnf remove node nodejs
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash
-nvm install node
-exit
-ebash
-:qa
-exit
-vim .bashrc 
-sbash
-vim .bashrc 
-./setup.sh 
-exit
-nvm -v
-nvm install node
-cd Code/Ribeiro/dotfiles/
-./setup.sh 
-cd ~
-tmux-start bbrands optimus
-tmux
-tmux-start bbrands optimus
-dotfiles
-ir
-mv dotfiles/ ~
-dotfiles
-ls -la
-ls -lar tmux/
-tree tmux/
-tmux-start bbrands optimus
-bash
-exit
-htop
-clear
-clear
-sbash
-source ~/.bashrc 
-ebash
-tmux-start bbrands optimus
-tmux-start -f bbrands optimus
-dotfiles
-vim ~/.bashrc 
-vim setup.sh 
-sudo dnf -y install dnf-plugins-core
-sudo dnf config-manager     --add-repo     https://download.docker.com/linux/fedora/docker-ce.repo
-sudo dnf install docker-ce
-sudo systemctl start docker
-sudo docker run hello-world
 sudo groupadd docker
 sudo usermod -aG docker $USER
 docker run hello-world
@@ -673,3 +550,451 @@ stat ~/.vim/sessions/stark.vim
 try stat ~/.vim/session/stark.vim
 stat ~/.vim/sessions/stark.vim || echo 'NO'
 exit
+exut
+exit
+tmux
+tmux-start bbrands optimus
+bb
+ls -l
+cd brain/
+ls -l
+exit
+tmux
+tmux-start bbrands optimus
+vim
+dcu
+consul
+ntr
+copy-ip 
+clear
+consul
+bb
+cd con
+cd consul/
+vim
+clear
+htop
+bb-open optimus
+svim optimus
+dcu
+clear
+svimoptimus
+svim optimus
+dcu
+dcu
+tmux
+tmux-start bbrands optimus
+vim ~/dotfiles/tmux/sessions/bbrands.sh 
+ebash
+sbash
+tmux-start -f bbrands optimus
+ebash
+sbash
+bb-open optimus
+sbash
+tmux
+tmux ls
+tmux kill -t 3
+tmux kill-session -t 3
+tmux ls
+tmux-start -f bbrands optimus
+tmux
+tmux-start bbrands optimus
+yarn hot-reload:container
+Antr
+ntr
+yarn hot-reload:container
+cd build/
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produto_mobile_organic_ gs://bbrands-optimus-dev-build/build
+gco develop
+ggl
+gst
+git stash save
+gco master
+ggl
+ntr
+cd build/
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_ gs://bbrands-optimus-build/build
+ls -l
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_ gs://bbrands-optimus-build/build
+gsutil -m rm -rf gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_ gs://bbrands-optimus-build/build
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_ gs://bbrands-optimus-build/build
+gsutil setmeta -h "Cache-Control:no-cache,max-age=0"
+gsutil setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_/*
+gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_/*
+gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_/*
+gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung*/**/*
+gsutil -m rm -rf gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_ gs://bbrands-optimus-build/build
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
+gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
+gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_
+gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_/*
+exit
+gst
+gd
+ga .
+gc -m 'Tentar remover cache dos arquivos JS e ajustar o banner'
+ggp
+gco develop
+git stash pop
+gd
+gst
+ga .
+gc
+$ git config --global core.editor emacs
+git config --global core.editor vim
+gc
+ntr
+ggp
+gco staging
+ggl
+gm --no-ff origin/develop
+ggp
+cd build/
+gsutil -m cp -R ./beyoung.com.br_notestab_final_produto_mobile_organic_ gs://bbrands-optimus-dev-build/build
+exit
+tmux
+tmux-start bbrands optimus
+tmux
+tmux-start bbrands optimus
+ebash
+sbash
+redis-prod-keys "*MEGAN*"
+exit
+ping redis.cache.bbrands.com.br
+ping redis.cache.bbrands.com.br:6379
+ping redis.cache.bbrands.com.br
+redis-cli -h redis.bbrands.com.br
+redis-cli -h redis.cache.bbrands.com.br
+exit
+redis-cli -h redis.cache.bbrands.com.br
+redis-cli -h redis.cache.bbrands.com.br -p 6379
+redis-cli -h redis.staging.bbrands.com.br
+exit
+redis-cli -h redis.staging.bbrands.com.br
+redis-cli -h redis.staging.bbrands.com.br --big-keys
+redis-cli -h redis.staging.bbrands.com.br --bigkeys
+redis-cli --help
+redis-cli --help | grep db
+redis-cli -h redis.staging.bbrands.com.br scan
+redis-cli -h redis.staging.bbrands.com.br scan '*'
+redis-cli -h redis.staging.bbrands.com.br scan 0
+redis-cli -h redis.staging.bbrands.com.br scan 192
+redis-cli -h redis.staging.bbrands.com.br scan 0
+redis-cli -h redis.staging.bbrands.com.br scan 0 | xargs
+chmod +x redis.sh 
+./redis.sh 
+./redis.sh 1
+./redis.sh 2
+./redis.sh 1
+./redis.sh
+./redis.sh redis.staging.bbrands.com.br
+chmod +x redis-test.sh 
+./redis-test.sh 
+redis-cli -h redis.staging.bbrands.com.br keys "*" 
+./redis-test.sh 
+exit
+vim redis.sh
+exit
+bb
+ls -l
+git clone git@bitbucket.org:beautybrands/megan.git
+cd megan/
+vim
+exit
+tmux
+tmux-start bbrands optimus
+yarn hot-reload:container
+ntr
+yarn hot-reload:container
+exit
+ffmpeg
+sudo dnf install ffmpeg
+ffmepeg
+sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf -y install ffmpeg
+ffmpeg --version
+ffmpeg -version
+exit
+ggl
+gl
+exit
+tmux
+tmux-start bbrands optimus
+tmux
+tmux-start bbrands optimus
+tmux
+tmux-start bbrands optimus
+bb-open mystique
+svim mystique
+exit
+exit
+bb
+cd stark/
+vim .env
+exit
+dcu
+bb
+git clone git@bitbucket.org:beautybrands/mystique.git
+bb-open mystique/
+svim mystique/
+ebash
+svim mystique
+dcu
+cd ..
+vim lucius/
+exit
+tmux
+tmux-start bbrands optimus
+svim mystique
+[A
+svim mystique
+svim mystique
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+cat /proc/sys/fs/inotify/max_user_watches
+vim  /etc/sysctl.conf
+ntr
+container mystique_web
+container mystique
+container mystique_web
+ntr
+container mystique_web
+ls l-
+ls -l
+yarn
+container alfred
+container mystique_web
+node -v
+nvm 8
+nvm use 8
+nvm install 8
+yarn install
+container mystique_web
+exit
+tmux
+tmux-start bbrands optimus megan mystique
+bb
+cd lucius/
+find-in-files 'OneToMany'
+vim src/entities/attribute.entity.ts
+tmux start
+tmux-start bbrands optimus megan mystique
+tmux
+tmux-start bbrands optimus megan mystique
+ls -l
+./Downloads/Postman-linux-x64-7.16.1/Postman/Postman 
+exit
+bb
+cd megan
+vm
+vim
+bb-open optimus
+svim optimus
+yarn hot-reload:container
+ntr
+find-in-files web getInitialProps
+ntr
+find-in-files web/pages/ 'coalesce'
+container optimus
+bb
+cd consul/
+vim
+docker restart consul_nginx
+ntr
+find-in-files web 'import coalesce'
+find-in-files web 'import\ coalesce'
+find-in-files web "import coalesce"
+find-in-files web "import Page"
+find-in-files web "import\scoalesce"
+code .
+gst
+gco -- src/
+exit
+bb
+git clone git@bitbucket.org:beautybrands/jo.git
+bb-open jo
+svim jo
+dcu
+sbash
+dcu
+docker login
+dcu
+gcloud auth configure-docker
+dcu
+gcloud components update
+dcu
+docker pull gcr.io/staging-203611/node:12
+dcu
+dcd
+dcu
+dcd
+dcu 
+ggl
+docker login
+docker pull 
+docker pull --help
+ntr
+gco develop
+ntr
+container jo
+container jo_web
+container jo
+container jo_web
+dcu
+bb
+xcopy megan/.env
+bb-open mystique
+svim mystique
+ntr
+gco -b jo/DEV-3355
+ggp
+ntr
+bb-open optimus
+svim optimus
+dcu
+yarn hot-reload:container
+gst
+container optimus
+nntr
+ntr
+container optimus
+gst
+gd web/components/Nps/NpsPageComponent.js
+gco -- web/components/Nps/NpsPageComponent.js
+gst
+gd
+ga .
+gc -m 'Ajuste de como import `coalesce` do alfred'
+ggp
+gco master && gm origin/staging && ggp
+gco develop
+gm origin/staging
+ggp
+gco -b nps/DEV-3355
+ggp
+ntr
+htop
+clear
+consul
+htop
+clear
+clear
+ntr
+ls -l
+ls -la
+container jo_web
+exit
+tmux
+tmux-start bbrands
+tmux-start -f bbrands optimus jo
+tmux
+tmux-start bbrands
+tmux
+tmux-start bbrands
+tmux
+tmux-start bbrands megan
+bb
+cd stark/
+vim
+bb-open stark
+svim stark
+gd
+gst
+vim src/core/coupon/finder.ts
+vim src/repositories/filter.repository.ts
+gd
+gst
+vim __tests__/src/core/campaign/finder.test.ts
+:qa
+gst
+gd
+gco staging
+gco develop
+ga .
+gc -m 'Ajustes nos testes'
+ggp
+gco staging
+ggl
+gm origin/develop
+ggp
+svim optimus
+ls -l ~/.vim/sessions
+ebash
+sbash
+svim optimus-test-ab
+dcu
+ls -l
+cp gcp-credentials.json ../megan/
+git branch
+gco -b ab-test/DEV-3425
+ggp
+ntr
+gst
+gd
+gst
+ga .
+gc -m 'Repassar UTMs para decidir Teste A/B e resetar `test_ab_id` dos cookies se vier vazio do Megan'
+ggp
+gco staging
+gm origin/ab-test/DEV-3425
+hhp
+ggp
+svim megan
+svim megan-teste
+svim megan-teste-ab
+ebash
+sbash
+svim megan-test-ab
+vim gcp-credentials.json 
+svim megan-test-ab
+ntr
+ls -la ~/.vim/sessions/
+for f in ~/.vim/sessions/*<CR>; do echo $f; done;
+for f in ~/.vim/sessions/*\<CR\>; do echo $f; done;
+for f in ~/.vim/sessions/*\<CR\>; do rm $f; done;
+ls -la ~/.vim/sessions/
+rm ~/.vim/sessions/megan-teste{,-ab}.vim
+ls -la ~/.vim/sessions/
+gst
+gd
+gco -- .
+gst
+gd .gitignore 
+gst
+ga .
+gc -m 'Adicionar gcp-credentials.json no .gitignore'
+git branch
+gco -b DEV-3425
+ggp
+container megan
+mkdir src/core/search
+node
+gst
+gd src/
+gst
+gd src/
+ga .
+gc -m 'Adicionar busca por filtros para Teste A/B'
+ggp
+gco staging
+ggl
+gl
+gco -
+gm origin/DEV-3425
+gd
+gst
+gd
+ga .
+gc
+ggp
+dcu
+tmux
+tmux-start bbrands megan optimus
+tmux
+tmux-start bbrands optimus
+tmux
+tmux-start bbrands optimus

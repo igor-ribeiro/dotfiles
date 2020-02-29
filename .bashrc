@@ -70,7 +70,7 @@ alias redis-local-keys-del="redis-cli -h redis.service.consul KEYS $1 | xargs re
 alias redis-staging="redis-cli -h redis.staging.bbrands.com.br $@"
 alias redis-staging-keys="redis-cli -h redis.staging.bbrands.com.br KEYS $1"
 alias redis-staging-keys-del="redis-cli -h redis.staging.bbrands.com.br KEYS $1 | xargs redis-cli -h redis.staging.bbrands.com.br DEL"
-alias redis-prod-keys="redis-cli -h redis.bbrands.com.br KEYS $1"
+alias redis-prod-keys="redis-cli -h redis.cache.bbrands.com.br KEYS $1"
 
 # Consul
 alias consul="cd ~/Code/Beyoung/consul && dcd && ./start.sh && cd -"
@@ -85,9 +85,10 @@ alias postman="/home/iribeiro/Downloads/Postman-linux-x64-6.0.10/Postman/Postman
 alias gst="git status"
 alias ga="git add"
 alias gc="git commit"
+alias gca="git commit --amend"
 alias gd="git diff"
 alias gds="git diff --staged"
-alias gm="git merge"
+alias gm="git merge --no-ff"
 alias gl="git log"
 
 # Bash
@@ -180,6 +181,11 @@ function current-git-branch () {
 # git push origin CURRENT_BRANCH
 function ggp () {
   git push origin $(current-git-branch)
+}
+
+# git push origin CURRENT_BRANCH --force-with-lease
+function ggpf () {
+  git push origin $(current-git-branch) --force-with-lease
 }
 
 # git pull origin CURRENT_BRANCH
@@ -362,9 +368,11 @@ function bb-open () {
     }
   }' | xargs )
 
+  touch ~/.vim/sessions/$1.vim
+
   tmux split-window -h
   tmux split-window
-  tmux send-keys -t 1 vim Enter
+  tmux send-keys -t 1 "svim $1" Enter
   tmux send-keys -t 2 dcu Enter
   tmux rename-window $name
   tmux select-pane -t 1
@@ -392,9 +400,12 @@ function clear-bucket () {
 }
 
 function svim () {
-  session_name="$1"
+  session_name=$(echo $1 | awk '{sub(/\//, "")}1')
+  session_file=$HOME/.vim/sessions/$session_name.vim
 
-  vim -S $HOME/.vim/sessions/$1.vim
+  touch $session_file
+
+  vim -S $session_file -c "silent Obsess $session_file"
 }
 
 export NVM_DIR="$HOME/.nvm"
