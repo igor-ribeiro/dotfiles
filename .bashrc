@@ -451,6 +451,10 @@ function nps-sent-emails-sql () {
   echo "- SQL filed generated as $new_sql_filename" 
 }
 
+function split-csv () {
+  node ~/dotfiles/scripts/split-csv @a
+}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
