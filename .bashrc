@@ -408,6 +408,49 @@ function svim () {
   vim -S $session_file -c "silent Obsess $session_file"
 }
 
+function nps-sent-emails-sql () {
+  filename=$1
+  dbname=$2
+  help_message="USAGE: nps-sent-emails-sql FILENAME (csv) DB_AND_TABLE (db.table)"
+
+  if [[ -z $filename ]]; then
+    echo $help_message
+    return
+  fi;
+
+  if [[ ! $filename =~ \.csv$ ]]; then
+    echo "File must be CSV"
+    return
+  fi
+
+  if [[ -z $dbname ]]; then
+    echo $help_message
+    return
+  fi;
+
+  if [[ ! $dbname =~ \.+ ]]; then
+    echo "You must provide a database name and table name (db.table)"
+    return
+  fi
+
+  new_csv_filename=$(echo $filename | awk '{sub(".csv", "-sucess.csv")}1')
+  new_sql_filename=$(echo $filename | awk '{sub(".csv", ".sql")}1')
+
+  grep -aE "nos inspira a evoluir" $filename |\
+    vim - \
+      -c "silent w! $new_csv_filename" \
+      -c "silent %s/^\"Sua opinião nos inspira a evoluir.\";//g" \
+      -c "silent %s/;.*//g" \
+      -c "silent %s/^/INSERT INTO $dbname \(email\) VALUES \(\"/g" \
+      -c "silent %s/$/\"\);/g" \
+      -c "silent w! $new_sql_filename" \
+      -c "silent qa!"
+
+  echo "Operation completed."
+  echo "- Filtered CSV file generated as $new_csv_filename"
+  echo "- SQL filed generated as $new_sql_filename" 
+}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

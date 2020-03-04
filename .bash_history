@@ -1,23 +1,3 @@
-sudo groupadd docker
-sudo usermod -aG docker $USER
-docker run hello-world
-sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-sudo usermod -aG docker $USER
-docker run hello-world
-sudo chown root:docker /var/run/docker.sock
-docker run hello-world
-docker start
-docker -d
-sytemctl docker start
-systemctl docker start
-systemctl start docker
-docker run hello-world
-newgrp docker
-sudo systemctl start docker
-docker run hello-world
-systemctl status docker
-docker run hello-world
-vim /etc/default/grub
 grub2-mkconfig
 sudo grub2-mkconfig
 vim /etc/default/grub
@@ -998,3 +978,23 @@ tmux
 tmux-start bbrands optimus
 tmux
 tmux-start bbrands optimus
+ebash
+dotfiles
+ls -l
+bb
+ls -l
+dotfiles
+gst
+ga .
+gc -m 'update'
+gl
+a
+ggp
+python
+exit
+dotfiles
+tmux
+tmux-start bbrands optimus
+yarn hot-reload:container
+tmux
+tmux-start bbrands
