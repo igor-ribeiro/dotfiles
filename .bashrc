@@ -38,6 +38,10 @@ alias dcd="docker-compose down"
 alias gcloud-production="gcloud config set project brands-production"
 alias gcloud-staging="gcloud config set project staging-203611"
 
+# PODS
+alias k8s-prod="gcloud container clusters get-credentials cluster-production --region us-east4 --project bbrands-production"
+alias k8s-staging="gcloud container clusters get-credentials staging-cluster --zone us-east4-a --project staging-203611"
+
 # Directories
 function bb () {
   cd ~/Code/Beyoung
@@ -79,7 +83,7 @@ alias consul="cd ~/Code/Beyoung/consul && dcd && ./start.sh && cd -"
 alias dnf-update="sudo dnf clean packages && sudo dnf update --skip-broken -y"
 
 # Postaman
-alias postman="/home/iribeiro/Downloads/Postman-linux-x64-6.0.10/Postman/Postman > /dev/null 2>&1 &"
+alias postman="/home/iribeiro/Downloads/Postman/Postman/Postman > /dev/null 2>&1 &"
 
 # Git
 alias gst="git status"
@@ -90,6 +94,7 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias gm="git merge --no-ff"
 alias gl="git log"
+alias gr="git restore"
 
 # Bash
 alias ebash="vim ~/.bashrc"
@@ -101,6 +106,13 @@ alias vim="vimx"
 
 # Tmux
 alias etmux="vim ~/.tmux.conf"
+
+# Chrome
+alias chrome="google-chrome-stable > /dev/null 2>&1 &"
+
+# GCP Credentials
+alias gcpp="cp gcp-credentials-production.json gcp-credentials.json"
+alias gcps="cp gcp-credentials-staging.json gcp-credentials.json"
 
 # --
 # FUNCTIONS
@@ -291,12 +303,14 @@ function get-json () {
 # Find text in files on current folder
 function find-in-files () {
   dir='./'
+  r="$1"
 
   if [[ $2 ]]; then
-    dir=$2
+    dir=$1
+    r="$2"
   fi
 
-  grep --exclude-dir={.git,node_modules,dist} -rnw $2 -P "$1"
+   grep --exclude-dir={.git,node_modules,dist} -rnw "$r" -P $dir
 }
 
 # Copy command to clipboard
@@ -452,7 +466,60 @@ function nps-sent-emails-sql () {
 }
 
 function split-csv () {
-  node ~/dotfiles/scripts/split-csv @a
+  node ~/dotfiles/scripts/split-csv "$@"
+}
+
+# ----
+# PODS
+# ----
+function k8spod() {
+if [ "$1" != "" ]
+then
+  pod=`kubectl get pod | grep $1 | grep -v Evicted | head -n 1 | awk '{ print $1 }'`
+  echo $pod
+fi
+}
+
+function k8scontainer() {
+  if [ "$1" != "" ]
+  then
+    container=`kubectl get pods $2 -o jsonpath='{.spec.containers[*].name}' | tr ' ' '\n' | grep $1`
+    echo $container
+  fi
+}
+
+function k8se() {
+  cmd='bash';
+  if [ "$2" != "" ]
+  then
+    cmd=$2
+  fi
+
+  if [ "$1" != "" ]
+  then
+    pod=`k8spod $1`
+    container=`k8scontainer $1 $pod`
+    kubectl exec -it $pod --container=$container $cmd
+  fi
+}
+
+function k8sl() {
+  if [ "$1" != "" ]
+  then
+    pod=`k8spod $1`
+    container=`k8scontainer $1 $pod`
+    kubectl logs -f $pod $container
+  fi
+}
+
+function k8scp() {
+  if [ "$1" != "" ]
+  then
+    pod=`k8spod $1`
+    container=`k8scontainer $1 $pod`
+    echo "kubectl cp -c $container $pod:$2 $3"
+    kubectl cp -c $container $pod:$2 $3
+  fi
 }
 
 export NVM_DIR="$HOME/.nvm"
@@ -460,7 +527,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/iribeiro/Downloads/google-cloud-sdk-278.0.0-linux-x86_64/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeiro/Downloads/google-cloud-sdk-278.0.0-linux-x86_64/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/home/iribeiro/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/iribeiro/Downloads/google-cloud-sdk-278.0.0-linux-x86_64/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/Downloads/google-cloud-sdk-278.0.0-linux-x86_64/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '/home/iribeiro/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/completion.bash.inc'; fi

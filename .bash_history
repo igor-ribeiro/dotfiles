@@ -1,1000 +1,1000 @@
-grub2-mkconfig
-sudo grub2-mkconfig
-vim /etc/default/grub
-systemd.unified_cgroup_hierarchy=0
-sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
-sudo dnf install grubby
-sudo grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
-vim
-bb
-git clone git@github.com:beautybrands/consul.git
-dcu
-clear
-htop
-clear
-sudo systemctl start docker
-docker run hello-world
-bb
-git clone git@bitbucket.org:beautybrands/optimus.git
-tmux
-tmux-start bbrands optimus
-tmux-start -f bbrands optimus
-sudo dnf install gnome-tweak-tool
-exit
-mkdir .vpn
-vim .vpn/igorr.ovpn 
-touch .vpn/ta.key
-ebash
-echo 'kG52!@Roh97#cGL0' >> .vpn/auth.txt
-cat .vpn/auth.txt 
-tmux
-tmux-start bbrands 
-./install.sh 
-exit
-exit
-./bin/gcloud init
-tmux
-tmux-start bbrands optimus
-tmux
-tmux-start bbrands optimus
-cd ~/.ssh/
-ls -l
-ssh -T git@bitbucket.org
-bb
-cd optimus/
-yarn
-ls -l /etc/ssh/
-cd /etc/ssh
-ls -l
-mv ssh_host_ecdsa_key _ssh_host_ecdsa_key
-sudo mv ssh_host_ecdsa_key _ssh_host_ecdsa_key
-sudo mv ssh_host_ecdsa_key.pub _ssh_host_ecdsa_key.pub
-sudo mv ssh_host_ed25519_key _ssh_host_ed25519_key
-sudo mv ssh_host_ed25519_key.pub _ssh_host_ed25519_key.pub
-sudo mv ssh_host_rsa_key _ssh_host_rsa_key
-sudo mv ssh_host_rsa_key.pub _ssh_host_rsa_key.pub
-ls -l
-sudo systemctl restart ssh.service
-sudo systemctl restart sshd
-bb
-cd optimus/
-yarn
-vim ~/.ssh/id_rsa.pub 
-cat ~/.ssh/id_rsa.pub 
-cp ~/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub.bkp 
-vim ~/.ssh/id_rsa.pub 
-yarn
-ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
-ls -la ~/.ssh/
-cat ~/.ssh/id_rsa.pub
-git diff ~/.ssh/id_rsa.pub ~/.ssh/id_rsa.pub.bkp
-yarn
-vim ~/.ssh/id_rsa.pub
-sudo systemctl restart sshd
-yarn
-vim ~/.ssh/id_rsa.pub
-xcopy ~/.ssh/id_rsa.pub
-cd ..
-git clone git@bitbucket.org:beautybrands/jaiminho.git
-cd jaiminho/
-yarn
-cd ~/.ssh/
-ssh-keygen -t rsa -b 4096 -C "igor.ribeiro.plus@gmail.com"
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-xcopy id_rsa.pub
-bb
-cd optimus/
-yarn
-bb
-cd optimus/
-yarn
-chmod 400 ~/.ssh/id_rsa.pub
-yarn
-cd ..
-git clone git@bitbucket.org:beautybrands/lucius.git
-cd lucius/
-yarn
-ls -l ~/.ssh/
-git ls-remote --tags --heads bitbucket.org:beautybrands/alfred.git
-mv -R ~/.ssh/ ~/.ssh.bkp
-mv ~/.ssh/ ~/.ssh.bkp
-yarn
-sudo systemctl restart sshd
-yarn
-ls -l ~/.ssh
-vim ~/.ssh/id_rsa.pub 
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-yarn
-chmod 600 ~/.ssh/id_rsa
-chmod 600 ~/.ssh/id_rsa.pub 
-yarn
-git ls-remote --tags --heads bitbucket.org:beautybrands/alfred.git
-vim ~/.ssh/config 
-sudo systemctl restart sshd
-yarn
-ls -l ~/.ssh
-chown iribeiro:iribeiro -R ~/.ssh
-yarn
-rm -rf ~/.ssh
-mv ~/.ssh.bkp/ .ssh
-yarn
-ls -l
-ls -l ~/.ssh/
-ls -la
-mv .ssh/ ~/
-yarn
-ssh -T git@bitbucket.org
-ls -l ~/.ssh/
-chmod 400 ~/.ssh/id_rsa
-yarn
-sudo systemctl restart sshd
-yarn
-vim /etc/ssh/ssh_config
-vim /etc/ssh/sshd_config 
-sudo vim /etc/ssh/sshd_config 
-sudo systemctl restart sshd
-sudo systemctl restart ssh
-sudo service ssh restart
-yarn
-ls -la
-ln -sf $(pwd)/fonts/iosevka/ttf/**/* $HOME/.fonts
-ls -la ~/.fonts 
-rm -rf ~/.fonts 
-ls --help
-mkdir ~/.fonts
-ln -sf $(pwd)/fonts/iosevka/ttf/ $HOME/.fonts/
-ls -la ~/.fonts/
-ls -la ~/.fonts/ttf 
-rm -rf ~/.fonts/
-ln -s ~/dotfiles/fonts/iosevka/* ~/.fonts
-mkdir ~/.fonts
-ln -s ~/dotfiles/fonts/iosevka/* ~/.fonts
-ls -la ~/.fonts/
-ls -la
-sudo fc-cache
-ln -sf $(pwd)/.bashhistory $HOME/
-ls -la
-cp ~/.bashhistory 
-cp ~/.bashhistory ./
-cat ~/.bashhistory 
-ls -la ~/
-ls -la ~/ | grep bash
-rm -rf ~/.bashhistory 
-ls -la ~/ | grep bash
-cp ~/.bash_history ./
-ls -l
-ls -la
-ln -sf $(pwd)/.bash_history $HOME/
-ls -l
-la -la
-ls -la
-ls -la ~/
-gst
-ga .
-gc -m 'update'
+gds
+gc -m '(Fix) Ajuste ao pegar `itemsArray`'
 ggp
-exit
-bb
-ebash
-dotfiles
-mkdir fonts
-cd fonts/
-cd ..
-vim setup.sh 
-exit
-dotfiles
-gst
-exit
-sudo dnf install -y gsutil
-gsutil
-exit
-bb
-cd lucius/
-yarn
-sudo yarn
-sudo systemctl reload sshd
-yarn
-ssh -T igorribeiro@bitbucket.com
-ssh -T igorribeiro@bitbucket.org
-eval "$(ssh-agent -s)"
-ssh-add -l -E md5
-ssh-add -l
-eval "$(ssh-agent -s)"
-ssh-add -l
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
-sudo systemctl restart ssh
-yarn
-ls -la ~/.ssh/
-vim ~/.ssh/config 
-sudo systemctl restart sshd
-yarn
-vim ~/.ssh/config 
-sudo systemctl restart sshd
-yarn
-cd ..
-cd optimus/
-yarn
-vim ~/.ssh/config 
-sudo systemctl restart sshd
-yarn
-vim ~/.ssh/config 
-sudo systemctl restart sshd
-vim ~/.ssh/config 
-sudo systemctl restart sshd
-yarn
-tmux
-tmux-start bbrands optimus
-bb
-cd optimus/
-gd
-git config --global color.ui auto 
-gd
-git -c color.ui=always status
-git -c color.ui=always diff
-gd
-ebash
-dotfiles
-gst
-gd
-vim
-git config --global core.pager 'less -+X'
-git config --global core.pager 'less -+XR'
-gd
-git config --global core.pager 'less -+X -R'
-gd
-git config --global core.pager 'less -R -+X'
-gd
-exit
-cd beyoung.com.br_notestab_final__mobile_organic_
-ls -la
-for * do: echo $1
-for * do echo $1 endfor; q
-for * echo $1 endfor; q
-for * in ./ do echo $1 done
-for * in ./ do echo $1 done;
-for * in ./; do echo $1 done
-for * in * do echo $1 done
-for * in *
-ebash
-for * in *; do echo $1 done;
-for * in *; do echo $1; done
-for f in *; do echo f; done
-for f in *; do echo f done
-for f in *; do echo f; donw
-for f in *; do echo f; done;
-for f in *; do echo $f; done;
-for f in *.js; do echo $f; done;
-for f in *(\w\d)+.js; do echo $f; done;
-for f in /*(\w\d)+.js/; do echo $f; done;
-for f in *(\w\d)+.js; do echo $f; done;
-find -name "web.(\w\d)+.js"
-find -name "web..js"
-find -name "web.js
-for f in "web.js"; do echo $f; done;
-for f in "web.(\w\d)+.js"; do echo $f; done;
-for f in web.(\w\d)+.js; do echo $f; done;
-for f in web.\(\w\d\)+.js; do echo $f; done;
-for f in web.\(\\w\\d\)+.js; do echo $f; done;
-for f in /.js/; do echo $f; done;
-for f in /\.js/; do echo $f; done;
-for f in /\\.js/; do echo $f; done;
-for f in $f; do echo $f; done;
-for f in *.js; do echo $f; done;
-for f in web.*.js; do echo $f; done;
-for f in web.*.js; do rm $f; done;
-for f in web.*.js; do echo $f; done;
-for f in vendor.*.js; do echo $f; done;
-for f in web.node.js; do echo $f; done;
-for f in web.(node|test).js; do echo $f; done;
-for f in /web.(node|test).js/; do echo $f; done;
-for f in web.*.js; do echo $f; done;
-for f in node.*.js; do echo $f; done;
-for f in vendor.*.js; do echo $f; done;
-for f in vendor.*.js;  if [[$f =~ "node"]]; then echo $f; fi; done;
-for f in vendor.*.js; if [[$f =~ "node"]]; then echo $f; fi; done;
-for f in vendor.*.js; if [[ $f =~ "node" ]]; then echo $f; fi; done;
-for f in vendor.*.js; if [[ "$f" =~ "node" ]]; then echo $f; fi; done;
-for f in vendor.*.js; if [[ "$f" =~ "node" ]]; then echo $f fi; done;
-for f in vendor.*.js; if [ "$f" =~ "node" ]; then echo; $f fi; done;
-if [[ "vendor.node.js" =~ "node ]]
-if [[ "vendor.node.js" =~ "node ]]; then echo 'ok'; fi
-if [[ "vendor.node.js" =~ "node ]]; then echo 'ok'; fi;
-if [[ "vendor.node.js" =~ "node ]] then echo 'ok'; fi;
-if [[ "vendor.node.js" =~ "node ]] then echo 'ok' fi;
-do if [[ "vendor.node.js" =~ "node ]] then echo 'ok' fi; done;
-do; if [[ "vendor.node.js" =~ "node ]] then echo 'ok' fi; done;
-if [ "vendor.node.js" =~ "node ] then echo 'ok' fi;
-if [ "vendor.node.js" =~ "node ]; then echo 'ok' fi;
-if [ "vendor.node.js" =~ "node ]; then echo "ok"; fi;
-if [ 1 = 1 ]; then echo "ok"; fi;
-if [ "vendor.node.js" =~ "node" ]; then echo "ok"; fi;
-if [[ "vendor.node.js" == "node" ]]; then echo "ok"; fi;
-if [[ "vendor.node.js" == *"node"* ]]; then echo "ok"; fi;
-for f in vendor.*.js; if [[ "vendor.node.js" == *"node"* ]]; then echo "ok"; fi; done;
-for f in vendor.*.js; do if [[ "vendor.node.js" == *"node"* ]]; then echo "ok"; fi; done;
-for f in vendor.*.js; do if [[ "$f" == *"node"* ]]; then echo $f; fi; done;
-for f in vendor.*.js; do if [[ "$f" == *"node"* ]]; then continue; else echo $f fi; done;
-for f in vendor.*.js; do if [[ "$f" == *"node"* ]]; then continue; else echo $f; fi; done;
-for f in vendor.*.js; do if [[ "$f" == *"node"* ]]; then continue; else rm $f; fi; done;
-ls -la
-for f in web.*.js; do echo $f; done;
-for f in web.*.(js|g\); do echo $f; done;
-for f in web.*.(js|gz); do echo $f; done;
-for f in "web.*.(js|gz)"; do echo $f; done;
-for f in /"web.*.(js|gz)"/; do echo $f; done;
-for f in web.*.js.gz; do echo $f; done;
-for f in web.*.js.gz; do rm $f; done;
-ls -l
-for f in vendor.*.js.gz; do echo $f; done;
-for f in vendor.*.js.gz; do rm $f; done;
-ls -l
-vim index.html 
-for f in vendor.*.js.gz; do rm $f; done;
-sbash
-clear-bucket
-cd ..
-ls -l
-cd beyoung.com.br_notestab_final_blackfriday_mobile_organic_ 
-ls -l
-clear-bucket
-ls -l
-clear-buclet
-sbash
-clear-bucket
-sbash
-clear-bucket
-ls -l
-cd ..
-cd beyoung.com.br_notestab_final_atendimento_mobile_organic_
-ls -l
-clear-bucket
-ls -l
-cd ../beyoung.com.br_notestab_final_finalizar_mobile_organic_
-ls -l
-cd ../beyoung.com.br_notestab_final_login_mobile_organic_
-ls -l
-find --name "web.js"
-find -name "web.js"
-if [[ find -name "web.js" ]]; then echo "OK'; fi;
-if [[ $(find -name "web.js") ]]; then echo "OK'; fi;
-if [[ $(find -name "web.js") == "" ]]; then echo "OK'; fi;
-if [ $(find -name "web.js") == "" ]; then echo "OK'; fi;
-if [[ $(find -name "web.js") == "" ]]; then echo "OK'; fi;
-find -name "web.js"
-echo $(find -name "web.js")
-echo $(find -name "web.js") == ""
-echo $(find -name "web.js" == "")
-find -name "web.js" == ""
-expr find -name "web.js" == ""
-expr $(find -name "web.js") == ""
-expr "$(find -name "web.js")" == ""
-expr "$(find -name "index.html")" == ""
-if [[ "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; done;
-if [[ "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
-if [ "$(find -name "index.html")" == "" ]; then echo "HAS"; else echo "DONT"; fi;
-if [[ "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
-if [[ $(expr "$(find -name "index.html")" == "") == 1 ]]; then echo "HAS"; else echo "DONT"; fi;
-if [[ $(expr "$(find -name "index.html")" == "") = 1 ]]; then echo "HAS"; else echo "DONT"; fi;
-if [[ $(expr "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
-if [[ $(expr "$(find -name "index.html")" = "" ]]; then echo "HAS"; else echo "DONT"; fi;
-if [[ expr "$(find -name "index.html")" = "" ]]; then echo "HAS"; else echo "DONT"; fi;
-if [[ expr "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
-if [[ "$(find -name "index.html")" == "" ]]; then echo "HAS"; else echo "DONT"; fi;
-echo $("$(find -name "index.html")" == "")
-echo "$(find -name "index.html")" == ""
-echo $("$(find -name "index.html")" == "")
-echo $(expr "$(find -name "index.html")" == "")
-if [[ $(expr "$(find -name "index.html")" == "")  == 0]]; then echo "DONT"; fi
-if [[ $(expr "$(find -name "index.html")" == "")  == 0 ]]; then echo "DONT"; fi
-if [[ $(expr "$(find -name "index.html")" == "")  == 0 ]]; then echo "DONT"; else echo "HAS" fi
-if [[ $(expr "$(find -name "index.html")" == "")  == 0 ]]; then echo "DONT"; else echo "HAS"; fi
-find -name "index.html"
-if [[ $(expr "$(find -name "index.html")" == "")  == 1 ]]; then echo "DONT"; else echo "HAS"; fi
-sbash
-ls -l
-clear-bucket
-find -name "web.js"
-xpr "$(find -name "web.js")" == "")
-expr "$(find -name "web.js")" == "")
-expr find -name "web.js")" == ""
-expr find -name "web.js")"
-expr $(find -name "web.js") == 0
-expr $(find -name "web.js")
-expr "$(find -name "web.js")" == ""
-find --name "web.js"
-find -name "web.js"
-ls -la | grep web.js
-expr "$(find -name "web.js")" == ""
-sbash
-clear-bucket
-tmux
-tmux-start bbrands optimus
-vim index.js
-exit index.js 
-rm index.js 
-exit
-node index.js 24
-node index.js Gabriela 25
-node index.js Gabriela 24
-node index.js Gabriela 15
-node index.js
-exit
-tmux
-tmux-start bbrands optimus
-cd beyoung.com.br_notestab_final__mobile_organic_
-clear-bucket
-ebash
-ls -l
-cd ../beyoung.com.br_notestab_final_produto_mobile_organic_
-ls -l
-clear-bucket
-ebash
-sbash
-clear-bucket
-ls -l
-cd ../beyoung.com.br_notestab_final_perguntas-frequentes_mobile_organic_
-clear-bucket 
-cd ../beyoung.com.br_notestab_final_politica-de-privacidade_mobile_organic_
-clear-bucket 
-cd ../beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_
-clear-bucket
-cd ../beyoung.com.br_notestab_final_somos500k_mobile_organic_
-clear-bucket 
-cd ../beyoung.com.br_notestab_final_sucesso_mobile_organic_
-clear-bucket
-cd ../beyoung.com.br_notestab_final_televendas_mobile_organic_
-clear-bucket 
-cd ../beyoung.com.br_notestab_final_termos-e-condicoes_mobile_organic_
-clear-bucket 
-cd ../beyoung.com.br_notestab_final_upsell_mobile_organic_
-clear-bucket 
-ls -l
-cd ../
-ls 
-exit
-gsutil -m cp -R ./beyoung.com.br_notestab_final__mobile_organic_ gs://bbrands-optimus-build/bu
-ls 
-cd ..
-ls -l
-cd nps/
-ls 
-cd nps.beyoung.com.br_notestab_final__desktop_organic_ && clear-bucket
-cd nps.beyoung.com.br_notestab_final__mobile_organic_ && clear-bucket
-cd nps.beyoung.com.br_notestab_final__mobile_organic_ && clear-bucket && cd ..
-cd ..
-ls 
-cd nps.beyoung.com.br_notestab_final__mobile_organic_ && clear-bucket && cd ..
-tree
-ls
-cd nps.beyoung.com.br_notestab_final_pesquisa_desktop_organic_ && clear-bucket && cd ..
-gsutil -m cp -R ./ gs://bbrands-optimus-build/build
-exit
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
-exit
-cd ..
-cd nps/
-ls -l
-ls
-gsutil -m cp -R ./nps.beyoung.com.br_notestab_final_pesquisa_{desktop,mobile}_organic_ gs://bbrands-optimus-build/build
-gsutil -m cp -R ./nps.beyoung.com.br_notestab_final_pesquisa_desktop_organic_ gs://bbrands-optimus-build/build
-exit
-ls
-cd beyoung.com.br_notestab_final_login_mobile_organic_
-ls -l
-exit
-cd ../beyoung/
-ls -l
-mv ../done/* ./
-ls -l
-gsutil -m cp -R ./nps.beyoung.com.br_notestab_final_login_desktop_organic_ gs://bbrands-optimus-build/build
-gsutil -m cp -R ./nps.beyoung.com.br_notestab_final_login_mobile_organic_ gs://bbrands-optimus-build/build
-ls
-gsutil -m cp -R ./beyoung.com.br_notestab_final_login_mobile_organic_ gs://bbrands-optimus-build/build
-exit
-tmux
-tmux-start bbrands
-bb
-cd jaiminho/
-vim
-exit
-postman
-exit
-container lucius
-exit
-ntr
-exit
-bb
-ls
-cd lucius/
-ls -l
-container lucius
-cd ..
-cd stark/
-ls -l
-cd ../lucius/
-dcu
-exit
-bb-open stark
-vim
-exit
-tmux
-tmux-start bbrands optimus
-touch ~/.vim/sessions/optimus.vim
-cat ~/.vim/sessions/optimus.vim
-info ~/.vim/sessions/optimus.vim
-stat ~/.vim/sessions/optimus.vim
-stat ~/.vim/sessions/stark.vim
-try stat ~/.vim/session/stark.vim
-stat ~/.vim/sessions/stark.vim || echo 'NO'
-exit
-exut
-exit
-tmux
-tmux-start bbrands optimus
-bb
-ls -l
-cd brain/
-ls -l
-exit
-tmux
-tmux-start bbrands optimus
-vim
-dcu
-consul
-ntr
-copy-ip 
-clear
-consul
-bb
-cd con
-cd consul/
-vim
-clear
-htop
-bb-open optimus
-svim optimus
-dcu
-clear
-svimoptimus
-svim optimus
-dcu
-dcu
-tmux
-tmux-start bbrands optimus
-vim ~/dotfiles/tmux/sessions/bbrands.sh 
-ebash
-sbash
-tmux-start -f bbrands optimus
-ebash
-sbash
-bb-open optimus
-sbash
-tmux
-tmux ls
-tmux kill -t 3
-tmux kill-session -t 3
-tmux ls
-tmux-start -f bbrands optimus
-tmux
-tmux-start bbrands optimus
-yarn hot-reload:container
-Antr
-ntr
-yarn hot-reload:container
-cd build/
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produto_mobile_organic_ gs://bbrands-optimus-dev-build/build
-gco develop
+gl
 ggl
+container optimus
+find-in-files web 'CartPricesTable'
+gsutil -m cp -R ./build/beyoung.com.br_notestab_final_finalizar_mobile_organic_ gs://bbrands-optimus-build/build
+gst
+ls -l
+cat gcp-credentials.json 
+ntr
+gsutil -m cp -R ./build/beyoung.com.br_notestab_final_finalizar_mobile_organic_ gs://bbrands-optimus-build/build -h "Cache-Control:no-cache"
+gsutil -m -h "Cache-Control:no-cache" cp -R ./build/beyoung.com.br_notestab_final_finalizar_mobile_organic_ gs://bbrands-optimus-build/build
+gst
+gd
+ga .
+gc
+ggp
+gst
+gr .
+git branch
+gco nps/DEV-3355
+gst
+git stash list
+git stash pop
 gst
 git stash save
+gco staging
+ggl
+gco -b DEV-3554
+ntr
+gst
+gd src/core/cart/cart.manager.ts
+gd src/
+gst
+ga .
+gds
+gc
+ggp
+gco master
+ggl
+ls -l
+cat gcp-credentials
+cat gcp-credentials.json 
+gco staging
+ggl
+gst
+ga .
+gc -m '(Fix) Não exibir brindes'
+ggp
 gco master
 ggl
 ntr
-cd build/
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_ gs://bbrands-optimus-build/build
-ls -l
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_ gs://bbrands-optimus-build/build
-gsutil -m rm -rf gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_ gs://bbrands-optimus-build/build
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_ gs://bbrands-optimus-build/build
-gsutil setmeta -h "Cache-Control:no-cache,max-age=0"
-gsutil setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_/*
-gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_/*
-gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_/*
-gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung*/**/*
-gsutil -m rm -rf gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_ gs://bbrands-optimus-build/build
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
-gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" cp -R ./beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_ gs://bbrands-optimus-build/build
-gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_
-gsutil -m setmeta -h "Cache-Control:no-cache,max-age=0" gs://bbrands-optimus-build/build/beyoung.com.br_notestab_final_produtos-booster-kits_mobile_organic_/*
-exit
 gst
 gd
+gst
+gd src/
+gr src/
+gst
 ga .
-gc -m 'Tentar remover cache dos arquivos JS e ajustar o banner'
+gds
+gc -m '(Fix) Ajuste para não considerar brinde na quantidade de produtos no carrinho'
 ggp
-gco develop
-git stash pop
-gd
-gst
-ga .
-gc
-$ git config --global core.editor emacs
-git config --global core.editor vim
-gc
+gco DEV-3554
 ntr
-ggp
-gco staging
-ggl
-gm --no-ff origin/develop
-ggp
-cd build/
-gsutil -m cp -R ./beyoung.com.br_notestab_final_produto_mobile_organic_ gs://bbrands-optimus-dev-build/build
+gco master
+ntr
+copy-ip
+ntr
+copy-ip
+ntr
+redis-cli
+copy-ip
+redis-cli -h 10.0.0.123 -p 6378
+copy-ip
+redis-cli -h 10.8.0.46 -p 6378
+redis-cli -h 10.0.0.123 -p 6378
+copy-ip
+redis-cli -p 6378
+ntr
+find-in-files 'micellar-water.png'
+gst
+rm production.json 
+gco -
+ntr
 exit
-tmux
-tmux-start bbrands optimus
-tmux
-tmux-start bbrands optimus
-ebash
-sbash
-redis-prod-keys "*MEGAN*"
-exit
-ping redis.cache.bbrands.com.br
-ping redis.cache.bbrands.com.br:6379
-ping redis.cache.bbrands.com.br
-redis-cli -h redis.bbrands.com.br
-redis-cli -h redis.cache.bbrands.com.br
-exit
-redis-cli -h redis.cache.bbrands.com.br
-redis-cli -h redis.cache.bbrands.com.br -p 6379
-redis-cli -h redis.staging.bbrands.com.br
-exit
-redis-cli -h redis.staging.bbrands.com.br
-redis-cli -h redis.staging.bbrands.com.br --big-keys
-redis-cli -h redis.staging.bbrands.com.br --bigkeys
-redis-cli --help
-redis-cli --help | grep db
-redis-cli -h redis.staging.bbrands.com.br scan
-redis-cli -h redis.staging.bbrands.com.br scan '*'
-redis-cli -h redis.staging.bbrands.com.br scan 0
-redis-cli -h redis.staging.bbrands.com.br scan 192
-redis-cli -h redis.staging.bbrands.com.br scan 0
-redis-cli -h redis.staging.bbrands.com.br scan 0 | xargs
-chmod +x redis.sh 
-./redis.sh 
-./redis.sh 1
-./redis.sh 2
-./redis.sh 1
-./redis.sh
-./redis.sh redis.staging.bbrands.com.br
-chmod +x redis-test.sh 
-./redis-test.sh 
-redis-cli -h redis.staging.bbrands.com.br keys "*" 
-./redis-test.sh 
-exit
-vim redis.sh
-exit
-bb
+gcloud compute ssh infra --zone us-east4-a  -- -N -L 6378:10.1.16.4:6379
+gcloud compute ssh infra --zone us-east4-a  -- -N -L 10.8.0.46:6378:10.1.16.4:6379
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_INTERNAL_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https:\\/\\/hooks.slack.com\\/services\\/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\",\"MEGAN_URL\":\"http:\\/\\/internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http:\\/\\/internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http:\\/\\/internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http:\\/\\/internal.stark.bbrands.com.br\",\"BUILD_URL\":\"https:\\/\\/storage.googleapis.com\\/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6\\/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https:\\/\\/slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https:\\/\\/platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https:\\/\\/haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http:\\/\\/internal.fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https:\\/\\/storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http:\\/\\/internal.jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https:\\/\\/sqs.sa-east-1.amazonaws.com\\/457003475386\\/email_handler\",\"COLLECTOR_URL\":\"http:\\/\\/collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https:\\/\\/heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https:\\/\\/gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http:\\/\\/painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https:\\/\\/beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https:\\/\\/colorid.ai\\/colorid\\/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/color-id\",\"DOC_URL\":\"http:\\/\\/doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"internal.marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd,\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http:\\/\\/internal.lucius.bbrands.com.br\"}"
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https:\\/\\/hooks.slack.com\\/services\\/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\",\"MEGAN_URL\":\"http:\\/\\/internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http:\\/\\/internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http:\\/\\/internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http:\\/\\/internal.stark.bbrands.com.br\",\"BUILD_URL\":\"https:\\/\\/storage.googleapis.com\\/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6\\/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https:\\/\\/slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https:\\/\\/platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https:\\/\\/haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http:\\/\\/internal.fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https:\\/\\/storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http:\\/\\/internal.jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https:\\/\\/sqs.sa-east-1.amazonaws.com\\/457003475386\\/email_handler\",\"COLLECTOR_URL\":\"http:\\/\\/collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https:\\/\\/heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https:\\/\\/gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http:\\/\\/painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https:\\/\\/beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https:\\/\\/colorid.ai\\/colorid\\/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/color-id\",\"DOC_URL\":\"http:\\/\\/doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"internal.marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd,\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http:\\/\\/internal.lucius.bbrands.com.br\"}"
+ntr
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https:\\/\\/hooks.slack.com\\/services\\/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\",\"MEGAN_URL\":\"http:\\/\\/internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http:\\/\\/internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http:\\/\\/internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http:\\/\\/internal.stark.bbrands.com.br\",\"BUILD_URL\":\"https:\\/\\/storage.googleapis.com\\/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6\\/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https:\\/\\/slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https:\\/\\/platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https:\\/\\/haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http:\\/\\/internal.fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https:\\/\\/storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http:\\/\\/internal.jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https:\\/\\/sqs.sa-east-1.amazonaws.com\\/457003475386\\/email_handler\",\"COLLECTOR_URL\":\"http:\\/\\/collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https:\\/\\/heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https:\\/\\/gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http:\\/\\/painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https:\\/\\/beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https:\\/\\/colorid.ai\\/colorid\\/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/color-id\",\"DOC_URL\":\"http:\\/\\/doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"internal.marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd,\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http:\\/\\/internal.lucius.bbrands.com.br\"}"
+ntr
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_INTERNAL_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https:\g\/hooks.slack.com\\/services\\/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\",\"MEGAN_URL\":\"http:\\/\\/internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http:\\/\\/internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http:\\/\\/internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":…
+
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_INTERNAL_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https:\g\/hooks.slack.com\\/services\\/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\",\"MEGAN_URL\":\"http:\\/\\/internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http:\\/\\/internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http:\\/\\/internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http:\\/\\/internal.stark.bbrands.com.br\",\"BUILD_URL\":\"https:\\/\\/storage.googleapis.com\\/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6\\/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https:\\/\\/slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https:\\/\\/platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https:\\/\\/haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http:\\/\\/internal.fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https:\\/\\/storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http:\\/\\/internal.jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https:\\/\\/sqs.sa-east-1.amazonaws.com\\/457003475386\\/email_handler\",\"COLLECTOR_URL\":\"http:\\/\\/collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https:\\/\\/heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https:\\/\\/gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http:\\/\\/painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https:\\/\\/beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https:\\/\\/colorid.ai\\/colorid\\/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/color-id\",\"DOC_URL\":\"http:\\/\\/doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"internal.marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd,\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http:\\/\\/internal.lucius.bbrands.com.br\"}"
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_INTERNAL_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https:\g\\/hooks.slack.com\\/services\\/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\",\"MEGAN_URL\":\"http:\\/\\/internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http:\\/\\/internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http:\\/\\/internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http:\\/\\/internal.stark.bbrands.com.br\",\"BUILD_URL\":\"https:\\/\\/storage.googleapis.com\\/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6\\/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https:\\/\\/slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https:\\/\\/beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https:\\/\\/triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https:\\/\\/platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https:\\/\\/haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http:\\/\\/internal.fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https:\\/\\/storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http:\\/\\/internal.jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https:\\/\\/sqs.sa-east-1.amazonaws.com\\/457003475386\\/email_handler\",\"COLLECTOR_URL\":\"http:\\/\\/collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https:\\/\\/heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https:\\/\\/gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http:\\/\\/painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https:\\/\\/beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https:\\/\\/colorid.ai\\/colorid\\/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https:\\/\\/beyoung.com.br\\/api\\/color-id\",\"DOC_URL\":\"http:\\/\\/doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"internal.marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd,\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http:\\/\\/internal.lucius.bbrands.com.br\"}"
+ntr
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_INTERNAL_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https://hooks.slack.com/services/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\",\"MEGAN_URL\":\"http://internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http://internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http://internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http://internal.stark.bbrands.com.br\",\"BUILD_URL\":\"https://storage.googleapis.com/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https://slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https://platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https://haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http://internal.fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https://storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http://internal.jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https://sqs.sa-east-1.amazonaws.com/457003475386/email_handler\",\"COLLECTOR_URL\":\"http://collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https://heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https://gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http://painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https://beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https://beyoung.com.br/api/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https://colorid.ai/colorid/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https://beyoung.com.br/api/color-id\",\"DOC_URL\":\"http://doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"internal.marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd,\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http://internal.lucius.bbrands.com.br\"}"
+ntr
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_INTERNAL_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https://hooks.slack.com/services/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\",\"MEGAN_URL\":\"http://internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http://internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http://internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http://internal.stark.bbrands.com.br\",\"BUILD_URL\":\"https://storage.googleapis.com/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https://slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https://platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https://haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http://internal.fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https://storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http://internal.jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https://sqs.sa-east-1.amazonaws.com/457003475386/email_handler\",\"COLLECTOR_URL\":\"http://collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https://heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https://gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http://painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https://beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https://beyoung.com.br/api/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https://colorid.ai/colorid/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https://beyoung.com.br/api/color-id\",\"DOC_URL\":\"http://doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"internal.marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd,\",\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http://internal.lucius.bbrands.com.br\"}"
+ntr
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_INTERNAL_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https://hooks.slack.com/services/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\",\"MEGAN_URL\":\"http://internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http://internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http://internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http://internal.stark.bbrands.com.br\",\"BUILD_URL\":\"https://storage.googleapis.com/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https://slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https://platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https://haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http://internal.fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https://storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http://internal.jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https://sqs.sa-east-1.amazonaws.com/457003475386/email_handler\",\"COLLECTOR_URL\":\"http://collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https://heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https://gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http://painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https://beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https://beyoung.com.br/api/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https://colorid.ai/colorid/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https://beyoung.com.br/api/color-id\",\"DOC_URL\":\"http://doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"internal.marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd\",\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http://internal.lucius.bbrands.com.br\"}"
+ntr
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_INTERNAL_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"internal.es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https://hooks.slack.com/services/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\",\"MEGAN_URL\":\"http://internal.megan.bbrands.com.br\",\"ELAV_API_URL\":\"http://internal.api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http://internal.jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http://internal.stark.bbrands.com.br\",\"BUILD_URL\":\"https://storage.googleapis.com/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https://slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https://platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https://haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http://internal.fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https://storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http://internal.jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https://sqs.sa-east-1.amazonaws.com/457003475386/email_handler\",\"COLLECTOR_URL\":\"http://collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https://heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https://gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http://painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https://beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https://beyoung.com.br/api/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https://colorid.ai/colorid/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https://beyoung.com.br/api/color-id\",\"DOC_URL\":\"http://doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"internal.marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd,\",\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http://internal.lucius.bbrands.com.br\"}"
+ntr
+redis-cli -h redis.staging.bbrands.com.br SET OPTIMUS:OPTIMUS_PRODUCTION "{\"REDIS_CART_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_CART_PORT\":\"6379\",\"REDIS_CART_DB\":\"8\",\"ELASTICSEARCH_LOG_HOST\":\"es.bbrands.com.br\",\"ELASTICSEARCH_LOG_PORT\":\"80\",\"ELASTICSEARCH_LOG_LEVEL\":\"\",\"SLACK_WEBHOOK_URL\":\"https://hooks.slack.com/services/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\",\"MEGAN_URL\":\"http://megan.bbrands.com.br\",\"ELAV_API_URL\":\"http://api.bbrands.com.br\",\"ELAV_USERNAME\":\"mybeautycaps\",\"ELAV_PASSWORD\":\"slimcaps123@\",\"BULK_KEY\":\"NPdfEyChUbF54VLSw3qov8eTxB7GQuaY\",\"JAIMINHO_URL\":\"http://jaiminho.bbrands.com.br\",\"FREIGHT_SOURCES_8S_DEFAULT\":\"8S-02\",\"FREIGHT_SOURCES_VP_DEFAULT\":\"VP-06\",\"FREIGHT_SOURCES_VP_SP\":\"VP-01\",\"FREIGHT_SOURCES_8S_RJ\":\"8S-03\",\"FREIGHT_SOURCES_VP_RJ\":\"VP-03\",\"STARK_URL\":\"http://stark.bbrands.com.br\",\"BUILD_URL\":\"https://storage.googleapis.com/bbrands-optimus-build\",\"AWS_S3_ACCESS_KEY\":\"GOOGICLU52HYDB74MNM7QE6U\",\"AWS_S3_SECRET_KEY\":\"bj6/Ar4sYMc+U1cMqV3LwRZyp+XFBfo3rSfGtyIk\",\"AWS_S3_REGION\":\"us-east4\",\"AWS_S3_BUCKET\":\"bbrands-optimus-build\",\"RECAPTCHA_SITE_KEY\":\"6LcYZGEUAAAAAKLTb067xn-XYxa155HwyHR9STLv\",\"RECAPTCHA_SECRET_KEY\":\"6LcYZGEUAAAAAPNnnw6GQ6sXIr8bcHzy9LaeMDTX\",\"ZENDESK_USERNAME_HCSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_HCSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_HCSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_SCSITE\":\"felipe.sulimam@slimcaps.com.br\",\"ZENDESK_TOKEN_SCSITE\":\"nRQFBxDuewFfhPcfkbhLmfrlxKWGa0rDN65Z07Kl\",\"ZENDESK_URL_SCSITE\":\"https://slimcaps.zendesk.com\",\"ZENDESK_USERNAME_BYSITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYSITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYSITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_BYISITE\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BYISITE\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BYISITE\":\"https://beyoung.zendesk.com\",\"ZENDESK_USERNAME_TMSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_TMSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_TMSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_MBSITE\":\"atendimento@triptomax.com.br\",\"ZENDESK_TOKEN_MBSITE\":\"8e75H6MCm9EFLjXbeoNG08xvrBUbDNtbcJ5H8qsA\",\"ZENDESK_URL_MBSITE\":\"https://triptomax.zendesk.com\",\"ZENDESK_USERNAME_P4ESITE\":\"atendimento@platinum4ever.com.br\",\"ZENDESK_TOKEN_P4ESITE\":\"pZHSi9HMcub46c8cd2A6PtLrfQBtg8ens39BR5YA\",\"ZENDESK_URL_P4ESITE\":\"https://platinum4ever.zendesk.com\",\"ZENDESK_USERNAME_BCSITE\":\"atendimento@haircaps.com.br\",\"ZENDESK_TOKEN_BCSITE\":\"03tIo1DtrWNmqWrWoo7SV3jWzhHIiGCrtumlic0b\",\"ZENDESK_URL_BCSITE\":\"https://haircaps.zendesk.com\",\"ZENDESK_USERNAME_4EBSITE\":\"\",\"ZENDESK_TOKEN_4EBSITE\":\"\",\"ZENDESK_URL_4EBSITE\":\"\",\"ZENDESK_USERNAME_4EGSITE\":\"\",\"ZENDESK_TOKEN_4EGSITE\":\"\",\"ZENDESK_URL_4EGSITE\":\"\",\"ZENDESK_USERNAME_4EMSITE\":\"\",\"ZENDESK_TOKEN_4EMSITE\":\"\",\"ZENDESK_URL_4EMSITE\":\"\",\"ZENDESK_USERNAME_4EDSITE\":\"\",\"ZENDESK_TOKEN_4EDSITE\":\"\",\"ZENDESK_URL_4EDSITE\":\"\",\"FURY_URL\":\"http://fury.bbrands.com.br\",\"AWS_S3_ENDPOINT\":\"https://storage.googleapis.com\",\"GCP_BIGQUERY_PROJECT_ID\":\"bbrands-production\",\"GCP_BIGQUERY_BUCKET\":\"bbrands-optimus-bigquery\",\"GCP_BIGQUERY_DB\":\"optimus\",\"GCP_BIGQUERY_URL_TABLE\":\"tracking\",\"REDIS_TRACE_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_TRACE_PORT\":\"6379\",\"REDIS_TRACE_DB\":\"6\",\"FREIGHT_SOURCES_8S_RS\":\"8S-04\",\"PAGSEGURO_EMAIL\":\"felipe.sulimam@slimcaps.com.br\",\"PAGSEGURO_TOKEN\":\"ACAB312D0F994154A51D5C3431FE2282\",\"STORE_GTM_CODE_HCSITE\":\"GTM-K3VHHNL\",\"REDIS_CACHE_EMAIL_HOST\":\"redis.cache.bbrands.com.br\",\"REDIS_CACHE_EMAIL_PORT\":\"6379\",\"REDIS_CACHE_EMAIL_DB\":\"10\",\"SLACK_CHANNEL\":\"logger-optimus\",\"FREIGHT_SOURCES_8S_MG\":\"8S-09\",\"FREIGHT_SOURCES_8S_BA\":\"8S-06\",\"FREIGHT_SOURCES_8S_GO\":\"8S-05\",\"FREIGHT_SOURCES_8S_DF\":\"8S-08\",\"GCP_BIGQUERY_URL_NPS_TABLE\":\"nps\",\"REDIS_NPS_HOST\":\"redis.aws.brain.bbrands.com.br\",\"REDIS_NPS_PORT\":\"6379\",\"REDIS_NPS_DB\":\"4\",\"JO_URL\":\"http://jo.bbrands.com.br\",\"FREIGHT_SOURCES_8S_SP\":\"8S-02\",\"NEWSLETTER_SQS_SECRET_ACCESS_KEY\":\"hH95llcey+Hz8wEh4ThMhWc5OnPcF2TBA7S6x+Pc\",\"NEWSLETTER_SQS_ACCESS_KEY_ID\":\"AKIAJ2FDL6IZJRD5RNZA\",\"NEWSLETTER_SQS_REGION\":\"sa-east-1\",\"NEWSLETTER_SQS_URL\":\"https://sqs.sa-east-1.amazonaws.com/457003475386/email_handler\",\"COLLECTOR_URL\":\"http://collector.bbrands.com.br\",\"USE_COLLECTOR\":\"1\",\"STORE_GTM_CODE_BY_CART\":\"GTM-KCXJ4P\",\"HEIMDALL_URL\":\"https://heimdall.bbrands.com.br\",\"HEIMDALL_LOGIN\":\"optimus\",\"HEIMDALL_PASS\":\"xzeEGAnN9nPgdnDk\",\"GANDALF_URL\":\"https://gandalf.bbrands.com.br\",\"PAINEL_URL\":\"http://painel.the8co.com.br\",\"JWT_KEY\":\"NKrr69h6ecEvHtEa\",\"ZENDESK_USERNAME_BY_CART\":\"atdmby@bbrands.com.br\",\"ZENDESK_TOKEN_BY_CART\":\"CEpwAvKYiXAaU2uzvHIaq8sCmC8KwXO6GClbv1Pn\",\"ZENDESK_URL_BY_CART\":\"https://beyoung.zendesk.com\",\"GANDALF_LOGIN\":\"optimus@bbrands.com.br\",\"GANDALF_PASS\":\"xzeEGAnN9nPgdnDk\",\"EXTERNAL_INTEGRATION_COLOR_ID_URL\":\"https://beyoung.com.br/api/external-integration-open\",\"EXTERNAL_INTEGRATION_COLOR_ID_APP_URL\":\"https://colorid.ai/colorid/2\",\"EXTERNAL_INTEGRATION_COLOR_ID_CALLBACK_URL\":\"https://beyoung.com.br/api/color-id\",\"DOC_URL\":\"http://doc.bbrands.com.br\",\"DB_TYPE\":\"mysql\",\"DB_HOST\":\"marvel.bbrands.com.br\",\"DB_PORT\":\"3306\",\"DB_USERNAME\":\"optimus\",\"DB_PASSWORD\":\"CuY57BevdcQ4f7hh^$kAwSdX@vKmd,\",\"DB_DATABASE\":\"optimus\",\"DB_CHARSET\":\"utf8mb4\",\"DB_DEFAULT_ENGINE\":\"InnoDB\",\"DB_LOGGING\":\"false\",\"REDIS_CACHE_HOST\":\"\",\"REDIS_CACHE_PORT\":\"6379\",\"REDIS_CACHE_DB\":\"0\",\"PACKAGE_DEFAULT_WEIGHT\":\"106\",\"STORE_GTM_CODE_BYPSITE\":\"GTM-KCXJ4P\",\"LUCIUS_URL\":\"http://lucius.bbrands.com.br\"}"
+ntr
+dcd
 ls -l
-git clone git@bitbucket.org:beautybrands/megan.git
-cd megan/
+ls build
+ntr
+ls -la build
+rm -rf build/beyoung.com.br_notestab_final_produtos-booster-kits-b_mobile_organic_ build/beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_ build/beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_
+sudo rm -rf build/beyoung.com.br_notestab_final_produtos-booster-kits-b_mobile_organic_ build/beyoung.com.br_notestab_final_produtos-booster-kits-crm_mobile_organic_ build/beyoung.com.br_notestab_final_produtos-glow-kits_mobile_organic_
+ntr
+gst
+gco master
+ntr
+gst
+ntr
+gst
+gd
+gd src/
+ga .
+gc
+ggp
+find-in-files src 'lastTransaction'
+find-in-files src 'last_transaction'
+gst
+ga .
+gc -m '(Fix) Usar `coalesce` para acessar `last_transaction`'
+ggp
+exit
+dcu
+dcd
+bb-open stark
+svim stark
+cd Beyoung/NPS/08
 vim
+split-csv ./08-base-nps.csv 3000
+split-csv
+split-csv -h
+split-csv a a
+sbash
+split-csv a a
+split-csv -h
+split-csv ./08-base-nps.csv 3000 email
+ls -l
+cp split/08-base-nps-00.csv ./08-base-interna-nps.csv
+vim 08-base-interna-nps.csv 
+rm -rf split/
+split-csv ./08-base-nps.csv 3000 email
+vim
+rm split/
+rm -rf split/
+split-csv ./08-base-nps.csv 3000 email
+vi
+vim
+wc -l 08-base-nps.csv 
+ls split/
+dotfiles
+ls
+gst
+ebash
+vim
+ebash
+vim scripts/split-csv.js 
+ebash
+node
+yarn
+exit
+yarn start
+tmux attach -t o
+tmux ls
+tmux attach -t 0
 exit
 tmux
-tmux-start bbrands optimus
-yarn hot-reload:container
-ntr
-yarn hot-reload:container
+tmux-start bbrands optimus stark
+tmux list
+tmux ls
+tmux attach -t 0
+tmux attach -t bbrands
+tmux attach -t 0
+tmux attach -t bbrands
+npx nodemon get-voice-list.js
+npx nodemon ./get-voice-list.js
+ls -l
+npx nodemon ./src/get-voice-list.js
 exit
-ffmpeg
-sudo dnf install ffmpeg
-ffmepeg
-sudo dnf -y install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf -y install ffmpeg
-ffmpeg --version
-ffmpeg -version
+cd ..
+cd samplr-ui/
+yarn start
+yarn dev
+cat package.json 
+yarn start
+ls -l
+yarn
+cd ..
+cd samplr-js/
+yarn start
+vim
+yarn start
 exit
-ggl
-gl
+gst
+ls -l
+rm -rf node_modules/
+cp ./* ../samplr-js/
+cp -r ./* ../samplr-js/
 exit
-tmux
-tmux-start bbrands optimus
-tmux
-tmux-start bbrands optimus
-tmux
-tmux-start bbrands optimus
+ga .
+rm .git/index.lock 
+ga .
+gc -m 'update'
+gco -b v0.2
+ls -l
+rm -rf .
+rm -rf ./
+rm -rf ./**/*
+ls -l
+rm -rf node_modules/
+ls -l
+rm -rf ./*
+ls -l
+yarn
+ls -l 
+rm -f ./*
+rm -rf ./*
+gst
+ls -la
+gst
+yarn
+vim
+gst
+vim
+gst
+gr prettier.config.js
+yarn start
+exit
+svim optimus
 bb-open mystique
 svim mystique
+svim mystique-package
+dcu
+ntr
+bb-open lucius
+svim lucius
+dcu
+ntr
+gst
+ga src/
+gds
+gco staging
+gc -m '(Feature) Adicionar "PACKAGE" como tipo de Produto'
+ggp
+ggl
+ggp
+gl
+gco master
+ggl
+gm origin/staging
+ggp
+postman
+eixt
 exit
+dcu
+bb-open megan
+svim megan
+vim
+yarn start
+yarn dev
+ls -l
+yarn
+yarn start
+bb-open lucius
+svim lucius
+dcu
+find-in-files 'Parent product (SKU config)'
+find-in-files 'Parent product \(SKU config\)'
+find-in-files 'findParentByChildOrFail'
+find-in-files 'findVariationsByProduct'
+find-in-files 'findVariationsIdsByProduct'
+gst
+gd
+gst
+gco staging
+ga src/
+gc -m '(Feat) Não retornar estrutura de produtos quando for Embalagem'
+ggp
+ntr
+gst
+gd src/
+ga src/
+gc -m '(Feature) Adicionar filtro por tipo de produto'
+ggp
+dcd
+dcu
+dcd
+dcu
+ntr
+gst
+gd
+gst
+gd src/
+gco staging
+ga src/
+gc -m '(Feature) Não retornar estrutura para produtos do tipo Embalagem'
+ggp
+ggl
+ggp
+container stark_Web
+container stark_web
+gst
+gd src/
+gr src/
+ntr
+gst
+git stash save
+glg
+ggl
+git stash pop
+gst
+gd src/
+gd
+gst
+ga src/
+gc -m '(Feature) Adicionar as Embalagens da Campanha no `campaign.metadata`'
+ggp
+ggl
+ggp
+gst
+ga src/
+gc -m '(Fix) Não retornar PACKAGE na lista de produtos'
+ggp
+dcd
+bb
+cd jaiminho/
+vim
+cd ../stark
+find-in-files 'expirationActions
+find-in-files 'expirationActions'
+find-in-files 'Parent product (SKU config)'
+find-in-files 'Parent product \(SKU config\)'
+postman
+bb-open stark
+svim stark
+bb
+cd stark
+vim
+dcu
+ntr
+gst
+gr src/
+gst
+gd src/
+ga src/
+gc -m '(Feature) Retornar quantiade em estoque das Embalagens'
+ggp
+ggl
+ggp
+node
+ggl
+gst
+gd src/
+ga src/
+gc -m '(Feature) Atualizar estoque de Embalagens no cache'
+ggp
+node
+exit
+dcu
+dcd
+gco master
+gr yarn.lock 
+gco master
+ggl
+gco staging
+gm origin/master
+gst
+ga src/
+gc -m '(Fix) Ajuste ao acessar `metadata`'
+ggp
+gco master
+gm origin/staging
+ggp
+yarn start
+yarn start
+node
+yarn start
+ntr
 exit
 bb
 cd stark/
 vim .env
-exit
-dcu
-bb
-git clone git@bitbucket.org:beautybrands/mystique.git
-bb-open mystique/
-svim mystique/
-ebash
-svim mystique
-dcu
+vim ../lucius/.env
 cd ..
-vim lucius/
-exit
-tmux
-tmux-start bbrands optimus
-svim mystique
-[A
-svim mystique
-svim mystique
-echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
-cat /proc/sys/fs/inotify/max_user_watches
-vim  /etc/sysctl.conf
-ntr
-container mystique_web
-container mystique
-container mystique_web
-ntr
-container mystique_web
-ls l-
-ls -l
-yarn
-container alfred
-container mystique_web
-node -v
-nvm 8
-nvm use 8
-nvm install 8
-yarn install
-container mystique_web
-exit
-tmux
-tmux-start bbrands optimus megan mystique
-bb
-cd lucius/
-find-in-files 'OneToMany'
-vim src/entities/attribute.entity.ts
-tmux start
-tmux-start bbrands optimus megan mystique
-tmux
-tmux-start bbrands optimus megan mystique
-ls -l
-./Downloads/Postman-linux-x64-7.16.1/Postman/Postman 
+cd megan/
+vim .env
 exit
 bb
-cd megan
-vm
-vim
-bb-open optimus
-svim optimus
-yarn hot-reload:container
-ntr
-find-in-files web getInitialProps
-ntr
-find-in-files web/pages/ 'coalesce'
-container optimus
-bb
-cd consul/
-vim
-docker restart consul_nginx
-ntr
-find-in-files web 'import coalesce'
-find-in-files web 'import\ coalesce'
-find-in-files web "import coalesce"
-find-in-files web "import Page"
-find-in-files web "import\scoalesce"
-code .
-gst
-gco -- src/
-exit
-bb
-git clone git@bitbucket.org:beautybrands/jo.git
-bb-open jo
-svim jo
-dcu
-sbash
-dcu
-docker login
-dcu
-gcloud auth configure-docker
-dcu
-gcloud components update
-dcu
-docker pull gcr.io/staging-203611/node:12
-dcu
-dcd
-dcu
-dcd
-dcu 
+cd jaiminho/
+gco master
 ggl
-docker login
-docker pull 
-docker pull --help
-ntr
-gco develop
-ntr
-container jo
-container jo_web
-container jo
-container jo_web
-dcu
-bb
-xcopy megan/.env
-bb-open mystique
-svim mystique
-ntr
-gco -b jo/DEV-3355
-ggp
-ntr
-bb-open optimus
-svim optimus
-dcu
-yarn hot-reload:container
-gst
-container optimus
-nntr
-ntr
-container optimus
-gst
-gd web/components/Nps/NpsPageComponent.js
-gco -- web/components/Nps/NpsPageComponent.js
-gst
-gd
-ga .
-gc -m 'Ajuste de como import `coalesce` do alfred'
-ggp
-gco master && gm origin/staging && ggp
-gco develop
-gm origin/staging
-ggp
-gco -b nps/DEV-3355
-ggp
-ntr
-htop
-clear
-consul
-htop
-clear
-clear
-ntr
 ls -l
 ls -la
-container jo_web
-exit
-tmux
-tmux-start bbrands
-tmux-start -f bbrands optimus jo
-tmux
-tmux-start bbrands
-tmux
-tmux-start bbrands
-tmux
-tmux-start bbrands megan
+vim .env
+dcu
+k8se
+ebash
 bb
 cd stark/
 vim
-bb-open stark
-svim stark
-gd
-gst
-vim src/core/coupon/finder.ts
-vim src/repositories/filter.repository.ts
-gd
-gst
-vim __tests__/src/core/campaign/finder.test.ts
-:qa
-gst
-gd
-gco staging
-gco develop
-ga .
-gc -m 'Ajustes nos testes'
-ggp
-gco staging
 ggl
-gm origin/develop
-ggp
-svim optimus
-ls -l ~/.vim/sessions
-ebash
-sbash
-svim optimus-test-ab
 dcu
-ls -l
-cp gcp-credentials.json ../megan/
-git branch
-gco -b ab-test/DEV-3425
+ga .
+gc -m '(Fix) Ajuste para não parar o fluxo se não encontrar embalagem'
 ggp
-ntr
-gst
-gd
+container lucius
+vim
 gst
 ga .
-gc -m 'Repassar UTMs para decidir Teste A/B e resetar `test_ab_id` dos cookies se vier vazio do Megan'
+gc -m '(Fix) Ajustar tipagem'
 ggp
-gco staging
-gm origin/ab-test/DEV-3425
-hhp
+gl
+exit
+svim optimus
+svim options-mothers-month
+vim
+dcu
+zdomain
+dcu
+dcd
+dcu --force-recreate
+dcu
+dcd
+dcu --force-recreate
+dcd
+dcu --force-recreate
+dcu 
+gst
+ga src/
+gc -m '(Fix) Adicionar BY_CART como fallback do store_code nos cookies'
 ggp
-svim megan
-svim megan-teste
-svim megan-teste-ab
-ebash
-sbash
-svim megan-test-ab
+ggl
+ggp
+find-in-files 'error_login'
+gst
+gd src/
+ga src/
+gc --amend
+ggpf
+gst
+ntr
+gst
+ga src/routes.ts web/components/Pages/PageContainer/PageContainer.js web/components/Errors/ErrorBoundary.js src/controllers/error.controller.ts web/core/ErrorBoundary.js
+find-in-files web 'ErrorBoundary'
+gst
+gr web/components/Login/Login.js
 vim gcp-credentials.json 
-svim megan-test-ab
+gst
+gc -m '(Feature) Adicionar ErrorBoundary para notificar de erros no front'
+ggp
+find-in-files 'error/log'
+gst
 ntr
-ls -la ~/.vim/sessions/
-for f in ~/.vim/sessions/*<CR>; do echo $f; done;
-for f in ~/.vim/sessions/*\<CR\>; do echo $f; done;
-for f in ~/.vim/sessions/*\<CR\>; do rm $f; done;
-ls -la ~/.vim/sessions/
-rm ~/.vim/sessions/megan-teste{,-ab}.vim
-ls -la ~/.vim/sessions/
 gst
-gd
-gco -- .
+ga src/
 gst
-gd .gitignore 
+gds
 gst
-ga .
-gc -m 'Adicionar gcp-credentials.json no .gitignore'
-git branch
-gco -b DEV-3425
+gc -m '(Fix) Ajuste para não mandar buildar URL repetidas quando usar alias'
 ggp
-container megan
-mkdir src/core/search
-node
+ggl
 gst
-gd src/
-gst
-gd src/
-ga .
-gc -m 'Adicionar busca por filtros para Teste A/B'
+gd web/
+ga web/components/
+gc -m '(Fix) Tentar formatar datas do pedido e usar a data sem formatação como fallback'
 ggp
+gst
 gco staging
 ggl
-gl
-gco -
-gm origin/DEV-3425
-gd
+gm origin/master
+ggp
+gco master
 gst
-gd
-ga .
+nt
+ntr
+find-in-files web URLSearchParams
+find-in-files web useQuery
+ls web/helpers/
+ntr
+find-in-files web URLSearchParams
+gst
+ga web/
+gst
 gc
 ggp
-dcu
+ntr
+find-in-files web 'classnames'
+gco staging
+ggl
+gm origin/master
+ggp
+gco develop
+gst
+gm origin/staging
+ggp
+gco -b feature/mothers-month
+ggp
+gco develop
+gco staging
+ggl
+gco develop
+ggl
+gm origin/staging
+gco feature/mothers-month
+gm origin/develop
+gco develop
+ggp
+gco -
+gm origin/develop
+ggp
+gco -b feature/mothers-month/DEV-3570
+gco -b feature/mothers-month-DEV-3570
+ntr
+kntr
+ntr
+find-in-files 'expirationActions'
+find-in-files 'expiration_actions'
+find-in-files 'setCartExpiration'
+gco master
+gst
+gd src/
+gst
+ga src/
+gc -m '(Fix) Calcular brindes depois de atualizar os itens do carrinho'
+ggp
+ggl
+ggp
+ggl
+ntr
+gst
+ga src/
+gc -m '(Fix) Ajuste para remover os brindes do carrinho se não houver brindes nas campanhas'
+ggp
+gst
+ga src/
+gc -m '(Fix) Forçar remover todos os brindes do carrinho'
+ggp
+gco -
+gco feature/mothers-month
+ggl
+gco -
+gm origin/feature/mothers-month
+ntr
+gst
+ga web/
+git stash save
+gco master
+gst
+ga src/
+gl
+gc --amend
+ggpf
+ntr
+gco -
+git stash pop
+ntr
+dcd
+ntr
+find-in-files web 'import { price }'
+find-in-files web 'import\ {\ price\ }'
+find-in-files web 'import\ \{\ price\ \}'
+find-in-files web 'import React'
+find-in-files web 'import\ React'
+find-in-files web 'import\\ React'
+find-in-files 'import React'
+find-in-files 'import { price }'
+find-in-files web 'import { price }'
+find-in-files 'import { price }' | grep ^web/
+dcd
+ntr
+postman
+ntr
+gst
+gd src/core/
+gr src/core/
+ntr
+cp gcp-credentials-staging.json gcp-credentials.json 
+gst
+git stash save
+gco feature/mothers-month
+ggl
+gco -
+git stash pop
+postman
+ntr
+node
+st
+gst
+gd src/
+gr src/
+gst
+gd web/
+gst
+ga web/
+gst
+gc
+gst
+ga src/ web/
+gc --amend
+gst
+ggp
+gco feature/mothers-month
+gst
+gd web/
+gl
+ga web/
+gc --amend
+ntr
+gst
+git stash
+gco feature/mothers-month
+ggl
+gco -
+gm origin/feature/mothers-month
+git stash pop
+postman
+ntr
+node
+ntr
+container optimus
+ntr
+container optimus
+find-in-files 'update-postcode'
+find-in-files web 'update-postcode'
+find-in-files web 'calculate-postcode'
+ntr
+tr
+ntr
+git stash save
+gco feature/mothers-month
+ggl
+gco -
+gm origin/feature/mothers-month
+git stash pop
+gl
+ntr
+gst
+ga package.json web/ yarn.lock 
+gl
+gst
+gc -m '(Fix) Ajustes na seleção de embalagem'
+gco feature/mothers-month
+gm origin/feature/mothers-month-DEV-3570
+ggp
+git stash list
+gco origin/feature/mothers-month-DEV-3570
+gco -
+gco feature/mothers-month-DEV-3570
+gl
+ggp
+gl
+ggpf
+gco feature/mothers-month
+gl
+gm origin/origin/feature/mothers-month-DEV-3570
+gl
+gco -
+gl
+gco -
+ggl
+gm feature/mothers-month-DEV-3570
+git stash save
+gco -
+git stash save
+git merge --abort
+gco -
+gm >>>>>>> feature/mothers-month-DEV-3570
+gm origin/feature/mothers-month
+code .
+gst
+ga web/
+gc
+ggp
+gco feature/mothers-month
+gm origin/feature/mothers-month-DEV-3570
+ggp
+gst
+git stash save
+gco master
+ggl
+git stash pop
+cp gcp-credentials-production.json gcp-credentials.json 
+gst
+gm origin/feature/mothers-month
+gst
+gd src/
+gr src/
+gst
+gd web/
+ga web/
+gc -m '(Fix) Ajustar interação de embalagem'
+ggp
+gst
+ga src/
+gds
+gc -m '(Fix) Enviar `data_agendamento_entrega` como null quando for vazia'
+ggp
+ggl
+ggp
+gst
+gd web/
+ga web/
+gc -m '(Fix) Mostrar "Ponto de Referência" como obrigatório'
+gg
+ggl
+ggp
+gco DEV-3541
+gco DEV-3472
+gco DEV-3355
+git branch
+gco nps/DEV-3355
+gst
+gco -b feature/survey
+git stash list
+git stash --help
+git stash list
+git stash drop
+git stash list
+git stash pop
+git stash save
+gco develop
+gco staging
+ggl
+gl
+gco master
+ggl
+gco staging
+gm origin/master
+gst
+ga web/
+gc
+ggp
+gco develop
+gm origin/staging
+ggp
+gco feature/survey
+gl
+gm origin/develop
+gst
+container optimus
+container megan_web
+gst
+ga .
+gc 
+ggp
+gm origin/master
+ggp
+vim
+clear
+bb-vpn
+[1]   Done                    /home/iribeiro/Downloads/Postman/Postman/Postman > /dev/null 2>&1
+samplr-canvas
+bb-vpn
+clear
+consul
+postman
+ir
+cd samplr-canvas/
+code .
+htop
 tmux
-tmux-start bbrands megan optimus
+tmux-start bbrands optimus
+tmux ls
+tmux attach 0
+tmux attach -t 0
+tmux attach -t bbrands
+yarn start
+cd ..
+cd samplr-ui/
+yarn start
+cd ..
+cd samplr-js/
+yarn start
+exit
+code .
+ga .
+gc -m '(v0.2) New UI using HTML Canvas and MPC-like ui'
+ggp
+ga
+gst
+ga .gitignore 
+gst
+git remove .cache/
+git rm .cache/
+git -r rm .cache/
+git rm -r .cache
+gst
+git rm -r .cache
+git rm -rf .cache
+gst
+rm -rf dist/
+gst
+ga dist
+gst
+gc -m 'Add dist/ .cache/ to .gitignore'
+ggp
+gst
+ga .
+gc -m '(Feat) Add Metronome'
+ggp
+vim
+yarn start
+exit
+bb
+cd optimus/
+vim
+gst
+ga web/ yarn.lock 
+gc
+im
+vim
+container optimus
+postman
+sudo lsusb -vvv |grep -i -B5 -A5 bcdUSB
+sudo lsusb -vvv |grep -i -B5 -A5 bDeviceProtocol
+exit
+yarn add webmidi
+yarn start
+tmux list
+tmux ls
+tmux attach -t 0
+tmux start bbrands
+tmux-start bbrands
+ir
 tmux
+tmux ls
+tmux attach -t bbrands
+exit
+vim
+ir
+cd samplr-js/
+gst
+vim
+exit
+gst
+yarn start
+ts
+yarn start
+tmux
+bb
+cd optimus/
+find-in-files src contrast
+find-in-files src invert
+find-in-files web contrast
+find-in-files web/components contrast
+find-in-files web/components/**/*.scss contrast
+find-in-files *.scss contrast
+find-in-files **.scss contrast
+find-in-files web contrast | grep .scss
+vim
+tmux-start bbrands optimus
+tmux
+tmux-start bbrands optimus
+tmux
+tmux-start bbrands optimus
+google-chrome-stable --help
+google-chrome-stable > /dev/null 2>&1
+google-chrome-stable &
+google-chrome-stable > /dev/null 2>&1 &
+tmux list
 tmux-start bbrands optimus
 tmux
 tmux-start bbrands optimus
 ebash
-dotfiles
-ls -l
-bb
-ls -l
-dotfiles
-gst
-ga .
-gc -m 'update'
-gl
-a
-ggp
-python
+sbash
+chrome
+tmux --help
+tmux --h
+man tmux
+tmux new -d bbrands
+tmux list
+tmux new
+tmux list
+tmux ls
+tmux kill-session
+tmux ls
+tmux new -d
+tmux ls
+tmux kill-session
+man tmux new
+tmux new -d -s bbrands
+tmux ls
+tmux-start -f bbrands optimus
+chrome
+tmux new -d -s bbrands
+tmux-start bbrands -f optimus
+tmux new -d -s bbrands
+tmux ls
+tmux-start -f bbrands optimus
+tmux-start bbrands optimus -f
+tmux
+tmux-start bbrands optimus -f
+dcu
+bb-open collector
+svim collector
+touch testing.sqlite.cache
+ntr
 exit
-dotfiles
+chrome
+htop
 tmux
 tmux-start bbrands optimus
-yarn hot-reload:container
+chrome
+tmux
+tmux-start bbrands optimus
+tmux-start bbrands
+bb-open megan
+svim megan
+dcu
+bb-open lucius
+svim lucius
+dcu
+ntr
+bb-open lucius
+svim lucius
+chrome
+tmux
+tmux-start bbrands
+chrome
+tmux
+tmux-start bbrands optimus
+sudo dnf check-update
+sudo dnf update code
+code
+exit
+chrome
+tmux
+tmux-start bbrands optimus
+bb
+cd stark
+gst
+gd
+bb-open stsark
+svim stsark
+dcu
+chrome
+tmux
+tmux-start bbrands optimus
+dcu
+ntr
+chrome
+tmux
+tmux-start bbrands
+bb-open stark
+svim stark
+dcu
+bb-open optimus
+svim optimus
+curl 'https://beyoung.com.br/primer/carrinho'   -H 'authority: beyoung.com.br'   -H 'accept: application/json, text/javascript, */*; q=0.01'   -H 'x-newrelic-id: VQEDUlZbCBABU1JUDgADUVQ='   -H 'dnt: 1'   -H 'x-requested-with: XMLHttpRequest'   -H 'user-agent: Mozilla/5.0 (Linux; Android 9; moto g(6) plus) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.83 Mobile Safari/537.36'   -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8'   -H 'origin: https://beyoung.com.br'   -H 'sec-fetch-site: same-origin'   -H 'sec-fetch-mode: cors'   -H 'sec-fetch-dest: empty'   -H 'referer: https://beyoung.com.br/primer/carrinho?p=fb&h=sb20'   -H 'accept-language: en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7,und;q=0.6'   -H 'cookie: _scid=6208fb65-5557-450a-b83e-f029189b15af; _ga=GA1.1.1559800760.1568610733; _ga=GA1.3.1559800760.1568610733; _fbp=fb.2.1568610734681.1147281354; sback_client=58506a0982b21c2de75f6d98; sback_partner=false; sb_days=1568610736487; sback_pageview=false; _hjid=c910f054-86e1-4ec5-9d3e-5c50ccdd4b0f; __kdtv=t%3D1534706811378%3Bi%3D8de28bd7fc5b270ed54bcd3cbf1687dcdb755e2a; _kdt=%7B%22t%22%3A1534706811378%2C%22i%22%3A%228de28bd7fc5b270ed54bcd3cbf1687dcdb755e2a%22%7D; _fbc=fb.2.1574997048802.IwAR1gB4CFmCjWnvn40vhsMC9cRa2BFOf6DrVfKoXtvKo42_T3pR3ujK54C1E; __zlcmid=xLj0Jkk1jtyrGg; _gcl_au=1.1.150345766.1586377400; __cfduid=d23c73d34a475327d31286c753bdc41631590803244; pagina_produtos=produtos-fs; PHPSESSID=cd1b53b5e2eee2a4da37767979beff27; desconto_especial=68; _gid=GA1.1.587847452.1590803250; _gid=GA1.3.587847452.1590803250; _st_ses=9396719698699159; _cm_ads_activation_retry=false; _sptid=1702; _spcid=1695; _st_idb=bmV3LmV5SjBlWEFpT2lKS1YxUWlMQ0poYkdjaU9pSklVekkxTmlKOS5leUpsYldGcGJDSTZJblJoYkhsMFlTNXRjMkZ1ZEc5elFHaHZkRzFoYVd3dVkyOXRJbjAudW03SWlhbWsyV1BENG5zZTFaMnBkMmlJbndBTVRmMHdDZlk4REVJT3QtUS5XcldyRHJIZXFCaVlxQktxZ1BEcldy; _st_cart_script=helper_beyoung.js; _st_cart_url=/; sback_browser=0-34630400-1525104131d7ccc487b0771416cf51f1e7767d8b01e82d8dae1453227675ae73e03548d45-78074150-1873513165-1590803251; sback_customer=$2wRxgXRCdVdaR3MY10QUhnWkdXZVVHVw00azMVSGdVbN10aDZUOXJ3TWVzSFlGR40UbyI2Z3RkMPlHbKRGVUdzT2$12; sback_access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuc2JhY2sudGVjaCIsImlhdCI6MTU5MDgwMzI1MiwiZXhwIjoxNTkwODg5NjUyLCJhcGkiOiJ2MiIsImRhdGEiOnsiY2xpZW50X2lkIjoiNTg1MDZhMDk4MmIyMWMyZGU3NWY2ZDk4IiwiY2xpZW50X2RvbWFpbiI6ImJleW91bmcuY29tLmJyIiwiY3VzdG9tZXJfaWQiOiI1YWU3M2UwNTE3YjFkYTk5MTA2ODhlNzkiLCJjdXN0b21lcl9hbm9ueW1vdXMiOmZhbHNlLCJjb25uZWN0aW9uX2lkIjoiNWI3OWM0ZWVjMTRjZTQxZjFjNGUxZmFmIiwiYWNjZXNzX2xldmVsIjoiY3VzdG9tZXIifX0.w14-MLlWaP3UNqxwKQ2fQEEpQrPuIbP7WrYcwICaG2I.WrWrDrHeqBiYqBKqgPDrgP; sback_current_session=1; sback_total_sessions=119; sback_session=5ed1bb375ce18d2bdb794bd2; sback_customer_w=true; cart_products_total=119.80; cart_total=119.80; cart_purchase=0; cart_purchase_upsell=0; _spl_pv=381; sback_refresh_wp=no; cart_freight=8.62; sback_cart=5ed1bb48ec4b1145c61b2c5f; _gat_UA-85983639-1=1; _st_id=aWdvcnJAYmJyYW5kcy5jb20uYnI=; cpf=000.000.001-91; selected-installments=1x'   --data-raw 'formData=is_cartao%3Don%26id_pedido_03ff1f1c2665cb0eba21c057964a717b310f736e%3D%26nome_03ff1f1c2665cb0eba21c057964a717b310f736e%3DTeste%2BTeste%26telefone_03ff1f1c2665cb0eba21c057964a717b310f736e%3D(11)%2B1111-1111%26cpf_03ff1f1c2665cb0eba21c057964a717b310f736e%3D000.000.001-91%26email_03ff1f1c2665cb0eba21c057964a717b310f736e%3Digorr%2540bbrands.com.br%26cep_03ff1f1c2665cb0eba21c057964a717b310f736e%3D05311-000%26logradouro_03ff1f1c2665cb0eba21c057964a717b310f736e%3DAvenida%2BMofarrej%26nresidencia_03ff1f1c2665cb0eba21c057964a717b310f736e%3D825%26complemento_03ff1f1c2665cb0eba21c057964a717b310f736e%3D%26bairro_03ff1f1c2665cb0eba21c057964a717b310f736e%3DVila%2BLeopoldina%26cidade_03ff1f1c2665cb0eba21c057964a717b310f736e%3DS%25C3%25A3o%2BPaulo%26estado_03ff1f1c2665cb0eba21c057964a717b310f736e%3DSP%26numero_cartao_03ff1f1c2665cb0eba21c057964a717b310f736e%3D5294190000014590%26mes_validade_03ff1f1c2665cb0eba21c057964a717b310f736e%3D05%26ano_validade_03ff1f1c2665cb0eba21c057964a717b310f736e%3D2023%26cod_seguranca_03ff1f1c2665cb0eba21c057964a717b310f736e%3D490%26nome_cartao_03ff1f1c2665cb0eba21c057964a717b310f736e%3DMayra%2BSerrano%2Bde%2BBarros%26cartao_parcelas_03ff1f1c2665cb0eba21c057964a717b310f736e%3D1x%26konduto_id%3Dundefined%26konduto_id%3D8de28bd7fc5b270ed54bcd3cbf1687dcdb755e2a'   --compressed
+curl 'https://beyoung.com.br/primer/carrinho'   -H 'authority: beyoung.com.br'   -H 'accept: application/json, text/javascript, */*; q=0.01'   -H 'x-newrelic-id: VQEDUlZbCBABU1JUDgADUVQ='   -H 'dnt: 1'   -H 'x-requested-with: XMLHttpRequest'   -H 'user-agent: Mozilla/5.0 (Linux; Android 9; moto g(6) plus) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.83 Mobile Safari/537.36'   -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8'   -H 'origin: https://beyoung.com.br'   -H 'sec-fetch-site: same-origin'   -H 'sec-fetch-mode: cors'   -H 'sec-fetch-dest: empty'   -H 'referer: https://beyoung.com.br/primer/carrinho?p=fb&h=sb20'   -H 'accept-language: en-US,en;q=0.9,pt-BR;q=0.8,pt;q=0.7,und;q=0.6'   -H 'cookie: _scid=6208fb65-5557-450a-b83e-f029189b15af; _ga=GA1.1.1559800760.1568610733; _ga=GA1.3.1559800760.1568610733; _fbp=fb.2.1568610734681.1147281354; sback_client=58506a0982b21c2de75f6d98; sback_partner=false; sb_days=1568610736487; sback_pageview=false; _hjid=c910f054-86e1-4ec5-9d3e-5c50ccdd4b0f; __kdtv=t%3D1534706811378%3Bi%3D8de28bd7fc5b270ed54bcd3cbf1687dcdb755e2a; _kdt=%7B%22t%22%3A1534706811378%2C%22i%22%3A%228de28bd7fc5b270ed54bcd3cbf1687dcdb755e2a%22%7D; _fbc=fb.2.1574997048802.IwAR1gB4CFmCjWnvn40vhsMC9cRa2BFOf6DrVfKoXtvKo42_T3pR3ujK54C1E; __zlcmid=xLj0Jkk1jtyrGg; _gcl_au=1.1.150345766.1586377400; __cfduid=d23c73d34a475327d31286c753bdc41631590803244; pagina_produtos=produtos-fs; PHPSESSID=cd1b53b5e2eee2a4da37767979beff27; desconto_especial=68; _gid=GA1.1.587847452.1590803250; _gid=GA1.3.587847452.1590803250; _st_ses=9396719698699159; _cm_ads_activation_retry=false; _sptid=1702; _spcid=1695; _st_idb=bmV3LmV5SjBlWEFpT2lKS1YxUWlMQ0poYkdjaU9pSklVekkxTmlKOS5leUpsYldGcGJDSTZJblJoYkhsMFlTNXRjMkZ1ZEc5elFHaHZkRzFoYVd3dVkyOXRJbjAudW03SWlhbWsyV1BENG5zZTFaMnBkMmlJbndBTVRmMHdDZlk4REVJT3QtUS5XcldyRHJIZXFCaVlxQktxZ1BEcldy; _st_cart_script=helper_beyoung.js; _st_cart_url=/; sback_browser=0-34630400-1525104131d7ccc487b0771416cf51f1e7767d8b01e82d8dae1453227675ae73e03548d45-78074150-1873513165-1590803251; sback_customer=$2wRxgXRCdVdaR3MY10QUhnWkdXZVVHVw00azMVSGdVbN10aDZUOXJ3TWVzSFlGR40UbyI2Z3RkMPlHbKRGVUdzT2$12; sback_access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhcGkuc2JhY2sudGVjaCIsImlhdCI6MTU5MDgwMzI1MiwiZXhwIjoxNTkwODg5NjUyLCJhcGkiOiJ2MiIsImRhdGEiOnsiY2xpZW50X2lkIjoiNTg1MDZhMDk4MmIyMWMyZGU3NWY2ZDk4IiwiY2xpZW50X2RvbWFpbiI6ImJleW91bmcuY29tLmJyIiwiY3VzdG9tZXJfaWQiOiI1YWU3M2UwNTE3YjFkYTk5MTA2ODhlNzkiLCJjdXN0b21lcl9hbm9ueW1vdXMiOmZhbHNlLCJjb25uZWN0aW9uX2lkIjoiNWI3OWM0ZWVjMTRjZTQxZjFjNGUxZmFmIiwiYWNjZXNzX2xldmVsIjoiY3VzdG9tZXIifX0.w14-MLlWaP3UNqxwKQ2fQEEpQrPuIbP7WrYcwICaG2I.WrWrDrHeqBiYqBKqgPDrgP; sback_current_session=1; sback_total_sessions=119; sback_session=5ed1bb375ce18d2bdb794bd2; sback_customer_w=true; cart_products_total=119.80; cart_total=119.80; cart_purchase=0; cart_purchase_upsell=0; _spl_pv=381; sback_refresh_wp=no; cart_freight=8.62; sback_cart=5ed1bb48ec4b1145c61b2c5f; _gat_UA-85983639-1=1; _st_id=aWdvcnJAYmJyYW5kcy5jb20uYnI=; cpf=000.000.001-91; selected-installments=1x'   --data-raw 'formData=is_cartao%3Don%26id_pedido_03ff1f1c2665cb0eba21c057964a717b310f736e%3D%26nome_03ff1f1c2665cb0eba21c057964a717b310f736e%3DTeste%2BTeste%26telefone_03ff1f1c2665cb0eba21c057964a717b310f736e%3D(11)%2B1111-1111%26cpf_03ff1f1c2665cb0eba21c057964a717b310f736e%3D000.000.001-91%26email_03ff1f1c2665cb0eba21c057964a717b310f736e%3Digorr%2540bbrands.com.br%26cep_03ff1f1c2665cb0eba21c057964a717b310f736e%3D05311-000%26logradouro_03ff1f1c2665cb0eba21c057964a717b310f736e%3DAvenida%2BMofarrej%26nresidencia_03ff1f1c2665cb0eba21c057964a717b310f736e%3D825%26complemento_03ff1f1c2665cb0eba21c057964a717b310f736e%3D%26bairro_03ff1f1c2665cb0eba21c057964a717b310f736e%3DVila%2BLeopoldina%26cidade_03ff1f1c2665cb0eba21c057964a717b310f736e%3DS%25C3%25A3o%2BPaulo%26estado_03ff1f1c2665cb0eba21c057964a717b310f736e%3DSP%26numero_cartao_03ff1f1c2665cb0eba21c057964a717b310f736e%3D5294190000014590%26mes_validade_03ff1f1c2665cb0eba21c057964a717b310f736e%3D05%26ano_validade_03ff1f1c2665cb0eba21c057964a717b310f736e%3D2023%26cod_seguranca_03ff1f1c2665cb0eba21c057964a717b310f736e%3D490%26nome_cartao_03ff1f1c2665cb0eba21c057964a717b310f736e%3DMayra%2BSerrano%2Bde%2BBarros%26cartao_parcelas_03ff1f1c2665cb0eba21c057964a717b310f736e%3D1x%26konduto_id%3Dundefined%26konduto_id%3D8de28bd7fc5b270ed54bcd3cbf1687dcdb755e2a'   --compressed
+exit
+chrome
+tmux-start bbrands
+tmux
+tmux-start bbrands
+ntr
+exit
+bb-open stark
+svim stark
+dcu
+find-in-files src 'totalProducts = '
+find-in-files src 'totalProducts ='
+find-in-files src 'totalProducts='
+find-in-files src 'totalProduct'
+find-in-files src 'totalProducts'
+gco staging
+gst
+ga 
+ga .
+gds
+gc
+ggp
+gco master
+gm origin/staging
+ggp
+bb-open lucius
+svim lucius
+bb
+cd stark
+gst
+gst
+ggl
+gco master
+gm  origin/staging
+ggp
+chrome
 tmux
 tmux-start bbrands

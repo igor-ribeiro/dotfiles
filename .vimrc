@@ -19,6 +19,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-flagship'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Sessions
 Plug 'tpope/vim-obsession'
 " Plug 'dhruvasagar/vim-prosession'
@@ -310,24 +311,18 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Allow JSX in .js files
 let g:jsx_ext_required = 0
 
-let g:ale_fix_on_save = 1
+" let g:prettier#autoformat = 1 
+let g:ale_fix_on_save = 0
 let g:ale_fixers = {
-\   'javascript': [
-\       'prettier',
-\   ],
 \   'typescript': [
 \       'tslint',
-\       'prettier',
 \   ],
 \   'tsx': [
 \       'tslint',
-\       'prettier',
 \   ],
 \   'scss': [
-\       'prettier',
 \   ],
 \   'json': [
-\       'prettier',
 \   ],
 \}
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
@@ -409,6 +404,7 @@ endfun
 
 if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+    autocmd BufWritePre *.ts,*.css,*.scss,*.tsx,*.js,*.json :Prettier
 endif
 
 " Switch buffers
@@ -417,6 +413,11 @@ nnoremap <leader>b :b#<CR>
 " ---
 " Helper functions
 " ---
+
+
+function! InlineJSON()
+  :silent %s/\n//g | silent %s/\s\{2\}//g
+endfunction
 
 " Returns true if paste mode is enabled
 function! HasPaste()
