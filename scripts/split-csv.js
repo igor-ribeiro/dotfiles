@@ -83,13 +83,6 @@ function saveDuplicated() {
 }
 
 rl.on("line", line => {
-  // console.log('-'.repeat(50));
-  // console.log('ENDS AT')
-  // const endsAtLineBreak = text.charAt(text.lenth - 1) == '\n';
-
-  // const lines = text.split('\n');
-
-  // for (let line of textkj) {
   if (line == "") {
     return;
   }
@@ -111,13 +104,10 @@ rl.on("line", line => {
     const uniqueColumn = columns[uniqueFieldIndex];
 
     if (uniqueColumn == null) {
-      // console.log('-'.repeat(20))
-      // console.log(text);
       return;
     }
 
     if (uniqueColumn in imported) {
-      // console.log('Ignoring', uniqueColumn, uniqueFieldIndex, columns)
       duplicated += uniqueColumn.trim() + "\n";
       ignoredCount++;
       return;
@@ -128,7 +118,6 @@ rl.on("line", line => {
 
   chunk = (chunk || "") + line.trim() + "\n";
   chunkLines++;
-  // }
   linesCount++;
 }).on("close", () => {
   saveChunk();

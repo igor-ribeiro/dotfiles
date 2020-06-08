@@ -1,28 +1,3 @@
-gds
-gc -m '(Fix) Ajuste ao pegar `itemsArray`'
-ggp
-gl
-ggl
-container optimus
-find-in-files web 'CartPricesTable'
-gsutil -m cp -R ./build/beyoung.com.br_notestab_final_finalizar_mobile_organic_ gs://bbrands-optimus-build/build
-gst
-ls -l
-cat gcp-credentials.json 
-ntr
-gsutil -m cp -R ./build/beyoung.com.br_notestab_final_finalizar_mobile_organic_ gs://bbrands-optimus-build/build -h "Cache-Control:no-cache"
-gsutil -m -h "Cache-Control:no-cache" cp -R ./build/beyoung.com.br_notestab_final_finalizar_mobile_organic_ gs://bbrands-optimus-build/build
-gst
-gd
-ga .
-gc
-ggp
-gst
-gr .
-git branch
-gco nps/DEV-3355
-gst
-git stash list
 git stash pop
 gst
 git stash save
@@ -998,3 +973,28 @@ ggp
 chrome
 tmux
 tmux-start bbrands
+chrome
+tmux
+tmux-start bbrands
+ntr
+container optimus
+docker stop
+sudo systemctl stop docker
+container optimus
+ntr
+container
+container opt
+exit
+bb
+cd stark
+gst
+glg
+ggl
+gco staging
+ggl
+gm origin/master
+ggp
+exit
+chrome
+tmux
+tmux-start bbrands optimus
