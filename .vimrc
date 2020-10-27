@@ -247,7 +247,8 @@ syntax enable
 set termguicolors
 set background=dark
 " colorscheme hybrid_reverse
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme OceanicNext
 let g:two_firewatch_italics=1
 
 " Enable 256 colors palette in Gnome Terminal;

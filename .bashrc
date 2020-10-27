@@ -96,6 +96,10 @@ alias gm="git merge --no-ff"
 alias gl="git log"
 alias gr="git restore"
 
+function gs () {
+  git switch @a
+}
+
 # Bash
 alias ebash="vim ~/.bashrc"
 alias sbash="source ~/.bashrc"
@@ -171,8 +175,8 @@ function gco () {
   git checkout $@
   (git fetch -q &>/dev/null &)
 }
-# Check if folder has .git
 
+# Check if folder has .git
 function has-git () {
   if [[ $(find . -maxdepth 1 -name '.git') ]]; then
     true
@@ -540,3 +544,6 @@ if [ -f '/home/iribeiro/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeir
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/iribeiro/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/completion.bash.inc'; fi
+
+# MKV -> MP4
+# ffmpeg -i DeliveryTimeInput.spec\ -\ Refactor.mkv -vcodec copy -c:a aac DeliveryTimeInput.spec\ -\ Refactor.mp4
