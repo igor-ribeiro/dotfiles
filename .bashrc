@@ -16,9 +16,18 @@ export LANG="en_US.utf8"
 
 export TERM=xterm-256color
 
-export PATH=~/.npm-global/bin:$PATH
+export PATH=~/Code/flutter/bin:~/android-studio/bin:~/.npm-global/bin:$PATH
 
 export LESS="-SXF"
+
+# avoid duplicates..
+export HISTCONTROL=ignoredups:erasedups
+
+# append history entries..
+shopt -s histappend
+
+# After each command, save and reload history
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Enable Vim mode
 # set -o vi
@@ -58,6 +67,10 @@ function dotfiles () {
 # VPN
 alias bb-vpn="sudo openvpn --config ~/.vpn/igorr.ovpn --askpass ~/.vpn/auth.txt"
 
+function by-vpn () {
+  wg-quick $1 ~/.vpn/by-igor.conf
+}
+
 # Trigger nodemon reload
 alias ntr="touch src/server.ts"
 
@@ -92,7 +105,6 @@ alias gc="git commit"
 alias gca="git commit --amend"
 alias gd="git diff"
 alias gds="git diff --staged"
-alias gm="git merge --no-ff"
 alias gl="git log"
 alias gr="git restore"
 
@@ -209,6 +221,10 @@ function ggl () {
   git pull origin $(current-git-branch)
 }
 
+function gm () {
+  git merge --no-ff origin/$@
+}
+
 function get-git-untracked-count () {
   echo $(gst -s | grep -e '^[ ?]' | wc -l)
 }
@@ -296,7 +312,7 @@ export PS1=$(get-bash-status)
 ## UTILS
 # Python HTTP Server
 function server() {
-  python -m SimpleHTTPServer 8080
+  python -m http.server 9090
 }
 
 # Parse JSON
@@ -314,7 +330,7 @@ function find-in-files () {
     r="$2"
   fi
 
-   grep --exclude-dir={.git,node_modules,dist} -rnw "$r" -P $dir
+   grep --exclude-dir={.git,node_modules,dist,.next} -rnw "$r" -P $dir
 }
 
 # Copy command to clipboard
@@ -546,4 +562,9 @@ if [ -f '/home/iribeiro/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeir
 if [ -f '/home/iribeiro/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/completion.bash.inc'; fi
 
 # MKV -> MP4
-# ffmpeg -i DeliveryTimeInput.spec\ -\ Refactor.mkv -vcodec copy -c:a aac DeliveryTimeInput.spec\ -\ Refactor.mp4
+function to-mp4 () {
+  filename=$1
+  new_filename=$(echo $filename | awk '{sub(/\..+$/, ".mp4")}1')
+  
+  ffmpeg -i $filename -vcodec copy -c:a aac $new_filename
+}

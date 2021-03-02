@@ -15,7 +15,6 @@ sudo fc-cache
 # BASH
 # --
 ln -sf $(pwd)/.bashrc $HOME/
-ln -sf $(pwd)/.bash_history $HOME/
 
 # --
 # VIM
@@ -47,4 +46,9 @@ ln -sf $(pwd)/.tmux.conf $HOME/
 # --
 # Sets the pager to behave like `man`
 git config --global core.pager 'less -+X'
+
+# --
+# VPN
+# --
+sudo dnf install wireguard-tools
 
