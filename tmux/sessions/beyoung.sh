@@ -2,11 +2,7 @@
 
 source ~/.bashrc
 
-session_name='bbrands'
-
-function test () {
-  echo 'TEST'
-}
+session_name='beyoung'
 
 tmux new -s $session_name -d \; \
   rename-window 'Terminal' \; \
@@ -14,10 +10,9 @@ tmux new -s $session_name -d \; \
   send-keys 'bb-vpn' \; \
   split-window -v \; \
   send-keys 'clear' C-m \; \
-  send-keys 'consul' \; \
   select-pane -t 1 \; \
   split-window -h \; \
-  send-keys 'htop' C-m \; \
+  send-keys 'dev-proxy' C-m \; \
   resize-pane -U 40 \; \
   resize-pane -D 6
 

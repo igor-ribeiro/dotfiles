@@ -52,3 +52,20 @@ git config --global core.pager 'less -+X'
 # --
 sudo dnf install wireguard-tools
 
+# --
+# NEO VIM
+# --
+
+# BUILD SOURCE
+sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch
+
+# Clone
+cd ~/code/Ribeiro && git clone git@github.com:neovim/neovim.git
+
+
+mkdir -p $HOME/.config/nvim
+ln -sf $(pwd)/nvim/init.vim $HOME/.config/nvim
+
+# Install Vim Plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'

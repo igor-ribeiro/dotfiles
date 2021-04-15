@@ -6,7 +6,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific environment
-PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+PATH="$HOME/.local/bin:$HOME/bin:$HOME/neovim/bin:$PATH"
 export PATH
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -32,12 +32,12 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # Enable Vim mode
 # set -o vi
 
-
 # ---
 # ALIASES
 # ---
 
 # Docker
+alias dcudebug="docker-compose -f docker-compose.yml -f docker-compose.debug.yml up"
 alias dcu="docker-compose up"
 alias dcud="docker-compose up -d && docker-compose logs -f"
 alias dcl="docker-compose logs -f"
@@ -117,7 +117,7 @@ alias ebash="vim ~/.bashrc"
 alias sbash="source ~/.bashrc"
 
 # Vim
-alias evim="vim ~/.vimrc"
+alias evim="nvim ~/.config/nvim/init.vim"
 alias vim="vimx"
 
 # Tmux
@@ -158,7 +158,7 @@ function tmux-start () {
     else
       projects+=($arg)
     fi
-    
+
     ((++i))
   done
 
@@ -383,12 +383,12 @@ function mkd () {
   cd $1
 }
 
-function bb-open () {
+function by-open () {
   bb
   cd $1
 
   name=$(echo $1 | awk '
-  BEGIN { ORS="" }; 
+  BEGIN { ORS="" };
 
   {
     split($0, array, "");
@@ -406,7 +406,7 @@ function bb-open () {
 
   tmux split-window -h
   tmux split-window
-  tmux send-keys -t 1 "svim $1" Enter
+  tmux send-keys -t 1 "nvim ." Enter
   tmux send-keys -t 2 dcu Enter
   tmux rename-window $name
   tmux select-pane -t 1
@@ -439,7 +439,7 @@ function svim () {
 
   touch $session_file
 
-  vim -S $session_file -c "silent Obsess $session_file"
+  nvim -S $session_file -c "silent Obsess $session_file"
 }
 
 function nps-sent-emails-sql () {
@@ -482,7 +482,7 @@ function nps-sent-emails-sql () {
 
   echo "Operation completed."
   echo "- Filtered CSV file generated as $new_csv_filename"
-  echo "- SQL filed generated as $new_sql_filename" 
+  echo "- SQL filed generated as $new_sql_filename"
 }
 
 function split-csv () {
@@ -564,7 +564,53 @@ if [ -f '/home/iribeiro/google-cloud-sdk/completion.bash.inc' ]; then . '/home/i
 # MKV -> MP4
 function to-mp4 () {
   filename=$1
-  new_filename=$(echo $filename | awk '{sub(/\..+$/, ".mp4")}1')
-  
-  ffmpeg -i $filename -vcodec copy -c:a aac $new_filename
+  no_extension="${filename%.*}"
+  extension="${filename##*.}"
+
+  ffmpeg -i $filename -vcodec copy -c:a aac "$no_extension.mp4"
 }
+
+function trim-video () {
+  if [ "$1" = "" ] || [ "$2" = "" ]
+  then
+    echo "Usage: trim-video FILENAME START FINISH (optional)"
+    return
+  fi
+
+  filename=$1
+  start="-ss $2"
+  finish=""
+
+  if [ "$3" != "" ]
+  then
+    finish="-to $3"
+  fi
+
+  extension="${filename##*.}"
+  no_extension="${filename%.*}"
+
+  ffmpeg $start -i $filename $finish -c copy "${no_extension}-CROP.${extension}"
+}
+
+function to-gif () {
+  if [ "$1" = "" ] 
+  then
+    echo "Usage: to-gif FILENAME"
+    return
+  fi
+
+  filename=$1
+  no_extension="${filename%.*}"
+
+  # ffmpeg -i $filename -filter_complex "[0:v] palettegen" palette.png
+  # ffmpeg -i $filename -i palette.png -filter_complex "[0:v][1:v] paletteuse" "$no_extension.gif"
+
+  ffmpeg -i $filename -filter_complex "[0:v] fps=12,scale=480:-1,split [a][b];[a] palettegen [p];[b][p] paletteuse" "$no_extension.gif"
+}
+
+function dev-proxy () {
+  bb
+  cd dev-proxy
+  dcu
+}
+source "$HOME/.cargo/env"

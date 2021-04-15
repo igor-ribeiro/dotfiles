@@ -99,7 +99,7 @@ nnoremap <PageUp>   :bprevious<CR>
 nnoremap <PageDown> :bnext<CR>
 
 " Select colorscheme
-nnoremap <leader>c :colorscheme 
+nnoremap <leader>c :colorscheme
 
 " Edit ~/.vimrc
 nnoremap <leader>e :tabe ~/.vimrc<CR>
@@ -197,7 +197,7 @@ set completeopt=longest,menuone
 
 
 " Show methods signature pop up
-let g:tsuquyomi_completion_detail = 1 
+let g:tsuquyomi_completion_detail = 1
 let g:tsuquyomi_completion_preview = 1
 let g:tsuquyomi_disable_quickfix = 1
 let g:tsuquyomi_javascript_support = 1
@@ -312,7 +312,7 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Allow JSX in .js files
 let g:jsx_ext_required = 0
 
-" let g:prettier#autoformat = 1 
+" let g:prettier#autoformat = 1
 let g:ale_fix_on_save = 0
 let g:ale_fixers = {
 \   'typescript': [
@@ -351,12 +351,12 @@ set cursorline
 hi statusline guifg=Gray30 guibg=Gray80
 
 " Format the status line
-set statusline=\ 
-set statusline+=%t%m%r%h%w\ \ 
-set statusline+=Line:\ %l\ 
-set statusline+=Column:\ %c\ 
+set statusline=\
+set statusline+=%t%m%r%h%w\ \
+set statusline+=Line:\ %l\
+set statusline+=Column:\ %c\
 " Display [$] if the session is being recorded
-" set statusline+=%=%{ObsessionStatus()}\ 
+" set statusline+=%=%{ObsessionStatus()}\
 
 " Tabs
 function! GetFilename(name)
@@ -467,7 +467,7 @@ function! FindFiles(prefix)
     return
   endif
 
-  let dirs = [".git", "node_modules", "dist", "coverage"] 
+  let dirs = [".git", "node_modules", "dist", "coverage"]
   " Generate the command to ignore the directories above
   let ignore_dirs = "-not -path '*/" . join(dirs, "/*' -not -path '*/") . "/*'"
   let command = "find . -type f -iregex '.*" . filename . ".*' " . ignore_dirs . ' -printf "%p:1:1:%f\n" '
@@ -490,7 +490,7 @@ endfunction
 function! CreateFile()
   let path = expand('%:h') . '/'
 
-  try 
+  try
     call inputsave()
     let new_filename = input('Create file: ', path, 'file')
     call inputrestore()
@@ -505,7 +505,7 @@ function! CreateFile()
     :silent call system('mkdir -p ' . folders)
     :silent call system('touch ' . new_filename)
 
-    execute 'tabe' new_filename 
+    execute 'tabe' new_filename
   finally
     echo ''
   endtry
@@ -516,7 +516,7 @@ function! RenameFile()
   let full_path = expand('%:p:h')
   let path = expand('%:h') . '/'
 
-  try 
+  try
     call inputsave()
     let new_filename = input('Rename: ', filename)
     call inputrestore()
@@ -530,7 +530,7 @@ function! RenameFile()
     echo system('mv ' . command)
     echo 'File renamed to ' . new_filename . '.\r\nFile reloaded'
 
-    execute 'edit' path . new_filename 
+    execute 'edit' path . new_filename
   finally
     echo ''
   endtry
@@ -542,7 +542,7 @@ function! DuplicateFile()
   call inputsave()
   let new_filename = input('New filename: ', filename)
   call inputrestore()
-  
+
   try
     let folders = fnamemodify(new_filename, ':h')
     :call system('stat a.js')
@@ -566,10 +566,10 @@ function! DeleteFile()
     try
       :call system('rm -rf ' . filename)
       :bd
-      echo ''
+      echo '\n\n'
       echo 'File deleted: ' . filename
     catch
-      echo ''
+      echo '\n\n'
       echo 'Could not delete file'
     endtry
   endif
