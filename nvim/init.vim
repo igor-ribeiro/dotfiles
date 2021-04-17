@@ -63,7 +63,7 @@ Plug 'tpope/vim-commentary'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'szw/vim-maximizer'
 Plug 'jiangmiao/auto-pairs'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
@@ -148,7 +148,7 @@ let g:rustfmt_autosave = 1
 
 let mapleader=" "
 
-nnoremap <leader>f :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Find in files: ") })<cr>
+nnoremap <leader>f :lua require('telescope.builtin').grep_string({ search = '', only_short_text = true })<cr>
 nnoremap <leader>p :lua require('telescope.builtin').git_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').file_browser()<cr>
 nnoremap <leader>b :lua require('telescope.builtin').buffers()<cr>

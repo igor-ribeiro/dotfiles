@@ -59,6 +59,7 @@ ln -sf $(pwd)/.tmux.conf $HOME/
 # Clone
 # cd ~/code/Ribeiro && git clone git@github.com:neovim/neovim.git
 
+sudo apt install ripgrep -y
 
 mkdir -p $HOME/.config/nvim
 ln -sf $(pwd)/nvim/init.vim $HOME/.config/nvim
