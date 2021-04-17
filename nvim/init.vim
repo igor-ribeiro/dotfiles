@@ -44,6 +44,8 @@ set clipboard+=unnamedplus
 
 " Vertical split opens on the right window.
 set splitright
+" Horizontal split opens below the window.
+set splitbelow
 
 " ------
 " PLUGINS
@@ -67,6 +69,9 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'ruanyl/vim-sort-imports'
 
+" Statusline
+Plug 'hoob3rt/lualine.nvim'
+
 " Theme
 Plug 'gruvbox-community/gruvbox'
 Plug 'ayu-theme/ayu-vim'
@@ -77,6 +82,15 @@ call plug#end()
 
 
 lua << EOF
+require('lualine').setup{
+  options = {
+    theme = 'gruvbox',
+    section_separators = {''},
+    component_separators = {'|'},
+    icons_enabled = false
+  }
+}
+
 require('telescope').setup{
   defaults = {
     file_ignore_patterns = { "node_modules", "tmp", "dist", "build" }
@@ -126,7 +140,7 @@ let g:prettier#autoformat_config_files = ['javascript', 'typescript', 'javascrip
 " Vue
 let g:vim_vue_plugin_use_scss = 1
 
-colorscheme ayu
+colorscheme gruvbox
 set background=dark
 
 " Rust Format
@@ -135,7 +149,7 @@ let g:rustfmt_autosave = 1
 let mapleader=" "
 
 nnoremap <leader>f :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Find in files: ") })<cr>
-nnoremap <leader>p :lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>p :lua require('telescope.builtin').git_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').file_browser()<cr>
 nnoremap <leader>b :lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>gs :lua require('telescope.builtin').git_status()<cr>
@@ -162,9 +176,9 @@ nnoremap <F2> :lua vim.lsp.buf.rename()<cr>
 nnoremap <leader>bk :bp\|bd #<cr>
 
 " Rust
-nnoremap <leader>rr :! cargo run<cr>
-nnoremap <leader>rt :! cargo test<cr>
-nnoremap <leader>rb :! cargo build<cr>
+nnoremap <leader>rr :Cargo run<cr>G
+nnoremap <leader>rt :Cargo test<cr>
+nnoremap <leader>rb :Cargo build<cr>
 
 " Trigger completion
 imap <silent> <c-space> <Plug>(completion_trigger)

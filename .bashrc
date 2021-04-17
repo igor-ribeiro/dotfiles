@@ -615,7 +615,7 @@ function to-gif () {
 function dev-proxy () {
   by
   cd dev-proxy
-  dcu
+  dcu -d
 }
 
 source "$HOME/.cargo/env"
@@ -625,3 +625,6 @@ if [ -f '/home/iribeiro/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeir
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/iribeiro/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/completion.bash.inc'; fi
+
+export DOCKER_BUILDKIT=0
+export COMPOSE_DOCKER_CLI_BUILD=0
