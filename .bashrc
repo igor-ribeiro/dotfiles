@@ -9,6 +9,8 @@ fi
 PATH="$HOME/.local/bin:$HOME/bin:$HOME/neovim/bin:$PATH"
 export PATH
 
+export GIT_EDITOR=nvim
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
@@ -28,6 +30,8 @@ shopt -s histappend
 
 # After each command, save and reload history
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
+export LD_LIBRARY_PATH=/usr/local/lib
 
 # Enable Vim mode
 # set -o vi
@@ -52,24 +56,25 @@ alias k8s-prod="gcloud container clusters get-credentials cluster-production --r
 alias k8s-staging="gcloud container clusters get-credentials staging-cluster --zone us-east4-a --project staging-203611"
 
 # Directories
-function bb () {
-  cd ~/Code/Beyoung
+function by () {
+  cd ~/code/beyoung
 }
 
 function ir () {
-  cd ~/Code/Ribeiro
+  cd ~/code/ribeiro
 }
 
 function dotfiles () {
-  cd ~/dotfiles
+  ir
+  cd dotfiles
 }
 
 # VPN
-alias bb-vpn="sudo openvpn --config ~/.vpn/igorr.ovpn --askpass ~/.vpn/auth.txt"
+alias by-vpn="sudo openvpn --config ~/.vpn/igorr.ovpn --askpass ~/.vpn/auth.txt"
 
-function by-vpn () {
-  wg-quick $1 ~/.vpn/by-igor.conf
-}
+# function by-vpn () {
+#   wg-quick $1 ~/.vpn/by-igor.conf
+# }
 
 # Trigger nodemon reload
 alias ntr="touch src/server.ts"
@@ -90,7 +95,7 @@ alias redis-staging-keys-del="redis-cli -h redis.staging.bbrands.com.br KEYS $1 
 alias redis-prod-keys="redis-cli -h redis.cache.bbrands.com.br KEYS $1"
 
 # Consul
-alias consul="cd ~/Code/Beyoung/consul && dcd && ./start.sh && cd -"
+alias consul="by && dcd && ./start.sh && cd -"
 
 # System
 alias dnf-update="sudo dnf clean packages && sudo dnf update --skip-broken -y"
@@ -113,15 +118,15 @@ function gs () {
 }
 
 # Bash
-alias ebash="vim ~/.bashrc"
+alias ebash="nvim ~/.bashrc"
 alias sbash="source ~/.bashrc"
 
 # Vim
 alias evim="nvim ~/.config/nvim/init.vim"
-alias vim="vimx"
+# alias vim="vimx"
 
 # Tmux
-alias etmux="vim ~/.tmux.conf"
+alias etmux="nvim ~/.tmux.conf"
 
 # Chrome
 alias chrome="google-chrome-stable > /dev/null 2>&1 &"
@@ -172,7 +177,7 @@ function tmux-start () {
     tmux a -t $session_name
   else
     echo "Creating session $session_name"
-    ~/dotfiles/tmux/sessions/$session_name.sh "${projects[*]}"
+    ~/code/ribeiro/dotfiles/tmux/sessions/$session_name.sh "${projects[*]}"
   fi
 }
 
@@ -384,7 +389,7 @@ function mkd () {
 }
 
 function by-open () {
-  bb
+  by
   cd $1
 
   name=$(echo $1 | awk '
@@ -402,7 +407,7 @@ function by-open () {
     }
   }' | xargs )
 
-  touch ~/.vim/sessions/$1.vim
+  #touch ~/.vim/sessions/$1.vim
 
   tmux split-window -h
   tmux split-window
@@ -555,12 +560,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/iribeiro/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/iribeiro/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/completion.bash.inc'; fi
-
 # MKV -> MP4
 function to-mp4 () {
   filename=$1
@@ -593,7 +592,7 @@ function trim-video () {
 }
 
 function to-gif () {
-  if [ "$1" = "" ] 
+  if [ "$1" = "" ]
   then
     echo "Usage: to-gif FILENAME"
     return
@@ -609,8 +608,15 @@ function to-gif () {
 }
 
 function dev-proxy () {
-  bb
+  by
   cd dev-proxy
   dcu
 }
+
 source "$HOME/.cargo/env"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/iribeiro/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/iribeiro/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/completion.bash.inc'; fi
