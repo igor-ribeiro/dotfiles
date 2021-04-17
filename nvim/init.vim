@@ -75,6 +75,7 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
+
 lua << EOF
 require('telescope').setup{
   defaults = {
@@ -108,6 +109,10 @@ nvim_lsp.rust_analyzer.setup({
   capabilities = capabilities
 })
 
+nvim_lsp.vimls.setup{}
+
+nvim_lsp.jsonls.setup{}
+
 EOF
 
 set completeopt=menuone,noinsert,noselect
@@ -121,7 +126,7 @@ let g:prettier#autoformat_config_files = ['javascript', 'typescript', 'javascrip
 " Vue
 let g:vim_vue_plugin_use_scss = 1
 
-colorscheme gruvbox
+colorscheme ayu
 set background=dark
 
 " Rust Format

@@ -302,8 +302,13 @@ function bash-status-git-stage () {
   fi
 }
 
+function bash-status-last-directory () {
+  echo -e "$(basename $(dirname $PWD))/$(basename $PWD)"
+}
+
+
 function get-bash-status () {
-  current_dir="\[\e[2m\]\\W\[\e[0m\]"
+  current_dir="\[\e[2m\]\$(bash-status-last-directory)\[\e[0m\]"
   git_branch="\[\$(bash-status-git-branch)\]"
   git_status="\[\$(bash-status-git-stage)\]"
 
