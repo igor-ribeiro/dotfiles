@@ -15,6 +15,7 @@
 # BASH
 # --
 ln -sf $(pwd)/.bashrc $HOME/
+ln -sf $(pwd)/.git-completion.bash $HOME/
 
 # --
 # VIM

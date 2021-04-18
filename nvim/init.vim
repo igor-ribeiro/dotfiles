@@ -52,10 +52,12 @@ set splitbelow
 " ------
 
 call plug#begin('~/.vim/plugged')
+" Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 " Plug 'tpope/vim-obsession'
@@ -78,6 +80,10 @@ Plug 'ayu-theme/ayu-vim'
 
 " Rust
 Plug 'rust-lang/rust.vim'
+
+" Git Worktree
+Plug 'ThePrimeagen/git-worktree.nvim'
+
 call plug#end()
 
 
@@ -93,9 +99,14 @@ require('lualine').setup{
 
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = { "node_modules", "tmp", "dist", "build" }
-  }
+    file_ignore_patterns = { 'node_modules', 'tmp', 'dist', 'build' }
+  },
 }
+
+require('telescope').load_extension('fzy_native')
+require('telescope').load_extension('git_worktree')
+
+require'git-worktree'.setup{}
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -148,13 +159,24 @@ let g:rustfmt_autosave = 1
 
 let mapleader=" "
 
-nnoremap <leader>f :lua require('telescope.builtin').grep_string({ search = '', only_short_text = true })<cr>
-nnoremap <leader>p :lua require('telescope.builtin').git_files()<cr>
-nnoremap <leader>fb :lua require('telescope.builtin').file_browser()<cr>
-nnoremap <leader>b :lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>gs :lua require('telescope.builtin').git_status()<cr>
+nnoremap <leader>fw :lua require('telescope.builtin').grep_string({ search = '', only_short_text = true })<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>gd :lua require('telescope.builtin').lsp_definitions()<cr>
+" nnoremap <c-space> :lua vim.lsp.buf.code_action()<cr>
+nnoremap <c-space> :lua require('telescope.builtin').lsp_code_actions()<cr>
+" nnoremap <leader>r :lua vim.lsp.buf.references()<cr>
+nnoremap <leader>fr :lua require('telescope.builtin').lsp_references()<cr>
+nnoremap <leader>sh :lua vim.lsp.buf.hover()<cr>
+nnoremap <leader>sd :lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
+nnoremap <F2> :lua vim.lsp.buf.rename()<cr>
+
+" Git Worktree
+nnoremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+
 nnoremap <leader>ve :e ~/.config/nvim/init.vim<cr>
 nnoremap <leader>vs :so ~/.config/nvim/init.vim<cr>
+
 nnoremap <leader><leader> :e#<cr>
 nnoremap <leader>t :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
 nnoremap <leader>wm :MaximizerToggle<cr>
@@ -165,12 +187,6 @@ nnoremap <leader>dbk :call vimspector#ClearBreakpoints()<cr>
 nnoremap <leader>dc :call vimspector#Continue()<cr>
 nnoremap <leader><F8> :call vimspector#StepOver()<cr>
 nnoremap <leader><F7> :call vimspector#RunToCursor()<cr>
-nnoremap <c-space> :lua vim.lsp.buf.code_action()<cr>
-nnoremap <leader>g :lua vim.lsp.buf.definition()<cr>
-nnoremap <leader>r :lua vim.lsp.buf.references()<cr>
-nnoremap <leader>h :lua vim.lsp.buf.hover()<cr>
-nnoremap <leader>sd :lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
-nnoremap <F2> :lua vim.lsp.buf.rename()<cr>
 
 " Delete buffer without closing window
 nnoremap <leader>bk :bp\|bd #<cr>
@@ -315,4 +331,20 @@ if executable(s:clip)
   augroup END
 endif
 
+lua << EOF
+function GitWorktreeAdd()
+  vim.fn.inputsave()
+  local branch = vim.fn.input('Branch: ')
+  vim.fn.inputrestore()
 
+  require("git-worktree").create_worktree(branch, branch)
+end
+
+function GitWorktreeDelete()
+  vim.fn.inputsave()
+  local branch = vim.fn.input('Branch: ')
+  vim.fn.inputrestore()
+
+  require("git-worktree").delete_worktree(branch)
+end
+EOF

@@ -5,6 +5,10 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 # User specific environment
 PATH="$HOME/.local/bin:$HOME/bin:$HOME/neovim/bin:$PATH"
 export PATH
@@ -58,6 +62,10 @@ alias k8s-staging="gcloud container clusters get-credentials staging-cluster --z
 # Directories
 function by () {
   cd ~/code/beyoung
+
+  if [[ $1 ]]; then
+    cd $1
+  fi
 }
 
 function ir () {
@@ -112,6 +120,8 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias gl="git log"
 alias gr="git restore"
+alias gw="git worktree"
+alias gwa="git worktree add"
 
 function gs () {
   git switch @a
