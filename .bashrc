@@ -46,10 +46,23 @@ export LD_LIBRARY_PATH=/usr/local/lib
 
 # Docker
 alias dcudebug="docker-compose -f docker-compose.yml -f docker-compose.debug.yml up"
-alias dcu="docker-compose up"
 alias dcud="docker-compose up -d && docker-compose logs -f"
 alias dcl="docker-compose logs -f"
 alias dcd="docker-compose down"
+
+function dcu () {
+  docker_compose="$(cat ./docker-compose.yml)"
+  name=$(echo $docker_compose | grep -oEi 'container_name: ([a-z_]+)' | sed -E 's/(container_name: )//')
+  running_id=$(docker ps -a -f "name=$name" -q)
+
+  if [ "$name" != "" ]; then
+    echo "Stopping $name"
+    docker stop $name || true
+    docker rm $name
+  fi
+
+  docker-compose up $@
+}
 
 # GCloud
 alias gcloud-production="gcloud config set project brands-production"
@@ -631,10 +644,10 @@ function dev-proxy () {
 source "$HOME/.cargo/env"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/iribeiro/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/path.bash.inc'; fi
+if [ -f '/home/iribeiro/.local/bin/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeiro/.local/bin/google-cloud-sdk/path.bash.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/iribeiro/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f '/home/iribeiro/.local/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/.local/bin/google-cloud-sdk/completion.bash.inc'; fi
 
 export DOCKER_BUILDKIT=0
 export COMPOSE_DOCKER_CLI_BUILD=0
