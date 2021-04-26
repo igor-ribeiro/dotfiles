@@ -15,6 +15,8 @@ export PATH
 
 export GIT_EDITOR=nvim
 
+export COLORTERM=truecolor
+
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
@@ -58,7 +60,7 @@ function dcu () {
   if [ "$name" != "" ]; then
     echo "Stopping $name"
     docker stop $name || true
-    docker rm $name
+    docker rm $name || true
   fi
 
   docker-compose up $@
@@ -643,11 +645,11 @@ function dev-proxy () {
 
 source "$HOME/.cargo/env"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/iribeiro/.local/bin/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeiro/.local/bin/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/iribeiro/.local/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/.local/bin/google-cloud-sdk/completion.bash.inc'; fi
-
 export DOCKER_BUILDKIT=0
 export COMPOSE_DOCKER_CLI_BUILD=0
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/iribeiro/google-cloud-sdk/path.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/iribeiro/google-cloud-sdk/completion.bash.inc' ]; then . '/home/iribeiro/google-cloud-sdk/completion.bash.inc'; fi

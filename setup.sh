@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+nvm install --lts
+nvm use --lts
+
 # --
 # UTILS
 # --
@@ -24,6 +29,7 @@ mkdir -p $HOME/.vim
 
 # Dependencies
 # npm i -g import-js import-sort-cli import-sort-parser-babylon import-sort-parser-typescript import-sort-style-module
+npm i -g typescript-language-server vim-language-server prettier_d_slim prettier eslint_d
 
 # Link files
 ln -sf $(pwd)/vim/autoload $HOME/.vim/
@@ -44,6 +50,7 @@ ln -sf $(pwd)/.tmux.conf $HOME/
 # --
 # Sets the pager to behave like `man`
 # git config --global core.pager 'less -+X'
+ln -sf $(pwd)/.gitconfig $HOME/
 
 # --
 # VPN
@@ -51,8 +58,16 @@ ln -sf $(pwd)/.tmux.conf $HOME/
 # sudo dnf install wireguard-tools
 
 # --
+# TMUX
+# --
+sudo apt install tmux
+
+
+# --
 # NEO VIM
 # --
+cd ~
+chmod u+x nvim.appimage && ./nvim.appimage
 
 # BUILD SOURCE
 # sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch
@@ -68,6 +83,7 @@ ln -sf $(pwd)/nvim/init.vim $HOME/.config/nvim
 # Install Vim Plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
 
 # Install plugins
 nvim -c 'PlugInstall | qa'

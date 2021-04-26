@@ -1,0 +1,11 @@
+[user]
+	name = Igor Ribeiro
+	email = igor.ribeiro.plus@gmail.com
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+	ui = auto
+[core]
+	pager = less -r

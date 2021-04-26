@@ -58,18 +58,19 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+Plug 'nvim-lua/completion-nvim'
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-commentary'
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-" Plug 'puremourning/vimspector'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'szw/vim-maximizer'
+" Plug 'tpope/vim-obsession'
+" Plug 'puremourning/vimspector'
 " Plug 'jiangmiao/auto-pairs'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'ruanyl/vim-sort-imports'
 
 " Statusline
 Plug 'hoob3rt/lualine.nvim'
@@ -80,12 +81,12 @@ Plug 'ayu-theme/ayu-vim'
 
 " Rust
 Plug 'rust-lang/rust.vim'
+Plug 'simrat39/rust-tools.nvim'
 
 " Git Worktree
 Plug 'ThePrimeagen/git-worktree.nvim'
 
 call plug#end()
-
 
 lua << EOF
 require('lualine').setup{
@@ -117,15 +118,45 @@ require'nvim-treesitter.configs'.setup {
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
 
--- function to attach completion when setting up lsp
-local on_attach = function(client)
-  require'completion'.on_attach(client)
-end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-nvim_lsp.tsserver.setup({ on_attach = on_attach })
+
+-- function to attach completion when setting up lsp
+local on_attach = function(client, bufnr)
+  require'completion'.on_attach(client)
+  local ts_utils = require("nvim-lsp-ts-utils")
+
+  -- defaults
+  ts_utils.setup {
+    disable_commands = false,
+    enable_import_on_completion = true,
+    import_on_completion_timeout = 0,
+
+    -- eslint
+    eslint_bin = "eslint_d",
+    eslint_args = {"--cache", "-f", "json", "--stdin", "--stdin-filename", "$FILENAME"},
+    eslint_enable_disable_comments = true,
+
+    -- experimental settings!
+    -- eslint diagnostics
+    eslint_enable_diagnostics = true,
+    eslint_diagnostics_debounce = 500,
+
+      -- formatting
+    enable_formatting = true,
+    formatter = "prettier_d_slim",
+    formatter_args = {"--stdin", "--stdin-filepath", "$FILENAME"},
+    format_on_save = true
+  }
+
+  vim.lsp.buf_request = ts_utils.buf_request
+end
+
+nvim_lsp.tsserver.setup({
+  on_attach = on_attach
+})
 
 nvim_lsp.vuels.setup({ on_attach = on_attach })
 
@@ -163,13 +194,14 @@ nnoremap <leader>fw :lua require('telescope.builtin').grep_string({ search = '',
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>gd :lua require('telescope.builtin').lsp_definitions()<cr>
-" nnoremap <c-space> :lua vim.lsp.buf.code_action()<cr>
 nnoremap <c-space> :lua require('telescope.builtin').lsp_code_actions()<cr>
-" nnoremap <leader>r :lua vim.lsp.buf.references()<cr>
 nnoremap <leader>fr :lua require('telescope.builtin').lsp_references()<cr>
 nnoremap <leader>sh :lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>sd :lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
 nnoremap <F2> :lua vim.lsp.buf.rename()<cr>
+nnoremap <leader>ia :TSLspImportAll<cr>
+nnoremap <leader>io :TSLspOrganize<cr>
+nnoremap <leader>fc :TSLspFixCurrent<cr>
 
 " Git Worktree
 nnoremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
@@ -225,7 +257,7 @@ augroup RIBEIRO
   autocmd!
   autocmd BufRead *.vue setfiletype html
   autocmd BufWritePre * %s/\s\+$//e
-  autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+  " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
   autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
 augroup END
 
