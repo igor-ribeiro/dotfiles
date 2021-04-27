@@ -92,6 +92,13 @@ function dotfiles () {
   cd dotfiles
 }
 
+function dotfiles-push () {
+  dotfiles
+  git add .
+  git commit -m 'update'
+  git push origin master
+}
+
 # VPN
 alias by-vpn="sudo openvpn --config ~/.vpn/igorr.ovpn --askpass ~/.vpn/auth.txt"
 
