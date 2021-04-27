@@ -2,9 +2,9 @@
 set exrc
 " Cursor as block always.
 set guicursor=
-set relativenumber
 " Show current line number.
 set nu
+set relativenumber
 " Disable highlight after search.
 set nohlsearch
 " Keeps buffer opened in the background.
@@ -26,7 +26,7 @@ set t_Co=256
 " Starts scrolling before reaching the end.
 set scrolloff=8
 set noshowmode
-set completeopt=menuone,noinsert,noselect
+" set completeopt=menuone,noinsert,noselect
 set colorcolumn=80
 set signcolumn=yes
 
@@ -80,23 +80,23 @@ Plug 'hrsh7th/vim-vsnip-integ'
 " Terminal
 Plug 'akinsho/nvim-toggleterm.lua'
 
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'szw/vim-maximizer'
-" Plug 'tpope/vim-obsession'
-" Plug 'puremourning/vimspector'
-" Plug 'jiangmiao/auto-pairs'
-
 " Statusline
 Plug 'hoob3rt/lualine.nvim'
 
-" Theme
+" Themes
 Plug 'gruvbox-community/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
+
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'szw/vim-maximizer'
+" Plug 'tpope/vim-obsession'
+" Plug 'puremourning/vimspector'
+" Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
