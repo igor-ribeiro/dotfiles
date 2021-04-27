@@ -61,12 +61,27 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/completion-nvim'
+Plug 'hrsh7th/nvim-compe'
 
+" Git
+Plug 'lewis6991/gitsigns.nvim'
+Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'tpope/vim-fugitive'
+
+" Language
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'windwp/nvim-ts-autotag'
+
+" Snippets
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+
+" Terminal
+Plug 'akinsho/nvim-toggleterm.lua'
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'szw/vim-maximizer'
 " Plug 'tpope/vim-obsession'
 " Plug 'puremourning/vimspector'
@@ -83,13 +98,10 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 
-" Git Worktree
-Plug 'ThePrimeagen/git-worktree.nvim'
-
 call plug#end()
 
 lua << EOF
-require('lualine').setup{
+require'lualine'.setup{
   options = {
     theme = 'gruvbox',
     section_separators = {''},
@@ -98,16 +110,22 @@ require('lualine').setup{
   }
 }
 
-require('telescope').setup{
+require'telescope'.setup{
   defaults = {
     file_ignore_patterns = { 'node_modules', 'tmp', 'dist', 'build' }
   },
 }
 
-require('telescope').load_extension('fzy_native')
-require('telescope').load_extension('git_worktree')
+require'telescope'.load_extension('fzy_native')
+require'telescope'.load_extension('git_worktree')
 
 require'git-worktree'.setup{}
+require'gitsigns'.setup{
+  signs = {
+    add = { hl = 'GitSignsAdd', text = '+', numhl='GitSignsAddNr', linehl='GitSignsAddLn' },
+    change = { hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
+  },
+}
 
 require'nvim-treesitter.configs'.setup {
   highlight = {
@@ -115,17 +133,24 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+require'nvim-ts-autotag'.setup{}
+
+require"toggleterm".setup{
+  open_mapping = [[<c-\>]],
+}
+
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
-
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-
 -- function to attach completion when setting up lsp
 local on_attach = function(client, bufnr)
   require'completion'.on_attach(client)
+end
+
+nvim_lsp.tsserver.setup({ on_attach = function()
   local ts_utils = require("nvim-lsp-ts-utils")
 
   -- defaults
@@ -144,7 +169,7 @@ local on_attach = function(client, bufnr)
     eslint_enable_diagnostics = true,
     eslint_diagnostics_debounce = 500,
 
-      -- formatting
+    -- formatting
     enable_formatting = true,
     formatter = "prettier_d_slim",
     formatter_args = {"--stdin", "--stdin-filepath", "$FILENAME"},
@@ -152,16 +177,12 @@ local on_attach = function(client, bufnr)
   }
 
   vim.lsp.buf_request = ts_utils.buf_request
-end
+end})
 
-nvim_lsp.tsserver.setup({
-  on_attach = on_attach
-})
-
-nvim_lsp.vuels.setup({ on_attach = on_attach })
+-- nvim_lsp.vuels.setup({ on_attach = on_attach })
 
 nvim_lsp.rust_analyzer.setup({
-  on_attach = on_attach,
+  -- on_attach = on_attach,
   capabilities = capabilities
 })
 
@@ -169,9 +190,34 @@ nvim_lsp.vimls.setup{}
 
 nvim_lsp.jsonls.setup{}
 
+require'compe'.setup {
+  enabled = true;
+  autocomplete = true;
+  debug = false;
+  min_length = 1;
+  preselect = 'enable';
+  throttle_time = 80;
+  source_timeout = 200;
+  incomplete_delay = 400;
+  max_abbr_width = 100;
+  max_kind_width = 100;
+  max_menu_width = 100;
+  documentation = true;
+
+  source = {
+    path = true;
+    buffer = true;
+    calc = true;
+    nvim_lsp = true;
+    nvim_lua = true;
+    vsnip = true;
+  };
+}
 EOF
 
-set completeopt=menuone,noinsert,noselect
+" set completeopt=menuone,noinsert,noselect
+" For nvim-compe
+set completeopt=menuone,noselect
 let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 let g:completion_trigger_keyword_length = 3
 
@@ -190,28 +236,42 @@ let g:rustfmt_autosave = 1
 
 let mapleader=" "
 
+" Telescope
 nnoremap <leader>fw :lua require('telescope.builtin').grep_string({ search = '', only_short_text = true })<cr>
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>gd :lua require('telescope.builtin').lsp_definitions()<cr>
-nnoremap <c-space> :lua require('telescope.builtin').lsp_code_actions()<cr>
+nnoremap <c-space>ca :lua require('telescope.builtin').lsp_code_actions()<cr>
 nnoremap <leader>fr :lua require('telescope.builtin').lsp_references()<cr>
 nnoremap <leader>sh :lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>sd :lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
-nnoremap <F2> :lua vim.lsp.buf.rename()<cr>
-nnoremap <leader>ia :TSLspImportAll<cr>
-nnoremap <leader>io :TSLspOrganize<cr>
+nnoremap <leader>rs :lua vim.lsp.buf.rename()<cr>
+
+" Typescript
+nnoremap <leader>ia :TSLspImportAll<cr> :TSLspFormat<cr>
+nnoremap <leader>io :TSLspOrganizeSync<cr> :TSLspFormat<cr>
 nnoremap <leader>fc :TSLspFixCurrent<cr>
+
+" Completition
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 
 " Git Worktree
 nnoremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
+command Blame lua require'gitsigns'.blame_line()
 
+" Vim files
 nnoremap <leader>ve :e ~/.config/nvim/init.vim<cr>
 nnoremap <leader>vs :so ~/.config/nvim/init.vim<cr>
 
+" Open last file
 nnoremap <leader><leader> :e#<cr>
-nnoremap <leader>t :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
+nnoremap <leader>t :set nosplitright <bar> :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
+
+" Maximize window
 nnoremap <leader>wm :MaximizerToggle<cr>
+
+" Debug
 nnoremap <leader>dd :call vimspector#Launch()<cr>
 nnoremap <leader>dk :call vimspector#Reset()<cr>
 nnoremap <leader>db :call vimspector#ToggleBreakpoint()<cr>
@@ -229,8 +289,7 @@ nnoremap <leader>rt :Cargo test<cr>
 nnoremap <leader>rb :Cargo build<cr>
 
 " Trigger completion
-imap <silent> <c-space> <Plug>(completion_trigger)
-
+" imap <silent> <c-space> <Plug>(completion_trigger)
 
 " Move lines up and down
 nnoremap <m-k> :m .-2<cr>==
@@ -245,6 +304,15 @@ nnoremap P P=`]
 " Terminal
 " Map ESC to leave insert mode
 tnoremap <esc> <c-\><c-n>
+
+" Snippets
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
 
 " Indent after {
 " inoremap {<CR> {<CR>}<C-o>O
@@ -279,6 +347,8 @@ function! CreateFile()
   endtry
 endfunction
 
+command CreateFile call CreateFile()
+
 function! DeleteFile()
   let filename = expand('%')
 
@@ -298,6 +368,8 @@ function! DeleteFile()
     endtry
   endif
 endfunction
+
+command DeleteFile call DeleteFile()
 
 function! RenameFile()
   let filename = expand('%:t')
@@ -324,6 +396,8 @@ function! RenameFile()
   endtry
 endfunction
 
+command RenameFile call RenameFile()
+
 function! DuplicateFile()
   let filename = expand('%')
 
@@ -340,8 +414,10 @@ function! DuplicateFile()
   endtry
 
   :call system('cat ' . filename . ' > ' . new_filename)
-  execute 'tabe' new_filename
+  execute 'e' new_filename
 endfunction
+
+command DuplicateFile call DuplicateFile()
 
 function! InlineJSON()
   :silent %s/\n//g | silent %s/\s\{2\}//g
