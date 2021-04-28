@@ -177,6 +177,10 @@ function tmux-kill-session () {
   eval $(tmux ls | grep -Po "^$1(-(\d)+)*" | sed -e 's/^/tmux kill-session -t /' | sed -e 's/$/ \&\& /g' | xargs | sed -e 's/\&\&$//')
 }
 
+function tmux-kill () {
+  tmux kill-session -t $1
+}
+
 # Start a session by script attaching or creating a new one
 function tmux-start () {
   ALL_FLAGS=("-f")

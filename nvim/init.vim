@@ -61,8 +61,8 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-" Plug 'nvim-lua/completion-nvim'
 Plug 'hrsh7th/nvim-compe'
+" Plug 'nvim-lua/completion-nvim'
 
 " Git
 Plug 'lewis6991/gitsigns.nvim'
@@ -151,11 +151,11 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- function to attach completion when setting up lsp
-local on_attach = function(client, bufnr)
-  require'completion'.on_attach(client)
-end
+-- local on_attach = function(client, bufnr)
+--   require'completion'.on_attach(client)
+-- end
 
-nvim_lsp.tsserver.setup({ on_attach = function()
+nvim_lsp.tsserver.setup({ on_attach = function(client)
   local ts_utils = require("nvim-lsp-ts-utils")
 
   -- defaults
@@ -180,6 +180,8 @@ nvim_lsp.tsserver.setup({ on_attach = function()
     formatter_args = {"--stdin", "--stdin-filepath", "$FILENAME"},
     format_on_save = true
   }
+
+  -- ts_utils.setup_client(client)
 
   vim.lsp.buf_request = ts_utils.buf_request
 end})
@@ -248,7 +250,7 @@ nnoremap <leader>fw :lua require('telescope.builtin').grep_string({ search = '',
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>gd :lua require('telescope.builtin').lsp_definitions()<cr>
-nnoremap <c-space>ca :lua require('telescope.builtin').lsp_code_actions()<cr>
+nnoremap <leader>ca :lua require('telescope.builtin').lsp_code_actions()<cr>
 nnoremap <leader>fr :lua require('telescope.builtin').lsp_references()<cr>
 nnoremap <leader>sh :lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>sd :lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
@@ -316,10 +318,10 @@ tnoremap <esc> <c-\><c-n>
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
 
 " Jump forward or backward
-imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
-imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
-smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 
 " Indent after {
 " inoremap {<CR> {<CR>}<C-o>O
