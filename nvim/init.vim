@@ -91,6 +91,11 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 
+" Database
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+Plug 'kristijanhusak/vim-dadbod-completion'
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'szw/vim-maximizer'
@@ -190,36 +195,35 @@ nvim_lsp.vimls.setup{}
 
 nvim_lsp.jsonls.setup{}
 
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'enable';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
-
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = true;
-  };
-}
 EOF
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.autocomplete = v:true
+let g:compe.debug = v:false
+let g:compe.min_length = 1
+let g:compe.preselect = 'enable'
+let g:compe.throttle_time = 80
+let g:compe.source_timeout = 200
+let g:compe.incomplete_delay = 400
+let g:compe.max_abbr_width = 100
+let g:compe.max_kind_width = 100
+let g:compe.max_menu_width = 100
+let g:compe.documentation = v:true
+
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.vim_dadbod_completion = v:true
 
 " set completeopt=menuone,noinsert,noselect
 " For nvim-compe
 set completeopt=menuone,noselect
-let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-let g:completion_trigger_keyword_length = 3
+" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+" let g:completion_trigger_keyword_length = 3
 
 " Prettier
 let g:prettier#autoformat_config_present = 1
@@ -235,6 +239,9 @@ set background=dark
 let g:rustfmt_autosave = 1
 
 let mapleader=" "
+
+" Database
+let g:db_ui_save_location = '~/.config/db/queries'
 
 " Telescope
 nnoremap <leader>fw :lua require('telescope.builtin').grep_string({ search = '', only_short_text = true })<cr>

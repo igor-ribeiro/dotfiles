@@ -78,7 +78,10 @@ chmod u+x nvim.appimage && ./nvim.appimage
 sudo apt install ripgrep -y
 
 mkdir -p $HOME/.config/nvim
+mkdir -p $HOME/.config/db
+
 ln -sf $(pwd)/nvim/init.vim $HOME/.config/nvim
+ln -s $(pwd)/db $HOME/.config/
 
 # Install Vim Plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -91,5 +94,8 @@ nvim -c 'PlugInstall | qa'
 # --
 # RUST
 # --
+mkdir -p ~/.local/bin
+curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o ~/.local/bin/rust-analyzer
+chmod +x ~/.local/bin/rust-analyzer
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
