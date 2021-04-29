@@ -44,6 +44,7 @@ ln -sf $(pwd)/.vimrc $HOME/
 # TMUX
 # --
 ln -sf $(pwd)/.tmux.conf $HOME/
+ln -sf $(pwd)/tmux/ $HOME/.config/
 
 # --
 # GIT

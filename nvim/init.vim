@@ -246,7 +246,7 @@ let g:db_ui_save_location = '~/.config/db/queries'
 
 " Telescope
 nnoremap <leader>fw :lua require('telescope.builtin').grep_string({ search = '', only_short_text = true })<cr>
-nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').git_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>gd :lua require('telescope.builtin').lsp_definitions()<cr>
 nnoremap <leader>ca :lua require('telescope.builtin').lsp_code_actions()<cr>

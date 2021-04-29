@@ -9,6 +9,9 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
+# Source Tmux Plugins
+. ~/.config/tmux/tmux.plugins.sh
+
 # User specific environment
 PATH="$HOME/.local/bin:$HOME/bin:$HOME/neovim/bin:$PATH"
 export PATH
