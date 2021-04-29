@@ -106,7 +106,7 @@ Plug 'szw/vim-maximizer'
 call plug#end()
 
 lua << EOF
-require'lualine'.setup{
+require'lualine'.setup {
   options = {
     theme = 'gruvbox',
     section_separators = {''},
@@ -115,7 +115,7 @@ require'lualine'.setup{
   }
 }
 
-require'telescope'.setup{
+require'telescope'.setup {
   defaults = {
     file_ignore_patterns = { 'node_modules', 'tmp', 'dist', 'build' }
   },
@@ -124,8 +124,8 @@ require'telescope'.setup{
 require'telescope'.load_extension('fzy_native')
 require'telescope'.load_extension('git_worktree')
 
-require'git-worktree'.setup{}
-require'gitsigns'.setup{
+require'git-worktree'.setup {}
+require'gitsigns'.setup {
   signs = {
     add = { hl = 'GitSignsAdd', text = '+', numhl='GitSignsAddNr', linehl='GitSignsAddLn' },
     change = { hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
@@ -138,9 +138,9 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-require'nvim-ts-autotag'.setup{}
+require'nvim-ts-autotag'.setup {}
 
-require"toggleterm".setup{
+require"toggleterm".setup {
   open_mapping = [[<c-\>]],
 }
 
@@ -151,16 +151,11 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- function to attach completion when setting up lsp
--- local on_attach = function(client, bufnr)
---   require'completion'.on_attach(client)
--- end
-
-nvim_lsp.tsserver.setup({ on_attach = function(client)
-  local ts_utils = require("nvim-lsp-ts-utils")
+local on_attach = function(client, bufnr)
+  local ts_utils = require"nvim-lsp-ts-utils"
 
   -- defaults
   ts_utils.setup {
-    disable_commands = false,
     enable_import_on_completion = true,
     import_on_completion_timeout = 0,
 
@@ -172,32 +167,36 @@ nvim_lsp.tsserver.setup({ on_attach = function(client)
     -- experimental settings!
     -- eslint diagnostics
     eslint_enable_diagnostics = true,
-    eslint_diagnostics_debounce = 500,
+    eslint_diagnostics_debounce = 250,
 
     -- formatting
     enable_formatting = true,
     formatter = "prettier_d_slim",
     formatter_args = {"--stdin", "--stdin-filepath", "$FILENAME"},
-    format_on_save = true
+    format_on_save = true,
+
+    complete_parens = true,
+    signature_help_in_parens = true,
   }
 
-  -- ts_utils.setup_client(client)
+  ts_utils.setup_client(client)
+end
 
-  vim.lsp.buf_request = ts_utils.buf_request
-end})
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach
+}
 
--- nvim_lsp.vuels.setup({ on_attach = on_attach })
+nvim_lsp.vuels.setup {}
 
-nvim_lsp.rust_analyzer.setup({
-  -- on_attach = on_attach,
+nvim_lsp.rust_analyzer.setup{
   capabilities = capabilities
-})
+}
 
-nvim_lsp.vimls.setup{}
+nvim_lsp.vimls.setup {}
 
-nvim_lsp.jsonls.setup{}
-
+nvim_lsp.jsonls.setup {}
 EOF
+
 let g:compe = {}
 let g:compe.enabled = v:true
 let g:compe.autocomplete = v:true
@@ -257,9 +256,9 @@ nnoremap <leader>sd :lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
 nnoremap <leader>rs :lua vim.lsp.buf.rename()<cr>
 
 " Typescript
-nnoremap <leader>ia :TSLspImportAll<cr> :TSLspFormat<cr>
-nnoremap <leader>io :TSLspOrganizeSync<cr> :TSLspFormat<cr>
-nnoremap <leader>fc :TSLspFixCurrent<cr>
+nnoremap <silent><leader>ia :TSLspImportAll<cr> :TSLspFormat<cr>
+nnoremap <silent><leader>io :TSLspOrganizeSync<cr> :TSLspFormat<cr>
+nnoremap <silent><leader>fc :TSLspFixCurrent<cr>
 
 " Completition
 inoremap <silent><expr> <C-Space> compe#complete()

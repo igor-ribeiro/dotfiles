@@ -53,9 +53,16 @@ alias dcl="docker-compose logs -f"
 alias dcd="docker-compose down"
 
 function dcu () {
-  docker_compose="$(cat ./docker-compose.yml)"
-  name=$(echo $docker_compose | grep -oEi 'container_name: ([a-z_]+)' | sed -E 's/(container_name: )//')
+  docker_compose="$(docker-compose config)"
+  container_name="$(echo $docker_compose | grep -oEi 'container_name: ([a-z_]+)' | sed -E 's/(container_name: )//')"
+  name="$container_name"
   running_id=$(docker ps -a -f "name=$name" -q)
+  branch=""
+
+  if [[ $1 != "--no-branch" ]]; then
+    branch="_$(current-git-branch)"
+    name+=$branch
+  fi
 
   if [ "$name" != "" ]; then
     echo "Stopping $name"
@@ -63,7 +70,7 @@ function dcu () {
     docker rm $name || true
   fi
 
-  docker-compose up $@
+  BRANCH=$branch docker-compose -p $name up --force-recreate
 }
 
 # GCloud
@@ -458,6 +465,11 @@ function by-open () {
   tmux select-pane -t 1
 }
 
+function by-clone () {
+  git clone --bare git@github.com:beyounglabs/$1.git $1
+  cd $1
+}
+
 function clear-bucket () {
   if [[ $(expr "$(find -name "web.js")" == "") == 1 ]];
     then
@@ -651,7 +663,7 @@ function to-gif () {
 function dev-proxy () {
   by
   cd dev-proxy
-  dcu -d
+  docker-compose up -d
 }
 
 source "$HOME/.cargo/env"
