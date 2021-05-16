@@ -57,7 +57,7 @@ alias dcd="docker-compose down"
 
 function dcu () {
   docker_compose="$(docker-compose config)"
-  container_name="$(echo $docker_compose | grep -oEi 'container_name: ([a-z_]+)' | sed -E 's/(container_name: )//')"
+  container_name="$(echo $docker_compose | grep -oEi 'container_name: ([a-z_]+)' | sed -E 's/(container_name: )//' | grep '_web')"
   name="$container_name"
   running_id=$(docker ps -a -f "name=$name" -q)
   branch=""
@@ -73,7 +73,16 @@ function dcu () {
     docker rm $name || true
   fi
 
-  BRANCH=$branch docker-compose -p $name up --force-recreate
+  BRANCH=$branch docker-compose -p $name up --force-recreate -d
+  docker-compose -p $name logs -f
+}
+
+function docker-ls () {
+  docker ps -a -f "name=$name" -q
+}
+
+function docker-stop-all () {
+  docker-ls | xargs docker stop
 }
 
 # GCloud
@@ -368,7 +377,7 @@ export PS1=$(get-bash-status)
 ## UTILS
 # Python HTTP Server
 function server() {
-  python -m http.server 9090
+  python -m SimpleHTTPServer
 }
 
 # Parse JSON
@@ -667,6 +676,10 @@ function dev-proxy () {
   by
   cd dev-proxy
   docker-compose up -d
+}
+
+function show-size () {
+  du -sh * | sort -rn
 }
 
 source "$HOME/.cargo/env"

@@ -72,6 +72,7 @@ Plug 'tpope/vim-fugitive'
 " Language
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'windwp/nvim-ts-autotag'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " Snippets
 Plug 'hrsh7th/vim-vsnip'
@@ -170,10 +171,10 @@ local on_attach = function(client, bufnr)
     eslint_diagnostics_debounce = 250,
 
     -- formatting
-    enable_formatting = true,
-    formatter = "prettier_d_slim",
-    formatter_args = {"--stdin", "--stdin-filepath", "$FILENAME"},
-    format_on_save = true,
+    enable_formatting = false,
+    -- formatter = "prettier_d_slim",
+    -- formatter_args = {"--stdin", "--stdin-filepath", "$FILENAME"},
+    -- format_on_save = false,
 
     complete_parens = true,
     signature_help_in_parens = true,
@@ -227,8 +228,9 @@ set completeopt=menuone,noselect
 " let g:completion_trigger_keyword_length = 3
 
 " Prettier
-let g:prettier#autoformat_config_present = 1
 let g:prettier#autoformat_config_files = ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'svg']
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " Vue
 let g:vim_vue_plugin_use_scss = 1
@@ -245,12 +247,14 @@ let mapleader=" "
 let g:db_ui_save_location = '~/.config/db/queries'
 
 " Telescope
-nnoremap <leader>fw :lua require('telescope.builtin').grep_string({ search = '', only_short_text = true })<cr>
-nnoremap <leader>ff :lua require('telescope.builtin').git_files()<cr>
+nnoremap <leader>fw :lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').git_files({ recurse_submodules = true, show_untracked = false })<cr>
+nnoremap <leader>fa :lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>gd :lua require('telescope.builtin').lsp_definitions()<cr>
 nnoremap <leader>ca :lua require('telescope.builtin').lsp_code_actions()<cr>
 nnoremap <leader>fr :lua require('telescope.builtin').lsp_references()<cr>
+nnoremap <leader>fs :lua require('telescope.builtin').lsp_document_symbols()<cr>
 nnoremap <leader>sh :lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>sd :lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
 nnoremap <leader>rs :lua vim.lsp.buf.rename()<cr>
