@@ -1,7 +1,19 @@
+if &term =~ '^xterm'
+" solid underscore
+  let &t_SI .= "\<Esc>[4 q"
+  " solid block
+  let &t_EI .= "\<Esc>[2 q"
+  " 1 or 0 -> blinking block
+  " 3 -> blinking underscore
+  " Recent versions of xterm (282 or above) also support
+  " 5 -> blinking vertical bar
+  " 6 -> solid vertical bar
+endif
+
 " Auto sources .vimrc files inside project directories.
 set exrc
 " Cursor as block always.
-set guicursor=
+"set guicursor=
 " Show current line number.
 set nu
 set relativenumber
@@ -29,6 +41,7 @@ set noshowmode
 " set completeopt=menuone,noinsert,noselect
 set colorcolumn=80
 set signcolumn=yes
+set nopaste
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -52,6 +65,9 @@ set splitbelow
 " ------
 
 call plug#begin('~/.vim/plugged')
+" Vim
+Plug 'mbbill/undotree'
+
 " Telescope
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -60,182 +76,225 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
-Plug 'hrsh7th/nvim-compe'
-" Plug 'nvim-lua/completion-nvim'
+Plug 'williamboman/nvim-lsp-installer'
+
+" Completition
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-vsnip'
+
+Plug 'ruanyl/vim-sort-imports'
+Plug 'pantharshit00/vim-prisma'
+Plug 'onsails/diaglist.nvim'
 
 " Git
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'tpope/vim-fugitive'
 
 " Language
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'windwp/nvim-ts-autotag'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'mhartington/formatter.nvim'
+Plug 'findango/vim-mdx'
 
 " Snippets
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 
 " Terminal
-Plug 'akinsho/nvim-toggleterm.lua'
+"Plug 'akinsho/nvim-toggleterm.lua'
 
 " Statusline
 Plug 'hoob3rt/lualine.nvim'
 
 " Themes
 Plug 'gruvbox-community/gruvbox'
-Plug 'ayu-theme/ayu-vim'
 
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 
-" Database
-Plug 'tpope/vim-dadbod'
-Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'kristijanhusak/vim-dadbod-completion'
-
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-abolish'
 Plug 'szw/vim-maximizer'
-" Plug 'tpope/vim-obsession'
-" Plug 'puremourning/vimspector'
-" Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
 lua << EOF
-require'lualine'.setup {
-  options = {
-    theme = 'gruvbox',
-    section_separators = {''},
-    component_separators = {'|'},
-    icons_enabled = false
-  }
+-- require'sort-import'.setup{}
+
+
+require("diaglist").init{
+  -- optional settings
+  -- below are defaults
+  debug = false,
+
+  -- increase for noisy servers
+  debounce_ms = 150,
 }
 
-require'telescope'.setup {
+-- require'lualine'.setup{
+--   options = {
+--     theme = 'gruvbox',
+--     section_separators = {''},
+--     component_separators = {'|'},
+--     icons_enabled = false
+--   }
+-- }
+
+require'telescope'.setup{
   defaults = {
-    file_ignore_patterns = { 'node_modules', 'tmp', 'dist', 'build' }
+    file_ignore_patterns = { 'node_modules/', 'tmp/', 'dist/', 'build/' },
+    mappings = {
+      n = {
+    	  ['<c-d>'] = require('telescope.actions').delete_buffer
+      },
+      i = {
+        ['<c-d>'] = require('telescope.actions').delete_buffer
+      }
+    }
   },
 }
 
-require'telescope'.load_extension('fzy_native')
-require'telescope'.load_extension('git_worktree')
+local prettier = function()
+  return {
+    exe = "npx prettier",
+    args = {"--stdin", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+    stdin = true,
+  }
+end
 
-require'git-worktree'.setup {}
-require'gitsigns'.setup {
+require'formatter'.setup({
+  filetype = {
+    typescriptreact = {prettier},
+    typescript = {prettier},
+    javascriptreact = {prettier},
+    javascript = {prettier},
+    json = {prettier},
+    scss = {prettier},
+    css = {prettier},
+    html = {prettier},
+    prisma = {prettier},
+  }
+})
+
+require'telescope'.load_extension('fzy_native')
+-- require'telescope'.load_extension('git_worktree')
+
+-- require'git-worktree'.setup{}
+require'gitsigns'.setup{
   signs = {
     add = { hl = 'GitSignsAdd', text = '+', numhl='GitSignsAddNr', linehl='GitSignsAddLn' },
     change = { hl = 'GitSignsChange', text = '~', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn' },
   },
 }
 
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup{
   highlight = {
     enable = true,
   },
 }
 
-require'nvim-ts-autotag'.setup {}
-
-require"toggleterm".setup {
-  open_mapping = [[<c-\>]],
-}
+require'nvim-ts-autotag'.setup{}
 
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- function to attach completion when setting up lsp
-local on_attach = function(client, bufnr)
-  local ts_utils = require"nvim-lsp-ts-utils"
-
-  -- defaults
-  ts_utils.setup {
-    enable_import_on_completion = true,
-    import_on_completion_timeout = 0,
-
-    -- eslint
-    eslint_bin = "eslint_d",
-    eslint_args = {"--cache", "-f", "json", "--stdin", "--stdin-filename", "$FILENAME"},
-    eslint_enable_disable_comments = true,
-
-    -- experimental settings!
-    -- eslint diagnostics
-    eslint_enable_diagnostics = true,
-    eslint_diagnostics_debounce = 250,
-
-    -- formatting
-    enable_formatting = false,
-    -- formatter = "prettier_d_slim",
-    -- formatter_args = {"--stdin", "--stdin-filepath", "$FILENAME"},
-    -- format_on_save = false,
-
-    complete_parens = true,
-    signature_help_in_parens = true,
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- virtual_text = false,
+    -- signs = false,
+    -- update_in_insert = false,
+    underline = false,
+    -- severity_sort = false,
   }
+)
 
-  ts_utils.setup_client(client)
-end
+local lsp_installer = require("nvim-lsp-installer")
 
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach
-}
+-- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
+-- or if the server is already installed).
+lsp_installer.on_server_ready(function(server)
+    local opts = {}
 
-nvim_lsp.vuels.setup {}
+    if server.name == "cssls" then
+        opts.capabilities = capabilities
+    end
 
-nvim_lsp.rust_analyzer.setup{
-  capabilities = capabilities
-}
+    if server.name == "rust_analyzer" then
+      opts.capabilities = capabilities
+    end
 
-nvim_lsp.vimls.setup {}
+    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
+    -- before passing it onwards to lspconfig.
+    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+    server:setup(opts)
+end)
 
-nvim_lsp.jsonls.setup {}
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+    end,
+  },
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-y>'] = cmp.config.disable,
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({
+      select = false
+    }),
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+    }
+  })
+
+-- cmp.setup.cmdline(':', {
+--   sources = cmp.config.sources({
+--     { name = 'path' }
+--   }, {
+--     { name = 'cmdline' }
+--   })
+-- })
+
+
+-- require'sort-import'.setup();
+-- require'sort-import'.sort_import();
 EOF
 
-let g:compe = {}
-let g:compe.enabled = v:true
-let g:compe.autocomplete = v:true
-let g:compe.debug = v:false
-let g:compe.min_length = 1
-let g:compe.preselect = 'enable'
-let g:compe.throttle_time = 80
-let g:compe.source_timeout = 200
-let g:compe.incomplete_delay = 400
-let g:compe.max_abbr_width = 100
-let g:compe.max_kind_width = 100
-let g:compe.max_menu_width = 100
-let g:compe.documentation = v:true
-
-let g:compe.source = {}
-let g:compe.source.path = v:true
-let g:compe.source.buffer = v:true
-let g:compe.source.calc = v:true
-let g:compe.source.nvim_lsp = v:true
-let g:compe.source.nvim_lua = v:true
-let g:compe.source.vsnip = v:true
-let g:compe.source.vim_dadbod_completion = v:true
-
-" set completeopt=menuone,noinsert,noselect
-" For nvim-compe
-set completeopt=menuone,noselect
-" let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
-" let g:completion_trigger_keyword_length = 3
-
-" Prettier
-let g:prettier#autoformat_config_files = ['javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html', 'svg']
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-
-" Vue
-let g:vim_vue_plugin_use_scss = 1
+set completeopt=menu,menuone,noselect
 
 colorscheme gruvbox
+
+let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 
 " Rust Format
@@ -244,29 +303,26 @@ let g:rustfmt_autosave = 1
 let mapleader=" "
 
 " Database
-let g:db_ui_save_location = '~/.config/db/queries'
+"let g:db_ui_save_location = '~/.config/db/queries'
 
 " Telescope
 nnoremap <leader>fw :lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>ff :lua require('telescope.builtin').git_files({ recurse_submodules = true, show_untracked = false })<cr>
-nnoremap <leader>fa :lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg :lua require('telescope.builtin').git_files({ show_untracked = true })<cr>
+nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>gd :lua require('telescope.builtin').lsp_definitions()<cr>
 nnoremap <leader>ca :lua require('telescope.builtin').lsp_code_actions()<cr>
 nnoremap <leader>fr :lua require('telescope.builtin').lsp_references()<cr>
 nnoremap <leader>fs :lua require('telescope.builtin').lsp_document_symbols()<cr>
 nnoremap <leader>sh :lua vim.lsp.buf.hover()<cr>
-nnoremap <leader>sd :lua vim.lsp.diagnostic.show_line_diagnostics()<cr>
+nnoremap <leader>sd :lua vim.diagnostic.open_float()<cr>
 nnoremap <leader>rs :lua vim.lsp.buf.rename()<cr>
 
 " Typescript
 nnoremap <silent><leader>ia :TSLspImportAll<cr> :TSLspFormat<cr>
 nnoremap <silent><leader>io :TSLspOrganizeSync<cr> :TSLspFormat<cr>
 nnoremap <silent><leader>fc :TSLspFixCurrent<cr>
-
-" Completition
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+nnoremap <silent><leader>ts :lua TsCheck()<cr>
 
 " Git Worktree
 nnoremap <leader>gw :lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
@@ -278,22 +334,26 @@ nnoremap <leader>vs :so ~/.config/nvim/init.vim<cr>
 
 " Open last file
 nnoremap <leader><leader> :e#<cr>
-nnoremap <leader>t :set nosplitright <bar> :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
+nnoremap <leader>tt :set nosplitright <bar> :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
 
 " Maximize window
 nnoremap <leader>wm :MaximizerToggle<cr>
 
 " Debug
-nnoremap <leader>dd :call vimspector#Launch()<cr>
-nnoremap <leader>dk :call vimspector#Reset()<cr>
-nnoremap <leader>db :call vimspector#ToggleBreakpoint()<cr>
-nnoremap <leader>dbk :call vimspector#ClearBreakpoints()<cr>
-nnoremap <leader>dc :call vimspector#Continue()<cr>
+" nnoremap <leader>dd :call vimspector#Launch()<cr>
+" nnoremap <leader>dk :call vimspector#Reset()<cr>
+" nnoremap <leader>db :call vimspector#ToggleBreakpoint()<cr>
+" nnoremap <leader>dbk :call vimspector#ClearBreakpoints()<cr>
+" nnoremap <leader>dc :call vimspector#Continue()<cr>
 nnoremap <leader><F8> :call vimspector#StepOver()<cr>
 nnoremap <leader><F7> :call vimspector#RunToCursor()<cr>
 
+" Quickfix
+nnoremap <leader>cn :cn<cr>
+nnoremap <leader>cp :cp<cr>
+
 " Delete buffer without closing window
-nnoremap <leader>bk :bp\|bd #<cr>
+nnoremap <leader>bd :bp\|bd #<cr>
 
 " Rust
 nnoremap <leader>rr :Cargo run<cr>G
@@ -304,10 +364,10 @@ nnoremap <leader>rb :Cargo build<cr>
 " imap <silent> <c-space> <Plug>(completion_trigger)
 
 " Move lines up and down
-nnoremap <m-k> :m .-2<cr>==
-vnoremap <m-j> :m '>+1<cr>gv=gv
-vnoremap <m-k> :m '<-2<cr>gv=gv
-nnoremap <m-j> :m .+1<cr>==
+nnoremap <c-k> :m .-2<cr>==
+vnoremap <c-j> :m '>+1<cr>gv=gv
+vnoremap <c-k> :m '<-2<cr>gv=gv
+nnoremap <c-j> :m .+1<cr>==
 
 " Automatically indent pasted lines
 nnoremap p p=`]
@@ -316,6 +376,16 @@ nnoremap P P=`]
 " Terminal
 " Map ESC to leave insert mode
 tnoremap <esc> <c-\><c-n>
+
+" Yank line
+nnoremap Y yy
+
+" Netrw
+nnoremap <leader>dd :Lex %:p:h<cr>
+nnoremap <leader>de :Ex<cr>
+
+let g:netrw_winsize = 20
+let g:netrw_banner = 0
 
 " Snippets
 imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)' : '<C-j>'
@@ -333,11 +403,25 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 
+
+" Format on save
+" augroup fmt
+"   autocmd!
+"   au BufWritePre * try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+" augroup END
+
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost *.js,*.tsx,*.ts,*.css,*.scss,*.html,*.json silent! SortImport
+  autocmd BufWritePost *.js,*.tsx,*.ts,*.css,*.scss,*.html,*.json,*.prisma FormatWrite
+  autocmd BufWritePost *.sql lua RunQuery()
+augroup END
+
+
 augroup RIBEIRO
   autocmd!
   autocmd BufRead *.vue setfiletype html
   autocmd BufWritePre * %s/\s\+$//e
-  " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
   autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
 augroup END
 
@@ -360,6 +444,12 @@ function! CreateFile()
 endfunction
 
 command CreateFile call CreateFile()
+
+function! Pezzi()
+  !npm run pezzi:extract-files
+endfunction
+
+command Pezzi call Pezzi()
 
 function! DeleteFile()
   let filename = expand('%')
@@ -467,4 +557,80 @@ function GitWorktreeDelete()
 
   require("git-worktree").delete_worktree(branch)
 end
+
+function OpenJira()
+  local branch = vim.fn.system('git branch | grep "*"'):gsub("* ", ""):gsub("(%a+)/", "")
+
+  vim.fn.system('xdg-open https://trafilea.atlassian.net/browse/' .. branch)
+end
+
+function RunQuery()
+  local file = vim.fn.expand("%")
+
+
+  local result = vim.fn.system('psql postgresql://postgres:postgres@localhost:5432/postgres -f ' .. file)
+
+  print(result)
+end
+
+function TsCheck()
+  local project_name = vim.fn.system('basename $(git rev-parse --show-toplevel)'):gsub("[\r\n]+", "")
+  local filename = '/tmp/errors-' .. project_name .. '.txt'
+
+  vim.cmd('cclose')
+
+  vim.fn.system('rm -rf ' .. filename)
+  vim.fn.system('touch ' .. filename)
+
+  print(':Checking...')
+
+  local errors = vim.fn.system(
+    'npx tsc -p . | ' ..
+    'grep error | ' ..
+    'sed -r "s/\\(/:/p" | ' ..
+    'sed -r "s/,[[:digit:]]+\\)//p" | ' ..
+    'sed -r "s/: error TS/: TS/p"'
+  )
+
+  local lines = {}
+  local str = ''
+
+  local file = io.open(filename, 'w+')
+
+  for line in errors:gmatch("[^\r\n]+") do
+    line_number = string.match(line, ':([0-9]+): ')
+
+    if line_number == nil then
+      goto continue
+    end
+
+    if lines[line_number] == nil then
+      lines[line_number] = true
+      -- print('adding', line_number, line)
+      str = str .. line .. "\n"
+    end
+
+    ::continue::
+  end
+
+  file:write(str)
+  file:close()
+
+  -- if table.getn(lines) == 0 then
+  --   print('No errors')
+  --   return
+  -- end
+
+  vim.cmd('cf ' .. filename)
+  vim.cmd('copen')
+end
 EOF
+
+function! NetrwMappings()
+  nmap <buffer> l <CR>:Lex<CR>
+endfunction
+
+augroup netrw_mappings
+  autocmd!
+  autocmd filetype netrw call NetrwMappings()
+augroup END
