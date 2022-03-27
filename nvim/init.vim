@@ -92,17 +92,9 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'rust-lang/rust.vim'
 Plug 'simrat39/rust-tools.nvim'
 
-" Database
-Plug 'tpope/vim-dadbod'
-Plug 'kristijanhusak/vim-dadbod-ui'
-Plug 'kristijanhusak/vim-dadbod-completion'
-
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'szw/vim-maximizer'
-" Plug 'tpope/vim-obsession'
-" Plug 'puremourning/vimspector'
-" Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 
