@@ -16,12 +16,13 @@ nvm use --lts
 # --
 # PACKAGES
 # --
-sudo pacman -Suy htop xclip neovim tmux ripgrep
+sudo pacman -Suy htop xclip neovim tmux ripgrep unzip
 
 # --
 # FONTS
 # --
-ln -s $(pwd)/fonts/iosevka/* $HOME/.fonts
+ln -s $(pwd)/fonts/iosevka $HOME/.local/share/fonts
+ln -s $(pwd)/fonts/CascadiaCode $HOME/.local/share/fonts
 sudo fc-cache
 
 # --
@@ -50,6 +51,7 @@ ln -sf $(pwd)/.gitconfig $HOME/
 mkdir -p $HOME/.config/nvim
 
 ln -sf $(pwd)/nvim/init.vim $HOME/.config/nvim
+ln -sf $(pwd)/nvim/init.lua $HOME/.config/nvim
 
 # Install Vim Plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
@@ -66,3 +68,8 @@ curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/
 chmod +x ~/.local/bin/rust-analyzer
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+
+# --
+# i3
+# --
+ln -sf $(pwd)/i3/config $HOME/.config/i3/
