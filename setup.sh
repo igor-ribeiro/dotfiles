@@ -21,8 +21,8 @@ sudo pacman -Suy htop xclip neovim tmux ripgrep unzip
 # --
 # FONTS
 # --
-ln -s $(pwd)/fonts/iosevka $HOME/.local/share/fonts
-ln -s $(pwd)/fonts/CascadiaCode $HOME/.local/share/fonts
+mkdir $HOME/.local/share/fonts/
+ln -s $(pwd)/fonts/ $HOME/.local/share/fonts/
 sudo fc-cache
 
 # --
