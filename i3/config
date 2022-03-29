@@ -50,7 +50,10 @@ bindsym $mod+x exec betterlockscreen -l
 
 # Shutdown the computer
 # bindsym $mod+Shift+s exec shutdown now
-bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'Are you sure you want to shutdown?' -B 'Yes' 'i3-msg shutdown'"
+bindsym $mod+Shift+o exec "i3-nagbar -t warning -m 'Are you sure you want to shutdown?' -B 'Yes' 'systemctl poweroff'"
+
+# selected screenshot
+bindsym $mod+Shift+s exec "maim -s -u | xclip -selection clipboard -t image/png -i"
 
 #Reboot Machine
 #bindsym $mod+r exec systemctl reboot
@@ -230,7 +233,7 @@ bar {
 				# status_command i3status
 				tray_output primary
 				# status_command i3status -c ~/.config/i3/i3status.conf
-				status_command SCRIPT_DIR=~/code/lib/i3blocks-contrib i3blocks -c ~/.config/i3/i3blocks.conf
+				status_command SCRIPT_DIR=~/code/lib/i3blocks-contrib i3blocks -c ~/.config/i3/blocks.conf
 }
 
 

@@ -71,4 +71,5 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # --
 # i3
 # --
-ln -sf $(pwd)/i3/config $HOME/.config/i3/
+mkdir $HOME/.config/i3
+ln -sf $(pwd)/i3/* $HOME/.config/i3/
