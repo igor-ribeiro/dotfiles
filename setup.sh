@@ -16,7 +16,7 @@ nvm use --lts
 # --
 # PACKAGES
 # --
-sudo pacman -Suy htop xclip neovim tmux ripgrep unzip
+sudo pacman -Suy htop xclip neovim tmux ripgrep unzip xdg-utils pipewire
 
 # --
 # FONTS
@@ -48,10 +48,9 @@ ln -sf $(pwd)/.gitconfig $HOME/
 # --
 # NEOVIM
 # --
-mkdir -p $HOME/.config/nvim
+# mkdir -p $HOME/.config/nvim
 
-ln -sf $(pwd)/nvim/init.vim $HOME/.config/nvim
-ln -sf $(pwd)/nvim/init.lua $HOME/.config/nvim
+ln -sf $(pwd)/nvim/* $HOME/.config/nvim/
 
 # Install Vim Plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \

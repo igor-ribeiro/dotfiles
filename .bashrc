@@ -19,8 +19,10 @@ alias ebash="nvim ~/.bashrc"
 alias sbash="source ~/.bashrc"
 
 # Vim
+alias i3config="nvim ~/.config/i3/config"
 alias evim="nvim ~/.config/nvim/init.vim"
 alias vim="nvim"
+alias svim="sudo -E -s nvim"
 
 alias ls="ls --color=auto"
 alias ll="ls -l"

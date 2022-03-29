@@ -28,7 +28,7 @@ exec --no-startup-id xrandr --output HDMI-1-0 --right-of eDP-1 --auto --primary
 # This is the recommended mode. It searches for the programs as
 # defined in .desktop file, with their description, and corresponding
 # icons
-bindsym $mod+d exec --no-startup-id rofi -show drun -theme Monokai
+bindsym $mod+d exec --no-startup-id rofi -show drun -drun-show-actions -theme Monokai
 
 # The other mode search for applications in /usr/bin or /usr/sbin.
 # This should only be used if a program lacks a .desktop file.
@@ -49,7 +49,8 @@ exec_always feh --bg-fill /usr/share/backgrounds/i3/wall.png
 bindsym $mod+x exec betterlockscreen -l
 
 # Shutdown the computer
-bindsym $mod+Shift+s exec shutdown now
+# bindsym $mod+Shift+s exec shutdown now
+bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'Are you sure you want to shutdown?' -B 'Yes' 'i3-msg shutdown'"
 
 #Reboot Machine
 #bindsym $mod+r exec systemctl reboot
@@ -157,8 +158,8 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-workspace $ws1 output primary
-
+workspace $ws10 output eDP-1
+workspace $ws9 output eDP-1
 
 # 10] switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -185,7 +186,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Edit the configuration file
-bindsym $mod+Shift+i exec i3-sensible-terminal -e vim ~/.config/i3/config
+bindsym $mod+Shift+i exec i3-sensible-terminal -e nvim ~/.config/i3/config
 # 12A] reload the configuration file
 bindsym $mod+Shift+c reload
 # 12B] restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -238,7 +239,13 @@ bar {
 # for_window [class="nameofapp"] move to workspace $wsno.
 # WS No. 5 has been used as example.
 # Note: You will have to launch the program from a program launcher (rofi).
-# for_window [class="firefox"] move to workspace $ws5
+for_window [class="firefoxtrafilea"] move to workspace $ws1
+for_window [class="firefoxribeiro"] move to workspace $ws2
+
+for_window [title="Zoom Meeting"] move to workspace $ws3
+for_window [class="zoom"] move to workspace $ws3 workspace number $ws3
+
+for_window [class="obs"] move to workspace $ws9 workspace number $ws9
 
 # The following way allows programs to be launched with a
 # defined keybinding, on a certain workspace, without
