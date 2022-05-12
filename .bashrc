@@ -5,6 +5,9 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+force_color_prompt=yes
+color_prompt=yes
+
 # Bash files
 . ~/.config/bash/exports.bash
 . ~/.config/bash/git.bash
@@ -21,7 +24,6 @@ alias sbash="source ~/.bashrc"
 # Vim
 alias i3config="nvim ~/.config/i3/config"
 alias evim="nvim ~/.config/nvim/init.vim"
-alias vim="nvim"
 alias svim="sudo -E -s nvim"
 
 alias ls="ls --color=auto"
@@ -30,7 +32,12 @@ alias la="ls -la"
 
 alias open="xdg-open"
 
+alias x-www-browser="firefox"
+
+alias eapps="svim /usr/share/applications"
+
 export NVM_DIR="$HOME/.nvm"
+
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 

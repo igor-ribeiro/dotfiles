@@ -9,3 +9,5 @@
 	ui = auto
 [core]
 	pager = less -r
+[init]
+	defaultBranch = main

@@ -9,6 +9,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+Plug 'ThePrimeagen/harpoon'
+
 " LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
@@ -29,21 +31,25 @@ Plug 'onsails/diaglist.nvim'
 " Git
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
+Plug 'akinsho/git-conflict.nvim'
 
 " Language
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'windwp/nvim-ts-autotag'
 Plug 'mhartington/formatter.nvim'
 Plug 'findango/vim-mdx'
+Plug 'edgedb/edgedb-vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
 
 " Statusline
-" Plug 'hoob3rt/lualine.nvim'
+Plug 'hoob3rt/lualine.nvim'
 
 " Themes
-Plug 'gruvbox-community/gruvbox'
+"Plug 'ellisonleao/gruvbox.nvim'
+Plug 'rafamadriz/themes.nvim'
+"Plug 'gruvbox-community/gruvbox'
 Plug 'luisiacc/gruvbox-baby'
 
 " Rust
@@ -64,13 +70,6 @@ set guicursor=
 " Show current line number.
 set nu
 set relativenumber
-set relativenumber
-set relativenumber
-set relativenumber
-set relativenumber
-set relativenumber
-set relativenumber
-set relativenumber
 " Disable highlight after search.
 set nohlsearch
 " Keeps buffer opened in the background.
@@ -90,14 +89,18 @@ set incsearch
 set termguicolors
 set t_Co=256
 " Starts scrolling before reaching the end.
-set scrolloff=8
+set scrolloff=10
+set sidescrolloff=20
 set noshowmode
 " set completeopt=menuone,noinsert,noselect
 set colorcolumn=80
 set signcolumn=yes
 
+" Only show statusline when there is more than 1 window
+set laststatus=1
+
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000ms) leads to noticeable
 " delays and poor UX.
@@ -115,7 +118,7 @@ set splitbelow
 
 set completeopt=menu,menuone,noselect
 set background=dark
-colorscheme gruvbox-baby
+colorscheme tokyodark
 
 let mapleader=" "
 
@@ -127,22 +130,36 @@ let g:rustfmt_autosave = 1
 let g:netrw_winsize = 20
 let g:netrw_banner = 0
 
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "ribeirosnippets"]
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
 lua << EOF
+-- vim.opt.statusline = [[%!luaeval("require('modules.ui.statusline').status_line()")]]
 
 -- require'sort-import'.setup{}
 
-require("diaglist").init{
-  -- optional settings
-  -- below are defaults
-  debug = false,
+require('git-conflict').setup()
 
-  -- increase for noisy servers
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'GitConflictDetected',
+  callback = function()
+    vim.notify('Conflict detected in '..vim.fn.expand('<afile>'))
+    vim.keymap.set('n', 'cww', function()
+      engage.conflict_buster()
+    end)
+  end
+})
+
+require("diaglist").init{
+  debug = false,
   debounce_ms = 150,
 }
 
 -- require'lualine'.setup{
 --   options = {
---     theme = 'gruvbox',
+--     theme = 'iceberg_dark',
 --     section_separators = {''},
 --     component_separators = {'|'},
 --     icons_enabled = false
@@ -154,7 +171,7 @@ require'telescope'.setup{
     file_ignore_patterns = { 'node_modules/', 'tmp/', 'dist/', 'build/' },
     mappings = {
       n = {
-    	  ['<c-d>'] = require('telescope.actions').delete_buffer
+        ['<c-d>'] = require('telescope.actions').delete_buffer
       },
       i = {
         ['<c-d>'] = require('telescope.actions').delete_buffer
@@ -163,9 +180,19 @@ require'telescope'.setup{
   },
 }
 
+require'telescope'.load_extension('fzy_native')
+require('telescope').load_extension('harpoon')
+
+require('harpoon').setup({
+  global_settings = {
+    mark_branch = true,
+  }
+})
+
 local prettier = function()
   return {
-    exe = "prettier_d_slim",
+    -- exe = "prettier_d_slim",
+    exe = "npx prettier",
     args = {"--stdin", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
     stdin = true,
   }
@@ -185,7 +212,6 @@ require'formatter'.setup({
   }
 })
 
-require'telescope'.load_extension('fzy_native')
 
 require'gitsigns'.setup{
   signs = {
@@ -211,12 +237,12 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- virtual_text = false,
-    -- signs = false,
-    -- update_in_insert = false,
-    underline = false,
-    -- severity_sort = false,
+vim.lsp.diagnostic.on_publish_diagnostics, {
+  -- virtual_text = false,
+  -- signs = false,
+  -- update_in_insert = false,
+  underline = false,
+  -- severity_sort = false,
   }
 )
 
@@ -225,30 +251,43 @@ local lsp_installer = require("nvim-lsp-installer")
 -- Register a handler that will be called for each installed server when it's ready (i.e. when installation is finished
 -- or if the server is already installed).
 lsp_installer.on_server_ready(function(server)
-    local opts = {}
+  local opts = {}
 
-    if server.name == "cssls" then
-        opts.capabilities = capabilities
-    end
+  if server.name == "tailwindcss" then
+    return
+  end
 
-    if server.name == "rust_analyzer" then
-      opts.capabilities = capabilities
-    end
+  if server.name == "cssls" then
+    opts.capabilities = capabilities
+  end
 
-    -- This setup() function will take the provided server configuration and decorate it with the necessary properties
-    -- before passing it onwards to lspconfig.
-    -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-    server:setup(opts)
+  if server.name == "rust_analyzer" then
+    opts.capabilities = capabilities
+  end
+
+  -- This setup() function will take the provided server configuration and decorate it with the necessary properties
+  -- before passing it onwards to lspconfig.
+  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+  server:setup(opts)
 end)
+
+nvim_lsp.prismals.setup{}
+nvim_lsp.tailwindcss.setup{}
 
 local cmp = require'cmp'
 
 cmp.setup({
+  completion = {
+    autocomplete = false,
+  },
   snippet = {
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
   },
+  enabled = function()
+    return vim.fn.reg_recording() == ''
+  end,
   mapping = {
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
@@ -260,8 +299,8 @@ cmp.setup({
       c = cmp.mapping.close(),
     }),
     -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    ['<CR>'] = cmp.mapping.confirm({
-      select = false
+    ['<Tab>'] = cmp.mapping.confirm({
+      select = true
     }),
   },
   sources = cmp.config.sources({
@@ -280,6 +319,7 @@ cmp.setup.cmdline('/', {
 
 EOF
 
+inoremap <Esc> <C-c>
 
 " Telescope
 nnoremap <leader>fw :lua require('telescope.builtin').live_grep()<cr>
@@ -293,6 +333,15 @@ nnoremap <leader>fs :lua require('telescope.builtin').lsp_document_symbols()<cr>
 nnoremap <leader>sh :lua vim.lsp.buf.hover()<cr>
 nnoremap <leader>sd :lua vim.diagnostic.open_float()<cr>
 nnoremap <leader>rs :lua vim.lsp.buf.rename()<cr>
+
+" Harpoon
+nnoremap <leader>ma :lua require('harpoon.mark').add_file()<cr>
+nnoremap <leader>ms :lua require('harpoon.ui').toggle_quick_menu()<cr>
+nnoremap <leader>1 :lua require('harpoon.ui').nav_file(1)<cr>
+nnoremap <leader>2 :lua require('harpoon.ui').nav_file(2)<cr>
+nnoremap <leader>3 :lua require('harpoon.ui').nav_file(3)<cr>
+nnoremap <leader>4 :lua require('harpoon.ui').nav_file(4)<cr>
+nnoremap <leader>5 :lua require('harpoon.ui').nav_file(5)<cr>
 
 " Typescript
 nnoremap <silent><leader>ia :TSLspImportAll<cr> :TSLspFormat<cr>
@@ -356,10 +405,236 @@ nnoremap Y yy
 nnoremap <leader>dd :Lex %:p:h<cr>
 nnoremap <leader>de :Ex<cr>
 
-command W w 
+" Buffer Navigation
+nnoremap <leader>l :bn<cr>
+nnoremap <leader>h :bp<cr>
 
-set relativenumber
-set relativenumber
-set relativenumber
-set relativenumber
-set relativenumber
+command W w
+
+augroup FormatAutogroup
+  autocmd!
+  " autocmd BufWritePost *.js,*.tsx,*.ts,*.css,*.scss,*.html,*.json silent! SortImport
+  autocmd BufWritePost *.js,*.tsx,*.ts,*.css,*.scss,*.html,*.json,*.prisma FormatWrite
+  autocmd BufWritePost *.sql lua RunQuery()
+augroup END
+
+
+augroup RIBEIRO
+  autocmd!
+  autocmd BufRead *.vue setfiletype html
+  autocmd BufWritePre * %s/\s\+$//e
+  autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
+augroup END
+
+function! CreateFile()
+  let path = expand('%:h') . '/'
+
+  try
+    call inputsave()
+    let filename = input('Filename: ', path)
+    call inputrestore()
+
+    if (filename == '')
+      return
+    endif
+
+    execute 'edit' filename
+  finally
+    echo ''
+  endtry
+endfunction
+
+command CreateFile call CreateFile()
+
+function! Pezzi()
+  !npm run pezzi:extract-files
+endfunction
+
+command Pezzi call Pezzi()
+
+function! DeleteFile()
+  let filename = expand('%')
+
+  call inputsave()
+  let option = input('Do you really want to delete this file? [y]es [n]o: ')
+  call inputrestore()
+
+  if (option == 'y')
+    try
+      :call system('rm -rf ' . filename)
+      :bd
+      echo '\r\r'
+      echo 'File deleted: ' . filename
+    catch
+      echo '\r\r'
+      echo 'Could not delete file'
+    endtry
+  endif
+endfunction
+
+command DeleteFile call DeleteFile()
+
+function! RenameFile()
+  let filename = expand('%:t')
+  let full_path = expand('%:p:h')
+  let path = expand('%:h') . '/'
+
+  try
+    call inputsave()
+    let new_filename = input('Rename: ', filename)
+    call inputrestore()
+
+    if (new_filename == '')
+      return
+    endif
+
+    echo '\r\r'
+    let command = path . '{' . filename . ',' . new_filename . '}'
+    echo system('mv ' . command)
+    echo 'File renamed to ' . new_filename . '.\r\nFile reloaded'
+
+    execute 'edit' path . new_filename
+  finally
+    echo ''
+  endtry
+endfunction
+
+command RenameFile call RenameFile()
+
+function! DuplicateFile()
+  let filename = expand('%')
+
+  call inputsave()
+  let new_filename = input('New filename: ', filename)
+  call inputrestore()
+
+  try
+    let folders = fnamemodify(new_filename, ':h')
+    :call system('stat a.js')
+  catch
+    :call system('mkdir -p ' . folders)
+    :call system('touch ' . new_filename)
+  endtry
+
+  :call system('cat ' . filename . ' > ' . new_filename)
+  execute 'e' new_filename
+endfunction
+
+command DuplicateFile call DuplicateFile()
+
+function! InlineJSON()
+  :silent %s/\n//g | silent %s/\s\{2\}//g
+endfunction
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+  if &paste
+    return 'PASTE MODE  '
+  endif
+  return ''
+endfunction
+
+let s:clip = '/mnt/c/Windows/System32/clip.exe'
+if executable(s:clip)
+  augroup WSLYank
+    autocmd!
+    autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+  augroup END
+endif
+
+lua << EOF
+function GitWorktreeAdd()
+  vim.fn.inputsave()
+  local branch = vim.fn.input('Branch: ')
+  vim.fn.inputrestore()
+
+  require("git-worktree").create_worktree(branch, branch)
+end
+
+function GitWorktreeDelete()
+  vim.fn.inputsave()
+  local branch = vim.fn.input('Branch: ')
+  vim.fn.inputrestore()
+
+  require("git-worktree").delete_worktree(branch)
+end
+
+function OpenJira()
+  local branch = vim.fn.system('git branch | grep "*"'):gsub("* ", ""):gsub("(%a+)/", "")
+
+  vim.fn.system('xdg-open https://trafilea.atlassian.net/browse/' .. branch)
+end
+
+function RunQuery()
+  local file = vim.fn.expand("%")
+
+
+  local result = vim.fn.system('psql postgresql://postgres:postgres@localhost:5432/postgres -f ' .. file)
+
+  print(result)
+end
+
+function TsCheck()
+  local project_name = vim.fn.system('basename $(git rev-parse --show-toplevel)'):gsub("[\r\n]+", "")
+  local filename = '/tmp/errors-' .. project_name .. '.txt'
+
+  vim.cmd('cclose')
+
+  vim.fn.system('rm -rf ' .. filename)
+  vim.fn.system('touch ' .. filename)
+
+  print(':Checking...')
+
+  local errors = vim.fn.system(
+  'npx tsc -p . | ' ..
+  'grep error | ' ..
+  'sed -r "s/\\(/:/p" | ' ..
+  'sed -r "s/,[[:digit:]]+\\)//p" | ' ..
+  'sed -r "s/: error TS/: TS/p"'
+  )
+
+  local lines = {}
+  local str = ''
+
+  local file = io.open(filename, 'w+')
+
+  for line in errors:gmatch("[^\r\n]+") do
+    line_number = string.match(line, ':([0-9]+): ')
+
+    if line_number == nil then
+      goto continue
+    end
+
+    if lines[line_number] == nil then
+      lines[line_number] = true
+      -- print('adding', line_number, line)
+      str = str .. line .. "\n"
+    end
+
+    ::continue::
+  end
+
+  file:write(str)
+  file:close()
+
+  -- if table.getn(lines) == 0 then
+  --   print('No errors')
+  --   return
+  -- end
+
+  vim.cmd('cf ' .. filename)
+  vim.cmd('copen')
+end
+EOF
+
+function! NetrwMappings()
+  nmap <buffer> l <CR>:Lex<CR>
+endfunction
+
+augroup netrw_mappings
+  autocmd!
+  autocmd filetype netrw call NetrwMappings()
+augroup END
+
+
+cabbrev term 20sp term://bash

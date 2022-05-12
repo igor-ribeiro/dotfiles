@@ -12,7 +12,6 @@ alias gs="git switch"
 
 function gco () {
 	git checkout $@
-	(git fetch -q)
 }
 
 # git push origin CURRENT_BRANCH
