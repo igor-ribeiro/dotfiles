@@ -3,7 +3,7 @@
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar.
-font pango:Cascadia Code SemiBold 10
+# font pango:Cascadia Code SemiBold 10
 
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -18,6 +18,7 @@ bindsym $mod+Shift+q kill
 
 #Multi Monitor (Dual Monitor, extended monitor)
 exec --no-startup-id xrandr --output HDMI-1-0 --right-of eDP-1 --auto --primary
+exec --no-startup-id /usr/libexec/gsd-xsettings
 
 
 # start dmenu (a program launcher).
@@ -238,10 +239,10 @@ bindsym $mod+r mode "resize"
 # finds out, if available). Commented out due to use of polybar. If you want to
 # use i3 bars (status or blocks) this are some examples on how you can do it.
 bar {
-				# status_command i3status
+				status_command i3status
 				tray_output primary
 				# status_command i3status -c ~/.config/i3/i3status.conf
-				status_command SCRIPT_DIR=~/code/lib/i3blocks-contrib i3blocks -c ~/.config/i3/blocks.conf
+				# status_command SCRIPT_DIR=~/code/lib/i3blocks-contrib i3blocks -c ~/.config/i3/blocks.conf
 }
 
 
@@ -250,9 +251,11 @@ bar {
 # for_window [class="nameofapp"] move to workspace $wsno.
 # WS No. 5 has been used as example.
 # Note: You will have to launch the program from a program launcher (rofi).
-for_window [class="firefox"] move to workspace $ws2
-for_window [class="firefoxtrafilea"] move to workspace $ws1
-for_window [class="firefoxribeiro-software"] move to workspace $ws8
+for_window [class="chrome-galley"] move to workspace $ws1
+for_window [class="chrome-personal"] move to workspace $ws2
+# for_window [class="firefox"] move to workspace $ws2
+# for_window [class="firefoxtrafilea"] move to workspace $ws1
+# for_window [class="firefoxribeiro-software"] move to workspace $ws8
 assign [class="firefoxribeiro-software"] workspace $ws8
 
 assign [title="Zoom Meeting"] workspace $ws3

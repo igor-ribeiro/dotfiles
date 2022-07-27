@@ -4,7 +4,7 @@
 # ARCH
 # --
 # Disable sleep
-setterm -blank 0
+# setterm -blank 0
 
 # --
 # NVM (NODE)
@@ -16,7 +16,7 @@ nvm use --lts
 # --
 # PACKAGES
 # --
-sudo pacman -Suy htop xclip neovim tmux ripgrep unzip xdg-utils pipewire
+# sudo pacman -Suy htop xclip neovim tmux ripgrep unzip xdg-utils pipewire
 
 # --
 # FONTS
@@ -48,13 +48,12 @@ ln -sf $(pwd)/.gitconfig $HOME/
 # --
 # NEOVIM
 # --
-# mkdir -p $HOME/.config/nvim
-
+mkdir -p $HOME/.config/nvim
 ln -sf $(pwd)/nvim/* $HOME/.config/nvim/
 
 # Install Vim Plug
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # Install plugins
 nvim -c 'PlugInstall | qa'

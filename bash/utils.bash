@@ -1,25 +1,25 @@
 function code () {
-  cd ~/code/$@
+  cd ~/Code/$@
 }
 
 function config () {
   cd ~/.config/$@
 }
 
-function ir () {
-  cd ~/code/ribeiro/$@
+function personal () {
+  code personal/$@
 }
 
 function ilabs () {
-  cd ~/code/ribeirolabs/$@
+  code ribeirolabs/$@
 }
 
-function trafi () {
-  cd ~/code/trafilea/$@
+function galley () {
+  code galley/$@
 }
 
 function dotfiles () {
-  ir dotfiles
+  personal dotfiles
 }
 
 function dotfiles-push () {
