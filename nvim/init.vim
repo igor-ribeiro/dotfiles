@@ -191,8 +191,8 @@ require('harpoon').setup({
 
 local prettier = function()
   return {
-    exe = "prettier_d_slim",
-    -- exe = "npx prettier",
+    -- exe = "prettier_d_slim",
+    exe = "npx prettier",
     args = {"--stdin", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
     stdin = true,
   }
@@ -289,6 +289,8 @@ cmp.setup({
     return vim.fn.reg_recording() == ''
   end,
   mapping = {
+    ["<C-p>"] = cmp.mapping.select_prev_item(),
+    ["<C-n>"] = cmp.mapping.select_next_item(),
     ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),

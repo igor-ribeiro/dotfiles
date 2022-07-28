@@ -143,3 +143,17 @@ function show-size () {
   du -sh * | sort -rn
 }
 
+function comp-off () {
+  pgrep xcompmgr &>/dev/null
+  killall xcompmgr -q
+
+  if [ "$1" != "-q" ]; then
+    notify-send "Compositor [off]" -t 2000
+  fi
+}
+
+function comp-on () {
+  comp-off -q
+  xcompmgr -c -l0 -t0 -r0 -o.00 &
+  notify-send "Compositor [on]" -t 2000
+}
