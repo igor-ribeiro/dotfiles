@@ -27,6 +27,7 @@ function dotfiles-push () {
   git add .
   git commit -m 'update'
 	ggp
+  cd -
 }
 
 function clear-swap () {
