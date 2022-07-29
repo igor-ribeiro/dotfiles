@@ -7,6 +7,7 @@ icons="/usr/share/icons/Pop/32x32"
 icon="$icons/devices/audio-input-microphone-off.svg"
 
 if [ $is_on = "1" ]; then
+  amixer set Capture '100%'
   state="on"
   icon="$icons/devices/audio-input-microphone.svg"
 fi
