@@ -33,6 +33,12 @@ function gm () {
   git merge --no-ff origin/$@
 }
 
+function g-set-up () {
+  branch=$(current-git-branch)
+
+  git branch --set-upstream-to=origin/$branch $branch
+}
+
 # Check if folder has .git
 function has-git () {
   if [[ $(find . -maxdepth 1 -name '.git') ]]; then

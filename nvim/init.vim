@@ -39,6 +39,7 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'mhartington/formatter.nvim'
 Plug 'findango/vim-mdx'
 Plug 'edgedb/edgedb-vim'
+Plug 'jose-elias-alvarez/typescript.nvim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -191,9 +192,10 @@ require('harpoon').setup({
 
 local prettier = function()
   return {
-    -- exe = "prettier_d_slim",
+  -- exe = "prettier_d_slim",
     exe = "npx prettier",
-    args = {"--stdin", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+--    args = {"--stdin", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+    args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
     stdin = true,
   }
 end
@@ -264,6 +266,7 @@ lsp_installer.on_server_ready(function(server)
   if server.name == "rust_analyzer" then
     opts.capabilities = capabilities
   end
+
 
   -- This setup() function will take the provided server configuration and decorate it with the necessary properties
   -- before passing it onwards to lspconfig.

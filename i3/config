@@ -22,6 +22,8 @@ exec --no-startup-id xrandr --output HDMI-1-0 --right-of eDP-1 --auto --primary
 exec --no-startup-id /usr/libexec/gsd-xsettings
 # Start compositor to enable transparency
 exec --no-startup-id comp-on
+# Start custom keys
+exec --no-startup-id xbindkeys
 
 
 # start dmenu (a program launcher).
