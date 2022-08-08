@@ -158,3 +158,11 @@ function comp-on () {
   xcompmgr -c -l0 -t0 -r0 -o.00 &
   notify-send "Compositor [on]" -t 2000
 }
+
+function video-off () {
+  sudo modprobe -r uvcvideo
+}
+
+function video-on () {
+  sudo modprobe uvcvideo
+}
