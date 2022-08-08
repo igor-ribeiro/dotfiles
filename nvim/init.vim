@@ -200,12 +200,18 @@ local prettier = function()
   }
 end
 
+local tsFormatter = function()
+  -- require('typescript').actions.removeUnused()
+
+  return prettier()
+end
+
 require'formatter'.setup({
   filetype = {
-    typescriptreact = {prettier},
-    typescript = {prettier},
-    javascriptreact = {prettier},
-    javascript = {prettier},
+    typescriptreact = {tsFormatter},
+    typescript = {tsFormatter},
+    javascriptreact = {tsFormatter},
+    javascript = {tsFormatter},
     json = {prettier},
     scss = {prettier},
     css = {prettier},
@@ -331,13 +337,23 @@ nnoremap <leader>fw :lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fg :lua require('telescope.builtin').git_files({ show_untracked = true })<cr>
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
-nnoremap gd :lua require('telescope.builtin').lsp_definitions()<cr>
-nnoremap <leader>ca :lua require('telescope.builtin').lsp_code_actions()<cr>
-nnoremap <leader>fr :lua require('telescope.builtin').lsp_references()<cr>
-nnoremap <leader>fs :lua require('telescope.builtin').lsp_document_symbols()<cr>
-nnoremap <leader>sh :lua vim.lsp.buf.hover()<cr>
-nnoremap <leader>sd :lua vim.diagnostic.open_float()<cr>
+
+" LSP
+nnoremap gd :lua vim.lsp.buf.definition()<cr>
+nnoremap gD :lua vim.lsp.buf.declaration()<cr>
+nnoremap gi :lua vim.lsp.buf.implementation()<cr>
+nnoremap gr :lua vim.lsp.buf.references()<cr>
+nnoremap K :lua vim.lsp.buf.hover()<cr>
+nnoremap <C-K> :lua vim.lsp.buf.signature_help()<cr>
+nnoremap <leader>ca :lua vim.lsp.buf.code_action()<cr>
+nnoremap <leader>fs :lua vim.lsp.buf.document_symbols()<cr>
 nnoremap <leader>rs :lua vim.lsp.buf.rename()<cr>
+
+" Diagnostic
+nnoremap <leader>e :lua vim.diagnostic.open_float()<cr>
+nnoremap [d :lua vim.diagnostic.goto_prev()<cr>
+nnoremap ]d :lua vim.diagnostic.goto_next()<cr>
+
 
 " Harpoon
 nnoremap <leader>ma :lua require('harpoon.mark').add_file()<cr>
@@ -390,10 +406,10 @@ nnoremap <leader>rb :Cargo build<cr>
 " imap <silent> <c-space> <Plug>(completion_trigger)
 
 " Move lines up and down
-nnoremap <c-k> :m .-2<cr>==
-vnoremap <c-j> :m '>+1<cr>gv=gv
-vnoremap <c-k> :m '<-2<cr>gv=gv
-nnoremap <c-j> :m .+1<cr>==
+"nnoremap <c-k> :m .-2<cr>==
+"vnoremap <c-j> :m '>+1<cr>gv=gv
+"vnoremap <c-k> :m '<-2<cr>gv=gv
+"nnoremap <c-j> :m .+1<cr>==
 
 " Automatically indent pasted lines
 nnoremap p p=`]

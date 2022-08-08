@@ -17,7 +17,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+q kill
 
 #Multi Monitor (Dual Monitor, extended monitor)
-exec --no-startup-id xrandr --output HDMI-1-0 --right-of eDP-1 --auto --primary
+exec --no-startup-id xrandr --output eDP-1-1 --left-of HDMI-0 --auto
+exec --no-startup-id xrandr --output HDMI-0 --right-of eDP-1-1 --auto --primary
 # Get OS theme
 exec --no-startup-id /usr/libexec/gsd-xsettings
 # Start compositor to enable transparency
@@ -179,8 +180,8 @@ workspace $ws5 output primary
 workspace $ws6 output primary
 workspace $ws7 output primary
 workspace $ws8 output primary
-workspace $ws9 output eDP-1
-workspace $ws10 output eDP-1
+workspace $ws9 output secondary
+workspace $ws10 output secondary
 
 # 10] switch to workspace
 bindsym $mod+1 workspace number $ws1
