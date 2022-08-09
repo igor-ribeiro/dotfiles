@@ -30,6 +30,7 @@ sudo fc-cache
 # --
 ln -sf $(pwd)/.bashrc $HOME/
 ln -sf $(pwd)/bash/ $HOME/.config/
+ln -sf $(pwd)/assets/icons/ $HOME/.local/
 
 # --
 # TMUX
