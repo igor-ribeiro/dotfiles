@@ -14,6 +14,34 @@ function tmux-kill () {
   tmux kill-session -t $1
 }
 
+function topen () {
+  ALL_FLAGS=("-f")
+  flags=()
+  session_name=$1
+
+  for arg in $@; do
+    if [[ " ${ALL_FLAGS[@]} " =~ " ${arg} " ]]; then
+      flags+=($arg)
+    elif [ -z "$session_name" ]; then
+      session_name=$arg
+    fi
+  done
+
+
+  if [[ " ${flags[@]} " =~ " -f " ]]; then
+    # echo "Killing all $session_name"
+    tmux-kill $session_name
+  fi
+
+  if tmux has -t $session_name; then
+    # echo "Attaching to $session_name"
+    tmux a -t $session_name
+  else
+    # echo "Creating session $session_name"
+    ~/Code/personal/dotfiles/tmux/sessions/$session_name.sh $@
+  fi
+}
+
 # Start a session by script attaching or creating a new one
 function tmux-start () {
   ALL_FLAGS=("-f")
@@ -46,6 +74,6 @@ function tmux-start () {
     tmux a -t $session_name
   else
     echo "Creating session $session_name"
-    ~/code/ribeiro/dotfiles/tmux/sessions/$session_name.sh "${projects[*]}"
+    ~/Code/personal/dotfiles/tmux/sessions/$session_name.sh "${projects[*]}" &
   fi
 }

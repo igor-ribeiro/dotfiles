@@ -16,12 +16,12 @@ function gco () {
 
 # git push origin CURRENT_BRANCH
 function ggp () {
-  git push origin $(current-git-branch)
+  git push origin $(current-git-branch) $@
 }
 
 # git push origin CURRENT_BRANCH --force-with-lease
 function ggpf () {
-  git push origin $(current-git-branch) --force-with-lease
+  git push origin $(current-git-branch) --force-with-lease $@
 }
 
 # git pull origin CURRENT_BRANCH

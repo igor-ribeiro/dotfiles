@@ -7,7 +7,7 @@ icons="~/.local/icons"
 icon="$icons/audio-input-microphone-off.svg"
 
 if [ $is_on = "1" ]; then
-  amixer set Master '100%'
+  amixer set Master '100%' -q
   state="on"
   icon="$icons/audio-input-microphone.svg"
 fi

@@ -12,13 +12,14 @@ font pango:JetBrains Mono Black 9
 
 # start a terminal. We use kitty.
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+t exec i3-sensible-terminal tmux
 
 # kill focused window
 bindsym $mod+q kill
 
 #Multi Monitor (Dual Monitor, extended monitor)
+exec --no-startup-id xrandr --output HDMI-0 --auto --primary
 exec --no-startup-id xrandr --output eDP-1-1 --left-of HDMI-0 --auto
-exec --no-startup-id xrandr --output HDMI-0 --right-of eDP-1-1 --auto --primary
 # Get OS theme
 exec --no-startup-id /usr/libexec/gsd-xsettings
 # Start compositor to enable transparency
