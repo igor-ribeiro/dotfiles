@@ -16,6 +16,7 @@ color_prompt=yes
 . ~/.config/bash/docker.bash
 . ~/.config/bash/tmux.bash
 . ~/.config/bash/utils.bash
+. ~/.config/bash/galley.bash
 
 # Bash
 alias ebash="nvim ~/.bashrc"

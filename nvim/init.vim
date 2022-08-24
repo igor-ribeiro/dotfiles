@@ -21,8 +21,11 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
-" Plug 'hrsh7th/cmp-vsnip'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'hrsh7th/cmp-vsnip'
+
+" Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 " Plug 'ruanyl/vim-sort-imports'
 Plug 'pantharshit00/vim-prisma'
@@ -42,7 +45,7 @@ Plug 'edgedb/edgedb-vim'
 Plug 'jose-elias-alvarez/typescript.nvim'
 
 " Snippets
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 
 " Statusline
 Plug 'hoob3rt/lualine.nvim'
@@ -291,7 +294,8 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
     end,
   },
   enabled = function()
@@ -316,7 +320,8 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
-    { name = 'ultisnips' }
+    -- { name = 'ultisnips' }
+    { name = 'vsnip' }
   }, {
     { name = 'buffer' },
   })

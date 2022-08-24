@@ -166,3 +166,8 @@ function video-off () {
 function video-on () {
   sudo modprobe uvcvideo
 }
+
+function fix-monitor () {
+  xrandr --output HDMI-0 --auto --primary
+  xrandr --output eDP-1-1 --left-of HDMI-0 --auto
+}
