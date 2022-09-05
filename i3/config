@@ -181,8 +181,8 @@ workspace $ws5 output primary
 workspace $ws6 output primary
 workspace $ws7 output primary
 workspace $ws8 output primary
-workspace $ws9 output secondary
-workspace $ws10 output secondary
+workspace $ws9 output eDP1
+workspace $ws10 output eDP1
 
 # 10] switch to workspace
 bindsym $mod+1 workspace number $ws1
