@@ -43,6 +43,7 @@ Plug 'mhartington/formatter.nvim'
 Plug 'findango/vim-mdx'
 Plug 'edgedb/edgedb-vim'
 Plug 'jose-elias-alvarez/typescript.nvim'
+Plug 'folke/trouble.nvim'
 
 " Snippets
 " Plug 'SirVer/ultisnips'
@@ -161,14 +162,19 @@ require("diaglist").init{
   debounce_ms = 150,
 }
 
--- require'lualine'.setup{
---   options = {
---     theme = 'iceberg_dark',
---     section_separators = {''},
---     component_separators = {'|'},
---     icons_enabled = false
---   }
--- }
+require'lualine'.setup{
+  options = {
+    theme = 'iceberg_dark',
+    section_separators = {''},
+    section_separators = { left = '', right = ''},
+    component_separators = {left = '', right = ''},
+    icons_enabled = false,
+    globalstatus = true
+  },
+  sections = {
+    lualine_b = { 'branch', 'diagnostics' }
+  }
+}
 
 require'telescope'.setup{
   defaults = {
@@ -333,6 +339,23 @@ cmp.setup.cmdline('/', {
   }
 })
 
+require("trouble").setup({
+  icons = false,
+  fold_open = "v", -- icon used for open folds
+  fold_closed = ">", -- icon used for closed folds
+  indent_lines = false, -- add an indent guide below the fold icons
+  auto_open = false,
+  auto_close = true,
+  signs = {
+    -- icons / text used for a diagnostic
+    error = "error",
+    warning = "warn",
+    hint = "hint",
+    information = "info"
+  },
+  use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
+})
+
 EOF
 
 inoremap <Esc> <C-c>
@@ -368,12 +391,18 @@ nnoremap <leader>2 :lua require('harpoon.ui').nav_file(2)<cr>
 nnoremap <leader>3 :lua require('harpoon.ui').nav_file(3)<cr>
 nnoremap <leader>4 :lua require('harpoon.ui').nav_file(4)<cr>
 nnoremap <leader>5 :lua require('harpoon.ui').nav_file(5)<cr>
+nnoremap <leader>6 :lua require('harpoon.ui').nav_file(6)<cr>
+nnoremap <leader>7 :lua require('harpoon.ui').nav_file(7)<cr>
+nnoremap <leader>8 :lua require('harpoon.ui').nav_file(8)<cr>
+nnoremap <leader>9 :lua require('harpoon.ui').nav_file(9)<cr>
 
 " Typescript
 nnoremap <silent><leader>ia :TSLspImportAll<cr> :TSLspFormat<cr>
 nnoremap <silent><leader>io :TSLspOrganizeSync<cr> :TSLspFormat<cr>
 nnoremap <silent><leader>fc :TSLspFixCurrent<cr>
+nnoremap <silent><leader>fu :lua require('typescript').actions.removeUnused()<cr>
 nnoremap <silent><leader>ts :lua TsCheck()<cr>
+nnoremap <silent><leader>do :TroubleToggle<cr>
 
 " Vim files
 nnoremap <leader>ve :e ~/.config/nvim/init.vim<cr>
@@ -594,13 +623,19 @@ end
 function RunQuery()
   local file = vim.fn.expand("%")
 
-
   local result = vim.fn.system('psql postgresql://postgres:postgres@localhost:5432/postgres -f ' .. file)
 
   print(result)
 end
 
 function TsCheck()
+  -- local defaultCmd = 'npx tsc -p .'
+  -- cmd = cmd or defaultCmd
+
+  vim.fn.inputsave()
+  local cmd = vim.fn.input('Comman: ', 'npx tsc -p .')
+  vim.fn.inputrestore()
+
   local project_name = vim.fn.system('basename $(git rev-parse --show-toplevel)'):gsub("[\r\n]+", "")
   local filename = '/tmp/errors-' .. project_name .. '.txt'
 
@@ -612,11 +647,11 @@ function TsCheck()
   print(':Checking...')
 
   local errors = vim.fn.system(
-  'npx tsc -p . | ' ..
-  'grep error | ' ..
-  'sed -r "s/\\(/:/p" | ' ..
-  'sed -r "s/,[[:digit:]]+\\)//p" | ' ..
-  'sed -r "s/: error TS/: TS/p"'
+    cmd .. ' | ' ..
+    'grep error | ' ..
+    'sed -r "s/\\(/:/p" | ' ..
+    'sed -r "s/,[[:digit:]]+\\)//p" | ' ..
+    'sed -r "s/: error TS/: TS/p"'
   )
 
   local lines = {}
@@ -633,7 +668,6 @@ function TsCheck()
 
     if lines[line_number] == nil then
       lines[line_number] = true
-      -- print('adding', line_number, line)
       str = str .. line .. "\n"
     end
 
@@ -643,10 +677,10 @@ function TsCheck()
   file:write(str)
   file:close()
 
-  -- if table.getn(lines) == 0 then
-  --   print('No errors')
-  --   return
-  -- end
+  if table.getn(lines) == 0 then
+    print('No errors')
+    return
+  end
 
   vim.cmd('cf ' .. filename)
   vim.cmd('copen')

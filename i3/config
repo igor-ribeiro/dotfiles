@@ -1,4 +1,4 @@
-# This is our mod Key. Currently it is set to the Windows Key.
+# /his is our mod Key. Currently it is set to the Windows Key.
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar.
@@ -182,7 +182,7 @@ workspace $ws6 output primary
 workspace $ws7 output primary
 workspace $ws8 output primary
 workspace $ws9 output eDP1
-workspace $ws10 output eDP1
+workspace $ws10 output DP1
 
 # 10] switch to workspace
 bindsym $mod+1 workspace number $ws1
