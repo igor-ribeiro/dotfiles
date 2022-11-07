@@ -5,6 +5,11 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+if [ -f ~/.Xresources ]; then
+  xrdb -merge ~/.Xresources
+fi
+
+
 force_color_prompt=yes
 color_prompt=yes
 
@@ -17,6 +22,7 @@ color_prompt=yes
 . ~/.config/bash/tmux.bash
 . ~/.config/bash/utils.bash
 . ~/.config/bash/galley.bash
+. ~/.config/bash/npm.bash
 
 # Bash
 alias ebash="nvim ~/.bashrc"

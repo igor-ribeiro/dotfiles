@@ -35,6 +35,7 @@ Plug 'onsails/diaglist.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 Plug 'akinsho/git-conflict.nvim'
+Plug 'ThePrimeagen/git-worktree.nvim'
 
 " Language
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -171,9 +172,6 @@ require'lualine'.setup{
     icons_enabled = false,
     globalstatus = true
   },
-  sections = {
-    lualine_b = { 'branch', 'diagnostics' }
-  }
 }
 
 require'telescope'.setup{
@@ -190,8 +188,9 @@ require'telescope'.setup{
   },
 }
 
-require'telescope'.load_extension('fzy_native')
+require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('harpoon')
+require('telescope').load_extension('git_worktree')
 
 require('harpoon').setup({
   global_settings = {
@@ -201,11 +200,19 @@ require('harpoon').setup({
 
 local prettier = function()
   return {
-  -- exe = "prettier_d_slim",
+    -- exe = "prettier_d_slim",
     exe = "npx prettier",
 --    args = {"--stdin", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
     args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
     stdin = true,
+  }
+end
+
+local prismaFormatter = function()
+return {
+  exe = "npx prettier",
+  args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+  stdin = true,
   }
 end
 
@@ -365,6 +372,7 @@ nnoremap <leader>fw :lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fg :lua require('telescope.builtin').git_files({ show_untracked = true })<cr>
 nnoremap <leader>ff :lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fb :lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fp :lua require('telescope').extensions.git_worktree.git_worktrees()<cr>
 
 " LSP
 nnoremap gd :lua vim.lsp.buf.definition()<cr>
@@ -397,7 +405,7 @@ nnoremap <leader>8 :lua require('harpoon.ui').nav_file(8)<cr>
 nnoremap <leader>9 :lua require('harpoon.ui').nav_file(9)<cr>
 
 " Typescript
-nnoremap <silent><leader>ia :TSLspImportAll<cr> :TSLspFormat<cr>
+nnoremap <silent><leader>ia :lua require('typescript').actions.addMissingImports()<cr>
 nnoremap <silent><leader>io :TSLspOrganizeSync<cr> :TSLspFormat<cr>
 nnoremap <silent><leader>fc :TSLspFixCurrent<cr>
 nnoremap <silent><leader>fu :lua require('typescript').actions.removeUnused()<cr>
@@ -477,6 +485,7 @@ augroup END
 augroup RIBEIRO
   autocmd!
   autocmd BufRead *.vue setfiletype html
+  autocmd BufRead .env* setfiletype sh
   autocmd BufWritePre * %s/\s\+$//e
   autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
 augroup END

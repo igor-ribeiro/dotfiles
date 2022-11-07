@@ -171,3 +171,12 @@ function fix-monitor () {
   xrandr --output HDMI-0 --auto --primary
   xrandr --output eDP-1-1 --left-of HDMI-0 --auto
 }
+
+function set-monitor () {
+  if [ "$1" == "single" ]; then
+    xrandr --output eDP-1-1 --auto --primary
+  else
+    xrandr --output HDMI-0 --auto --primary
+    xrandr --output eDP-1-1 --left-of HDMI-0 --auto
+  fi
+}

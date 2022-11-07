@@ -20,12 +20,17 @@ bindsym $mod+q kill
 #Multi Monitor (Dual Monitor, extended monitor)
 exec --no-startup-id xrandr --output HDMI-0 --auto --primary
 exec --no-startup-id xrandr --output eDP-1-1 --left-of HDMI-0 --auto
+# exec --no-startup-id xrandr --output eDP-1-1 --auto --primary
 # Get OS theme
 exec --no-startup-id /usr/libexec/gsd-xsettings
 # Start compositor to enable transparency
 exec --no-startup-id comp-on
 # Start custom keys
 exec --no-startup-id xbindkeys
+
+# Enable touchpad tapping
+# exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "DELL0A73:00 06CB:CE62 Touchpad" "libinput Tapping Enabled" 1
 
 
 # start dmenu (a program launcher).
@@ -106,6 +111,8 @@ bindsym XF86AudioMute exec amixer -q set Master toggle
 bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 10
 
+# Volume tray
+exec --no-startup-id pasystray
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -180,9 +187,9 @@ workspace $ws4 output primary
 workspace $ws5 output primary
 workspace $ws6 output primary
 workspace $ws7 output primary
-workspace $ws8 output primary
-workspace $ws9 output eDP1
-workspace $ws10 output DP1
+workspace $ws8 output eDP-1-1
+workspace $ws9 output eDP-1-1
+workspace $ws10 output eDP-1-1
 
 # 10] switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -256,8 +263,6 @@ bar {
 				# status_command SCRIPT_DIR=~/code/lib/i3blocks-contrib i3blocks -c ~/.config/i3/blocks.conf
 }
 
-
-
 # Launch a program on a certain workspace, from rofi (which may or may not have a keybinding)
 # for_window [class="nameofapp"] move to workspace $wsno.
 # WS No. 5 has been used as example.
@@ -305,7 +310,7 @@ for_window [class="^.*"] border pixel 3
                           # class                 border  backgr. text    indicator child_border
 for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
 
-gaps inner 2
+gaps inner 5
 
 # Activate smart borders (always)
 smart_borders on
