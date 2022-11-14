@@ -418,7 +418,9 @@ nnoremap <leader>vs :so ~/.config/nvim/init.vim<cr>
 
 " Open last file
 nnoremap <leader><leader> :e#<cr>
-nnoremap <leader>tt :set nosplitright <bar> :wincmd v<bar> :Ex <bar> :vertical resize 30<cr>
+
+" Terminal
+nnoremap <leader>tt :Term<cr>
 
 " Maximize window
 nnoremap <leader>wm :MaximizerToggle<cr>
@@ -472,6 +474,14 @@ nnoremap <leader>de :Ex<cr>
 nnoremap <leader>l :bn<cr>
 nnoremap <leader>h :bp<cr>
 
+" Vsnip
+
+" Jump forward or backward
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+
 command W w
 
 augroup FormatAutogroup
@@ -515,6 +525,24 @@ function! Pezzi()
 endfunction
 
 command Pezzi call Pezzi()
+
+function! Term()
+  try
+    call inputsave()
+    let cmd = input('CMD: ')
+    call inputrestore()
+
+    if (cmd == '')
+      return
+    endif
+
+    execute '15sp term://' . cmd
+  finally
+    echo ''
+  endtry
+endfunction
+
+command Term call Term()
 
 function! DeleteFile()
   let filename = expand('%')

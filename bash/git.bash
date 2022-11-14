@@ -73,3 +73,16 @@ function get-git-behind-commits () {
 function get-git-ahead-commits () {
   echo $(gst -b | grep -P 'is ahead' | grep -oP '(\d)+ commit' | grep -oP '\d+')
 }
+
+function git-reset () {
+  branch=$1
+
+  if [ "$branch" = "" ]
+  then
+    echo "Branch is required: git-reset <branch>";
+    return
+  fi
+
+  git fetch origin $branch
+  git reset --hard origin/$branch
+}
