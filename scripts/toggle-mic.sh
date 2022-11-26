@@ -1,14 +1,12 @@
 #!/bin/bash
 is_on=$(amixer sset Capture toggle | rg 'Left: Capture' | rg '\[on\]' | wc -l)
 
-state="off"
 icons="~/.local/icons"
-icon="$icons/audio-input-microphone-off.svg"
 
 if [ $is_on = "1" ]; then
   amixer set Capture 100%
-  state="on"
-  icon="$icons/audio-input-microphone.svg"
+  notify-send -i "$icons/audio-input-microphone.svg" "Mic [on]" -t 4000 -u low -h string:x-canonical-private-synchronous:toggle-mic
+  exit
 fi
 
-notify-send -i $icon  "Mic [$state]" -t 5000 -u low  -h string:x-canonical-private-synchronous:toggle-mic
+notify-send -i "$icons/audio-input-microphone-off.svg" "Mic [muted]" -u critical -h string:x-canonical-private-synchronous:toggle-mic

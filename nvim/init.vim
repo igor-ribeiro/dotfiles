@@ -15,6 +15,9 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 
+" UI
+Plug 'stevearc/dressing.nvim'
+
 " Completition
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -135,6 +138,7 @@ let g:rustfmt_autosave = 1
 
 let g:netrw_winsize = 20
 let g:netrw_banner = 0
+let g:netrw_keepdir = 1
 
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "ribeirosnippets"]
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -145,6 +149,13 @@ lua << EOF
 -- vim.opt.statusline = [[%!luaeval("require('modules.ui.statusline').status_line()")]]
 
 -- require'sort-import'.setup{}
+
+
+require('dressing').setup({
+  input = {
+    insert_only = false
+  }
+})
 
 require('git-conflict').setup()
 
@@ -158,23 +169,23 @@ vim.api.nvim_create_autocmd('User', {
   end
 })
 
-require("diaglist").init{
+require("diaglist").init({
   debug = false,
   debounce_ms = 150,
-}
+})
 
-require'lualine'.setup{
+require'lualine'.setup({
   options = {
     theme = 'iceberg_dark',
     section_separators = {''},
     section_separators = { left = '', right = ''},
     component_separators = {left = '', right = ''},
     icons_enabled = false,
-    globalstatus = true
+    globalstatus = true,
   },
-}
+})
 
-require'telescope'.setup{
+require'telescope'.setup({
   defaults = {
     file_ignore_patterns = { 'node_modules/', 'tmp/', 'dist/', 'build/' },
     mappings = {
@@ -186,7 +197,7 @@ require'telescope'.setup{
       }
     }
   },
-}
+})
 
 require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('harpoon')
@@ -419,9 +430,6 @@ nnoremap <leader>vs :so ~/.config/nvim/init.vim<cr>
 " Open last file
 nnoremap <leader><leader> :e#<cr>
 
-" Terminal
-nnoremap <leader>tt :Term<cr>
-
 " Maximize window
 nnoremap <leader>wm :MaximizerToggle<cr>
 
@@ -536,7 +544,7 @@ function! Term()
       return
     endif
 
-    execute '15sp term://' . cmd
+    execute '10sp term://' . cmd
   finally
     echo ''
   endtry
@@ -555,16 +563,23 @@ function! DeleteFile()
     try
       :call system('rm -rf ' . filename)
       :bd
-      echo '\r\r'
-      echo 'File deleted: ' . filename
+      :Cls
     catch
-      echo '\r\r'
+      :Cls
       echo 'Could not delete file'
     endtry
   endif
 endfunction
 
 command DeleteFile call DeleteFile()
+
+function! Cls()
+  call inputsave()
+  call feedkeys(':','nx')
+  call inputrestore()
+endfunction
+
+command Cls call Cls()
 
 function! RenameFile()
   let filename = expand('%:t')
@@ -722,10 +737,28 @@ function TsCheck()
   vim.cmd('cf ' .. filename)
   vim.cmd('copen')
 end
+
+function CopyFile()
+  local file_path = vim.fn.getreg('%') .. '/'
+  local original_name = vim.fn.getreg('"')
+
+vim.fn.inputsave()
+local copy_name = vim.fn.input('Copy ' .. original_name .. ' to: ', original_name)
+vim.fn.inputrestore()
+
+local original_fullpath = file_path .. original_name
+local copy_fullpath = file_path .. copy_name
+
+local cmd = 'cp ' .. original_fullpath .. ' ' .. copy_fullpath
+
+vim.fn.system(cmd)
+vim.cmd('e ' .. copy_fullpath)
+end
 EOF
 
 function! NetrwMappings()
   nmap <buffer> l <CR>:Lex<CR>
+  nmap cp ^<C-V>$y:lua CopyFile()<CR>
 endfunction
 
 augroup netrw_mappings
@@ -733,5 +766,7 @@ augroup netrw_mappings
   autocmd filetype netrw call NetrwMappings()
 augroup END
 
-
+" Terminal
 cabbrev term 20sp term://bash
+
+nnoremap <leader>tt :Term<cr>
