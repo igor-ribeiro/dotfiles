@@ -180,3 +180,7 @@ function set-monitor () {
     xrandr --output eDP-1-1 --left-of HDMI-0 --auto
   fi
 }
+
+function extract () {
+  tar -xvzf $1
+}

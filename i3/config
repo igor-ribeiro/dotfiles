@@ -9,6 +9,7 @@ set $mod Mod4
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:DejaVu Sans Mono 8
 font pango:JetBrains Mono Black 9
+# font pango:Iosevka Black 11
 
 # start a terminal. We use kitty.
 bindsym $mod+Return exec i3-sensible-terminal

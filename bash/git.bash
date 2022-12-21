@@ -76,6 +76,7 @@ function get-git-ahead-commits () {
 
 function git-reset () {
   branch=$1
+  flags=$2
 
   if [ "$branch" = "" ]
   then
@@ -84,5 +85,18 @@ function git-reset () {
   fi
 
   git fetch origin $branch
-  git reset --hard origin/$branch
+  git reset origin/$branch $2
 }
+
+function git-rebase () {
+  branch=$1
+
+  if [ "$branch" = "" ]; then
+    echo "Branch is required: git-rebase <branch>";
+    return
+  fi
+
+  git fetch origin $branch
+  git rebase origin/$branch
+}
+
