@@ -184,3 +184,18 @@ function set-monitor () {
 function extract () {
   tar -xvzf $1
 }
+
+function adv360-firmware () {
+  if [ "$1" == "download" ]; then
+    ~/scripts/adv360-download-firmware.js
+  elif [ "$1" == "open" ]; then
+    open ~/.config/adv360-firmware
+  else
+    echo "Usage: 360-firmare <command>"
+    echo ""
+    echo "$(tput bold)COMMANDS$(tput sgr0)"
+    echo "  download"
+    echo "  open"
+  fi
+}
+

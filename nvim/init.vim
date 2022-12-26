@@ -466,8 +466,8 @@ nnoremap <leader>rb :Cargo build<cr>
 "nnoremap <c-j> :m .+1<cr>==
 
 " Automatically indent pasted lines
-nnoremap p p=`]
-nnoremap P P=`]
+" nnoremap p p=`]
+" nnoremap P P=`]
 
 " Terminal
 " Map ESC to leave insert mode
