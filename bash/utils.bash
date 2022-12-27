@@ -190,12 +190,15 @@ function adv360-firmware () {
     ~/scripts/adv360-download-firmware.js
   elif [ "$1" == "open" ]; then
     open ~/.config/adv360-firmware
+  elif [ "$1" == "gui" ]; then
+    open "https://kinesiscorporation.github.io/Adv360-Pro-GUI/"
   else
     echo "Usage: 360-firmare <command>"
     echo ""
     echo "$(tput bold)COMMANDS$(tput sgr0)"
     echo "  download"
     echo "  open"
+    echo "  gui"
   fi
 }
 
