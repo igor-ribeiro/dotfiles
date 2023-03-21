@@ -43,11 +43,13 @@ Plug 'ThePrimeagen/git-worktree.nvim'
 " Language
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'windwp/nvim-ts-autotag'
-Plug 'mhartington/formatter.nvim'
-Plug 'findango/vim-mdx'
-Plug 'edgedb/edgedb-vim'
 Plug 'jose-elias-alvarez/typescript.nvim'
 Plug 'folke/trouble.nvim'
+Plug 'aca/emmet-ls'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+" Plug 'mhartington/formatter.nvim'
+" Plug 'lukas-reineke/lsp-format.nvim'
 
 " Snippets
 " Plug 'SirVer/ultisnips'
@@ -60,6 +62,7 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'rafamadriz/themes.nvim'
 "Plug 'gruvbox-community/gruvbox'
 Plug 'luisiacc/gruvbox-baby'
+Plug 'folke/tokyonight.nvim'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -127,7 +130,7 @@ set splitbelow
 
 set completeopt=menu,menuone,noselect
 set background=dark
-colorscheme tokyodark
+colorscheme tokyonight-night
 
 let $BASH_ENV = "~/.bashrc"
 
@@ -211,43 +214,17 @@ require('harpoon').setup({
   }
 })
 
-local prettier = function()
-  return {
-    -- exe = "prettier_d_slim",
-    exe = "npx prettier",
---    args = {"--stdin", "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
-    args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
-    stdin = true,
-  }
-end
-
-local prismaFormatter = function()
-return {
-  exe = "npx prettier",
-  args = { "--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
-  stdin = true,
-  }
-end
-
-local tsFormatter = function()
-  -- require('typescript').actions.removeUnused()
-
-  return prettier()
-end
-
-require'formatter'.setup({
-  filetype = {
-    typescriptreact = {tsFormatter},
-    typescript = {tsFormatter},
-    javascriptreact = {tsFormatter},
-    javascript = {tsFormatter},
-    json = {prettier},
-    scss = {prettier},
-    css = {prettier},
-    html = {prettier},
-    prisma = {prettier},
-  }
-})
+-- require'formatter'.setup({
+--   filetype = {
+--     typescriptreact = {tsFormatter},
+--     javascriptreact = {tsFormatter},
+--    json = {prettier},
+--    scss = {prettier},
+--    css = {prettier},
+--    html = {prettier},
+--     prisma = {prettier},
+--   }
+-- })
 
 
 require'gitsigns'.setup{
@@ -268,7 +245,7 @@ require'nvim-ts-autotag'.setup{}
 -- nvim_lsp object
 local nvim_lsp = require'lspconfig'
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -290,8 +267,16 @@ local lsp_installer = require("nvim-lsp-installer")
 lsp_installer.on_server_ready(function(server)
   local opts = {}
 
+  if server.name == "tsserver" then
+    opts.capabilities = capabilities
+  end
+
+  if server.name == "emmet_ls" then
+    opts.capabilities = capabilities
+  end
+
   if server.name == "tailwindcss" then
-    return
+    opts.capabilities = capabilities
   end
 
   if server.name == "cssls" then
@@ -310,17 +295,15 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 nvim_lsp.prismals.setup{}
-nvim_lsp.tailwindcss.setup{}
 
 local cmp = require'cmp'
 
 cmp.setup({
-  completion = {
-    autocomplete = false,
-  },
+  -- completion = {
+  --   autocomplete = true,
+  -- },
   snippet = {
     expand = function(args)
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
     end,
   },
@@ -495,19 +478,19 @@ smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-T
 command W w
 
 augroup FormatAutogroup
-  autocmd!
+  " autocmd!
   " autocmd BufWritePost *.js,*.tsx,*.ts,*.css,*.scss,*.html,*.json silent! SortImport
-  autocmd BufWritePost *.js,*.tsx,*.ts,*.css,*.scss,*.html,*.json,*.prisma FormatWrite
-  autocmd BufWritePost *.sql lua RunQuery()
+  " autocmd BufWritePost *.tsx,*.jsx silent lua vim.lsp.buf.format()
+  " autocmd BufWritePost *.sql lua RunQuery()
 augroup END
 
 
 augroup RIBEIRO
-  autocmd!
-  autocmd BufRead *.vue setfiletype html
-  autocmd BufRead .env* setfiletype sh
-  autocmd BufWritePre * %s/\s\+$//e
-  autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
+  " autocmd!
+  " autocmd BufRead *.vue setfiletype html
+  " autocmd BufRead .env* setfiletype sh
+  " autocmd BufWritePre * %s/\s\+$//e
+  " autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
 augroup END
 
 function! CreateFile()
@@ -529,12 +512,6 @@ function! CreateFile()
 endfunction
 
 command CreateFile call CreateFile()
-
-function! Pezzi()
-  !npm run pezzi:extract-files
-endfunction
-
-command Pezzi call Pezzi()
 
 function! Term()
   try
@@ -769,7 +746,7 @@ augroup netrw_mappings
 augroup END
 
 " Terminal
-cabbrev term 20sp term://bash
+" cabbrev term 20sp term://bash
 
 nnoremap <leader>tt :Term<cr>
 

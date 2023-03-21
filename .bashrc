@@ -15,6 +15,7 @@ color_prompt=yes
 
 # Bash files
 . ~/.config/bash/exports.bash
+eval "$(nodenv init -)"
 . ~/.config/bash/git.bash
 . ~/.config/bash/git-completion.bash
 . ~/.config/bash/status.bash
@@ -29,6 +30,7 @@ alias ebash="nvim ~/.bashrc"
 alias sbash="source ~/.bashrc"
 
 # Vim
+# alias nvim="~/neovim/nvim.appimage"
 alias i3config="nvim ~/.config/i3/config"
 alias evim="nvim ~/.config/nvim/init.vim"
 alias svim="sudo -E -s nvim"

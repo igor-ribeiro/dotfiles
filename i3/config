@@ -19,15 +19,17 @@ bindsym $mod+t exec i3-sensible-terminal -e bash -c 'tmux'
 bindsym $mod+q kill
 
 #Multi Monitor (Dual Monitor, extended monitor)
-exec --no-startup-id xrandr --output HDMI-0 --auto --primary
-exec --no-startup-id xrandr --output eDP-1-1 --left-of HDMI-0 --auto
+exec --no-startup-id ~/scripts/fix-monitor.sh
+exec restart
+# exec --no-startup-id xrandr --output HDMI-0 --auto --primary
+# exec --no-startup-id xrandr --output eDP-1-1 --left-of HDMI-0 --auto
 # exec --no-startup-id xrandr --output eDP-1-1 --auto --primary
 # Get OS theme
 exec --no-startup-id /usr/libexec/gsd-xsettings
 # Start compositor to enable transparency
-exec --no-startup-id comp-on
+exec --no-startup-id xcompmgr -c -l0 -t0 -r0 -o.00
 # Start custom keys
-exec --no-startup-id xbindkeys
+# exec --no-startup-id xbindkeys
 
 # Enable touchpad tapping
 # exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
@@ -42,11 +44,11 @@ exec --no-startup-id xinput set-prop "DELL0A73:00 06CB:CE62 Touchpad" "libinput 
 # This is the recommended mode. It searches for the programs as
 # defined in .desktop file, with their description, and corresponding
 # icons
-bindsym $mod+d exec --no-startup-id rofi -show drun -drun-show-actions -theme Monokai
+bindsym $mod+d exec --no-startup-id rofi -show drun -drun-show-actions -theme Arc-Dark
 
 # The other mode search for applications in /usr/bin or /usr/sbin.
 # This should only be used if a program lacks a .desktop file.
-bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme Monokai
+bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme Arc-Dark
 
 # Launch Polybar. Take a look at ~/.confi/polybar/config to
 # configure the bar.
@@ -54,7 +56,7 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme Monokai
 
 # Display Wallpaper, always.
 #exec_always feh --bg-fill /usr/share/backgrounds/i3/wall.png
-exec_always feh --bg-fill /usr/share/backgrounds/pop/kate-hazen-fractal-mountains.png
+exec_always feh --bg-fill ~/Pictures/Wallpaper/batsymbol.jpg
 
 #Compositor. This helps in transparency and fading.
 # exec_always picom
@@ -93,6 +95,7 @@ exec --no-startup-id nm-applet
 
 # Set mic volume
 exec --no-startup-id amixer -q set Capture '100%'
+exec --no-startup-id amixer -q set Master '100%'
 
 # Use pactl to adjust volume in PulseAudio.
 # These are examples if you would like to use pactl. We will not use this,
@@ -165,6 +168,7 @@ bindsym $mod+space focus mode_toggle
 
 # 9A] focus the parent container
 bindsym $mod+a focus parent
+bindsym $mod+Shift+A focus child
 
 # 9B] focus the child container
 #bindsym $your_keybinding focus child
@@ -278,9 +282,11 @@ bar {
 # assign [class="firefoxribeiro-software"] workspace $ws8
 
 
-assign [title="Zoom Meeting"] workspace $ws3
-assign [class="zoom"] workspace $ws3
-assign [class="action=join"] workspace $ws3
+assign [title="Zoom Meeting"] workspace $ws5
+assign [class="zoom"] workspace $ws5
+assign [class="action=join"] workspace $ws5
+
+assign [class="obs"] workspace $ws9
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="zoom" title="Participants"] floating enable, resize set 530 42
@@ -288,12 +294,8 @@ for_window [class="zoom" title="Chat"] floating enable
 for_window [title="zoom"] floating enable
 for_window [title="Choose what to share"] floating enable
 
-assign [class="obs"] workspace $ws9
-
 for_window [class="pritunl"] floating enable
-
 for_window [class="1Password"] floating enable
-
 for_window [title="Image Viewer"] floating enable
 
 
@@ -308,11 +310,14 @@ for_window [title="Image Viewer"] floating enable
 hide_edge_borders both
 
 # Remove window borders
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
                           # class                 border  backgr. text    indicator child_border
-for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
+# for_window [class="^.*"] client.focused          #ff0000 #ff0000 #ffffff #ff0000   #ff0000
 
-gaps inner 5
+# class         border  backgr. text    indicator child_border
+client.focused #555555 #555555 #ffffff #2e9ef4     #48b16d
+
+gaps inner 10
 
 # Activate smart borders (always)
 smart_borders on

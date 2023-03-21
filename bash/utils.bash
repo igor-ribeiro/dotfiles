@@ -10,7 +10,7 @@ function personal () {
   code personal/$@
 }
 
-function ilabs () {
+function rlabs () {
   code ribeirolabs/$@
 }
 
@@ -167,11 +167,6 @@ function video-on () {
   sudo modprobe uvcvideo
 }
 
-function fix-monitor () {
-  xrandr --output HDMI-0 --auto --primary
-  xrandr --output eDP-1-1 --left-of HDMI-0 --auto
-}
-
 function set-monitor () {
   if [ "$1" == "single" ]; then
     xrandr --output eDP-1-1 --auto --primary
@@ -202,3 +197,26 @@ function adv360-firmware () {
   fi
 }
 
+
+function pomodoro () {
+  declare -A pomo_options
+  pomo_options["work"]="45m"
+  pomo_options["break"]="5m"
+
+  if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
+    session=$1
+    time="${pomo_options["$session"]}"
+
+    if [ -n "$2" ]; then
+      time=$2
+    fi
+
+    timer $time -n "$session session"
+    notify-send -a "pomodoro" "$session session done!"
+    paplay ~/.local/assets/sounds/relax-message-tone.ogg
+  fi
+}
+
+alias p-work="pomodoro work"
+alias p-break="pomodoro break"
+alias fix-monitor="~/scripts/fix-monitor.sh"
