@@ -32,7 +32,7 @@ alias sbash="source ~/.bashrc"
 # Vim
 # alias nvim="~/neovim/nvim.appimage"
 alias i3config="nvim ~/.config/i3/config"
-alias evim="nvim ~/.config/nvim/init.vim"
+alias evim="nvim ~/.config/nvim/init.lua"
 alias svim="sudo -E -s nvim"
 
 alias ls="ls --color=auto"
