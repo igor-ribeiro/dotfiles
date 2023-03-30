@@ -24,6 +24,7 @@ function dotfiles () {
 
 function dotfiles-push () {
   dotfiles
+  cp ~/.config/nvim/init.lua ./nvim
   git add .
   git commit -m 'update'
 	ggp
