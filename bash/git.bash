@@ -6,8 +6,8 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias gl="git log"
 alias gr="git restore"
-alias gw="git worktree"
-alias gwa="git worktree add"
+# alias gw="git worktree"
+# alias gwa="git worktree add"
 alias gs="git switch"
 
 function gco () {
@@ -37,6 +37,26 @@ function g-set-up () {
   branch=$(current-git-branch)
 
   git branch --set-upstream-to=origin/$branch $branch
+}
+
+function gw () {
+	action=$1	
+	i=0
+
+	if [ "$action" = "remove" ]; then
+		for branch in $@; do
+			if [ $i -gt 0 ]; then
+				git worktree remove $branch
+			fi
+			((++i))
+		done
+	else
+		git worktree $@
+	fi
+
+	if [ "${action}" = "add" ] && [ "${2}" = "-b" ]; then
+		git push -u origin $3
+	fi
 }
 
 # Check if folder has .git

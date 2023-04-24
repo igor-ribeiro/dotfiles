@@ -12,8 +12,8 @@ font pango:JetBrains Mono Black 9
 # font pango:Iosevka Black 11
 
 # start a terminal. We use kitty.
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+t exec i3-sensible-terminal -e bash -c 'tmux'
+bindsym $mod+Return exec alacritty
+bindsym $mod+t exec alacritty -e bash -c 'tmux'
 
 # kill focused window
 bindsym $mod+q kill
