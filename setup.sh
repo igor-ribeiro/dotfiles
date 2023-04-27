@@ -26,6 +26,11 @@ ln -s $(pwd)/fonts/ $HOME/.local/share/fonts/
 sudo fc-cache
 
 # --
+# ALACRITTY TERMINAL
+# --
+ln -s $(pwd)/alacritty/ $HOME/.config/
+
+# --
 # BASH
 # --
 ln -sf $(pwd)/.bashrc $HOME/

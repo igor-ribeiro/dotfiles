@@ -1,0 +1,7 @@
+env:
+  COLORTERM: truecolor
+font:
+  normal:
+    family: IBM Plex Mono
+    style: SemiBold
+  size: 10

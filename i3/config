@@ -317,7 +317,7 @@ for_window [class="^.*"] border pixel 2
 # class         border  backgr. text    indicator child_border
 client.focused #555555 #555555 #ffffff #2e9ef4     #48b16d
 
-gaps inner 10
+gaps inner 5
 
 # Activate smart borders (always)
 smart_borders on
