@@ -1,40 +1,40 @@
 --[[
 
-      ====================================================================
-      ==================== READ THIS BEFORE CONTINUING ====================
-      =====================================================================
+        ====================================================================
+        ==================== READ THIS BEFORE CONTINUING ====================
+        =====================================================================
 
-      Kickstart.nvim is *not* a distribution.
+        Kickstart.nvim is *not* a distribution.
 
-      Kickstart.nvim is a template for your own configuration.
-        The goal is that you can read every line of code, top-to-bottom, and understand
-        what your configuration is doing.
+        Kickstart.nvim is a template for your own configuration.
+          The goal is that you can read every line of code, top-to-bottom, and understand
+          what your configuration is doing.
 
-        Once you've done that, you should start exploring, configuring and tinkering to
-        explore Neovim!
+          Once you've done that, you should start exploring, configuring and tinkering to
+          explore Neovim!
 
-        If you don't know anything about Lua, I recommend taking some time to read through
-        a guide. One possible example:
-        - https://learnxinyminutes.com/docs/lua/
+          If you don't know anything about Lua, I recommend taking some time to read through
+          a guide. One possible example:
+          - https://learnxinyminutes.com/docs/lua/
 
-        And then you can explore or search through `:help lua-guide`
+          And then you can explore or search through `:help lua-guide`
 
 
-      Kickstart Guide:
+        Kickstart Guide:
 
-      I have left several `:help X` comments throughout the init.lua
-      You should run that command and read that help section for more information.
+        I have left several `:help X` comments throughout the init.lua
+        You should run that command and read that help section for more information.
 
-      In addition, I have some `NOTE:` items throughout the file.
-      These are for you, the reader to help understand what is happening. Feel free to delete
-      them once you know what you're doing, but they should serve as a guide for when you
-      are first encountering a few different constructs in your nvim config.
+        In addition, I have some `NOTE:` items throughout the file.
+        These are for you, the reader to help understand what is happening. Feel free to delete
+        them once you know what you're doing, but they should serve as a guide for when you
+        are first encountering a few different constructs in your nvim config.
 
-      I hope you enjoy your Neovim journey,
-      - TJ
+        I hope you enjoy your Neovim journey,
+        - TJ
 
-      P.S. You can delete this when you're done too. It's your config now :)
-      --]]
+        P.S. You can delete this when you're done too. It's your config now :)
+        --]]
 --
 
 -- Set <space> as the leader key
@@ -260,6 +260,8 @@ require('lazy').setup({
         layout_config = { height = 20 }
       })
 
+      local fb_actions = require "telescope".extensions.file_browser.actions
+
       require('telescope').setup {
         defaults = {
           mappings = {
@@ -289,6 +291,9 @@ require('lazy').setup({
               mappings = {
                 ["i"] = {
                   ["<bs>"] = false,
+                },
+                ["n"] = {
+                  ["-"] = fb_actions.goto_parent_dir,
                 },
               },
             },
@@ -584,7 +589,7 @@ vim.keymap.set('n', '<leader>tai', function() pcall(require('typescript').action
   { desc = 'TS [A]dd Missing [I]mports' })
 
 -- Netrw (folder navigation)
-vim.keymap.set('n', '<leader>od', require "telescope".extensions.file_browser.file_browser,
+vim.keymap.set('n', '<leader>od', ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
   { desc = '[O]pen [D]irectory' })
 
 vim.cmd('cabbrev term 20sp term://bash')
@@ -752,44 +757,6 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  local prettier_files = {
-    "js",
-    "ts",
-    "jsx",
-    "tsx",
-    "json",
-    "html",
-    "json",
-    "css",
-    "scss",
-    "sass",
-  }
-
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    local file_ext = vim.fn.expand('%:e')
-
-    for _, ext in pairs(prettier_files) do
-      if file_ext == ext then
-        vim.cmd('silent PrettierAsync')
-        return
-      end
-    end
-
-    if vim.lsp.buf.server_ready() then
-      vim.lsp.buf.format({ async = true })
-    end
-  end, { desc = 'Format current buffer with LSP' })
-
-  local format_group = vim.api.nvim_create_augroup('Format', { clear = true })
-  vim.api.nvim_create_autocmd('BufWritePre', {
-    callback = function()
-      vim.cmd('silent Format')
-    end,
-    group = format_group,
-    pattern = '*',
-  })
-
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
     callback = function()
@@ -897,7 +864,7 @@ for type, _ in pairs(signs) do
 end
 
 vim.cmd [[
-  hi ErrorMsg guifg=#7d2a2d guibg=None
+  hi ErrorMsg guifg=#ba5e61 guibg=None
   hi DiffAdd guibg=None guifg=#87ffaf
   hi DiffChange guibg=None guifg=#00afdf
   " hi DiffDelete None
@@ -906,6 +873,9 @@ vim.cmd [[
   hi link DiagnosticError ErrorMsg
   hi DiagnosticHint guifg=#5fffaf
 	hi Comment guifg=#7a7a7a
+  hi ColorColumn guibg=#1c1a17
+  hi CursorLineNr guifg=#d2bfad
+  hi PmenuSel guibg=#8b7449 guifg=#ffffff
 ]]
 
 mason_lspconfig.setup_handlers {
@@ -985,7 +955,8 @@ pcall(function()
     mapping = cmp.mapping.preset.insert {
       ['<C-d>'] = cmp.mapping.scroll_docs(-4),
       ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete {},
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ["<C-y>"] = cmp.mapping.confirm({ select = true }),
       ["<CR>"] = nil,
       -- ['<CR>'] = cmp.mapping.confirm {
       -- 	behavior = cmp.ConfirmBehavior.Insert,
@@ -1024,24 +995,6 @@ pcall(function()
         end
       }),
       ['<C-e>'] = cmp.mapping.abort(),
-      -- ['<Tab>'] = cmp.mapping(function(fallback)
-      --   if cmp.visible() then
-      --     cmp.select_prev_item()
-      --   elseif luasnip.expand_or_jumpable() then
-      --     luasnip.expand_or_jump()
-      --   else
-      --     fallback()
-      --   end
-      -- end, { 'i', 's' }),
-      -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-      --   if cmp.visible() then
-      --     cmp.select_prev_item()
-      --   elseif luasnip.jumpable(-1) then
-      --     luasnip.jump(-1)
-      --   else
-      --     fallback()
-      --   end
-      -- end, { 'i', 's' }),
     },
     sources = {
       { name = 'nvim_lsp' },
@@ -1084,4 +1037,51 @@ vim.filetype.add({
       end
     end,
   },
+})
+
+local prettier_files = {
+  "js",
+  "ts",
+  "jsx",
+  "tsx",
+  "json",
+  "html",
+  "json",
+  "css",
+  "scss",
+  "sass",
+}
+
+-- Create a command `:Format` local to the LSP buffer
+vim.api.nvim_create_user_command('Format', function(_)
+  local file_ext = vim.fn.expand('%:e')
+
+  for _, ext in pairs(prettier_files) do
+    if file_ext == ext then
+      vim.cmd('silent Prettier')
+      return
+    end
+  end
+
+  if vim.lsp.buf.server_ready() then
+    vim.lsp.buf.format()
+  end
+end, { desc = 'Format current buffer with LSP' })
+
+local format_group = vim.api.nvim_create_augroup('Format', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePre', {
+  callback = function()
+    vim.cmd('silent Format')
+  end,
+  group = format_group,
+  pattern = '*',
+})
+
+local ap_filetype = vim.api.nvim_create_augroup('SetApFT', { clear = true })
+vim.api.nvim_create_autocmd('BufRead', {
+  callback = function()
+    vim.cmd('set filetype=ap')
+  end,
+  group = ap_filetype,
+  pattern = '*.ap',
 })

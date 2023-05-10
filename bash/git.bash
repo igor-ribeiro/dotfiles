@@ -54,8 +54,23 @@ function gw () {
 		git worktree $@
 	fi
 
-	if [ "${action}" = "add" ] && [ "${2}" = "-b" ]; then
-		git push -u origin $3
+  if [ "${action}" = "add" ]; then
+    path="$2"
+
+    if [ "${2}" = "-b" ]; then
+      path="$4"
+      git push -u origin $3
+    fi
+
+    common_dir=./worktree-common
+
+    if [ "$path" = "" ]; then
+      path="$3"
+    fi
+
+    if [ -d "$common_dir" ] && [ -d "$path" ]; then 
+      cp -rT $common_dir ./$path
+    fi
 	fi
 }
 

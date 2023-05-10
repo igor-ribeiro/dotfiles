@@ -3,5 +3,5 @@ env:
 font:
   normal:
     family: IBM Plex Mono
-    style: SemiBold
+    style: Medium
   size: 10

@@ -12,3 +12,25 @@ alias eks-testing="aws-vault exec galley-testing -- aws eks update-kubeconfig --
 alias eks-ops="aws-vault exec galley-ops -- aws eks update-kubeconfig --region us-west-2 --name main --profile galley-ops"
 alias eks-ops-private="aws-vault exec galley-ops -- aws eks update-kubeconfig --region us-west-2 --name main-private --profile galley-ops"
 alias eks-dev="aws-vault exec galley-dev -- aws eks update-kubeconfig --region us-west-2 --name main --profile galley-dev"
+
+function enter-container() {
+  container_name=$1;
+  mob_name=$2;
+
+  usage='USAGE:\n\tk8se <container-name> <mob-name>';
+
+  if [ "$container_name" = "" ]; then
+    echo "ERROR: Missing container name"
+    echo -e $usage
+    return 1
+  fi
+
+  if [ "$mob_name" = "" ]; then
+    echo "ERROR: Missing mob name"
+    echo -e "${usage/<container-name>/"$container_name"}"
+    return
+  fi
+
+  pod=`kubectl get pod -n $mob_name | grep "^$container_name" | grep Running | head -n 1 | awk '{ print $1 }'`
+  kubectl exec -it $pod -n $mob_name -- bash
+}
