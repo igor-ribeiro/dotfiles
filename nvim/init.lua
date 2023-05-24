@@ -46,6 +46,12 @@ vim.g.maplocalleader = ' '
 vim.g.do_filetype_lua = true
 vim.g.did_load_filetypes = false
 
+-- local local_vimrc_file = vim.fn.getcwd() .. '/.vimrc'
+--
+-- if vim.fn.empty(local_vimrc_file) then
+--   vim.cmd('source ' .. local_vimrc_file)
+-- end
+
 -- vim.cmd [[highlight IndentBlanklineIndent1 guifg=#333333 gui=nocombine]]
 
 -- Install package manager
@@ -72,11 +78,25 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
+  -- Undo
+  'mbbill/undotree',
+
+  -- Maximize windows
+  {
+    'szw/vim-maximizer',
+    config = function(self, opts)
+      vim.keymap.set('n', '<leader>wm', ':MaximizerToggle<cr>', { desc = '[W]indow [M]maximize' })
+    end
+  },
+
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
 
   'tpope/vim-surround',
+
+  -- Multi-cursor
+  'mg979/vim-visual-multi',
 
   -- Multi-case substitution
   'tpope/vim-abolish',
@@ -252,7 +272,6 @@ require('lazy').setup({
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
-    lazy = true,
     version = '*',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
@@ -281,7 +300,7 @@ require('lazy').setup({
         extensions = {
           file_browser = vim.tbl_deep_extend("force",
             {
-              dir_icon = "", -- disables netrw and use telescope-file-browser in its place
+              dir_icon = "",
               grouped = true,
               layout_config = { height = 50 },
               display_stat = false,
@@ -371,6 +390,7 @@ require('lazy').setup({
   {
     "nvim-telescope/telescope-file-browser.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    priority = 100,
     config = function()
       require("telescope").load_extension("file_browser")
     end
@@ -398,13 +418,14 @@ require('lazy').setup({
     lazy = true,
   },
 
+  -- Rust
   {
-    -- Rust
     'rust-lang/rust.vim',
   },
-
   {
-    -- Rust
+    'togglebyte/togglerust'
+  },
+  {
     'simrat39/rust-tools.nvim',
   },
 
@@ -587,6 +608,11 @@ vim.keymap.set('n', '<leader>tru', function() pcall(require('typescript').action
   { desc = '[T]ypescript [R]emove [U]nused' })
 vim.keymap.set('n', '<leader>tai', function() pcall(require('typescript').actions.addMissingImports) end,
   { desc = 'TS [A]dd Missing [I]mports' })
+vim.keymap.set('n', '<leader>tfi', function()
+    pcall(require('typescript').actions.addMissingImports)
+    pcall(require('typescript').actions.removeUnused)
+  end,
+  { desc = 'TS [F]ix [I]mports' })
 
 -- Netrw (folder navigation)
 vim.keymap.set('n', '<leader>od', ":Telescope file_browser path=%:p:h select_buffer=true<CR>",

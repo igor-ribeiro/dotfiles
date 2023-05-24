@@ -2,6 +2,8 @@ env:
   COLORTERM: truecolor
 font:
   normal:
-    family: IBM Plex Mono
-    style: Medium
-  size: 10
+    family: Iosevka
+    # family: Cascadia Mono PL
+    # family: IBM Plex Mono
+    style: Bold
+  size: 11
