@@ -283,6 +283,7 @@ require('lazy').setup({
 
       require('telescope').setup {
         defaults = {
+          dynamic_preview_title = true,
           mappings = {
             i = {
               ['<C-u>'] = false,

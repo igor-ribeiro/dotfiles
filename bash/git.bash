@@ -50,27 +50,32 @@ function gw () {
 			fi
 			((++i))
 		done
-	else
-		git worktree $@
 	fi
 
   if [ "${action}" = "add" ]; then
     path="$2"
 
     if [ "${2}" = "-b" ]; then
-      path="$4"
+      path="$3"
+      git worktree add $3 $4
       git push -u origin $3
+    else
+      git worktree $@
     fi
 
     common_dir=./worktree-common
 
     if [ "$path" = "" ]; then
-      path="$3"
+      path="$4"
     fi
 
     if [ -d "$common_dir" ] && [ -d "$path" ]; then 
       cp -rT $common_dir ./$path
     fi
+
+    cd $path
+  else
+		git worktree $@
 	fi
 }
 
