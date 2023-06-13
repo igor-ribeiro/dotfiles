@@ -1,0 +1,15 @@
+workspace $ws1 output primary
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output primary
+workspace $ws5 output primary
+workspace $ws6 output primary
+workspace $ws7 output primary
+workspace $ws8 output eDP-1-1
+workspace $ws9 output eDP-1-1
+workspace $ws10 output eDP-1-1
+
+bar {
+  status_command i3status
+  tray_output primary
+}

@@ -57,3 +57,8 @@ if [ -f '/home/ribeiro/Code/lib/google-cloud-sdk/path.bash.inc' ]; then . '/home
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/ribeiro/Code/lib/google-cloud-sdk/completion.bash.inc' ]; then . '/home/ribeiro/Code/lib/google-cloud-sdk/completion.bash.inc'; fi
+
+
+if [ -f "$HOME/.env" ]; then
+	. "$HOME/.env" 
+fi

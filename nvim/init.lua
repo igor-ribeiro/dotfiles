@@ -1055,6 +1055,7 @@ vim.api.nvim_create_autocmd(
 vim.filetype.add({
   pattern = {
     [".env.*"] = "sh",
+    ['.*i3config'] = 'i3config',
   },
   filename = {
     [".git/config"] = "gitconfig",
@@ -1112,3 +1113,45 @@ vim.api.nvim_create_autocmd('BufRead', {
   group = ap_filetype,
   pattern = '*.ap',
 })
+
+vim.api.nvim_create_user_command('DuplicateFile', function(_)
+  local current_name = vim.fn.expand('%')
+  local new_name = vim.fn.input({
+    prompt = "Filename: ",
+    default = current_name,
+    completion = 'file'
+  })
+
+  if new_name == '' then
+    return
+  end
+
+  local folder = vim.fn.fnamemodify(new_name, ':h')
+
+  vim.fn.system('mkdir -p ' .. folder)
+  vim.fn.system('touch ' .. new_name)
+
+  vim.fn.system('cat ' .. current_name .. ' > ' .. new_name)
+  vim.fn.execute('e ' .. new_name)
+end, {})
+--
+-- function! DuplicateFile()
+--   let filename = expand('%')
+--
+--   call inputsave()
+--   let new_filename = input('New filename: ', filename)
+--   call inputrestore()
+--
+--   try
+--     let folders = fnamemodify(new_filename, ':h')
+--     :call system('stat a.js')
+--   catch
+--     :call system('mkdir -p ' . folders)
+--     :call system('touch ' . new_filename)
+--   endtry
+--
+--   :call system('cat ' . filename . ' > ' . new_filename)
+--   execute 'e' new_filename
+-- endfunction
+--
+-- command DuplicateFile call DuplicateFile()

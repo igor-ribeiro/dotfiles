@@ -260,11 +260,11 @@ bindsym $mod+r mode "resize"
 # assign [class="firefoxribeiro-software"] workspace $ws8
 
 
-assign [title="Zoom Meeting"] workspace $ws4
-assign [class="zoom"] workspace $ws4
-assign [class="action=join"] workspace $ws4
+assign [title="Zoom Meeting"] workspace $ws5
+assign [class="zoom"] workspace $ws5
+assign [class="action=join"] workspace $ws5
 
-assign [class="obs"] workspace $ws10
+assign [class="obs"] workspace $ws9
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="zoom" title="Participants"] floating enable, resize set 530 42
@@ -311,34 +311,3 @@ bindsym $mod+Shift+question move scratchpad
 bindsym $mod+question scratchpad show
 
 bindsym Ctrl+Shift+1 exec 1password
-
-# ======================
-# VIRTUAL MONITOR CONFIG
-# ======================
-workspace $ws1 output HDMI-0-1
-workspace $ws2 output HDMI-0-1
-workspace $ws3 output HDMI-0-1
-workspace $ws4 output HDMI-0-1
-workspace $ws5 output eDP-1-1
-workspace $ws6 output HDMI-0-2
-workspace $ws7 output HDMI-0-2
-workspace $ws8 output HDMI-0-2
-workspace $ws9 output HDMI-0-2
-workspace $ws10 output eDP-1-1
-
-bar {
-  output eDP-1-1
-  status_command i3status
-  tray_output none
-}
-
-bar {
-  output HDMI-0-1
-  tray_output none
-}
-
-bar {
-  output HDMI-0-2
-  status_command i3status
-  tray_output HDMI-0-2
-}

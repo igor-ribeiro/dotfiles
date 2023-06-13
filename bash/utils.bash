@@ -221,3 +221,4 @@ function pomodoro () {
 alias p-work="pomodoro work"
 alias p-break="pomodoro break"
 alias fix-monitor="~/scripts/fix-monitor.sh"
+alias split-monitor="~/scripts/split-monitor.sh"

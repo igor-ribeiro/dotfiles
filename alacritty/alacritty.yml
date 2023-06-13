@@ -2,7 +2,8 @@ env:
   COLORTERM: truecolor
 font:
   normal:
-    family: Iosevka
+    family: Intel One Mono
+    # family: Iosevka
     # family: Cascadia Mono PL
     # family: IBM Plex Mono
     style: Bold

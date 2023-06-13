@@ -1,5 +1,5 @@
 export FLYCTL_INSTALL="/home/iribeiro/.fly"
-export PATH="$HOME/.nodenv/bin:$HOME/Code/lib/go/bin:$FLYCTL_INSTALL/bin:$HOME/.local/bin:$HOME/bin:$HOME/neovim/bin:$PATH"
+export PATH="$HOME/.nodenv/bin:$HOME/Code/lib/go/bin:$FLYCTL_INSTALL/bin:$HOME/.local/bin:$HOME/bin:$HOME/neovim/bin:$PATH:$HOME/scripts"
 
 export GIT_EDITOR=nvim
 export SUDO_EDITOR=nvim
