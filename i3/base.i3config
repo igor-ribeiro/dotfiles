@@ -260,9 +260,9 @@ bindsym $mod+r mode "resize"
 # assign [class="firefoxribeiro-software"] workspace $ws8
 
 
-assign [title="Zoom Meeting"] workspace $ws5
-assign [class="zoom"] workspace $ws5
-assign [class="action=join"] workspace $ws5
+assign [title="Zoom Meeting"] workspace $ws3
+assign [class="zoom"] workspace $ws3
+assign [class="action=join"] workspace $ws3
 
 assign [class="obs"] workspace $ws9
 
@@ -311,3 +311,6 @@ bindsym $mod+Shift+question move scratchpad
 bindsym $mod+question scratchpad show
 
 bindsym Ctrl+Shift+1 exec 1password
+
+# Rename container
+bindsym $mod+Shift+T exec "i3-input -F 'focus parent, title_format %s, focus child' -P 'client: '" 

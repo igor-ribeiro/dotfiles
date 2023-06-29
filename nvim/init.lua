@@ -931,18 +931,6 @@ require('lspconfig').tailwindcss.setup {
   }
 }
 
--- require('lspconfig').emmet_ls.setup {
---   filetypes = {
---     'html',
---     'typescriptreact',
---     'javascriptreact',
---     'css',
---     'sass',
---     'scss',
---     'rust'
---   },
--- }
---
 local rust_tools = require("rust-tools")
 rust_tools.setup({
   server = {
@@ -1134,24 +1122,64 @@ vim.api.nvim_create_user_command('DuplicateFile', function(_)
   vim.fn.system('cat ' .. current_name .. ' > ' .. new_name)
   vim.fn.execute('e ' .. new_name)
 end, {})
---
--- function! DuplicateFile()
---   let filename = expand('%')
---
---   call inputsave()
---   let new_filename = input('New filename: ', filename)
---   call inputrestore()
---
---   try
---     let folders = fnamemodify(new_filename, ':h')
---     :call system('stat a.js')
---   catch
---     :call system('mkdir -p ' . folders)
---     :call system('touch ' . new_filename)
---   endtry
---
---   :call system('cat ' . filename . ' > ' . new_filename)
---   execute 'e' new_filename
--- endfunction
---
--- command DuplicateFile call DuplicateFile()
+
+vim.api.nvim_create_user_command('TSCheck', function(_)
+  -- local defaultCmd = 'npx tsc -p .'
+  -- cmd = cmd or defaultCmd
+
+  vim.fn.inputsave()
+  local cmd = vim.fn.input({
+    prompt = "Command: ",
+    default = "npx tsc -p",
+  })
+  vim.fn.inputrestore()
+
+  local project_name = vim.fn.system('basename $(git rev-parse --show-toplevel)'):gsub("[\r\n]+", "")
+  local filename = '/tmp/errors-' .. project_name .. '.txt'
+
+  vim.cmd('cclose')
+
+  vim.fn.system('rm -rf ' .. filename)
+  vim.fn.system('touch ' .. filename)
+
+  print(':Checking...')
+
+  local errors = vim.fn.system(
+    cmd .. ' | ' ..
+    'grep error | ' ..
+    'sed -r "s/\\(/:/p" | ' ..
+    'sed -r "s/,[[:digit:]]+\\)//p" | ' ..
+    'sed -r "s/: error TS/: TS/p"'
+  )
+
+  local lines = {}
+  local str = ''
+
+  local file = io.open(filename, 'w+')
+
+  for line in errors:gmatch("[^\r\n]+") do
+    line_number = string.match(line, ':([0-9]+): ')
+
+    if line_number == nil then
+      goto continue
+    end
+
+    if lines[line_number] == nil then
+      lines[line_number] = true
+      str = str .. line .. "\n"
+    end
+
+    ::continue::
+  end
+
+  file:write(str)
+  file:close()
+
+  if table.getn(lines) == 0 then
+    print('No errors')
+    return
+  end
+
+  vim.cmd('cf ' .. filename)
+  vim.cmd('copen')
+end, {})

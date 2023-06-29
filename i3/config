@@ -260,11 +260,11 @@ bindsym $mod+r mode "resize"
 # assign [class="firefoxribeiro-software"] workspace $ws8
 
 
-assign [title="Zoom Meeting"] workspace $ws4
-assign [class="zoom"] workspace $ws4
-assign [class="action=join"] workspace $ws4
+assign [title="Zoom Meeting"] workspace $ws3
+assign [class="zoom"] workspace $ws3
+assign [class="action=join"] workspace $ws3
 
-assign [class="obs"] workspace $ws10
+assign [class="obs"] workspace $ws9
 
 for_window [window_role="pop-up"] floating enable
 for_window [class="zoom" title="Participants"] floating enable, resize set 530 42
@@ -311,6 +311,9 @@ bindsym $mod+Shift+question move scratchpad
 bindsym $mod+question scratchpad show
 
 bindsym Ctrl+Shift+1 exec 1password
+
+# Rename container
+bindsym $mod+Shift+T exec "i3-input -F 'focus parent, title_format %s, focus child' -P 'client: '" 
 
 # ======================
 # VIRTUAL MONITOR CONFIG

@@ -132,8 +132,8 @@ function git-rebase () {
   branch=$1
 
   if [ "$branch" = "" ]; then
-    echo "Branch is required: git-rebase <branch>";
-    return
+    branch=$(current-git-branch)
+    echo -e "Missing branch option, using $branch\n";
   fi
 
   git fetch origin $branch

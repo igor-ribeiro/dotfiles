@@ -34,3 +34,8 @@ function enter-container() {
   pod=`kubectl get pod -n $mob_name | grep "^$container_name" | grep Running | head -n 1 | awk '{ print $1 }'`
   kubectl exec -it $pod -n $mob_name -- bash
 }
+
+alias console-ops="google-chrome --args --profile-directory=\"GalleyProfile\" \$(aws-vault login -s galley-ops)"
+alias console-dev="google-chrome --args --profile-directory=\"GalleyProfile\" \$(aws-vault login -s galley-dev)"
+alias console-prod="google-chrome --args --profile-directory=\"GalleyProfile\" \$(aws-vault login -s galley-prod)"
+alias console-staging="google-chrome --args --profile-directory=\"GalleyProfile\" \$(aws-vault login -s galley-staging)"

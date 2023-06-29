@@ -10,10 +10,10 @@ function add_label() {
   echo -e "# ======================" >> $config_path/config 
 }
 
-mode="regular"
+mode="virtual"
 
 if [ -z "$(xrandr --listactivemonitors | grep 'HDMI-0-1')" ]; then
-  mode="virtual"
+  mode="regular"
 fi
 
 add_label $mode
