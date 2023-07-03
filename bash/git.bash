@@ -50,9 +50,7 @@ function gw () {
 			fi
 			((++i))
 		done
-	fi
-
-  if [ "${action}" = "add" ]; then
+  elif [ "${action}" = "add" ]; then
     path="$2"
 
     if [ "${2}" = "-b" ]; then

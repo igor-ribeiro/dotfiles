@@ -39,3 +39,13 @@ alias console-ops="google-chrome --args --profile-directory=\"GalleyProfile\" \$
 alias console-dev="google-chrome --args --profile-directory=\"GalleyProfile\" \$(aws-vault login -s galley-dev)"
 alias console-prod="google-chrome --args --profile-directory=\"GalleyProfile\" \$(aws-vault login -s galley-prod)"
 alias console-staging="google-chrome --args --profile-directory=\"GalleyProfile\" \$(aws-vault login -s galley-staging)"
+
+function get-e2e-screenshots() {
+  jobs=$(kubectl get pods --all-namespaces | grep 'jenkins')
+
+  echo $jobs
+
+  return
+
+  kubectl cp $jenkins:/home/jenkins/agent/workspace/_solutions_jelly-frontend_$mob/jelly-galley-e2e/cypress/screenshots/ ./
+}
