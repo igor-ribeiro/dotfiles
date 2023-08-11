@@ -275,6 +275,9 @@ for_window [title="Choose what to share"] floating enable
 for_window [class="pritunl"] floating enable
 for_window [class="1Password"] floating enable
 for_window [title="Image Viewer"] floating enable
+for_window [title="Chests"] floating enable
+for_window [title="^PokerStars$"] floating enable
+for_window [title="Calculator"] floating enable
 
 
 # The following way allows programs to be launched with a

@@ -23,6 +23,7 @@ eval "$(nodenv init -)"
 . ~/.config/bash/tmux.bash
 . ~/.config/bash/utils.bash
 . ~/.config/bash/galley.bash
+. ~/.config/bash/m8.bash
 . ~/.config/bash/npm.bash
 
 # Bash
@@ -31,7 +32,7 @@ alias sbash="source ~/.bashrc"
 
 # Vim
 # alias nvim="~/neovim/nvim.appimage"
-alias i3config="nvim ~/.config/i3/config"
+alias i3config="nvim ~/.config/i3/base.i3config"
 alias evim="nvim ~/.config/nvim/init.lua"
 alias svim="sudo -E -s nvim"
 

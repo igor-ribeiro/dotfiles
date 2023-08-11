@@ -222,3 +222,7 @@ alias p-work="pomodoro work"
 alias p-break="pomodoro break"
 alias fix-monitor="~/scripts/fix-monitor.sh"
 alias split-monitor="~/scripts/split-monitor.sh"
+
+function kill-port () {
+  fuser -k $1/tcp
+}

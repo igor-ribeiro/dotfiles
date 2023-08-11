@@ -1,0 +1,2 @@
+
+(nm-applet:21971): Gdk-CRITICAL **: 10:39:01.662: gdk_window_thaw_toplevel_updates: assertion 'window->update_and_descendants_freeze_count > 0' failed

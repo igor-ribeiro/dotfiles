@@ -6,8 +6,6 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias gl="git log"
 alias gr="git restore"
-# alias gw="git worktree"
-# alias gwa="git worktree add"
 alias gs="git switch"
 
 function gco () {
@@ -135,6 +133,6 @@ function git-rebase () {
   fi
 
   git fetch origin $branch
-  git rebase origin/$branch
+  git rebase origin/$branch $(current-git-branch) --reapply-cherry-picks
 }
 
