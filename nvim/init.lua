@@ -113,7 +113,12 @@ require('lazy').setup({
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      {
+        'j-hui/fidget.nvim',
+        tag = "legacy",
+        event = "LspAttach",
+        opts = {}
+      },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
@@ -164,13 +169,13 @@ require('lazy').setup({
     'savq/melange-nvim',
     config = function()
       vim.opt.termguicolors = true
-      vim.cmd.colorscheme 'melange'
+      -- vim.cmd.colorscheme 'melange'
     end
   },
 
   {
     'catppuccin/nvim',
-    enabled = false,
+    enabled = true,
     name = 'catppuccin',
     config = function()
       require('catppuccin').setup({
@@ -250,10 +255,11 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
+    main = "ibl",
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
     opts = {
-      show_trailing_blankline_indent = true,
+      -- show_trailing_blankline_indent = true,
       -- space_highlight_list = {
       --   "IndentBlanklineIndent1",
       -- },
@@ -431,7 +437,7 @@ require('lazy').setup({
   },
 
   {
-    'prettier/vim-prettier',
+    'adnan007d/vim-prettier',
     build = 'npm install --frozen-lockfile --production'
   },
 

@@ -63,3 +63,11 @@ if [ -f '/home/ribeiro/Code/lib/google-cloud-sdk/completion.bash.inc' ]; then . 
 if [ -f "$HOME/.env" ]; then
 	. "$HOME/.env" 
 fi
+
+# pnpm
+export PNPM_HOME="/home/ribeiro/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

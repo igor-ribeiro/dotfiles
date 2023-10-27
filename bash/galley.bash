@@ -13,6 +13,18 @@ alias eks-ops="aws-vault exec galley-ops -- aws eks update-kubeconfig --region u
 alias eks-ops-private="aws-vault exec galley-ops -- aws eks update-kubeconfig --region us-west-2 --name main-private --profile galley-ops"
 alias eks-dev="aws-vault exec galley-dev -- aws eks update-kubeconfig --region us-west-2 --name main --profile galley-dev"
 
+function mob-scale-up() {
+  mob_name=$1;
+
+  if [ "$mob_name" = "" ]; then
+    echo "ERROR: Missing mob name"
+    return
+  fi
+
+  galley k8s-cron/scale-eks-mob
+  MOB=$mob_name DESIRED=1 ./scale-up-eks-mob.sh
+}
+
 function enter-container() {
   container_name=$1;
   mob_name=$2;

@@ -53,7 +53,8 @@ function gw () {
 
     if [ "${2}" = "-b" ]; then
       path="$3"
-      git worktree add $3 $4
+
+      git worktree add -b $3 $4
       git push -u origin $3
     else
       git worktree $@

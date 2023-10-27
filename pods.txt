@@ -1,4 +1,0 @@
-default                       jenkins-agent-1m94s                                               12/12   Running             0          15m
-default                       jenkins-agent-cw6tg                                               12/12   Running             0          37m
-default                       jenkins-agent-rk0l9                                               0/12    ContainerCreating   0          2s
-default                       jenkins-master-755bbfcd54-rz6g9                                   1/1     Running             0          286d
