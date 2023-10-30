@@ -4,6 +4,7 @@ function start-vpn () {
 
 function galley-clone () {
   gh repo clone galley-solutions/$@
+  cd $1
 }
 
 alias eks-prod="aws-vault exec galley-prod -- aws eks update-kubeconfig --region us-west-2 --name main --profile galley-prod"
@@ -23,6 +24,7 @@ function mob-scale-up() {
 
   galley k8s-cron/scale-eks-mob
   MOB=$mob_name DESIRED=1 ./scale-up-eks-mob.sh
+  cd -
 }
 
 function enter-container() {

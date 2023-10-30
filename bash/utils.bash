@@ -226,3 +226,14 @@ alias split-monitor="~/scripts/split-monitor.sh"
 function kill-port () {
   fuser -k $1/tcp
 }
+
+function get-monitor-by-name () {
+  monitor=$(xrandr --listactivemonitors | rg $1 | cut -d' ' -f6) 
+
+  if [ -z "$monitor" ]; then
+    echo "Monitor not found" >&2;
+    return
+  fi
+
+  echo $monitor
+}

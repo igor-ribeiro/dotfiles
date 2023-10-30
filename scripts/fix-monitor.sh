@@ -1,11 +1,13 @@
 #!/bin/bash
 
-hdmi_output=$(xrandr | rg 'HDMI-0 connected')
+source $HOME/.bashrc
 
-if [[ $hdmi_output ]]; then
-  hdmi=$(echo $hdmi_output | cut -d ' ' -f1)
+hdmi=$(get-monitor-by-name HDMI)
+internal=$(get-monitor-by-name eDP)
+
+if [[ $hdmi ]]; then
   xrandr --output $hdmi --auto --primary
-  xrandr --output eDP-1-1 --left-of $hdmi --auto
+  xrandr --output $internal --left-of $hdmi --auto
 else
-  xrandr --output eDP-1-1 --auto --primary
+  xrandr --output $internal --auto --primary
 fi

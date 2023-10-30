@@ -2,15 +2,15 @@ workspace $ws1 output HDMI-0-1
 workspace $ws2 output HDMI-0-1
 workspace $ws3 output HDMI-0-1
 workspace $ws4 output HDMI-0-1
-workspace $ws5 output eDP-1-1
+workspace $ws5 output eDP-1
 workspace $ws6 output HDMI-0-2
 workspace $ws7 output HDMI-0-2
 workspace $ws8 output HDMI-0-2
 workspace $ws9 output HDMI-0-2
-workspace $ws10 output eDP-1-1
+workspace $ws10 output eDP-1
 
 bar {
-  output eDP-1-1
+  output eDP-1
   status_command i3status
   tray_output none
 }
