@@ -169,11 +169,14 @@ function video-on () {
 }
 
 function set-monitor () {
+  HDMI=$(xrandr | rg connected | rg HDMI | cut -d' ' -f1) 
+  INTERNAL=$(xrandr | rg connected | rg eDP | cut -d' ' -f1)
+
   if [ "$1" == "single" ]; then
-    xrandr --output eDP-1-1 --auto --primary
+    xrandr --output $INTERNAL --auto --primary
   else
-    xrandr --output HDMI-0 --auto --primary
-    xrandr --output eDP-1-1 --left-of HDMI-0 --auto
+    xrandr --output $HDMI --auto --primary
+    xrandr --output $INTERNAL --left-of $HDMI --auto
   fi
 }
 
@@ -227,13 +230,3 @@ function kill-port () {
   fuser -k $1/tcp
 }
 
-function get-monitor-by-name () {
-  monitor=$(xrandr --listactivemonitors | rg $1 | cut -d' ' -f6) 
-
-  if [ -z "$monitor" ]; then
-    echo "Monitor not found" >&2;
-    return
-  fi
-
-  echo $monitor
-}

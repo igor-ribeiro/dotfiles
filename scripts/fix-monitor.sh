@@ -2,12 +2,16 @@
 
 source $HOME/.bashrc
 
-hdmi=$(get-monitor-by-name HDMI)
-internal=$(get-monitor-by-name eDP)
+HDMI=$(xrandr | rg connected | rg HDMI | cut -d' ' -f1)
+INTERNAL=$(xrandr | rg connected | rg eDP | cut -d' ' -f1)
 
-if [[ $hdmi ]]; then
-  xrandr --output $hdmi --auto --primary
-  xrandr --output $internal --left-of $hdmi --auto
+if [[ $HDMI ]]; then
+  echo "setting HDMI"
+  xrandr --output $HDMI --auto --primary
+  xrandr --output $INTERNAL --left-of $HDMI --auto
 else
-  xrandr --output $internal --auto --primary
+  echo "setting internal"
+  xrandr --output $INTERNAL --auto --primary
 fi
+
+$HOME/scripts/generate-i3-config.sh

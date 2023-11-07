@@ -1,3 +1,6 @@
 #!/bin/bash
 
-xrandr --output HDMI-1-0 --right-of eDP-1 --auto --primary
+HDMI=$(xrandr | rg connected | rg HDMI | cut -d' ' -f1)
+INTERNAL=$(xrandr | rg connected | rg eDP | cut -d' ' -f1)
+
+xrandr --output $HDMI --right-of $INTERNAL --auto --primary

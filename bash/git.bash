@@ -121,7 +121,7 @@ function git-reset () {
     return
   fi
 
-  git fetch origin $branch
+  git fetch origin $branch --all
   git reset origin/$branch $2
 }
 
@@ -133,7 +133,7 @@ function git-rebase () {
     echo -e "Missing branch option, using $branch\n";
   fi
 
-  git fetch origin $branch
+  git fetch origin $branch --all
   git rebase origin/$branch $(current-git-branch) --reapply-cherry-picks
 }
 
