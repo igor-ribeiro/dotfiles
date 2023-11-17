@@ -386,10 +386,16 @@ require('lazy').setup({
     opts = {
       global_settings = {
         mark_branch = true,
-      }
+      },
     },
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = function()
+      require("harpoon").setup({
+        menu = {
+          width = vim.api.nvim_win_get_width(0) - 10,
+        }
+      })
+
       require('telescope').load_extension('harpoon')
     end,
   },
@@ -423,6 +429,13 @@ require('lazy').setup({
     -- Typescript utilities
     'jose-elias-alvarez/typescript.nvim',
     lazy = true,
+  },
+
+  {
+    'igor-ribeiro/tsc.nvim',
+    config = function()
+      require('tsc').setup()
+    end,
   },
 
   -- Rust

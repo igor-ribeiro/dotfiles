@@ -24,6 +24,20 @@ function mob-scale-up() {
 
   galley k8s-cron/scale-eks-mob
   MOB=$mob_name DESIRED=1 ./scale-up-eks-mob.sh
+  
+  deploy-avro-schemas $mob_name
+}
+
+function deploy-avro-schemas() {
+  mob_name=$1;
+
+  if [ "$mob_name" = "" ]; then
+    echo "ERROR: Missing mob name"
+    return
+  fi
+
+  galley avro-schemas
+  yarn deploy:schemas http://schema-registry.$mob_name.galley.eng
   cd -
 }
 

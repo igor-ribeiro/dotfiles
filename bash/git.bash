@@ -22,6 +22,10 @@ function ggpf () {
   git push origin $(current-git-branch) --force-with-lease $@
 }
 
+function ggpff () {
+  git push origin $(current-git-branch) --force $@
+}
+
 # git pull origin CURRENT_BRANCH
 function ggl () {
   git pull origin $(current-git-branch)
@@ -121,7 +125,7 @@ function git-reset () {
     return
   fi
 
-  git fetch origin $branch --all
+  git fetch origin $branch 
   git reset origin/$branch $2
 }
 
@@ -133,7 +137,7 @@ function git-rebase () {
     echo -e "Missing branch option, using $branch\n";
   fi
 
-  git fetch origin $branch --all
+  git fetch origin $branch --tags
   git rebase origin/$branch $(current-git-branch) --reapply-cherry-picks
 }
 
