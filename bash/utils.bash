@@ -230,3 +230,11 @@ function kill-port () {
   fuser -k $1/tcp
 }
 
+
+function update-neovim () {
+  code lib/neovim
+  git-rebase
+  make CMAKE_BUILD_TYPE=Release
+  sudo make install
+  cd -
+}

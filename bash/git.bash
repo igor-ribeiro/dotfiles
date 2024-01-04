@@ -2,6 +2,7 @@ alias gst="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gca="git commit --amend"
+alias gcaa="git commit --amend --no-edit"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias gl="git log"
@@ -139,5 +140,13 @@ function git-rebase () {
 
   git fetch origin $branch --tags
   git rebase origin/$branch $(current-git-branch) --reapply-cherry-picks
+}
+
+function ggrh () {
+  git-reset $1 --hard
+}
+
+function ggb () {
+  git-rebase $1
 }
 
