@@ -150,3 +150,11 @@ function ggb () {
   git-rebase $1
 }
 
+function git-find-stash () {
+  if [ "$1" = "" ]; then
+    echo "Missing search: git-find-stash <search>";
+    return
+  fi
+
+  git fsck --unreachable | grep commit | cut -d" " -f3 | xargs git log --merges --no-walk --grep=$1
+}

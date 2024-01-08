@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp ./scripts/** ~/scripts/
+cp ./scripts/** ~/scripts/ -f
