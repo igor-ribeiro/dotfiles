@@ -103,6 +103,27 @@ function to-mp4 () {
   ffmpeg -i $filename -vcodec copy -c:a aac "$no_extension.mp4"
 }
 
+function to-gif () {
+  filename=$1
+  output=$2
+
+  if [ "$filename" = "" ]
+  then
+    echo "Usage: to-gif <FILENAME> <OUTPUT>"
+    return
+  fi
+
+  if [ "$output" = "" ]
+  then
+    echo "Usage: to-gif <FILENAME> <OUTPUT>"
+    return
+  fi
+
+  ffmpeg -i $filename \
+    -vf "fps=30,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+    -loop 0 $output
+}
+
 function trim-video () {
   if [ "$1" = "" ] || [ "$2" = "" ]
   then
@@ -237,4 +258,22 @@ function update-neovim () {
   make CMAKE_BUILD_TYPE=Release
   sudo make install
   cd -
+}
+
+function create-react-vite () {
+  npx create-vite@latest --template typescript-react-tailwind-vite $1
+}
+
+function join-lines () {
+  separator=$1
+
+  if [ -z "$separator" ]; then
+    echo -e "
+Usage:
+  $> some-command | join-lines ', '
+"
+    exit 1
+  fi
+
+  paste -sd $separator
 }

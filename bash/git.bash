@@ -42,6 +42,24 @@ function g-set-up () {
   git branch --set-upstream-to=origin/$branch $branch
 }
 
+function g-set-remote () {
+  project=$1
+  branch=$(current-git-branch)
+
+  if [ -z $1 ]; then
+    echo -e "
+ERROR: Missing project
+
+USAGE:
+  $> g-set-remote <owner/project>
+"
+  return 1
+  fi
+
+  git remote add origin git@github.com:$project.git
+  git push --set-upstream origin $branch
+}
+
 function gw () {
 	action=$1	
 	i=0

@@ -1,23 +1,53 @@
 #!/bin/bash
 
-config_path=$HOME/.config/i3
+MODE=$1
+EXTERNAL=$2
+INTERNAL=$3
 
-cat $config_path/base.i3config > $config_path/config 
-
-function add_label() {
-  echo -e "\n# ======================" >> $config_path/config 
-  echo -e "# ${1^^} MONITOR CONFIG" >> $config_path/config 
-  echo -e "# ======================" >> $config_path/config 
+function show_usage() {
+  echo -e "
+Usage:
+  $> generate-i3-config.sh <virtual|regular> <EXTERNAL> <INTERNAL>"
 }
 
-mode="virtual"
+function show_error() {
+  echo "ERROR: $1"
+  show_usage
+  exit 1
+}
 
-if [ -z "$(xrandr --listactivemonitors | grep 'HDMI-0-1')" ]; then
-  mode="regular"
+if [ -z "$MODE" ]; then
+  echo $@
+  show_error "Mising mode"
 fi
 
-add_label $mode
-cat $config_path/$mode-monitor.i3config >> $config_path/config 
+if [ -z "$EXTERNAL" ]; then
+  show_error "Mising external monitor"
+fi
 
-i3-msg reload
-i3-msg restart
+if [ -z "$INTERNAL" ]; then
+  show_error "Mising internal monitor"
+fi
+
+CONFIG_PATH=$HOME/.config/i3
+CONFIG_FILE=$CONFIG_PATH/config
+
+cat $CONFIG_PATH/base.i3config > $CONFIG_FILE
+
+function add_label() {
+  echo -e "\n" >> $CONFIG_FILE
+  echo -e "# ======================" >> $CONFIG_FILE
+  echo -e "# ${MODE^^} MONITOR CONFIG" >> $CONFIG_FILE
+  echo -e "# ======================" >> $CONFIG_FILE
+}
+
+add_label
+cat $CONFIG_PATH/$MODE-monitor.i3config >> $CONFIG_FILE
+
+sed -i -e "s/<EXTERNAL>/$EXTERNAL/" $CONFIG_FILE
+sed -i -e "s/<VIRTUAL_1>/$EXTERNAL-1/" $CONFIG_FILE
+sed -i -e "s/<VIRTUAL_2>/$EXTERNAL-2/" $CONFIG_FILE
+sed -i -e "s/<INTERNAL>/$INTERNAL/" $CONFIG_FILE
+
+i3-msg reload > /dev/null
+i3-msg restart > /dev/null

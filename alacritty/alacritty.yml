@@ -4,9 +4,10 @@ font:
   normal:
     # family: Intel One Mono
     # family: IBM Plex Mono
-    family: Iosevka
+    # family: Iosevka
     # family: Fira Mono
     # family: Cascadia Mono PL
     # family: JetBrains Mono
-    style: Semibold
-  size: 12
+    family: Monaspace Neon
+    style: Regular
+  size: 11

@@ -126,6 +126,13 @@ require('lazy').setup({
   },
 
   {
+    'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+    config = function()
+      require('lsp_lines').setup()
+    end
+  },
+
+  {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     lazy = true,
@@ -150,91 +157,6 @@ require('lazy').setup({
   },
 
   {
-    -- Theme
-    'sainnhe/gruvbox-material',
-    enabled = false,
-    config = function()
-      vim.g.gruvbox_material_colors_override = {
-        bg0 = { '#16191a', '234' }
-      }
-      -- vim.g.gruvbox_material_foreground  'mix'
-      vim.g.gruvbox_material_better_performance = 1
-      vim.g.gruvbox_material_enable_bold = 1
-      vim.g.gruvbox_material_enable_italic = 1
-      vim.cmd.colorscheme 'gruvbox-material'
-    end
-  },
-
-  {
-    'savq/melange-nvim',
-    config = function()
-      vim.opt.termguicolors = true
-      -- vim.cmd.colorscheme 'melange'
-    end
-  },
-
-  {
-    'catppuccin/nvim',
-    enabled = true,
-    name = 'catppuccin',
-    config = function()
-      require('catppuccin').setup({
-        flavour = 'macchiato',
-        term_colors = true,
-        transparent_background = true,
-        dim_inactive = {
-          enabled = true,
-          shade = "dark",
-          percentage = 0.1
-        },
-      })
-
-      vim.cmd.colorscheme 'catppuccin'
-    end,
-  },
-
-  {
-    'tomasiser/vim-code-dark',
-    enabled = false,
-    config = function()
-      vim.g.codedark_italics = 1
-      vim.g.codedark_transparent = 1
-      vim.cmd.colorscheme 'codedark'
-    end
-  },
-
-  {
-    'Mofiqul/vscode.nvim',
-    enabled = false,
-    config = function()
-      vim.o.background = 'dark'
-      local c = require('vscode.colors').get_colors()
-      require('vscode').setup({
-        -- Alternatively set style in setup
-        -- style = 'light'
-
-        -- Enable transparent background
-        transparent = true,
-        -- Enable italic comment
-        italic_comments = true,
-        -- Disable nvim-tree background color
-        disable_nvimtree_bg = true,
-        -- Override colors (see ./lua/vscode/colors.lua)
-        color_overrides = {
-          vscLineNumber = '#FFFFFF',
-        },
-        -- Override highlight groups (see ./lua/vscode/theme.lua)
-        group_overrides = {
-          -- this supports the same val table as vim.api.nvim_set_hl
-          -- use colors from this colorscheme by requiring vscode.colors!
-          Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
-        }
-      })
-      require('vscode').load()
-    end
-  },
-
-  {
     'cespare/vim-toml'
   },
 
@@ -255,18 +177,10 @@ require('lazy').setup({
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
+    enable = false,
     main = "ibl",
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help indent_blankline.txt`
-    opts = {
-      -- show_trailing_blankline_indent = true,
-      -- space_highlight_list = {
-      --   "IndentBlanklineIndent1",
-      -- },
-      -- char_highlight_list = {
-      --   "IndentBlanklineIndent1",
-      -- },
-    },
   },
 
   -- "gc" to comment visual regions/lines
@@ -368,6 +282,126 @@ require('lazy').setup({
       --   filetype = "rs",                                        -- if filetype does not match the parser name
       -- }
     end,
+  },
+
+  -- Themes
+  {
+    'sainnhe/gruvbox-material',
+    enabled = false,
+    config = function()
+      vim.g.gruvbox_material_colors_override = {
+        bg0 = { '#16191a', '234' }
+      }
+      -- vim.g.gruvbox_material_foreground  'mix'
+      vim.g.gruvbox_material_better_performance = 1
+      vim.g.gruvbox_material_enable_bold = 1
+      vim.g.gruvbox_material_enable_italic = 1
+      vim.cmd.colorscheme 'gruvbox-material'
+    end
+  },
+
+  {
+    -- Tsoding theme
+    'blazkowolf/gruber-darker.nvim',
+    config = function()
+      vim.cmd.colorscheme 'gruber-darker'
+
+      vim.api.nvim_set_hl(0, "String", { fg = "#84c75d" })
+      vim.api.nvim_set_hl(0, "Comment", { fg = "#575956" })
+
+      vim.api.nvim_set_hl(0, "GruberDarkerFg1", { fg = "#d9d9d9" })
+      vim.api.nvim_set_hl(0, "GruberDarkerRed", { fg = "#e04d54" })
+      vim.api.nvim_set_hl(0, "GruberDarkerRedBold", { link = 'GruberDarkerRed' })
+
+      vim.api.nvim_set_hl(0, "GruberDarkerYellowBold", { fg = "#ebd35e", bold = true })
+      vim.api.nvim_set_hl(0, "GruberDarkerYellow", { fg = "#ebd35e" })
+      vim.api.nvim_set_hl(0, "ColorColumn", { link = "StatusLine" })
+      vim.api.nvim_set_hl(0, "CursorLine", { bg = "#282828" })
+      vim.api.nvim_set_hl(0, "LineNr", { link = "GruberDarkerYellow" })
+      vim.api.nvim_set_hl(0, "LineNrBelow", { link = "SignColumn" })
+      vim.api.nvim_set_hl(0, "LineNrAbove", { link = "SignColumn" })
+
+      vim.api.nvim_set_hl(0, "@include", { link = "GruberDarkerYellowBold" })
+      vim.api.nvim_set_hl(0, "@property", { link = "GruberDarkerFg1" })
+      vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { link = "GruberDarkerFg1" })
+      vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "GruberDarkerQuartz" })
+      vim.api.nvim_set_hl(0, "@punctuation.special", { link = "GruberDarkerQuartz" })
+      vim.api.nvim_set_hl(0, "@include.identifier", { link = "GruberDarkerQuartz" })
+      vim.api.nvim_set_hl(0, "@tag", { link = "GruberDarkerQuartz" })
+      vim.api.nvim_set_hl(0, "@tag.delimiter", { link = "GruberDarkerQuartz" })
+      vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { link = "GruberDarkerQuartz" })
+      vim.api.nvim_set_hl(0, "@number", { fg = "#b9aee8" })
+      vim.api.nvim_set_hl(0, "@comment.todo", { fg = "#999884", bold = true })
+    end
+  },
+
+  {
+    'savq/melange-nvim',
+    config = function()
+      vim.opt.termguicolors = true
+      -- vim.cmd.colorscheme 'melange'
+    end
+  },
+
+  {
+    'catppuccin/nvim',
+    enabled = false,
+    name = 'catppuccin',
+    config = function()
+      require('catppuccin').setup({
+        flavour = 'macchiato',
+        term_colors = true,
+        transparent_background = true,
+        dim_inactive = {
+          enabled = true,
+          shade = "dark",
+          percentage = 0.1
+        },
+      })
+
+      vim.cmd.colorscheme 'catppuccin'
+    end,
+  },
+
+  {
+    'tomasiser/vim-code-dark',
+    enabled = false,
+    config = function()
+      vim.g.codedark_italics = 1
+      vim.g.codedark_transparent = 1
+      vim.cmd.colorscheme 'codedark'
+    end
+  },
+
+  {
+    'Mofiqul/vscode.nvim',
+    enabled = false,
+    config = function()
+      vim.o.background = 'dark'
+      local c = require('vscode.colors').get_colors()
+      require('vscode').setup({
+        -- Alternatively set style in setup
+        -- style = 'light'
+
+        -- Enable transparent background
+        transparent = true,
+        -- Enable italic comment
+        italic_comments = true,
+        -- Disable nvim-tree background color
+        disable_nvimtree_bg = true,
+        -- Override colors (see ./lua/vscode/colors.lua)
+        color_overrides = {
+          vscLineNumber = '#FFFFFF',
+        },
+        -- Override highlight groups (see ./lua/vscode/theme.lua)
+        group_overrides = {
+          -- this supports the same val table as vim.api.nvim_set_hl
+          -- use colors from this colorscheme by requiring vscode.colors!
+          Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+        }
+      })
+      require('vscode').load()
+    end
   },
 
   {
@@ -490,6 +524,8 @@ require('lazy').setup({
 -- Show column at 80 chars
 vim.opt.colorcolumn = "80"
 
+vim.o.cursorline = true
+
 -- Statusline only on more thatn 1 window
 vim.o.laststatus = 2
 
@@ -551,7 +587,6 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
-
 -- vim.o.t_Co = 256
 
 -- Disable word wrap
@@ -639,6 +674,7 @@ vim.keymap.set('n', '<leader>od', ":Telescope file_browser path=%:p:h select_buf
   { desc = '[O]pen [D]irectory' })
 
 vim.cmd('cabbrev term 20sp term://bash')
+vim.cmd('cabbrev showcolors so $VIMRUNTIME/syntax/hitest.vim')
 
 -- Quickfix Navigation
 
@@ -740,9 +776,9 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
+vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end,
   { desc = "Go to previous diagnostic message" })
-vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end,
+vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end,
   { desc = "Go to next diagnostic message" })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
@@ -803,53 +839,23 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  vim.api.nvim_create_autocmd("CursorHold", {
-    buffer = bufnr,
-    callback = function()
-      for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-        if vim.api.nvim_win_get_config(winid).zindex then
-          return
-        end
-      end
-
-      local opts = {
-        focus = false,
-        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-        source = 'always',
-      }
-      vim.diagnostic.open_float(opts)
-
-      -- local lnum = vim.api.nvim_win_get_cursor(0)[1]
-      -- local items = vim.diagnostic.get(vim.api.nvim_get_current_buf(), { lnum })
-      -- local filtered = {}
-      --
-      -- for _, value in ipairs(items) do
-      -- 	if (value.lnum + 1) == lnum then
-      -- 		table.insert(filtered, value.severity, value)
-      -- 	end
-      -- end
-      --
-      -- if #filtered == 0 and is_last_print then
-      -- 	vim.api.nvim_command('echo ""')
-      -- 	is_last_print = false
-      -- 	return
-      -- end
-      --
-      -- for _, value in ipairs(filtered) do
-      -- 	local severity = vim.diagnostic.severity[value.severity]
-      --
-      -- 	local chunks = {
-      -- 		{ severity .. ': ',         'DiagnosticError' },
-      -- 		{ value.message,            'DiagnosticError' },
-      -- 		{ '[' .. value.code .. ']', 'DiagnosticError' },
-      -- 	}
-      --
-      -- 	vim.api.nvim_echo(chunks, false, {})
-      -- 	is_last_print = true
-      -- 	break
-      -- end
-    end
-  })
+  -- vim.api.nvim_create_autocmd("CursorHold", {
+  --   buffer = bufnr,
+  --   callback = function()
+  --     for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+  --       if vim.api.nvim_win_get_config(winid).zindex then
+  --         return
+  --       end
+  --     end
+  --
+  --     local opts = {
+  --       focus = false,
+  --       close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+  --       source = 'always',
+  --     }
+  --     vim.diagnostic.open_float(opts)
+  --   end
+  -- })
 end
 
 -- Enable the following language servers
@@ -899,7 +905,16 @@ mason_lspconfig.setup {
 }
 
 vim.diagnostic.config({
+  underline = false,
   virtual_text = false,
+  virtual_lines = {
+    only_current_line = true
+  },
+  signs = {
+    -- linehl = {
+    --   [vim.diagnostic.severity.HINT] = 'GruberDarkerWisteria',
+    -- },
+  }
 })
 
 local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
@@ -909,20 +924,21 @@ for type, _ in pairs(signs) do
   vim.fn.sign_define(hl, { texthl = hl, numhl = hl })
 end
 
-vim.cmd [[
-  hi ErrorMsg guifg=#ba5e61 guibg=None
-  hi DiffAdd guibg=None guifg=#87ffaf
-  hi DiffChange guibg=None guifg=#00afdf
-  " hi DiffDelete None
-  " hi link DiffDelete ErrorMsg
-  hi DiagnosticError None
-  hi link DiagnosticError ErrorMsg
-  hi DiagnosticHint guifg=#5fffaf
-	hi Comment guifg=#7a7a7a
-  hi ColorColumn guibg=#1c1a17
-  hi CursorLineNr guifg=#d2bfad
-  hi PmenuSel guibg=#8b7449 guifg=#ffffff
-]]
+-- Change theme colors
+-- vim.cmd [[
+--   hi ErrorMsg guifg=#ba5e61 guibg=None
+--   hi DiffAdd guibg=None guifg=#87ffaf
+--   hi DiffChange guibg=None guifg=#00afdf
+--   " hi DiffDelete None
+--   " hi link DiffDelete ErrorMsg
+--   hi DiagnosticError None
+--   hi link DiagnosticError ErrorMsg
+--   hi DiagnosticHint guifg=#5fffaf
+-- 	hi Comment guifg=#7a7a7a
+--   hi ColorColumn guibg=#1c1a17
+--   hi CursorLineNr guifg=#d2bfad
+--   hi PmenuSel guibg=#8b7449 guifg=#ffffff
+-- ]]
 
 mason_lspconfig.setup_handlers {
   function(server_name)
@@ -1149,7 +1165,7 @@ vim.api.nvim_create_user_command('TSCheck', function(_)
   vim.fn.inputsave()
   local cmd = vim.fn.input({
     prompt = "Command: ",
-    default = "npx tsc -p",
+    default = "npx tsc -p .",
   })
   vim.fn.inputrestore()
 

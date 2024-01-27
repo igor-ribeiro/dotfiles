@@ -1,27 +1,27 @@
-workspace $ws1 output HDMI-0-1
-workspace $ws2 output HDMI-0-1
-workspace $ws3 output HDMI-0-1
-workspace $ws4 output HDMI-0-1
-workspace $ws5 output eDP-1
-workspace $ws6 output HDMI-0-2
-workspace $ws7 output HDMI-0-2
-workspace $ws8 output HDMI-0-2
-workspace $ws9 output HDMI-0-2
-workspace $ws10 output eDP-1
+workspace $ws1 output <VIRTUAL_1>
+workspace $ws2 output <VIRTUAL_1>
+workspace $ws3 output <VIRTUAL_1>
+workspace $ws4 output <VIRTUAL_1>
+workspace $ws5 output <INTERNAL>
+workspace $ws6 output <VIRTUAL_2>
+workspace $ws7 output <VIRTUAL_2>
+workspace $ws8 output <VIRTUAL_2>
+workspace $ws9 output <VIRTUAL_2>
+workspace $ws10 output <INTERNAL>
 
 bar {
-  output eDP-1
+  output <INTERNAL>
   status_command i3status
   tray_output none
 }
 
 bar {
-  output HDMI-0-1
+  output <VIRTUAL_1>
   tray_output none
 }
 
 bar {
-  output HDMI-0-2
+  output <VIRTUAL_2>
   status_command i3status
-  tray_output HDMI-0-2
+  tray_output <VIRTUAL_2>
 }

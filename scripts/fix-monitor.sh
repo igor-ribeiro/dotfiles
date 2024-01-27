@@ -2,16 +2,14 @@
 
 source $HOME/.bashrc
 
-HDMI=$(xrandr | rg connected | rg HDMI | cut -d' ' -f1)
-INTERNAL=$(xrandr | rg connected | rg eDP | cut -d' ' -f1)
+EXTERNAL=$(get_external_monitor)
+INTERNAL=$(get_internal_monitor)
 
-if [[ $HDMI ]]; then
-  echo "setting HDMI"
-  xrandr --output $HDMI --auto --primary
-  xrandr --output $INTERNAL --left-of $HDMI --auto
+if [[ $EXTERNAL ]]; then
+  echo "Setting external monitor as primary"
+  xrandr --output $EXTERNAL --auto --primary
+  xrandr --output $INTERNAL --left-of $EXTERNAL --auto
 else
-  echo "setting internal"
+  echo "Setting internal monitor as primary"
   xrandr --output $INTERNAL --auto --primary
 fi
-
-$HOME/scripts/generate-i3-config.sh

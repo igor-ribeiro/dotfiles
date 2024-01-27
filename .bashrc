@@ -25,6 +25,7 @@ eval "$(nodenv init -)"
 . ~/.config/bash/galley.bash
 . ~/.config/bash/m8.bash
 . ~/.config/bash/npm.bash
+. ~/.config/bash/monitor.bash
 
 # Bash
 alias ebash="nvim ~/.bashrc"
