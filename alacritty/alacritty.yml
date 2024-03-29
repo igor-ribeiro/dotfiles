@@ -8,6 +8,8 @@ font:
     # family: Fira Mono
     # family: Cascadia Mono PL
     # family: JetBrains Mono
-    family: Monaspace Neon
-    style: Regular
-  size: 11
+    # family: Monaspace Neon
+    family: Input 
+    # family: Hack 
+    style: Medium 
+  size: 10

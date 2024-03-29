@@ -127,6 +127,7 @@ require('lazy').setup({
 
   {
     'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+    enabled = false,
     config = function()
       require('lsp_lines').setup()
     end
@@ -140,7 +141,14 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  {
+    'folke/which-key.nvim',
+    opts = {
+      plugins = {
+        registers = false
+      }
+    }
+  },
   {
     -- Adds git releated signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -315,6 +323,7 @@ require('lazy').setup({
 
       vim.api.nvim_set_hl(0, "GruberDarkerYellowBold", { fg = "#ebd35e", bold = true })
       vim.api.nvim_set_hl(0, "GruberDarkerYellow", { fg = "#ebd35e" })
+      vim.api.nvim_set_hl(0, "Cursor", { reverse = true })
       vim.api.nvim_set_hl(0, "ColorColumn", { link = "StatusLine" })
       vim.api.nvim_set_hl(0, "CursorLine", { bg = "#282828" })
       vim.api.nvim_set_hl(0, "LineNr", { link = "GruberDarkerYellow" })
@@ -332,6 +341,7 @@ require('lazy').setup({
       vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { link = "GruberDarkerQuartz" })
       vim.api.nvim_set_hl(0, "@number", { fg = "#b9aee8" })
       vim.api.nvim_set_hl(0, "@comment.todo", { fg = "#999884", bold = true })
+      vim.api.nvim_set_hl(0, "@text.todo.unchecked", { link = "GruberDarkerYellow", bg = "None" })
     end
   },
 
@@ -459,10 +469,15 @@ require('lazy').setup({
     end,
   },
 
+  -- {
+  --   -- Typescript utilities
+  --   'jose-elias-alvarez/typescript.nvim',
+  -- },
+
   {
-    -- Typescript utilities
-    'jose-elias-alvarez/typescript.nvim',
-    lazy = true,
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
   },
 
   {
@@ -486,6 +501,26 @@ require('lazy').setup({
   {
     'adnan007d/vim-prettier',
     build = 'npm install --frozen-lockfile --production'
+  },
+
+  {
+    'mhartington/formatter.nvim',
+    config = function()
+      require('formatter').setup({
+        logging = false,
+        filetype = {
+          ["*"] = {
+            function()
+              return {
+                exe = "prettierd",
+                args = { vim.api.nvim_buf_get_name(0) },
+                stdin = true
+              }
+            end
+          },
+        }
+      })
+    end,
   },
 
   -- {
@@ -621,7 +656,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader><space>', function()
+  require('telescope.builtin').buffers({
+    previewer = false
+  })
+end, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -630,7 +669,11 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>sf', function()
+  require('telescope.builtin').find_files({
+    previewer = false
+  })
+end, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
@@ -659,15 +702,15 @@ vim.keymap.set('n', '<leader>9', function() require('harpoon.ui').nav_file(9) en
   { desc = '[H]arpoon [S]how files file' })
 
 -- Typescript
-vim.keymap.set('n', '<leader>tru', function() pcall(require('typescript').actions.removeUnused) end,
+vim.keymap.set('n', '<leader>tru', ":TSToolsRemoveUnusedImports<CR>",
   { desc = '[T]ypescript [R]emove [U]nused' })
-vim.keymap.set('n', '<leader>tai', function() pcall(require('typescript').actions.addMissingImports) end,
+vim.keymap.set('n', '<leader>tai', ":TSToolsAddMissingImports<CR>",
   { desc = 'TS [A]dd Missing [I]mports' })
-vim.keymap.set('n', '<leader>tfi', function()
-    pcall(require('typescript').actions.addMissingImports)
-    pcall(require('typescript').actions.removeUnused)
-  end,
-  { desc = 'TS [F]ix [I]mports' })
+-- vim.keymap.set('n', '<leader>tfi', function()
+--     pcall(require('typescript').actions.addMissingImports)
+--     pcall(require('typescript').actions.removeUnused)
+--   end,
+--   { desc = 'TS [F]ix [I]mports' })
 
 -- Netrw (folder navigation)
 vim.keymap.set('n', '<leader>od', ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
@@ -776,9 +819,9 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end,
+vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR }) end,
   { desc = "Go to previous diagnostic message" })
-vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end,
+vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR }) end,
   { desc = "Go to next diagnostic message" })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
@@ -839,23 +882,23 @@ local on_attach = function(_, bufnr)
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, '[W]orkspace [L]ist Folders')
 
-  -- vim.api.nvim_create_autocmd("CursorHold", {
-  --   buffer = bufnr,
-  --   callback = function()
-  --     for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
-  --       if vim.api.nvim_win_get_config(winid).zindex then
-  --         return
-  --       end
-  --     end
-  --
-  --     local opts = {
-  --       focus = false,
-  --       close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-  --       source = 'always',
-  --     }
-  --     vim.diagnostic.open_float(opts)
-  --   end
-  -- })
+  vim.api.nvim_create_autocmd("CursorHold", {
+    buffer = bufnr,
+    callback = function()
+      for _, winid in pairs(vim.api.nvim_tabpage_list_wins(0)) do
+        if vim.api.nvim_win_get_config(winid).zindex then
+          return
+        end
+      end
+
+      local opts = {
+        focus = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        source = 'always',
+      }
+      vim.diagnostic.open_float(opts)
+    end
+  })
 end
 
 -- Enable the following language servers
@@ -873,12 +916,7 @@ local servers = {
   --   },
   -- },
   -- tsserver = {},
-  tailwindcss = {
-    includeLanguages = {
-      rust = "html",
-      scss = "css"
-    }
-  },
+  tailwindcss = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -910,11 +948,7 @@ vim.diagnostic.config({
   virtual_lines = {
     only_current_line = true
   },
-  signs = {
-    -- linehl = {
-    --   [vim.diagnostic.severity.HINT] = 'GruberDarkerWisteria',
-    -- },
-  }
+  severity_sort = true,
 })
 
 local signs = { Error = "E", Warn = "W", Hint = "H", Info = "I" }
@@ -957,12 +991,27 @@ require('lspconfig').tailwindcss.setup {
     },
   },
   settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          { "cx\\(([^)]*)\\)",  "(?:'|\"|`)([^']*)(?:'|\"|`)" }
+        },
+      },
+    },
     includeLanguages = {
-      rust = "html"
+      rust = "html",
+      scss = "css",
     },
   },
   filetypes = {
-    "rust"
+    "json",
+    "rust",
+    "html",
+    "css",
+    "javascript",
+    "typescript",
+    "typescriptreact",
   }
 }
 
@@ -1104,25 +1153,23 @@ local prettier_files = {
 }
 
 -- Create a command `:Format` local to the LSP buffer
-vim.api.nvim_create_user_command('Format', function(_)
+vim.api.nvim_create_user_command('InternalFormat', function(_)
   local file_ext = vim.fn.expand('%:e')
 
   for _, ext in pairs(prettier_files) do
     if file_ext == ext then
-      vim.cmd('silent Prettier')
+      vim.cmd('silent FormatWrite')
       return
     end
   end
 
-  if vim.lsp.buf.server_ready() then
-    vim.lsp.buf.format()
-  end
+  vim.lsp.buf.format()
 end, { desc = 'Format current buffer with LSP' })
 
-local format_group = vim.api.nvim_create_augroup('Format', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePre', {
+local format_group = vim.api.nvim_create_augroup('InternalFormat', { clear = false })
+vim.api.nvim_create_autocmd('BufWritePost', {
   callback = function()
-    vim.cmd('silent Format')
+    vim.cmd('silent InternalFormat')
   end,
   group = format_group,
   pattern = '*',
@@ -1218,3 +1265,12 @@ vim.api.nvim_create_user_command('TSCheck', function(_)
   vim.cmd('cf ' .. filename)
   vim.cmd('copen')
 end, {})
+
+
+vim.api.nvim_create_user_command('SvgToJsx', function(_)
+  vim.cmd(
+    "silent! *s/clip-\\(\\w\\)/clip\\U\\1/g | " ..
+    "silent! *s/fill-\\(\\w\\)/fill\\U\\1/g | " ..
+    "silent! *s/stroke-\\(\\w\\)/stroke\\U\\1/g"
+  )
+end, { desc = 'Convert SVG to valid JSX' })

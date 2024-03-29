@@ -67,17 +67,28 @@ function gw () {
 	if [ "$action" = "remove" ]; then
 		for branch in $@; do
 			if [ $i -gt 0 ]; then
-				git worktree remove $branch
+				git worktree remove $@
 			fi
 			((++i))
 		done
   elif [ "${action}" = "add" ]; then
+    args=${@:2}
     path="$2"
+
+    if [[ -z $args ]]; then
+      echo "USAGE: gw add [-b <branch>] <path> [<commmit>]"
+      return 1
+    fi
 
     if [ "${2}" = "-b" ]; then
       path="$3"
 
-      git worktree add -b $3 $4
+      if ! [[ -z "$5" ]]; then
+        path="$4"
+      fi
+
+      # ${@:3} gets all arguments minus the first two
+      git worktree add -b ${@:3}
       git push -u origin $3
     else
       git worktree $@
@@ -175,4 +186,13 @@ function git-find-stash () {
   fi
 
   git fsck --unreachable | grep commit | cut -d" " -f3 | xargs git log --merges --no-walk --grep=$1
+}
+
+function git-stash-staged () {
+  git stash push -- $(git diff --staged --name-only)
+}
+
+function git-wortree-add () {
+  test="$?"
+  echo $test
 }

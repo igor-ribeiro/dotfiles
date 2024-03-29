@@ -225,7 +225,7 @@ function adv360-firmware () {
 
 function pomodoro () {
   declare -A pomo_options
-  pomo_options["work"]="45m"
+  pomo_options["work"]="30m"
   pomo_options["break"]="5m"
 
   if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
@@ -244,6 +244,7 @@ function pomodoro () {
 
 alias p-work="pomodoro work"
 alias p-break="pomodoro break"
+
 alias fix-monitor="~/scripts/fix-monitor.sh"
 alias split-monitor="~/scripts/split-monitor.sh"
 
@@ -277,3 +278,5 @@ Usage:
 
   paste -sd $separator
 }
+
+alias eterminal="nvim $HOME/.config/alacritty/alacritty.yml"
