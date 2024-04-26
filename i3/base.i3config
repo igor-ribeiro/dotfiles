@@ -67,7 +67,8 @@ bindsym $mod+x exec betterlockscreen -l
 bindsym $mod+Shift+o exec "i3-nagbar -t warning -m 'Are you sure you want to shutdown?' -B 'Yes' 'systemctl poweroff'"
 
 # selected screenshot
-bindsym $mod+Shift+s exec "maim -s -u | xclip -selection clipboard -t image/png -i"
+bindsym $mod+Shift+x exec "maim -s -u | xclip -selection clipboard -t image/png -i"
+bindsym $mod+Shift+s exec "flameshot gui --delay 500"
 
 #Reboot Machine
 #bindsym $mod+r exec systemctl reboot

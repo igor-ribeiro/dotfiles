@@ -204,7 +204,8 @@ require('lazy').setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       local theme = require("telescope.themes").get_ivy({
-        layout_config = { height = 20 }
+        layout_config = { height = 20 },
+        -- layout_strategy = "center"
       })
 
       local fb_actions = require "telescope".extensions.file_browser.actions
@@ -212,15 +213,11 @@ require('lazy').setup({
       require('telescope').setup {
         defaults = {
           dynamic_preview_title = true,
-          mappings = {
-            i = {
-              ['<C-u>'] = false,
-              ['<C-d>'] = false,
-            },
-          },
         },
         pickers = {
           find_files = theme,
+          buffers = theme,
+          oldfiles = theme,
           help_tags = theme,
           grep_string = theme,
           live_grep = theme,
@@ -332,13 +329,16 @@ require('lazy').setup({
 
       vim.api.nvim_set_hl(0, "@include", { link = "GruberDarkerYellowBold" })
       vim.api.nvim_set_hl(0, "@property", { link = "GruberDarkerFg1" })
-      vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { link = "GruberDarkerFg1" })
+      vim.api.nvim_set_hl(0, "@property.json", { link = "GruberDarkerQuartz" })
       vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "GruberDarkerQuartz" })
       vim.api.nvim_set_hl(0, "@punctuation.special", { link = "GruberDarkerQuartz" })
       vim.api.nvim_set_hl(0, "@include.identifier", { link = "GruberDarkerQuartz" })
       vim.api.nvim_set_hl(0, "@tag", { link = "GruberDarkerQuartz" })
       vim.api.nvim_set_hl(0, "@tag.delimiter", { link = "GruberDarkerQuartz" })
       vim.api.nvim_set_hl(0, "@tag.attribute.tsx", { link = "GruberDarkerQuartz" })
+      vim.api.nvim_set_hl(0, "@tag.builtin.tsx", { link = "GruberDarkerQuartz" })
+      vim.api.nvim_set_hl(0, "@lsp.typemod.property.declaration", { link = "GruberDarkerQuartz" })
+      -- vim.api.nvim_set_hl(0, "@tag.tsx", { link = "GruberDarkerNiagara" })
       vim.api.nvim_set_hl(0, "@number", { fg = "#b9aee8" })
       vim.api.nvim_set_hl(0, "@comment.todo", { fg = "#999884", bold = true })
       vim.api.nvim_set_hl(0, "@text.todo.unchecked", { link = "GruberDarkerYellow", bg = "None" })
@@ -655,7 +655,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>?', function()
+  require('telescope.builtin').oldfiles({
+    previewer = false
+  })
+end, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', function()
   require('telescope.builtin').buffers({
     previewer = false

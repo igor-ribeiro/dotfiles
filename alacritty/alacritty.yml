@@ -4,12 +4,11 @@ font:
   normal:
     # family: Intel One Mono
     # family: IBM Plex Mono
-    # family: Iosevka
+    family: Iosevka
     # family: Fira Mono
     # family: Cascadia Mono PL
     # family: JetBrains Mono
     # family: Monaspace Neon
-    family: Input 
-    # family: Hack 
+    # family: Input 
     style: Medium 
-  size: 10
+  size: 12
