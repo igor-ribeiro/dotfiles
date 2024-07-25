@@ -23,10 +23,10 @@ require'telescope'.setup{
     file_ignore_patterns = { 'node_modules/', 'tmp/', 'dist/', 'build/' },
     mappings = {
       n = {
-    	  ['<c-d>'] = require('telescope.actions').delete_buffer
+    	  ['<C-d>'] = require('telescope.actions').delete_buffer
       },
       i = {
-        ['<c-d>'] = require('telescope.actions').delete_buffer
+        ['<C-d>'] = require('telescope.actions').delete_buffer
       }
     }
   },

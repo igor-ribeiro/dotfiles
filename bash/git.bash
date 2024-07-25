@@ -196,3 +196,7 @@ function git-wortree-add () {
   test="$?"
   echo $test
 }
+
+function git-pr () {
+  gh pr create --web --fill $@
+}

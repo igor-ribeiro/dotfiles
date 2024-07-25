@@ -280,3 +280,7 @@ Usage:
 }
 
 alias eterminal="nvim $HOME/.config/alacritty/alacritty.yml"
+
+function download-audio () {
+  youtube-dl --restrict-filenames -f bestaudio -o "%(title)s.%(ext)s" $@
+}
