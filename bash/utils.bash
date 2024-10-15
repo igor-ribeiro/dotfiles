@@ -94,6 +94,14 @@ function mkd () {
   cd $1
 }
 
+function to-mp3 () {
+  filename=$1
+  no_extension="${filename%.*}"
+  extension="${filename##*.}"
+
+  ffmpeg -i $filename -q:a 0 -map a "$no_extension.mp3"
+}
+
 # MKV -> MP4
 function to-mp4 () {
   filename=$1
@@ -103,31 +111,10 @@ function to-mp4 () {
   ffmpeg -i $filename -vcodec copy -c:a aac "$no_extension.mp4"
 }
 
-function to-gif () {
-  filename=$1
-  output=$2
-
-  if [ "$filename" = "" ]
-  then
-    echo "Usage: to-gif <FILENAME> <OUTPUT>"
-    return
-  fi
-
-  if [ "$output" = "" ]
-  then
-    echo "Usage: to-gif <FILENAME> <OUTPUT>"
-    return
-  fi
-
-  ffmpeg -i $filename \
-    -vf "fps=30,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
-    -loop 0 $output
-}
 
 function trim-video () {
-  if [ "$1" = "" ] || [ "$2" = "" ]
-  then
-    echo "Usage: trim-video FILENAME START FINISH (optional)"
+  if [ "$1" = "" ] || [ "$2" = "" ]; then
+    echo "Usage: trim-video FILENAME START<hh:mm:ss> FINISH<hh:mm:ss> (optional)"
     return
   fi
 
@@ -135,8 +122,7 @@ function trim-video () {
   start="-ss $2"
   finish=""
 
-  if [ "$3" != "" ]
-  then
+  if [ "$3" != "" ]; then
     finish="-to $3"
   fi
 
@@ -146,9 +132,46 @@ function trim-video () {
   ffmpeg $start -i $filename $finish -c copy "${no_extension}-CROP.${extension}"
 }
 
+function compress-mp4 () {
+  if [ "$1" = "" ]; then
+    echo "Usage: compress-mp4 <input> <output>(optional) "
+    return
+  fi
+
+  input=$1
+  output=$2
+
+  if [ "$2" = "" ]; then
+    extension="${input##*.}"
+    no_extension="${input%.*}"
+
+    output="${no_extension}-COMPRESSED.${extension}"
+  fi
+
+  ffmpeg -i $input -vcodec h264 -acodec mp2 $output
+}
+
 function to-gif () {
-  if [ "$1" = "" ]
-  then
+  filename=$1
+  output=$2
+
+  if [ "$filename" = "" ]; then
+    echo "Usage: to-gif <FILENAME> <OUTPUT>"
+    return
+  fi
+
+  if [ "$output" = "" ]; then
+    echo "Usage: to-gif <FILENAME> <OUTPUT>"
+    return
+  fi
+
+  ffmpeg -i $filename \
+    -vf "fps=30,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+    -loop 0 $output
+}
+
+function to-gif-2 () {
+  if [ "$1" = "" ]; then
     echo "Usage: to-gif FILENAME"
     return
   fi

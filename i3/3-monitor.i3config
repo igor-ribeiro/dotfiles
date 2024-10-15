@@ -1,0 +1,28 @@
+workspace $ws1 output <DP>
+workspace $ws2 output <DP>
+workspace $ws3 output <DP>
+workspace $ws4 output <HDMI>
+workspace $ws5 output <INTERNAL>
+workspace $ws6 output <DP>
+workspace $ws7 output <DP>
+workspace $ws8 output <DP>
+workspace $ws9 output <HDMI>
+workspace $ws10 output <INTERNAL>
+
+bar {
+  output <INTERNAL>
+  status_command i3status
+  tray_output none
+}
+
+bar {
+  output <DP>
+  status_command i3status
+  tray_output none
+}
+
+bar {
+  output <HDMI>
+  status_command i3status
+  tray_output none
+}

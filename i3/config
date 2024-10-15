@@ -67,7 +67,8 @@ bindsym $mod+x exec betterlockscreen -l
 bindsym $mod+Shift+o exec "i3-nagbar -t warning -m 'Are you sure you want to shutdown?' -B 'Yes' 'systemctl poweroff'"
 
 # selected screenshot
-bindsym $mod+Shift+s exec "maim -s -u | xclip -selection clipboard -t image/png -i"
+bindsym $mod+Shift+x exec "maim -s -u | xclip -selection clipboard -t image/png -i"
+bindsym $mod+Shift+s exec "flameshot gui --delay 500"
 
 #Reboot Machine
 #bindsym $mod+r exec systemctl reboot
@@ -297,7 +298,7 @@ for_window [class="^.*"] border pixel 2
 # class     border  backgr. text  indicator child_border
 client.focused #555555 #555555 #ffffff #2e9ef4   #48b16d
 
-gaps inner 5
+gaps inner 2
 
 # Activate smart borders (always)
 smart_borders on
@@ -327,32 +328,5 @@ bindsym $mod+b mode "Brave profile: [G]alley [P]ersonal"
 
 
 # ======================
-# VIRTUAL MONITOR CONFIG
+# E MONITOR CONFIG
 # ======================
-workspace $ws1 output <VIRTUAL_1>
-workspace $ws2 output <VIRTUAL_1>
-workspace $ws3 output <VIRTUAL_1>
-workspace $ws4 output <VIRTUAL_1>
-workspace $ws5 output <INTERNAL>
-workspace $ws6 output <VIRTUAL_2>
-workspace $ws7 output <VIRTUAL_2>
-workspace $ws8 output <VIRTUAL_2>
-workspace $ws9 output <VIRTUAL_2>
-workspace $ws10 output <INTERNAL>
-
-bar {
-  output <INTERNAL>
-  status_command i3status
-  tray_output none
-}
-
-bar {
-  output <VIRTUAL_1>
-  tray_output none
-}
-
-bar {
-  output <VIRTUAL_2>
-  status_command i3status
-  tray_output <VIRTUAL_2>
-}

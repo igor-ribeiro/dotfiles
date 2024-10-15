@@ -4,10 +4,24 @@ source $HOME/.bashrc
 
 set -o pipefail
 
-EXTERNAL=$(get_external_monitor)
+DP=$(get_displayport_monitor)
+HDMI=$(get_hdmi_monitor)
 INTERNAL=$(get_internal_monitor)
-VIRTUAL=$(get_virtual_monitors $EXTERNAL | join-lines ",")
+DP_VIRTUAL=$(get_virtual_monitors $DP | join-lines ",")
+HDMI_VIRTUAL=$(get_virtual_monitors $HDMI | join-lines ",")
 MODE="virtual"
+
+# 3 monitors setup
+if [ -n "$DP" ] && [ -n "$HDMI" ]; then
+  return
+# 2 monitors (DP & internal)
+elif [ -n "$DP" ] && [ -z "$HDMI" ]; then
+  return
+# 2 monitors (HDMI & internal)
+elif [ -z "$DP" ] && [ -n "$HDMI" ]; then
+  return
+fi
+
 
 if [ -z "$VIRTUAL" ]; then
     echo "Generating virtual monitors for $EXTERNAL"

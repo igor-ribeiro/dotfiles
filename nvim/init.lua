@@ -197,6 +197,16 @@ require('lazy').setup({
     opts = {}
   },
 
+  -- Image preview
+  {
+    'edluffy/hologram.nvim',
+    config = function()
+      require('hologram').setup {
+        auto_display = true -- WIP automatic markdown image display, may be prone to breaking
+      }
+    end
+  },
+
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -779,7 +789,7 @@ require('nvim-treesitter.configs').setup {
       init_selection = '<c-space>',
       node_incremental = '<c-space>',
       scope_incremental = '<c-s>',
-      node_decremental = '<M-space>',
+      node_decremental = '<c-d>',
     },
   },
   textobjects = {
@@ -794,26 +804,6 @@ require('nvim-treesitter.configs').setup {
         ['if'] = '@function.inner',
         ['ac'] = '@class.outer',
         ['ic'] = '@class.inner',
-      },
-    },
-    move = {
-      enable = true,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']m'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']M'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[m'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[M'] = '@function.outer',
-        ['[]'] = '@class.outer',
       },
     },
     swap = {
