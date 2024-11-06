@@ -490,6 +490,8 @@ require('lazy').setup({
     opts = {
       settings = {
         tsserver_file_preferences = {
+          includeCompletionsForImportStatements = true,
+          includePackageJsonAutoImports = 'on',
           importModuleSpecifierPreference = "non-relative",
         }
       }
@@ -520,23 +522,31 @@ require('lazy').setup({
   },
 
   {
-    'mhartington/formatter.nvim',
-    config = function()
-      require('formatter').setup({
-        logging = false,
-        filetype = {
-          ["*"] = {
-            function()
-              return {
-                exe = "prettierd",
-                args = { vim.api.nvim_buf_get_name(0) },
-                stdin = true
-              }
-            end
-          },
-        }
-      })
-    end,
+    'stevearc/conform.nvim',
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = {
+      {
+        -- Customize or remove this keymap to your liking
+        "<leader>f",
+        function()
+          require("conform").format({ async = true })
+        end,
+        mode = "",
+        desc = "Format buffer",
+      },
+    },
+    -- This will provide type hinting with LuaLS
+    ---@module "conform"
+    ---@type conform.setupOpts
+    opts = {
+      format_on_save = {
+        timeout_ms = 500,
+      },
+      formatters_by_ft = {
+        ["*"] = { "prettierd", lsp_format = "fallback" }
+      }
+    }
   },
 
   -- {
@@ -1152,6 +1162,17 @@ local prettier_files = {
   "sass",
 }
 
+
+-- local format_group = vim.api.nvim_create_augroup('ConformFormat', { clear = false })
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   callback = function(args)
+--     require("conform").format({ bufnr = args.buf })
+--   end,
+--   group = format_group,
+--   pattern = '*',
+-- })
+
+
 -- Create a command `:Format` local to the LSP buffer
 vim.api.nvim_create_user_command('InternalFormat', function(_)
   local file_ext = vim.fn.expand('%:e')
@@ -1166,14 +1187,14 @@ vim.api.nvim_create_user_command('InternalFormat', function(_)
   vim.lsp.buf.format()
 end, { desc = 'Format current buffer with LSP' })
 
-local format_group = vim.api.nvim_create_augroup('InternalFormat', { clear = false })
-vim.api.nvim_create_autocmd('BufWritePost', {
-  callback = function()
-    vim.cmd('silent InternalFormat')
-  end,
-  group = format_group,
-  pattern = '*',
-})
+-- local format_group = vim.api.nvim_create_augroup('InternalFormat', { clear = false })
+-- vim.api.nvim_create_autocmd('BufWritePost', {
+--   callback = function()
+--     vim.cmd('silent InternalFormat')
+--   end,
+--   group = format_group,
+--   pattern = '*',
+-- })
 
 local ap_filetype = vim.api.nvim_create_augroup('SetApFT', { clear = true })
 vim.api.nvim_create_autocmd('BufRead', {

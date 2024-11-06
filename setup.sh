@@ -22,7 +22,7 @@ nvm use --lts
 # FONTS
 # --
 mkdir $HOME/.local/share/fonts/
-ln -s $(pwd)/fonts/ $HOME/.local/share/fonts/
+ln -s $(pwd)/fonts/ $HOME/.local/share/
 sudo fc-cache
 
 # --
