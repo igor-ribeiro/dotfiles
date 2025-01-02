@@ -18,7 +18,7 @@ bar {
 bar {
   output <DP>
   status_command i3status
-  tray_output none
+  tray_output <DP>
 }
 
 bar {

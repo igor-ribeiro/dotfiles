@@ -7,23 +7,25 @@ set -o pipefail
 DP=$(get_displayport_monitor)
 HDMI=$(get_hdmi_monitor)
 INTERNAL=$(get_internal_monitor)
-DP_VIRTUAL=$(get_virtual_monitors $DP | join-lines ",")
-HDMI_VIRTUAL=$(get_virtual_monitors $HDMI | join-lines ",")
+DP_VIRTUAL=$(get_virtual_monitors ${DP:=none} | join-lines ",")
+HDMI_VIRTUAL=$(get_virtual_monitors ${HDMI:=none} | join-lines ",")
 MODE="virtual"
 
 # 3 monitors setup
 if [ -n "$DP" ] && [ -n "$HDMI" ]; then
-  return
-# 2 monitors (DP & internal)
-elif [ -n "$DP" ] && [ -z "$HDMI" ]; then
-  return
-# 2 monitors (HDMI & internal)
+  echo "split-coding for 3 monitors not configured"
+  exit
+# 1 monitor (HDMI)
 elif [ -z "$DP" ] && [ -n "$HDMI" ]; then
-  return
+  echo "Using HDMI monitor"
+  EXTERNAL=$HDMI
+# 1 monitor (DP)
+elif [ -n "$DP" ] && [ -z "$HDMI" ]; then
+  echo "Using DP monitor"
+  EXTERNAL=$DP
 fi
 
-
-if [ -z "$VIRTUAL" ]; then
+if [ -z "$DP_VIRTUAL" ] && [ -z "$HDMI_VIRTUAL" ]; then
     echo "Generating virtual monitors for $EXTERNAL"
 
     #                           w    h    x   y     mmw   mmh
@@ -33,13 +35,14 @@ if [ -z "$VIRTUAL" ]; then
     # physical dimensions of the monitor.
     #
     #                                    w  mmw   h  mmh   x  y
-    xrandr --setmonitor "$EXTERNAL-2"  1706/594x1080/334+2774+0 $EXTERNAL
-    xrandr --setmonitor "$EXTERNAL-1"  854/204x1080/334+1920+0 none
+    xrandr --verbose --setmonitor "$EXTERNAL-2" 1706/594x1080/334+854+0 $EXTERNAL
+    xrandr --verbose --setmonitor "$EXTERNAL-1" 854/204x1080/334+0+0 none
+    xrandr --verbose --fb 2560x1080 
 else
     echo "Removing virtual monitors"
 
-    xrandr --delmonitor "$EXTERNAL-1"
-    xrandr --delmonitor "$EXTERNAL-2"
+    xrandr --verbose --delmonitor "$EXTERNAL-1"
+    xrandr --verbose --delmonitor "$EXTERNAL-2"
     
     MODE="regular"
 fi

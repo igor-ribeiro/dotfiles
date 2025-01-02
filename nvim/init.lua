@@ -46,6 +46,9 @@ vim.g.maplocalleader = ' '
 vim.g.do_filetype_lua = true
 vim.g.did_load_filetypes = false
 
+vim.opt_local.spell = true
+vim.opt_local.spelllang = 'en_us'
+
 -- local local_vimrc_file = vim.fn.getcwd() .. '/.vimrc'
 --
 -- if vim.fn.empty(local_vimrc_file) then
@@ -137,7 +140,23 @@ require('lazy').setup({
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     lazy = true,
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'allaman/emoji.nvim' },
+  },
+
+  {
+    'allaman/emoji.nvim',
+    dependencies = {
+      "hrsh7th/nvim-cmp",
+    },
+    opts = {
+      enable_cmp_integration = true,
+    },
+    config = function(_, opts)
+      require("emoji").setup(opts)
+      -- optional for telescope integration
+      local ts = require('telescope').load_extension 'emoji'
+      vim.keymap.set('n', '<leader>se', ts.emoji, { desc = '[S]earch [E]moji' })
+    end,
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -542,11 +561,40 @@ require('lazy').setup({
     opts = {
       format_on_save = {
         timeout_ms = 500,
+        -- lsp_format = "fallback",
       },
+      -- default_format_opts = {
+      --   lsp_format = "fallback",
+      -- },
       formatters_by_ft = {
-        ["*"] = { "prettierd", lsp_format = "fallback" }
+        rust = { "rustfmt", lsp_format = "fallback" },
+        json = { "prettierd" },
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        html = { "prettierd" },
+        css = { "prettierd" },
+        scss = { "prettierd" },
+        ["_"] = { lsp_format = 'fallback' }
       }
     }
+  },
+
+  {
+    'codethread/qmk.nvim',
+    config = function()
+      require('qmk').setup({
+        name = "LAYOUT_pretty",
+        variant = "zmk",
+        layout = {
+          "x x x x x x x _ _ _ _ _ _ _ _ _ _ x x x x x x x",
+          "x x x x x x x _ _ _ _ _ _ _ _ _ _ x x x x x x x",
+          "x x x x x x x _ _ x x _ _ x x _ _ x x x x x x x",
+          "x x x x x x _ _ x x x _ _ x x x _ _ x x x x x x",
+          "x x x x x _ _ _ x x x _ _ x x x _ _ _ x x x x x",
+        },
+      })
+    end
   },
 
   -- {

@@ -1,6 +1,7 @@
 [user]
 	name = Igor Ribeiro
 	email = igor-ribeiro@users.noreply.github.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJkLjxHDUN6wM2ODHAdIq8zMdJdnQ6+uAmInvlCGsieM
 [color]
   diff = auto
   status = auto
@@ -13,3 +14,9 @@
 	defaultBranch = main
 [push]
 	autoSetupRemote = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /opt/1Password/op-ssh-sign
+[commit]
+	gpgsign = true

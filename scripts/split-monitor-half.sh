@@ -12,8 +12,8 @@ MODE="virtual"
 if [ -z "$VIRTUAL" ]; then
     echo "Generating virtual monitors for $EXTERNAL"
 
-    xrandr --setmonitor "$EXTERNAL-2"  1280/399x1080/334+3200+0 $EXTERNAL
-    xrandr --setmonitor "$EXTERNAL-1"  1280/399x1080/334+1920+0 none
+    xrandr --setmonitor "$EXTERNAL-2" 1280/399x1080/334+3200+0 $EXTERNAL
+    xrandr --setmonitor "$EXTERNAL-1" 1280/399x1080/334+1920+0 none
 else
     echo "Removing virtual monitors"
 

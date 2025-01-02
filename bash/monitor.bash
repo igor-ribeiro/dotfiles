@@ -9,8 +9,8 @@ function get_displayport_monitor() {
     echo $DISPLAY_PORT
     return
   fi
-
-  echo -e "No Display Port monitors connected"
+  #
+  # echo -e "No Display Port monitors connected"
 }
 
 function get_hdmi_monitor() {
@@ -21,7 +21,7 @@ function get_hdmi_monitor() {
     return
   fi
 
-  echo -e "No HDMI monitors connected"
+  # echo -e "No HDMI monitors connected"
 }
 
 function get_virtual_monitors() {

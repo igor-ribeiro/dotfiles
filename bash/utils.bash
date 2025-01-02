@@ -284,10 +284,6 @@ function update-neovim () {
   cd -
 }
 
-function create-react-vite () {
-  npx create-vite@latest --template typescript-react-tailwind-vite $1
-}
-
 function join-lines () {
   separator=$1
 
@@ -296,7 +292,7 @@ function join-lines () {
 Usage:
   $> some-command | join-lines ', '
 "
-    exit 1
+    return
   fi
 
   paste -sd $separator
@@ -308,6 +304,23 @@ function download-audio () {
   youtube-dl --restrict-filenames -f bestaudio -o "%(title)s.%(ext)s" $@
 }
 
-function update-fonts() {
+function update-fonts () {
   sudo fc-cache
+}
+
+function create-from-repo () {
+  npx degit $@
+}
+
+function create-react-vite () {
+  if [ -z "$1" ]; then
+    echo -e "
+Usage:
+  $> create-react-vite <folder>
+"
+    return
+  fi
+
+
+  npx degit igor-ribeiro/vite-template-react-ts-tailwind $@
 }

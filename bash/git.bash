@@ -74,6 +74,7 @@ function gw () {
   elif [ "${action}" = "add" ]; then
     args=${@:2}
     path="$2"
+    commit="origin/master"
 
     if [[ -z $args ]]; then
       echo "USAGE: gw add [-b <branch>] <path> [<commmit>]"
@@ -81,15 +82,17 @@ function gw () {
     fi
 
     if [ "${2}" = "-b" ]; then
+      branch="$3"
       path="$3"
 
       if ! [[ -z "$5" ]]; then
+        commit="$5"
         path="$4"
       fi
 
-      # ${@:3} gets all arguments minus the first two
-      git worktree add -b ${@:3}
-      git push -u origin $3
+      # ${@:3} gets all arguments minus the first two (add, -b)
+      git worktree add -b $branch $path $commit
+      git push -u origin $branch
     else
       git worktree $@
     fi
@@ -97,7 +100,7 @@ function gw () {
     common_dir=./worktree-common
 
     if [ "$path" = "" ]; then
-      path="$4"
+      path="$branch"
     fi
 
     if [ -d "$common_dir" ] && [ -d "$path" ]; then 

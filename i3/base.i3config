@@ -257,13 +257,13 @@ bindsym $mod+r mode "resize"
 # for_window [class="firefoxribeiro-software"] move to workspace $ws8
 # assign [class="firefoxribeiro-software"] workspace $ws8
 
-assign [title="Zoom Meeting"] workspace $ws3
-assign [class="zoom"] workspace $ws3
-assign [class="action=join"] workspace $ws3
-for_window [class="zoom" title="Participants"] floating enable, resize set 530 42
-for_window [class="zoom" title="Chat"] floating enable
+assign [title="Zoom Meeting"] workspace $ws5
+assign [class="zoom"] workspace $ws5
+assign [class="action=join"] workspace $ws5
+# for_window [class="zoom" title="Participants"] floating enable, resize set 530 42
+# for_window [class="zoom" title="Chat"] floating enable
 # for_window [title="zoom"] floating enable
-for_window [title="Choose what to share"] floating enable
+# for_window [title="Choose what to share"] floating enable
 
 assign [title="PokerStars"] workspace $ws4
 for_window [title="^PokerStars$"] floating enable
@@ -319,8 +319,8 @@ bindsym Ctrl+Shift+1 exec 1password
 bindsym $mod+Shift+T exec "i3-input -F 'focus parent, title_format %s, focus child' -P 'Rename container: '" 
 
 mode "Brave profile: [G]alley [P]ersonal" {
-    bindsym g exec brave-browser-beta --profile-directory="ProfileGalley", workspace $ws1; mode "default"
-    bindsym p exec brave-browser-beta --profile-directory="ProfilePersonal", workspace $ws2; mode "default"
+    bindsym g workspace $ws1; mode "default" exec brave-browser-beta --profile-directory="ProfileGalley"
+    bindsym p workspace $ws2; mode "default" exec brave-browser-beta --profile-directory="ProfilePersonal"
 
     bindsym Escape mode "default"
 }
